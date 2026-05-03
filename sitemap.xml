@@ -25,6 +25,24 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://mathildekw.com/blog.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mathildekw.com/blog-prix-immobilier-tahiti-2025.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://mathildekw.com/blog-vendre-maison-tahiti.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://mathildekw.com/contact.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
