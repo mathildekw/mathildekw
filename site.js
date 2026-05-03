@@ -63,7 +63,13 @@ document.addEventListener("DOMContentLoaded", function () {
       "Objectif : " + (data.get("objectif") || ""),
       "Message : " + (data.get("message") || "")
     ].join("\n");
-    trackEvent("click_form_estimation", { form_location: window.location.pathname });
+    trackEvent("submit_form_estimation", {
+      form_location: window.location.pathname,
+      property_type: data.get("type") || "",
+      property_city: data.get("commune") || "",
+      seller_goal: data.get("objectif") || ""
+    });
+    trackEvent("click_whatsapp_estimation", { form_location: window.location.pathname, source: "estimation_form" });
     window.location.href = "https://wa.me/33782475958?text=" + encodeMessage(message);
   });
 });
