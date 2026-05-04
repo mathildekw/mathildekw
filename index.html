@@ -1776,18 +1776,38 @@
 </script>
 
 <script>
+  function homeCleanText(value) {
+    return (value || '').replace(/\s+/g, ' ').trim().slice(0, 140);
+  }
+  function homeClassifyEvent(name) {
+    if (!name) return 'interaction';
+    if (name.indexOf('whatsapp') !== -1 || name.indexOf('call') !== -1 || name.indexOf('email') !== -1) return 'contact';
+    if (name.indexOf('estimation') !== -1 || name.indexOf('form') !== -1) return 'seller_lead';
+    if (name.indexOf('visit') !== -1 || name.indexOf('virtual_tour') !== -1 || name.indexOf('t2') !== -1) return 'buyer_lead';
+    if (name.indexOf('share') !== -1 || name.indexOf('save_contact') !== -1 || name.indexOf('google_review') !== -1) return 'trust';
+    return 'interaction';
+  }
   document.addEventListener('click', function(event) {
     var target = event.target.closest('[data-event]');
     if (!target || !window.gtag) return;
     var eventName = target.getAttribute('data-event');
+    var href = target.href || '';
     var payload = {
-      link_url: target.href || '',
-      link_text: (target.textContent || '').trim().slice(0, 120),
-      page_location: window.location.href
+      event_category: homeClassifyEvent(eventName),
+      page_location: window.location.href,
+      page_path: window.location.pathname,
+      page_title: document.title || '',
+      link_url: href,
+      link_text: homeCleanText(target.textContent),
+      link_domain: href ? (function(){ try { return new URL(href).hostname; } catch(e) { return ''; } })() : '',
+      outbound: href ? !href.startsWith(window.location.origin) && !href.startsWith('/') : false
     };
     window.gtag('event', eventName, payload);
     var secondary = target.getAttribute('data-event-secondary');
-    if (secondary) window.gtag('event', secondary, payload);
+    if (secondary) {
+      payload = Object.assign({}, payload, { event_category: homeClassifyEvent(secondary), primary_event: eventName });
+      window.gtag('event', secondary, payload);
+    }
   });
 </script>
 
