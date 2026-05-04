@@ -246,6 +246,15 @@
     .quick-services{display:grid;grid-template-columns:1fr;gap:7px;}
     .quick-service{display:flex;align-items:center;gap:9px;background:var(--sand);border:1.5px solid var(--border);border-radius:12px;padding:10px 11px;font-size:12px;font-weight:500;color:var(--black);line-height:1.35;}
     .quick-service span:first-child{font-size:15px;flex-shrink:0;}
+    .local-pages{padding:20px 20px 0;}
+    .local-pages-card{background:white;border:1.5px solid var(--border);border-radius:16px;padding:16px;box-shadow:0 3px 14px rgba(0,0,0,0.04);}
+    .local-pages-card h2{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;color:var(--black);line-height:1.12;margin-bottom:7px;}
+    .local-pages-card p{font-size:13px;font-weight:300;color:var(--grey);line-height:1.55;margin-bottom:12px;}
+    .local-links{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+    .local-link{display:flex;flex-direction:column;gap:2px;text-decoration:none;background:var(--sand);border:1.5px solid var(--border);border-radius:12px;padding:10px 11px;color:var(--black);transition:all .2s;}
+    .local-link strong{font-size:12px;line-height:1.2;}
+    .local-link span{font-size:11px;color:var(--grey);line-height:1.25;}
+    .local-link:hover{border-color:var(--red);transform:translateY(-1px);}
 
     /* ══ PARCOURS ══ */
     .hero-path{padding:18px 20px 0;}
@@ -540,6 +549,20 @@
     <div class="trust-signal"><strong>Estimation offerte</strong><span>Avis de valeur clair</span></div>
     <div class="trust-signal"><strong>Tahiti & Moorea</strong><span>Connaissance terrain</span></div>
     <div class="trust-signal"><strong>KW Polynesie</strong><span>Reseau actif</span></div>
+  </div>
+  <div class="local-pages" aria-label="Pages locales utiles">
+    <div class="local-pages-card">
+      <h2>Pages locales utiles</h2>
+      <p>Retrouve les pages du site par commune ou par besoin : estimation, vente, prix du marché et conseils vendeur.</p>
+      <div class="local-links">
+        <a class="local-link" href="/immobilier-tahiti.html" data-event="click_local_hub"><strong>Immobilier Tahiti</strong><span>Toutes les communes</span></a>
+        <a class="local-link" href="/prix-immobilier-papeete.html" data-event="click_price_papeete"><strong>Prix Papeete</strong><span>Comprendre le marché</span></a>
+        <a class="local-link" href="/vendre-maison-papeete.html" data-event="click_sell_papeete_page"><strong>Vendre Papeete</strong><span>Maison à Papeete</span></a>
+        <a class="local-link" href="/vendre-maison-punaauia.html" data-event="click_sell_punaauia_page"><strong>Vendre Punaauia</strong><span>Maison à Punaauia</span></a>
+        <a class="local-link" href="/estimation-maison-papeete.html" data-event="click_estimation_papeete"><strong>Estimation Papeete</strong><span>Avis de valeur</span></a>
+        <a class="local-link" href="/immobilier-punaauia.html" data-event="click_immobilier_punaauia"><strong>Immobilier Punaauia</strong><span>Vente, achat, T2</span></a>
+      </div>
+    </div>
   </div>
   <!-- ══ PARCOURS VENDEUR ══ -->
   <div class="journey-panels">
