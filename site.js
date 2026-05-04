@@ -2,12 +2,39 @@ function cleanText(value) {
   return (value || "").replace(/\s+/g, " ").trim().slice(0, 140);
 }
 
+(function loadClarity() {
+  if (window.clarity || window.__mathildeClarityLoaded) return;
+  window.__mathildeClarityLoaded = true;
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+    t = l.createElement(r);
+    t.async = 1;
+    t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0];
+    y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "whwpwxoeln");
+})();
+
+function getTrafficParams() {
+  var search = new URLSearchParams(window.location.search);
+  return {
+    utm_source: cleanText(search.get("utm_source") || ""),
+    utm_medium: cleanText(search.get("utm_medium") || ""),
+    utm_campaign: cleanText(search.get("utm_campaign") || ""),
+    utm_content: cleanText(search.get("utm_content") || ""),
+    utm_term: cleanText(search.get("utm_term") || "")
+  };
+}
+
 function classifyEvent(name) {
   if (!name) return "interaction";
   if (name.indexOf("whatsapp") !== -1 || name.indexOf("call") !== -1 || name.indexOf("email") !== -1) return "contact";
   if (name.indexOf("estimation") !== -1 || name.indexOf("form") !== -1) return "seller_lead";
   if (name.indexOf("visit") !== -1 || name.indexOf("virtual_tour") !== -1 || name.indexOf("t2") !== -1) return "buyer_lead";
   if (name.indexOf("share") !== -1 || name.indexOf("save_contact") !== -1 || name.indexOf("google_review") !== -1) return "trust";
+  if (name.indexOf("scroll") !== -1 || name.indexOf("engaged") !== -1 || name.indexOf("section") !== -1) return "engagement";
+  if (name.indexOf("field") !== -1 || name.indexOf("form_start") !== -1) return "form";
+  if (name.indexOf("navigation") !== -1 || name.indexOf("outbound") !== -1) return "navigation";
   return "interaction";
 }
 
@@ -38,8 +65,14 @@ function trackEvent(name, params) {
   if (!payload.page_location) payload.page_location = window.location.href;
   if (!payload.page_path) payload.page_path = window.location.pathname;
   if (!payload.page_title) payload.page_title = document.title || "";
+  Object.assign(payload, getTrafficParams());
   if (typeof window.gtag === "function") {
     window.gtag("event", name, payload);
+  }
+  if (typeof window.clarity === "function") {
+    try {
+      window.clarity("event", name);
+    } catch (e) {}
   }
 }
 
@@ -56,6 +89,16 @@ document.addEventListener("click", function (event) {
   if (secondary) {
     trackEvent(secondary, buildEventParams(target, { event_name: secondary, primary_event: eventName }));
   }
+});
+
+document.addEventListener("click", function (event) {
+  var target = event.target.closest("a, button, summary");
+  if (!target || target.hasAttribute("data-event")) return;
+  var href = target.href || "";
+  var eventName = "click_untracked";
+  if (target.matches("summary")) eventName = "click_faq_toggle";
+  else if (href) eventName = href.startsWith(window.location.origin) || href.startsWith("/") ? "click_navigation" : "click_outbound";
+  trackEvent(eventName, buildEventParams(target, { event_name: eventName, element_type: target.tagName.toLowerCase() }));
 });
 
 document.addEventListener("click", function (event) {
@@ -81,30 +124,131 @@ document.addEventListener("click", function (event) {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  var form = document.querySelector("[data-estimation-form]");
-  if (!form) return;
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    var data = new FormData(form);
-    var message = [
-      "Ia ora na Mathilde, je souhaite faire estimer mon bien immobilier a Tahiti.",
-      "",
-      "Nom : " + (data.get("nom") || ""),
-      "Telephone : " + (data.get("telephone") || ""),
-      "Email : " + (data.get("email") || ""),
-      "Commune : " + (data.get("commune") || ""),
-      "Type de bien : " + (data.get("type") || ""),
-      "Objectif : " + (data.get("objectif") || ""),
-      "Message : " + (data.get("message") || "")
-    ].join("\n");
-    trackEvent("submit_form_estimation", {
-      event_category: "seller_lead",
-      form_location: window.location.pathname,
-      property_type: data.get("type") || "",
-      property_city: data.get("commune") || "",
-      seller_goal: data.get("objectif") || ""
-    });
-    trackEvent("click_whatsapp_estimation", { event_category: "seller_lead", form_location: window.location.pathname, source: "estimation_form" });
-    window.location.href = "https://wa.me/33782475958?text=" + encodeMessage(message);
+  trackEvent("page_ready", {
+    event_category: "engagement",
+    referrer: document.referrer || "",
+    viewport_width: window.innerWidth,
+    viewport_height: window.innerHeight,
+    page_language: document.documentElement.lang || "",
+    device_type: window.innerWidth < 768 ? "mobile" : "desktop"
   });
+
+  var form = document.querySelector("[data-estimation-form]");
+  if (form) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var data = new FormData(form);
+      var message = [
+        "Ia ora na Mathilde, je souhaite faire estimer mon bien immobilier a Tahiti.",
+        "",
+        "Nom : " + (data.get("nom") || ""),
+        "Telephone : " + (data.get("telephone") || ""),
+        "Email : " + (data.get("email") || ""),
+        "Commune : " + (data.get("commune") || ""),
+        "Type de bien : " + (data.get("type") || ""),
+        "Objectif : " + (data.get("objectif") || ""),
+        "Message : " + (data.get("message") || "")
+      ].join("\n");
+      trackEvent("submit_form_estimation", {
+        event_category: "seller_lead",
+        form_location: window.location.pathname,
+        property_type: data.get("type") || "",
+        property_city: cleanText(data.get("commune") || ""),
+        seller_goal: data.get("objectif") || "",
+        filled_fields_count: Array.from(data.values()).filter(function (value) { return String(value || "").trim(); }).length
+      });
+      trackEvent("click_whatsapp_estimation", { event_category: "seller_lead", form_location: window.location.pathname, source: "estimation_form" });
+      window.location.href = "https://wa.me/33782475958?text=" + encodeMessage(message);
+    });
+  }
 });
+
+(function () {
+  var scrollMarks = [25, 50, 75, 90];
+  var seenScroll = {};
+  function maxScrollPercent() {
+    var doc = document.documentElement;
+    var scrollable = Math.max(1, doc.scrollHeight - window.innerHeight);
+    return Math.min(100, Math.round((window.scrollY / scrollable) * 100));
+  }
+  window.addEventListener("scroll", function () {
+    var current = maxScrollPercent();
+    scrollMarks.forEach(function (mark) {
+      if (!seenScroll[mark] && current >= mark) {
+        seenScroll[mark] = true;
+        trackEvent("scroll_depth", { event_category: "engagement", scroll_percent: mark, value: mark });
+      }
+    });
+  }, { passive: true });
+
+  [15, 30, 60, 120].forEach(function (seconds) {
+    window.setTimeout(function () {
+      trackEvent("engaged_time", { event_category: "engagement", engagement_seconds: seconds, value: seconds });
+    }, seconds * 1000);
+  });
+
+  var startedForms = new WeakSet();
+  document.addEventListener("focusin", function (event) {
+    var field = event.target.closest("input, select, textarea");
+    if (!field) return;
+    var form = field.closest("form");
+    var formName = form ? (form.getAttribute("name") || form.getAttribute("id") || (form.hasAttribute("data-estimation-form") ? "estimation" : "form")) : "no_form";
+    if (form && !startedForms.has(form)) {
+      startedForms.add(form);
+      trackEvent("form_start", { event_category: "form", form_name: formName, form_location: window.location.pathname });
+    }
+    trackEvent("field_focus", {
+      event_category: "form",
+      form_name: formName,
+      field_name: field.name || field.id || "",
+      field_type: field.tagName.toLowerCase() === "select" ? "select" : (field.type || field.tagName.toLowerCase())
+    });
+  });
+
+  document.addEventListener("change", function (event) {
+    var field = event.target.closest("input, select, textarea");
+    if (!field) return;
+    trackEvent("field_change", {
+      event_category: "form",
+      field_name: field.name || field.id || "",
+      field_type: field.tagName.toLowerCase() === "select" ? "select" : (field.type || field.tagName.toLowerCase()),
+      has_value: !!String(field.value || "").trim()
+    });
+  });
+
+  if ("IntersectionObserver" in window) {
+    var seenSections = new WeakSet();
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting || seenSections.has(entry.target)) return;
+        seenSections.add(entry.target);
+        var title = entry.target.querySelector("h1, h2, h3, .sec-title, .eyebrow");
+        trackEvent("section_view", {
+          event_category: "engagement",
+          section_id: entry.target.id || "",
+          section_title: cleanText(title ? title.textContent : entry.target.className)
+        });
+      });
+    }, { threshold: 0.45 });
+    document.querySelectorAll("section, .sec, .hero, .hero-path, .journey-panel, .contact-card").forEach(function (section) {
+      observer.observe(section);
+    });
+  }
+
+  document.addEventListener("toggle", function (event) {
+    if (!event.target.matches("details")) return;
+    trackEvent(event.target.open ? "faq_open" : "faq_close", {
+      event_category: "engagement",
+      question: cleanText(event.target.querySelector("summary") ? event.target.querySelector("summary").textContent : "")
+    });
+  }, true);
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState !== "hidden") return;
+    trackEvent("page_hidden", {
+      event_category: "engagement",
+      max_scroll_percent: maxScrollPercent(),
+      time_on_page_seconds: Math.round(performance.now() / 1000)
+    });
+  });
+})();
