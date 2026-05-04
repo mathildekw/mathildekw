@@ -29,7 +29,7 @@ function getTrafficParams() {
 function classifyEvent(name) {
   if (!name) return "interaction";
   if (name.indexOf("whatsapp") !== -1 || name.indexOf("call") !== -1 || name.indexOf("email") !== -1) return "contact";
-  if (name.indexOf("estimation") !== -1 || name.indexOf("form") !== -1) return "seller_lead";
+  if (name.indexOf("estimation") !== -1 || name.indexOf("form") !== -1 || name.indexOf("checklist") !== -1) return "seller_lead";
   if (name.indexOf("visit") !== -1 || name.indexOf("virtual_tour") !== -1 || name.indexOf("t2") !== -1) return "buyer_lead";
   if (name.indexOf("share") !== -1 || name.indexOf("save_contact") !== -1 || name.indexOf("google_review") !== -1) return "trust";
   if (name.indexOf("scroll") !== -1 || name.indexOf("engaged") !== -1 || name.indexOf("section") !== -1) return "engagement";
