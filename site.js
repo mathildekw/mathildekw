@@ -147,6 +147,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "Commune : " + (data.get("commune") || ""),
         "Type de bien : " + (data.get("type") || ""),
         "Objectif : " + (data.get("objectif") || ""),
+        "Surface approximative : " + (data.get("surface") || ""),
+        "Delai ideal : " + (data.get("delai") || ""),
+        "Secteur / repere : " + (data.get("adresse") || ""),
         "Message : " + (data.get("message") || "")
       ].join("\n");
       trackEvent("submit_form_estimation", {
@@ -155,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
         property_type: data.get("type") || "",
         property_city: cleanText(data.get("commune") || ""),
         seller_goal: data.get("objectif") || "",
+        seller_timing: data.get("delai") || "",
         filled_fields_count: Array.from(data.values()).filter(function (value) { return String(value || "").trim(); }).length
       });
       trackEvent("click_whatsapp_estimation", { event_category: "seller_lead", form_location: window.location.pathname, source: "estimation_form" });
