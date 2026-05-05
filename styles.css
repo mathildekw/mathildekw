@@ -479,6 +479,73 @@ body.seo-page::before {
   font-size: 12px;
   line-height: 1.5;
 }
+.seo-page .seller-path {
+  display: grid;
+  gap: 10px;
+}
+.seo-page .seller-path article {
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.045);
+}
+.seo-page .seller-path article.primary {
+  background: #171412;
+  border-color: #171412;
+  color: #fff;
+}
+.seo-page .seller-path article.primary p,
+.seo-page .seller-path article.primary span {
+  color: rgba(255,255,255,.72);
+}
+.seo-page .seller-path strong,
+.seo-page .seller-path span {
+  display: block;
+}
+.seo-page .seller-path strong {
+  color: inherit;
+  font-size: 15px;
+  line-height: 1.2;
+}
+.seo-page .seller-path span {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+.seo-page .review-proof {
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.045);
+}
+.seo-page .review-proof .stars {
+  color: #f4b400;
+  letter-spacing: .08em;
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+.seo-page .review-proof p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.seo-page .review-proof strong {
+  color: var(--ink);
+}
+.seo-page .route-grid {
+  display: grid;
+  gap: 10px;
+}
+@media (min-width: 720px) {
+  .seo-page .seller-path,
+  .seo-page .route-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 
 .seo-page .footer {
   width: 100%;
