@@ -998,3 +998,108 @@ body.seo-page::before {
 .seo-page.contact-page .sticky-whatsapp {
   display: none;
 }
+
+/* Page investissement USA */
+.seo-page.usa-invest-page .hero {
+  padding-top: 18px;
+}
+.seo-page.usa-invest-page .hero-grid > div:first-child {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.98)),
+    radial-gradient(circle at top right, rgba(7,135,160,.22), transparent 16rem);
+}
+.seo-page.usa-invest-page h1 {
+  font-size: 31px;
+}
+.seo-page.usa-invest-page .lead {
+  color: #443b35;
+  font-weight: 500;
+}
+.seo-page .usa-snapshot .visual-top {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.66)),
+    url("/ocean-aerial-polynesie.jpg") center 42%/cover no-repeat;
+}
+.seo-page .usa-check-grid {
+  display: grid;
+  gap: 9px;
+}
+.seo-page .usa-check-grid article {
+  position: relative;
+  min-height: 54px;
+  padding: 15px 16px 15px 42px;
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 16px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.25;
+  box-shadow: 0 7px 18px rgba(35, 24, 17, .04);
+}
+.seo-page .usa-check-grid article::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 20px;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: var(--kw-red);
+  box-shadow: 0 0 0 5px #fff0f2;
+}
+.seo-page .usa-feature-grid .card {
+  min-height: 148px;
+}
+.seo-page .usa-file-note {
+  margin-top: 10px;
+  padding: 16px;
+  border-radius: 18px;
+  background: #171412;
+  color: rgba(255,255,255,.78);
+  font-size: 13px;
+  line-height: 1.55;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+.seo-page .usa-reasons {
+  margin-bottom: 0;
+}
+.seo-page .usa-caution {
+  background: #171412;
+  border: 1.5px solid #171412;
+  border-radius: 18px;
+  padding: 22px 20px;
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(35, 24, 17, .10);
+}
+.seo-page .usa-caution .eyebrow {
+  color: #f4bdc7;
+}
+.seo-page .usa-caution p {
+  margin: 14px 0 0;
+  color: rgba(255,255,255,.72);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.seo-page .usa-final-cta h2 {
+  color: #fff;
+}
+.seo-page.usa-invest-page .btn.whatsapp,
+.seo-page.usa-invest-page .sticky-whatsapp {
+  background: #16a34a;
+  box-shadow: 0 14px 34px rgba(22,163,74,.30);
+}
+.seo-page.usa-invest-page .sticky-whatsapp {
+  left: 16px;
+  right: 16px;
+  width: auto;
+  max-width: 340px;
+}
+@media (min-width: 720px) {
+  .seo-page .usa-check-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .seo-page .usa-check-grid article:last-child {
+    grid-column: 1 / -1;
+  }
+}

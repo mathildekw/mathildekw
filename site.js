@@ -165,6 +165,34 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "https://wa.me/33782475958?text=" + encodeMessage(message);
     });
   }
+
+  var usaForm = document.querySelector("[data-usa-form]");
+  if (usaForm) {
+    usaForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var data = new FormData(usaForm);
+      var message = [
+        "Ia ora na Mathilde, je souhaite recevoir les infos pour investir aux USA.",
+        "",
+        "Prenom : " + (data.get("prenom") || ""),
+        "Nom : " + (data.get("nom") || ""),
+        "Telephone / WhatsApp : " + (data.get("telephone") || ""),
+        "Email : " + (data.get("email") || ""),
+        "Budget disponible : " + (data.get("budget") || ""),
+        "Objectif : " + (data.get("objectif") || ""),
+        "Message : " + (data.get("message") || "")
+      ].join("\n");
+      trackEvent("submit_form_usa", {
+        event_category: "investor_lead",
+        form_location: window.location.pathname,
+        investor_budget: data.get("budget") || "",
+        investor_goal: data.get("objectif") || "",
+        filled_fields_count: Array.from(data.values()).filter(function (value) { return String(value || "").trim(); }).length
+      });
+      trackEvent("click_whatsapp_usa", { event_category: "investor_lead", form_location: window.location.pathname, source: "usa_form" });
+      window.location.href = "https://wa.me/33782475958?text=" + encodeMessage(message);
+    });
+  }
 });
 
 (function () {
