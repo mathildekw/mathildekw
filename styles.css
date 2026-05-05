@@ -999,6 +999,56 @@ body.seo-page::before {
   display: none;
 }
 
+/* Navigation commune */
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+@media (max-width: 860px) {
+  .nav {
+    position: relative;
+  }
+  .nav-toggle {
+    display: flex;
+    position: absolute;
+    top: 12px;
+    right: 0;
+  }
+  .nav .menu {
+    display: none;
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 7px;
+    padding-top: 8px;
+    overflow: visible;
+  }
+  .nav .menu.open {
+    display: grid;
+  }
+  .nav .menu a {
+    width: 100%;
+    justify-content: center;
+    min-height: 42px;
+    text-align: center;
+  }
+  .seo-page .nav {
+    padding-right: 54px;
+  }
+  .seo-page .nav .menu {
+    padding-right: 0;
+  }
+}
+
 /* Page investissement USA */
 .seo-page.usa-invest-page .hero {
   padding-top: 18px;

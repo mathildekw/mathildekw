@@ -133,6 +133,16 @@ document.addEventListener("DOMContentLoaded", function () {
     device_type: window.innerWidth < 768 ? "mobile" : "desktop"
   });
 
+  document.querySelectorAll(".nav-toggle").forEach(function (toggle) {
+    toggle.addEventListener("click", function () {
+      var nav = toggle.closest(".nav");
+      var menu = nav ? nav.querySelector(".menu") : null;
+      if (!menu) return;
+      var isOpen = menu.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+
   var form = document.querySelector("[data-estimation-form]");
   if (form) {
     form.addEventListener("submit", function (event) {
