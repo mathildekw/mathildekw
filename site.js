@@ -106,7 +106,7 @@ document.addEventListener("click", function (event) {
   if (!target) return;
   event.preventDefault();
   var shareData = {
-    title: document.title || "Mathilde Tuduri - KW Polynesie",
+    title: document.title || "Mathilde KW - KW Polynesie",
     text: "Contacte Mathilde pour ton projet immobilier a Tahiti.",
     url: target.getAttribute("data-share-url") || window.location.href
   };
