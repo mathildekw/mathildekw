@@ -976,21 +976,6 @@ body.seo-page::before {
   font-size: 13px;
 }
 
-.seo-page.estimation-page .sticky-whatsapp {
-  left: auto;
-  right: 16px;
-  width: 58px;
-  min-height: 58px;
-  border-radius: 999px;
-  font-size: 0;
-  padding: 0;
-}
-.seo-page.estimation-page .sticky-whatsapp::before {
-  content: "WA";
-  color: #fff;
-  font-size: 14px;
-  font-weight: 900;
-}
 .seo-page {
   overflow-x: hidden;
 }
