@@ -61,6 +61,7 @@
     h3{font-size:18px}
     .lead{color:var(--grey);font-size:14px;line-height:1.6;margin-top:12px}
     .cta-row{display:grid;grid-template-columns:1fr;gap:9px;margin-top:18px}
+    .cta-row.single{grid-template-columns:1fr}
     .btn{display:flex;align-items:center;justify-content:center;min-height:50px;padding:13px 16px;border-radius:14px;border:1.5px solid transparent;text-decoration:none;text-align:center;font-size:13px;font-weight:900;cursor:pointer}
     .btn.primary{background:var(--red);color:white}
     .btn.dark{background:var(--black);color:white}
@@ -100,7 +101,7 @@
     .footer-card strong{display:block;margin-bottom:5px}
     .footer-card a{display:block;text-decoration:none;color:var(--grey);font-size:13px;margin:6px 0}
     .sticky-whatsapp{position:fixed;left:16px;right:16px;bottom:12px;z-index:60;display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;background:var(--green);color:white;text-decoration:none;font-weight:900;font-size:13px;box-shadow:0 14px 34px rgba(34,197,94,.32)}
-    @media (min-width:720px){.page{max-width:920px}.home-menu{display:flex;padding:0}.home-nav-inner{min-height:72px}.menu-toggle{display:none}.home-menu a{padding:0 14px}.intro,.section,.footer{padding-inline:24px}.proof-strip{padding-inline:24px}.route-grid{grid-template-columns:repeat(2,1fr)}.benefit-grid,.trust-grid{grid-template-columns:repeat(3,1fr)}.property-grid{grid-template-columns:repeat(2,1fr)}.footer-card{grid-template-columns:1.1fr 1fr 1fr 1fr}.cta-row{grid-template-columns:repeat(3,1fr)}}
+    @media (min-width:720px){body{padding-bottom:0}.page{max-width:920px}.home-menu{display:flex;padding:0}.home-nav-inner{min-height:72px}.menu-toggle{display:none}.home-menu a{padding:0 14px}.intro,.section,.footer{padding-inline:24px}.proof-strip{padding-inline:24px}.route-grid{grid-template-columns:repeat(2,1fr)}.benefit-grid,.trust-grid{grid-template-columns:repeat(3,1fr)}.property-grid{grid-template-columns:repeat(2,1fr)}.footer-card{grid-template-columns:1.1fr 1fr 1fr 1fr}.cta-row{grid-template-columns:repeat(2,1fr)}.sticky-whatsapp{display:none}}
     @media (max-width:480px){.hero{height:335px;background-position:center 42%}.hero-content{padding:0 18px 20px;gap:14px}.hero-avatar{width:108px;height:108px;border-width:4px}.hero-name{font-size:29px}.intro-card{padding:18px 16px}h1{font-size:30px}.proof-strip{gap:7px}.proof{padding:9px 6px}.section{padding-top:20px}}
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJHRFHZHER"></script>
@@ -140,10 +141,9 @@
       <div class="intro-card">
         <p class="eyebrow">Ia ora na</p>
         <h1>Conseillère immobilière à Tahiti — vendre, acheter ou investir avec méthode</h1>
-        <p class="lead">Ia ora na, je t'aide à vendre, acheter ou investir en Polynésie avec un accompagnement clair, local et humain.</p>
+        <p class="lead">Je t'aide à vendre, acheter ou investir en Polynésie avec un accompagnement clair, local et humain.</p>
         <div class="cta-row">
-          <a class="btn primary" href="/estimation-immobiliere-tahiti.html#formulaire-estimation" data-event="click_home_estimation">Estimer mon bien</a>
-          <a class="btn dark" href="/acheter-bien-immobilier-tahiti.html" data-event="click_home_buyer_page">Je cherche un bien</a>
+          <a class="btn primary" href="#parcours" data-event="click_home_choose_path">Choisir mon parcours</a>
           <a class="btn whatsapp" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20j%27ai%20un%20projet%20immobilier%20%C3%A0%20Tahiti.%20Peux-tu%20m%27orienter%20%3F" target="_blank" rel="noopener" data-event="click_whatsapp_home">Me contacter sur WhatsApp</a>
         </div>
       </div>
@@ -155,11 +155,11 @@
       <div class="proof"><strong>KW Polynésie</strong><span>Réseau actif</span></div>
     </div>
 
-    <section class="section">
+    <section class="section" id="parcours">
       <div class="section-head">
         <p class="eyebrow">Choisis ton parcours</p>
         <h2>Que veux-tu faire ?</h2>
-        <p>Un site plus simple : chaque besoin a sa page dédiée, sans te noyer dans toutes les options.</p>
+        <p>Chaque besoin a sa page dédiée. Tu choisis ton point de départ, je t'oriente ensuite vers les bonnes étapes.</p>
       </div>
       <div class="route-grid">
         <a class="route-card seller" href="/vendre-bien-immobilier-tahiti.html" data-event="click_home_seller_page">
@@ -189,24 +189,7 @@
       </div>
     </section>
 
-    <section class="section alt">
-      <div class="section-head">
-        <p class="eyebrow">Vendeurs</p>
-        <h2>Tu envisages de vendre ton bien ?</h2>
-        <p>On commence par une lecture claire du prix et de la stratégie.</p>
-      </div>
-      <div class="benefit-grid">
-        <div class="benefit"><strong>Prix réaliste</strong><p>Une estimation cohérente avec le marché immobilier Tahiti.</p></div>
-        <div class="benefit"><strong>Stratégie de vente</strong><p>Positionnement, mise en valeur et diffusion utile.</p></div>
-        <div class="benefit"><strong>Acquéreurs qualifiés</strong><p>Des visites mieux préparées et moins de temps perdu.</p></div>
-      </div>
-      <div class="cta-row">
-        <a class="btn primary" href="/estimation-immobiliere-tahiti.html#formulaire-estimation" data-event="click_home_estimation_seller">Demander mon estimation offerte</a>
-        <a class="btn ghost" href="/vendre-bien-immobilier-tahiti.html" data-event="click_home_seller_method">Voir l'accompagnement vendeur</a>
-      </div>
-    </section>
-
-    <section class="section" id="biens-disponibles">
+    <section class="section alt" id="biens-disponibles">
       <div class="section-head">
         <p class="eyebrow">Biens disponibles</p>
         <h2>À regarder en priorité</h2>
@@ -231,12 +214,12 @@
           <a class="btn dark" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20je%20souhaite%20recevoir%20la%20fiche%20des%20terrains%20%C3%A0%20Taravao.%20Merci%20%21" target="_blank" rel="noopener" data-event="click_whatsapp_land_home">Recevoir la fiche</a>
         </article>
       </div>
-      <div class="cta-row">
+      <div class="cta-row single">
         <a class="btn whatsapp" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20je%20cherche%20un%20bien%20en%20Polyn%C3%A9sie.%20Voici%20mes%20crit%C3%A8res%20%3A" target="_blank" rel="noopener" data-event="click_whatsapp_buyer_criteria">Tu cherches autre chose ? Envoie-moi tes critères</a>
       </div>
     </section>
 
-    <section class="section alt">
+    <section class="section">
       <div class="section-head">
         <p class="eyebrow">Méthode</p>
         <h2>Pourquoi me confier ton projet ?</h2>
@@ -247,9 +230,6 @@
         <div class="trust-card"><strong>Réseau KW Polynésie</strong><p>Un réseau actif pour mieux faire circuler les opportunités.</p></div>
         <div class="trust-card"><strong>Suivi humain</strong><p>Des réponses simples, directes et réactives jusqu'aux prochaines étapes.</p></div>
       </div>
-      <div class="cta-row">
-        <a class="btn whatsapp" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20j%27ai%20un%20projet%20immobilier%20%C3%A0%20Tahiti.%20Peux-tu%20me%20recontacter%20%3F" target="_blank" rel="noopener" data-event="click_whatsapp_trust">Écrire sur WhatsApp</a>
-      </div>
     </section>
 
     <section class="section">
@@ -257,9 +237,8 @@
         <p class="stars">★★★★★</p>
         <h2>Une preuve simple : les avis clients</h2>
         <p>La note Google aide les futurs vendeurs et acheteurs à vérifier mon sérieux avant de me contacter.</p>
-        <div class="cta-row">
+        <div class="cta-row single">
           <a class="btn ghost" href="/avis-clients-immobilier-tahiti.html" data-event="click_reviews_page">Voir les avis</a>
-          <a class="btn ghost" href="https://maps.app.goo.gl/Anmi2Mr89CwdXzCQ8" target="_blank" rel="noopener" data-event="click_google_review">Laisser un avis</a>
         </div>
       </div>
     </section>
