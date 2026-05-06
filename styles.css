@@ -1002,14 +1002,16 @@ body.seo-page::before {
 /* Navigation commune */
 .nav-toggle {
   display: none;
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: #fff;
-  color: var(--ink);
-  font-size: 22px;
-  line-height: 1;
+  width: 100%;
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--kw-red);
+  background: var(--kw-red);
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -1020,11 +1022,10 @@ body.seo-page::before {
   }
   .nav-toggle {
     display: flex;
-    position: absolute;
-    top: 12px;
-    right: 0;
+    order: 2;
   }
   .nav .menu {
+    order: 3;
     display: none;
     width: 100%;
     grid-template-columns: 1fr;
@@ -1040,9 +1041,6 @@ body.seo-page::before {
     justify-content: center;
     min-height: 42px;
     text-align: center;
-  }
-  .seo-page .nav {
-    padding-right: 54px;
   }
   .seo-page .nav .menu {
     padding-right: 0;

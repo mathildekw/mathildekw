@@ -134,12 +134,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.querySelectorAll(".nav-toggle").forEach(function (toggle) {
+    if (!toggle.textContent.trim() || toggle.textContent.trim() === "☰") {
+      toggle.textContent = "Menu";
+    }
     toggle.addEventListener("click", function () {
       var nav = toggle.closest(".nav");
       var menu = nav ? nav.querySelector(".menu") : null;
       if (!menu) return;
       var isOpen = menu.classList.toggle("open");
       toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      toggle.textContent = isOpen ? "Fermer le menu" : "Menu";
     });
   });
 
