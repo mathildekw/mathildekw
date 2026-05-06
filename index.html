@@ -33,13 +33,13 @@
     img{max-width:100%;height:auto}
     .wrap{width:min(1120px,calc(100% - 32px));margin:0 auto}
     .page{width:100%;max-width:430px;margin:0 auto;display:flex;flex-direction:column}
-    .home-nav{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-    .home-nav-inner{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px}
+    .home-nav{position:sticky;top:0;z-index:50;width:100vw;margin-left:calc(50% - 50vw);background:rgba(250,248,244,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .home-nav-inner{min-height:88px;display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:9px;padding:10px 14px}
     .brand{text-decoration:none;display:flex;flex-direction:column;line-height:1}
     .brand strong{font-family:"Cormorant Garamond",serif;font-size:27px;font-weight:600;color:var(--black)}
     .brand span{margin-top:5px;color:var(--grey);font-size:12px;font-weight:500}
-    .menu-toggle{width:42px;height:42px;border-radius:999px;border:1.5px solid var(--border);background:white;color:var(--black);font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer}
-    .home-menu{display:none;grid-template-columns:1fr;gap:7px;padding:0 14px 12px}
+    .menu-toggle{width:100%;min-height:44px;border-radius:12px;border:1.5px solid var(--red);background:var(--red);color:white;font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;cursor:pointer}
+    .home-menu{display:none;grid-template-columns:1fr;gap:7px;width:min(430px,100%);margin:0 auto;padding:0 14px 12px}
     .home-menu.open{display:grid}
     .home-menu a{min-height:42px;display:flex;align-items:center;justify-content:center;text-decoration:none;background:white;border:1.5px solid var(--border);border-radius:999px;font-size:13px;font-weight:800;color:var(--black)}
     .home-menu a.nav-cta{background:var(--red);border-color:var(--red);color:white}
@@ -67,10 +67,8 @@
     .btn.dark{background:var(--black);color:white}
     .btn.whatsapp{background:var(--green);color:white}
     .btn.ghost{background:white;border-color:var(--border);color:var(--black)}
-    .proof-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 16px 0}
-    .proof{background:white;border:1px solid var(--border);border-radius:14px;padding:10px 8px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.03)}
-    .proof strong{display:block;color:var(--black);font-size:12px;font-weight:900;line-height:1.2}
-    .proof span{display:block;color:var(--grey);font-size:11px;font-weight:300;line-height:1.25;margin-top:3px}
+    .proof-line{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;color:var(--grey);font-size:12px}
+    .proof-line span{background:#fff7f7;border:1px solid #f0d5da;border-radius:999px;padding:6px 9px}
     .section{padding:22px 16px 0}
     .section.alt{padding-block:22px;background:rgba(255,255,255,.42);border-block:1px solid var(--border);margin-top:22px}
     .section-head{margin-bottom:12px}
@@ -101,8 +99,8 @@
     .footer-card strong{display:block;margin-bottom:5px}
     .footer-card a{display:block;text-decoration:none;color:var(--grey);font-size:13px;margin:6px 0}
     .sticky-whatsapp{position:fixed;left:16px;right:16px;bottom:12px;z-index:60;display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;background:var(--green);color:white;text-decoration:none;font-weight:900;font-size:13px;box-shadow:0 14px 34px rgba(34,197,94,.32)}
-    @media (min-width:720px){body{padding-bottom:0}.page{max-width:920px}.home-menu{display:flex;padding:0}.home-nav-inner{min-height:72px}.menu-toggle{display:none}.home-menu a{padding:0 14px}.intro,.section,.footer{padding-inline:24px}.proof-strip{padding-inline:24px}.route-grid{grid-template-columns:repeat(2,1fr)}.benefit-grid,.trust-grid{grid-template-columns:repeat(3,1fr)}.property-grid{grid-template-columns:repeat(2,1fr)}.footer-card{grid-template-columns:1.1fr 1fr 1fr 1fr}.cta-row{grid-template-columns:repeat(2,1fr)}.sticky-whatsapp{display:none}}
-    @media (max-width:480px){.hero{height:335px;background-position:center 42%}.hero-content{padding:0 18px 20px;gap:14px}.hero-avatar{width:108px;height:108px;border-width:4px}.hero-name{font-size:29px}.intro-card{padding:18px 16px}h1{font-size:30px}.proof-strip{gap:7px}.proof{padding:9px 6px}.section{padding-top:20px}}
+    @media (min-width:720px){body{padding-bottom:0}.page{max-width:920px}.home-nav-inner{width:min(920px,100%);margin:0 auto;min-height:72px;flex-direction:row;align-items:center;justify-content:space-between}.home-menu{width:auto;margin:0;display:flex;padding:0}.menu-toggle{display:none}.home-menu a{padding:0 14px}.intro,.section,.footer{padding-inline:24px}.route-grid{grid-template-columns:repeat(2,1fr)}.footer-card{grid-template-columns:1.1fr 1fr 1fr 1fr}.cta-row{grid-template-columns:repeat(2,1fr)}.sticky-whatsapp{display:none}}
+    @media (max-width:480px){.hero{height:320px;background-position:center 42%}.hero-content{padding:0 18px 20px;gap:14px}.hero-avatar{width:108px;height:108px;border-width:4px}.hero-name{font-size:29px}.intro-card{padding:18px 16px}h1{font-size:30px}.section{padding-top:20px}}
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJHRFHZHER"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-SJHRFHZHER");</script>
@@ -112,7 +110,7 @@
     <header class="home-nav">
       <div class="home-nav-inner">
         <a class="brand" href="/"><strong>Mathilde KW</strong><span>Conseillère en immobilier</span></a>
-        <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-controls="home-menu" aria-expanded="false">☰</button>
+        <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-controls="home-menu" aria-expanded="false">Menu</button>
       </div>
       <nav class="home-menu" id="home-menu" aria-label="Navigation principale">
         <a href="/">Accueil</a>
@@ -142,18 +140,17 @@
         <p class="eyebrow">Ia ora na</p>
         <h1>Conseillère immobilière à Tahiti — vendre, acheter ou investir avec méthode</h1>
         <p class="lead">Je t'aide à vendre, acheter ou investir en Polynésie avec un accompagnement clair, local et humain.</p>
+        <div class="proof-line" aria-label="Preuves rapides">
+          <span>5,0 Google</span>
+          <span>Tahiti & Moorea</span>
+          <span>KW Polynésie</span>
+        </div>
         <div class="cta-row">
           <a class="btn primary" href="#parcours" data-event="click_home_choose_path">Choisir mon parcours</a>
           <a class="btn whatsapp" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20j%27ai%20un%20projet%20immobilier%20%C3%A0%20Tahiti.%20Peux-tu%20m%27orienter%20%3F" target="_blank" rel="noopener" data-event="click_whatsapp_home">Me contacter sur WhatsApp</a>
         </div>
       </div>
     </section>
-
-    <div class="proof-strip" aria-label="Preuves rapides">
-      <div class="proof"><strong>5,0 Google</strong><span>Avis clients</span></div>
-      <div class="proof"><strong>Tahiti & Moorea</strong><span>Terrain local</span></div>
-      <div class="proof"><strong>KW Polynésie</strong><span>Réseau actif</span></div>
-    </div>
 
     <section class="section" id="parcours">
       <div class="section-head">
@@ -174,7 +171,7 @@
           <p>Envoie-moi tes critères, ton budget et ton timing pour recevoir les biens vraiment cohérents.</p>
           <span class="btn ghost">Décrire mon projet</span>
         </a>
-        <a class="route-card" href="#biens-disponibles" data-event="click_home_properties">
+        <a class="route-card" href="/acheter-bien-immobilier-tahiti.html#biens-disponibles" data-event="click_home_properties">
           <span class="tag">Biens</span>
           <h3>Voir les biens disponibles</h3>
           <p>Découvre les biens actuellement proposés ou demande une opportunité ciblée.</p>
@@ -186,73 +183,6 @@
           <p>Une alternative locative à étudier si tu as un budget cash et une logique investisseur.</p>
           <span class="btn primary">Découvrir l'investissement USA</span>
         </a>
-      </div>
-    </section>
-
-    <section class="section alt" id="biens-disponibles">
-      <div class="section-head">
-        <p class="eyebrow">Biens disponibles</p>
-        <h2>À regarder en priorité</h2>
-      </div>
-      <div class="property-grid">
-        <article class="property-card">
-          <div class="property-media"><img src="/t2-punaauia.jpg" alt="Appartement T2 vue mer à Punaauia PK11" width="800" height="450" loading="lazy"></div>
-          <span class="badge">Disponible</span>
-          <h3>T2 Punaauia PK11</h3>
-          <p>Vue mer, dernier étage, terrasse et résidence avec piscine.</p>
-          <div class="price">39 500 000 XPF</div>
-          <ul class="features"><li>59,93 m²</li><li>Vue mer</li><li>Terrasse 15 m²</li></ul>
-          <a class="btn primary" href="/appartement-t2-punaauia-pk11.html" data-event="click_home_t2_page">Voir la fiche</a>
-        </article>
-        <article class="property-card">
-          <div class="property-media" style="display:grid;place-items:center;background:linear-gradient(135deg,#171412,#27443f);color:rgba(255,255,255,.78);font-weight:800">Off market</div>
-          <span class="badge">Terrain</span>
-          <h3>Lots à Taravao</h3>
-          <p>Terrains constructibles à la Presqu'île, informations disponibles sur demande.</p>
-          <div class="price">Nous contacter</div>
-          <ul class="features"><li>~700 m² / lot</li><li>Constructible</li><li>Eau raccordée</li></ul>
-          <a class="btn dark" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20je%20souhaite%20recevoir%20la%20fiche%20des%20terrains%20%C3%A0%20Taravao.%20Merci%20%21" target="_blank" rel="noopener" data-event="click_whatsapp_land_home">Recevoir la fiche</a>
-        </article>
-      </div>
-      <div class="cta-row single">
-        <a class="btn whatsapp" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20je%20cherche%20un%20bien%20en%20Polyn%C3%A9sie.%20Voici%20mes%20crit%C3%A8res%20%3A" target="_blank" rel="noopener" data-event="click_whatsapp_buyer_criteria">Tu cherches autre chose ? Envoie-moi tes critères</a>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <p class="eyebrow">Méthode</p>
-        <h2>Pourquoi me confier ton projet ?</h2>
-      </div>
-      <div class="trust-grid">
-        <div class="trust-card"><strong>Connaissance terrain</strong><p>Tahiti, Moorea, accès, vue, foncier, travaux et habitudes du marché.</p></div>
-        <div class="trust-card"><strong>Méthode structurée</strong><p>Estimation, prix, diffusion, qualification et suivi régulier.</p></div>
-        <div class="trust-card"><strong>Réseau KW Polynésie</strong><p>Un réseau actif pour mieux faire circuler les opportunités.</p></div>
-        <div class="trust-card"><strong>Suivi humain</strong><p>Des réponses simples, directes et réactives jusqu'aux prochaines étapes.</p></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="review-card">
-        <p class="stars">★★★★★</p>
-        <h2>Une preuve simple : les avis clients</h2>
-        <p>La note Google aide les futurs vendeurs et acheteurs à vérifier mon sérieux avant de me contacter.</p>
-        <div class="cta-row single">
-          <a class="btn ghost" href="/avis-clients-immobilier-tahiti.html" data-event="click_reviews_page">Voir les avis</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt">
-      <div class="section-head">
-        <p class="eyebrow">FAQ</p>
-        <h2>Questions rapides</h2>
-      </div>
-      <div class="faq-list">
-        <article class="faq-item"><h3>Combien coûte une estimation ?</h3><p>L'estimation est offerte et sans engagement.</p></article>
-        <article class="faq-item"><h3>Faut-il un financement validé pour visiter ?</h3><p>Pas toujours, mais il faut une idée réaliste de ton budget.</p></article>
-        <article class="faq-item"><h3>Est-ce que tu accompagnes vendeurs et acheteurs ?</h3><p>Oui, avec des parcours séparés pour éviter de mélanger les besoins.</p></article>
-        <article class="faq-item"><h3>Est-ce que tu peux m'aider à distance ?</h3><p>Oui, on peut commencer par WhatsApp, téléphone ou email.</p></article>
       </div>
     </section>
 
@@ -275,6 +205,7 @@
         toggle.addEventListener("click",function(){
           var open=menu.classList.toggle("open");
           toggle.setAttribute("aria-expanded",open?"true":"false");
+          toggle.textContent=open?"Fermer le menu":"Menu";
         });
       }
     });
