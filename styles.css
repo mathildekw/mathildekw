@@ -82,6 +82,7 @@ h2 { font-size: clamp(1.75rem, 3.5vw, 2.7rem); }
 h3 { font-size: 1.35rem; }
 .lead { color: var(--muted); font-size: clamp(1.03rem, 2vw, 1.24rem); max-width: 720px; margin: 18px 0 0; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.cta-row.single { display: grid; grid-template-columns: 1fr; max-width: 360px; }
 .btn {
   display: inline-flex;
   align-items: center;
