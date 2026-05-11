@@ -1035,24 +1035,113 @@ body.seo-page::before {
 
 /* Page investissement USA */
 .seo-page.usa-invest-page .hero {
-  padding-top: 18px;
-}
-.seo-page.usa-invest-page .hero-grid > div:first-child {
+  padding: 18px 0 28px;
   background:
-    linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.98)),
-    radial-gradient(circle at top right, rgba(7,135,160,.22), transparent 16rem);
+    linear-gradient(180deg, rgba(255,250,245,.96), rgba(255,250,245,.82)),
+    url("/ocean-aerial-polynesie.jpg") center 44%/cover no-repeat;
+}
+.seo-page.usa-invest-page .usa-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(340px, .96fr);
+  gap: 18px;
+  align-items: stretch;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.seo-page.usa-invest-page .usa-hero-copy,
+.seo-page.usa-invest-page .usa-hero-form {
+  background: rgba(255,255,255,.96);
+  border: 1.5px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 12px 34px rgba(35, 24, 17, .09);
+}
+.seo-page.usa-invest-page .usa-hero-copy {
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.seo-page.usa-invest-page .usa-hero-form {
+  padding: 18px;
+}
+.seo-page.usa-invest-page .usa-hero-form form {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 .seo-page.usa-invest-page h1 {
-  font-size: 31px;
+  font-size: clamp(32px, 4vw, 48px);
+  max-width: 760px;
 }
 .seo-page.usa-invest-page .lead {
   color: #443b35;
   font-weight: 500;
 }
+.seo-page.usa-invest-page .form-card-head {
+  margin-bottom: 14px;
+}
+.seo-page.usa-invest-page .form-card-head h2 {
+  font-size: 30px;
+}
+.seo-page.usa-invest-page .form-card-head p:not(.eyebrow) {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.seo-page.usa-invest-page .usa-fast-path {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+}
+.seo-page.usa-invest-page .usa-fast-path span {
+  position: relative;
+  min-height: 40px;
+  padding: 10px 12px 10px 34px;
+  border-radius: 14px;
+  background: #fff6f0;
+  color: #2f2924;
+  font-size: 13px;
+  font-weight: 900;
+}
+.seo-page.usa-invest-page .usa-fast-path span::before {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 16px;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--kw-red);
+}
+.seo-page.usa-invest-page .usa-hero-note {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 16px;
+  background: #171412;
+  color: rgba(255,255,255,.74);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.seo-page.usa-invest-page .usa-hero-note strong,
+.seo-page.usa-invest-page .usa-hero-note span {
+  display: block;
+}
+.seo-page.usa-invest-page .usa-hero-note strong {
+  color: #fff;
+  margin-bottom: 4px;
+}
 .seo-page .usa-snapshot .visual-top {
   background:
     linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.66)),
     url("/ocean-aerial-polynesie.jpg") center 42%/cover no-repeat;
+}
+.seo-page.usa-invest-page .usa-qualification .section-head {
+  max-width: none;
 }
 .seo-page .usa-check-grid {
   display: grid;
@@ -1095,6 +1184,30 @@ body.seo-page::before {
   line-height: 1.55;
   box-shadow: 0 8px 24px rgba(0,0,0,.08);
 }
+.seo-page.usa-invest-page .usa-proof-strip {
+  display: grid;
+  gap: 10px;
+}
+.seo-page.usa-invest-page .usa-proof-strip > div {
+  padding: 18px;
+  border-radius: 18px;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,.045);
+}
+.seo-page.usa-invest-page .usa-proof-strip strong,
+.seo-page.usa-invest-page .usa-proof-strip span {
+  display: block;
+}
+.seo-page.usa-invest-page .usa-proof-strip strong {
+  color: var(--ink);
+}
+.seo-page.usa-invest-page .usa-proof-strip span {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
 .seo-page .usa-reasons {
   margin-bottom: 0;
 }
@@ -1115,13 +1228,15 @@ body.seo-page::before {
   font-size: 13px;
   line-height: 1.6;
 }
+.seo-page .usa-caution .btn {
+  margin-top: 18px;
+}
 .seo-page .usa-final-cta h2 {
   color: #fff;
 }
-.seo-page.usa-invest-page .btn.whatsapp,
 .seo-page.usa-invest-page .sticky-whatsapp {
-  background: #16a34a;
-  box-shadow: 0 14px 34px rgba(22,163,74,.30);
+  background: var(--kw-red);
+  box-shadow: 0 14px 34px rgba(200,16,46,.28);
 }
 .seo-page.usa-invest-page .sticky-whatsapp {
   left: 16px;
@@ -1133,7 +1248,15 @@ body.seo-page::before {
   .seo-page .usa-check-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .seo-page .usa-check-grid article:last-child {
-    grid-column: 1 / -1;
+  .seo-page.usa-invest-page .usa-proof-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 820px) {
+  .seo-page.usa-invest-page .usa-hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .seo-page.usa-invest-page .hero {
+    background-position: center top;
   }
 }
