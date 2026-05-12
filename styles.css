@@ -537,6 +537,9 @@ body.seo-page::before {
 .seo-page .review-proof strong {
   color: var(--ink);
 }
+.seo-page .review-proof .btn {
+  margin-top: 14px;
+}
 .seo-page .route-grid {
   display: grid;
   gap: 10px;
