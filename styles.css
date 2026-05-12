@@ -1473,3 +1473,104 @@ body.seo-page::before {
     padding-bottom: 0;
   }
 }
+
+/* Landing T2 Punaauia : parcours pub Facebook vers visite virtuelle */
+.seo-page.t2-landing-page .hero {
+  padding: 14px 0 18px;
+}
+.seo-page.t2-landing-page .t2-listing {
+  border-radius: 18px;
+  box-shadow: 0 12px 34px rgba(35, 24, 17, .08);
+}
+.seo-page.t2-landing-page .listing-media {
+  min-height: 250px;
+}
+.seo-page.t2-landing-page .listing-body {
+  padding: 20px 18px;
+}
+.seo-page.t2-landing-page h1 {
+  font-size: clamp(34px, 10vw, 54px);
+  line-height: .95;
+}
+.seo-page.t2-landing-page .price {
+  margin: 10px 0 12px;
+  font-size: clamp(26px, 7vw, 38px);
+}
+.seo-page.t2-landing-page .lead {
+  color: #443b35;
+  font-weight: 500;
+}
+.seo-page.t2-landing-page .t2-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.seo-page.t2-landing-page .t2-features li {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  border-radius: 12px;
+  background: #fff6f0;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+.seo-page.t2-landing-page .t2-hero-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+.seo-page.t2-landing-page .t2-hero-actions .btn {
+  width: 100%;
+  min-height: 52px;
+}
+.seo-page.t2-landing-page .t2-hero-note {
+  margin: 14px 0 0;
+  padding: 12px;
+  border-radius: 14px;
+  background: #171412;
+  color: rgba(255,255,255,.78);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.seo-page.t2-landing-page .t2-summary-grid {
+  display: grid;
+  gap: 10px;
+}
+.seo-page.t2-landing-page .t2-summary-grid .card {
+  min-height: 150px;
+}
+.seo-page.t2-landing-page .t2-process .conversion-panel div {
+  background: #fff;
+}
+.seo-page.t2-landing-page .t2-form-grid form {
+  border: 1.5px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(35, 24, 17, .07);
+}
+.seo-page.t2-landing-page .form-promise {
+  align-self: center;
+}
+.seo-page.t2-landing-page .form-check {
+  border: 1.5px solid rgba(200,16,46,.20);
+  border-radius: 14px;
+  padding: 12px;
+  background: #fff8f6;
+}
+.seo-page.t2-landing-page .sticky-whatsapp {
+  background: var(--kw-red);
+  box-shadow: 0 14px 34px rgba(200,16,46,.28);
+}
+@media (min-width: 720px) {
+  .seo-page.t2-landing-page .t2-summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .seo-page.t2-landing-page .t2-hero-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 861px) {
+  body.seo-page.t2-landing-page {
+    padding-bottom: 0;
+  }
+}

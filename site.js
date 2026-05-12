@@ -244,9 +244,16 @@ document.addEventListener("DOMContentLoaded", function () {
         "Telephone / WhatsApp : " + (data.get("telephone") || ""),
         "Email : " + (data.get("email") || ""),
         "Projet : " + (data.get("projet") || ""),
-        "Confirmation infos exactes : oui",
+        "Confirmation infos exactes : oui, pour preparer le bon de visite a distance.",
         "Message : " + (data.get("message") || "")
       ].join("\n");
+      trackEvent("form_submit", {
+        event_category: "form",
+        form_name: "t2_virtual_visit",
+        form_location: window.location.pathname,
+        buyer_project: data.get("projet") || "",
+        filled_fields_count: Array.from(data.values()).filter(function (value) { return String(value || "").trim(); }).length
+      });
       trackEvent("submit_form_t2_virtual", {
         event_category: "buyer_lead",
         form_location: window.location.pathname,
