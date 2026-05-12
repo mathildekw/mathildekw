@@ -207,6 +207,33 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "https://wa.me/33782475958?text=" + encodeMessage(message);
     });
   }
+
+  var t2VirtualForm = document.querySelector("[data-t2-virtual-form]");
+  if (t2VirtualForm) {
+    t2VirtualForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var data = new FormData(t2VirtualForm);
+      var message = [
+        "Ia ora na Mathilde, je souhaite recevoir la visite virtuelle du T2 a Punaauia PK11.",
+        "",
+        "Prenom : " + (data.get("prenom") || ""),
+        "Nom : " + (data.get("nom") || ""),
+        "Telephone / WhatsApp : " + (data.get("telephone") || ""),
+        "Email : " + (data.get("email") || ""),
+        "Projet : " + (data.get("projet") || ""),
+        "Confirmation infos exactes : oui",
+        "Message : " + (data.get("message") || "")
+      ].join("\n");
+      trackEvent("submit_form_t2_virtual", {
+        event_category: "buyer_lead",
+        form_location: window.location.pathname,
+        buyer_project: data.get("projet") || "",
+        filled_fields_count: Array.from(data.values()).filter(function (value) { return String(value || "").trim(); }).length
+      });
+      trackEvent("click_whatsapp_t2_virtual_form", { event_category: "buyer_lead", form_location: window.location.pathname, source: "t2_virtual_form" });
+      window.location.href = "https://wa.me/33782475958?text=" + encodeMessage(message);
+    });
+  }
 });
 
 (function () {
