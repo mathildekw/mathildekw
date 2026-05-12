@@ -1275,3 +1275,201 @@ body.seo-page::before {
     background-position: center top;
   }
 }
+
+/* Landing USA mobile-first : rapide, rassurante, orientée WhatsApp */
+.seo-page.usa-invest-page .hero {
+  padding: 14px 0 20px;
+  background: linear-gradient(180deg, #fffaf5 0%, #fff2ea 100%);
+}
+.seo-page.usa-invest-page .usa-hero-grid {
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.seo-page.usa-invest-page .usa-hero-copy,
+.seo-page.usa-invest-page .usa-hero-form {
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(35, 24, 17, .07);
+}
+.seo-page.usa-invest-page .usa-hero-copy {
+  padding: 22px 18px 18px;
+}
+.seo-page.usa-invest-page .usa-hero-form {
+  padding: 16px;
+}
+.seo-page.usa-invest-page h1 {
+  font-size: clamp(34px, 10vw, 54px);
+  line-height: .95;
+}
+.seo-page.usa-invest-page .lead {
+  margin-top: 14px;
+  font-size: 17px;
+  line-height: 1.45;
+}
+.seo-page.usa-invest-page .usa-reassurance {
+  margin: 14px 0 0;
+  color: var(--green);
+  font-weight: 900;
+}
+.seo-page.usa-invest-page .usa-hero-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+.seo-page.usa-invest-page .usa-hero-actions .btn {
+  width: 100%;
+  min-height: 52px;
+}
+.seo-page.usa-invest-page .usa-trust-row {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+.seo-page.usa-invest-page .usa-trust-row span {
+  position: relative;
+  min-height: 38px;
+  padding: 9px 11px 9px 32px;
+  border-radius: 12px;
+  background: #fff6f0;
+  color: #2f2924;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+.seo-page.usa-invest-page .usa-trust-row span::before {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 15px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--kw-red);
+}
+.seo-page.usa-invest-page .usa-direct-whatsapp {
+  margin: 0 0 12px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #fff6f0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.seo-page.usa-invest-page .usa-direct-whatsapp a {
+  color: var(--kw-red);
+  font-weight: 900;
+}
+.seo-page.usa-invest-page .usa-flow-grid {
+  display: grid;
+  gap: 10px;
+  counter-reset: usa-step;
+}
+.seo-page.usa-invest-page .usa-flow-grid article {
+  position: relative;
+  min-height: 132px;
+  padding: 18px 16px 16px 58px;
+  border: 1.5px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(35, 24, 17, .05);
+}
+.seo-page.usa-invest-page .usa-flow-grid article::before {
+  counter-increment: usa-step;
+  content: counter(usa-step);
+  position: absolute;
+  left: 16px;
+  top: 18px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 900;
+}
+.seo-page.usa-invest-page .usa-flow-grid h3,
+.seo-page.usa-invest-page .usa-fit-card h3 {
+  margin: 0;
+  font-size: 18px;
+}
+.seo-page.usa-invest-page .usa-flow-grid p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.seo-page.usa-invest-page .usa-fit-grid {
+  display: grid;
+  gap: 10px;
+}
+.seo-page.usa-invest-page .usa-fit-card {
+  padding: 18px;
+  border: 1.5px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(35, 24, 17, .05);
+}
+.seo-page.usa-invest-page .usa-fit-card.positive {
+  border-color: rgba(20, 125, 79, .28);
+  background: #f4fbf6;
+}
+.seo-page.usa-invest-page .usa-fit-card.negative {
+  border-color: rgba(200, 16, 46, .20);
+  background: #fff8f6;
+}
+.seo-page.usa-invest-page .usa-fit-card ul {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: #3d352f;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.seo-page.usa-invest-page .usa-fit-card li + li {
+  margin-top: 7px;
+}
+.seo-page.usa-invest-page .usa-caution {
+  width: calc(100% - 24px);
+  max-width: 980px;
+  margin: 0 auto;
+}
+.seo-page.usa-invest-page .usa-caution .btn {
+  background: #fff;
+  color: var(--ink);
+}
+.seo-page.usa-invest-page .faq-mini details {
+  background: #fff;
+}
+.seo-page.usa-invest-page .section-cta {
+  margin-top: 18px;
+}
+.seo-page.usa-invest-page .usa-final-cta h2,
+.seo-page.usa-invest-page .usa-final-cta p {
+  color: #fff;
+}
+.seo-page.usa-invest-page .sticky-whatsapp {
+  background: var(--kw-red);
+  box-shadow: 0 14px 34px rgba(200,16,46,.28);
+}
+@media (min-width: 720px) {
+  .seo-page.usa-invest-page .usa-hero-grid {
+    grid-template-columns: minmax(0, 1.02fr) minmax(330px, .98fr);
+    gap: 16px;
+  }
+  .seo-page.usa-invest-page .usa-hero-actions,
+  .seo-page.usa-invest-page .usa-trust-row,
+  .seo-page.usa-invest-page .usa-fit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .seo-page.usa-invest-page .usa-flow-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .seo-page.usa-invest-page .usa-flow-grid article {
+    padding-left: 16px;
+    padding-top: 58px;
+  }
+}
+@media (min-width: 861px) {
+  body.seo-page.usa-invest-page {
+    padding-bottom: 0;
+  }
+}

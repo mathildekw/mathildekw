@@ -80,6 +80,22 @@ function encodeMessage(text) {
   return encodeURIComponent(text).replace(/%20/g, "+");
 }
 
+var startedForms = new WeakSet();
+var submittedForms = new WeakSet();
+var abandonedForms = new WeakSet();
+
+function getFormName(form) {
+  if (!form) return "no_form";
+  if (form.hasAttribute("data-estimation-form")) return "estimation";
+  if (form.hasAttribute("data-usa-form")) return "usa_invest";
+  if (form.hasAttribute("data-t2-virtual-form")) return "t2_virtual_visit";
+  return form.getAttribute("name") || form.getAttribute("id") || "form";
+}
+
+function markFormSubmitted(form) {
+  if (form) submittedForms.add(form);
+}
+
 document.addEventListener("click", function (event) {
   var target = event.target.closest("[data-event]");
   if (!target) return;
@@ -152,6 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       var data = new FormData(form);
+      markFormSubmitted(form);
       var message = [
         "Ia ora na Mathilde, je souhaite faire estimer mon bien immobilier a Tahiti.",
         "",
@@ -185,24 +202,29 @@ document.addEventListener("DOMContentLoaded", function () {
     usaForm.addEventListener("submit", function (event) {
       event.preventDefault();
       var data = new FormData(usaForm);
+      markFormSubmitted(usaForm);
       var message = [
-        "Ia ora na Mathilde, je souhaite recevoir les infos pour investir aux USA.",
+        "Ia ora na Mathilde, je souhaite recevoir les infos sur l'investissement immobilier aux Etats-Unis.",
         "",
         "Prenom : " + (data.get("prenom") || ""),
-        "Nom : " + (data.get("nom") || ""),
         "Telephone / WhatsApp : " + (data.get("telephone") || ""),
-        "Email : " + (data.get("email") || ""),
-        "Budget disponible : " + (data.get("budget") || ""),
-        "Objectif : " + (data.get("objectif") || ""),
+        "Budget approximatif : " + (data.get("budget") || ""),
         "Message : " + (data.get("message") || "")
       ].join("\n");
+      trackEvent("form_submit", {
+        event_category: "form",
+        form_name: "usa_invest",
+        form_location: window.location.pathname,
+        investor_budget: data.get("budget") || "",
+        filled_fields_count: Array.from(data.values()).filter(function (value) { return String(value || "").trim(); }).length
+      });
       trackEvent("submit_form_usa", {
         event_category: "investor_lead",
         form_location: window.location.pathname,
         investor_budget: data.get("budget") || "",
-        investor_goal: data.get("objectif") || "",
         filled_fields_count: Array.from(data.values()).filter(function (value) { return String(value || "").trim(); }).length
       });
+      trackEvent("cta_whatsapp_click", { event_category: "contact", form_location: window.location.pathname, source: "usa_form" });
       trackEvent("click_whatsapp_usa", { event_category: "investor_lead", form_location: window.location.pathname, source: "usa_form" });
       window.location.href = "https://wa.me/33782475958?text=" + encodeMessage(message);
     });
@@ -213,6 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
     t2VirtualForm.addEventListener("submit", function (event) {
       event.preventDefault();
       var data = new FormData(t2VirtualForm);
+      markFormSubmitted(t2VirtualForm);
       var message = [
         "Ia ora na Mathilde, je souhaite recevoir la visite virtuelle du T2 a Punaauia PK11.",
         "",
@@ -250,6 +273,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!seenScroll[mark] && current >= mark) {
         seenScroll[mark] = true;
         trackEvent("scroll_depth", { event_category: "engagement", scroll_percent: mark, value: mark });
+        if (mark === 50 || mark === 90) {
+          trackEvent("scroll_" + mark, { event_category: "engagement", scroll_percent: mark, value: mark });
+        }
       }
     });
   }, { passive: true });
@@ -260,12 +286,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }, seconds * 1000);
   });
 
-  var startedForms = new WeakSet();
   document.addEventListener("focusin", function (event) {
     var field = event.target.closest("input, select, textarea");
     if (!field) return;
     var form = field.closest("form");
-    var formName = form ? (form.getAttribute("name") || form.getAttribute("id") || (form.hasAttribute("data-estimation-form") ? "estimation" : "form")) : "no_form";
+    var formName = getFormName(form);
     if (form && !startedForms.has(form)) {
       startedForms.add(form);
       trackEvent("form_start", { event_category: "form", form_name: formName, form_location: window.location.pathname });
@@ -308,8 +333,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  var lastFaqUserAction = 0;
+  document.addEventListener("click", function (event) {
+    if (event.target.closest("summary")) lastFaqUserAction = Date.now();
+  }, true);
+
+  document.addEventListener("keydown", function (event) {
+    if ((event.key === "Enter" || event.key === " ") && event.target.closest("summary")) {
+      lastFaqUserAction = Date.now();
+    }
+  }, true);
+
   document.addEventListener("toggle", function (event) {
     if (!event.target.matches("details")) return;
+    if (Date.now() - lastFaqUserAction > 1500) return;
     trackEvent(event.target.open ? "faq_open" : "faq_close", {
       event_category: "engagement",
       question: cleanText(event.target.querySelector("summary") ? event.target.querySelector("summary").textContent : "")
@@ -318,6 +355,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.addEventListener("visibilitychange", function () {
     if (document.visibilityState !== "hidden") return;
+    document.querySelectorAll("form").forEach(function (form) {
+      if (!startedForms.has(form) || submittedForms.has(form) || abandonedForms.has(form)) return;
+      abandonedForms.add(form);
+      trackEvent("form_abandon", {
+        event_category: "form",
+        form_name: getFormName(form),
+        form_location: window.location.pathname,
+        max_scroll_percent: maxScrollPercent(),
+        time_on_page_seconds: Math.round(performance.now() / 1000)
+      });
+    });
     trackEvent("page_hidden", {
       event_category: "engagement",
       max_scroll_percent: maxScrollPercent(),
