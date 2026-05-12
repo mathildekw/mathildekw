@@ -967,14 +967,18 @@ body.seo-page::before {
   line-height: 1.6;
 }
 .seo-page .sticky-whatsapp {
-  left: 20px;
-  right: 92px;
+  left: 16px;
+  right: 16px;
   bottom: 16px;
-  max-width: 318px;
+  width: auto;
+  max-width: 560px;
   margin: 0 auto;
   border-radius: 999px;
-  min-height: 48px;
-  font-size: 13px;
+  min-height: 54px;
+  padding: 0 20px;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
 }
 
 .seo-page {
@@ -1237,12 +1241,6 @@ body.seo-page::before {
 .seo-page.usa-invest-page .sticky-whatsapp {
   background: var(--kw-red);
   box-shadow: 0 14px 34px rgba(200,16,46,.28);
-}
-.seo-page.usa-invest-page .sticky-whatsapp {
-  left: 16px;
-  right: 16px;
-  width: auto;
-  max-width: 340px;
 }
 @media (min-width: 720px) {
   .seo-page .usa-check-grid {
