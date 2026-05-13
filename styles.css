@@ -1809,3 +1809,34 @@ body.seo-page::before {
     align-items: center;
   }
 }
+
+/* Fix global mobile : sticky full-width et menu qui ne reste pas déplié */
+@media (max-width: 860px) {
+  body {
+    padding-bottom: 88px;
+  }
+  .sticky-whatsapp,
+  .seo-page .sticky-whatsapp {
+    left: 10px !important;
+    right: 10px !important;
+    bottom: max(12px, env(safe-area-inset-bottom)) !important;
+    width: calc(100vw - 20px) !important;
+    max-width: calc(100vw - 20px) !important;
+    min-width: 0 !important;
+    min-height: 58px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    font-size: 14px;
+    line-height: 1.18;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    transform: none;
+  }
+  .nav .menu.open {
+    width: 100%;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}

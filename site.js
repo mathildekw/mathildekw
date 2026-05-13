@@ -173,6 +173,14 @@ document.addEventListener("DOMContentLoaded", function () {
         toggle.textContent = "Menu";
       }
     });
+    document.querySelectorAll(".home-menu.open").forEach(function (menu) {
+      var toggle = document.querySelector(".menu-toggle[aria-controls='" + menu.id + "']") || document.querySelector(".menu-toggle");
+      menu.classList.remove("open");
+      if (toggle) {
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.textContent = "Menu";
+      }
+    });
   }
 
   var menuScrollStart = window.scrollY;
