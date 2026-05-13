@@ -1817,26 +1817,97 @@ body.seo-page::before {
   }
   .topbar,
   .seo-page .topbar {
-    width: 100% !important;
+    width: 100vw !important;
     max-width: none !important;
     align-self: stretch !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    background: rgba(250, 248, 244, .96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
   }
   .nav,
   .seo-page .nav {
-    width: min(1120px, calc(100% - 32px)) !important;
-    margin-inline: auto !important;
-  }
-  .seo-page .nav {
-    min-height: 72px;
+    width: 100% !important;
+    min-height: 88px;
+    margin: 0 !important;
+    padding: 10px 14px !important;
+    flex-direction: column;
     align-items: stretch;
+    justify-content: center;
+    gap: 9px;
   }
+  .brand,
   .seo-page .brand {
     width: 100%;
+    min-width: 0;
+    gap: 0;
+    padding: 0;
+  }
+  .text-brand strong,
+  .seo-page .text-brand strong {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .text-brand span span,
+  .seo-page .text-brand span span {
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .02em;
+    color: var(--muted);
   }
   .nav-toggle,
   .seo-page .nav-toggle {
     width: 100% !important;
     flex: 0 0 auto;
+    min-height: 44px;
+    border-radius: 12px;
+    border: 1.5px solid var(--kw-red);
+    background: var(--kw-red);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .04em;
+  }
+  .nav .menu,
+  .seo-page .nav .menu {
+    display: none;
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 7px;
+    margin: 0 auto;
+    padding: 0 0 6px;
+    overflow: visible;
+  }
+  .nav .menu.open,
+  .seo-page .nav .menu.open {
+    display: grid;
+  }
+  .nav .menu a,
+  .seo-page .nav .menu a {
+    width: 100%;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1.5px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+    box-shadow: none;
+  }
+  .nav .menu a.nav-cta,
+  .seo-page .nav .menu a.nav-cta {
+    background: var(--kw-red) !important;
+    border-color: var(--kw-red) !important;
+    color: #fff !important;
   }
   .sticky-whatsapp,
   .seo-page .sticky-whatsapp {
@@ -1856,8 +1927,8 @@ body.seo-page::before {
     overflow-wrap: anywhere;
     transform: none;
   }
-  .nav .menu.open {
-    width: 100%;
+  .nav .menu.open,
+  .seo-page .nav .menu.open {
     max-height: calc(100vh - 120px);
     overflow-y: auto;
     overscroll-behavior: contain;
