@@ -1815,6 +1815,29 @@ body.seo-page::before {
   body {
     padding-bottom: 88px;
   }
+  .topbar,
+  .seo-page .topbar {
+    width: 100% !important;
+    max-width: none !important;
+    align-self: stretch !important;
+  }
+  .nav,
+  .seo-page .nav {
+    width: min(1120px, calc(100% - 32px)) !important;
+    margin-inline: auto !important;
+  }
+  .seo-page .nav {
+    min-height: 72px;
+    align-items: stretch;
+  }
+  .seo-page .brand {
+    width: 100%;
+  }
+  .nav-toggle,
+  .seo-page .nav-toggle {
+    width: 100% !important;
+    flex: 0 0 auto;
+  }
   .sticky-whatsapp,
   .seo-page .sticky-whatsapp {
     left: 10px !important;
