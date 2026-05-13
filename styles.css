@@ -47,7 +47,7 @@ img { max-width: 100%; height: auto; }
   justify-content: space-between;
   gap: 18px;
 }
-.brand { text-decoration: none; display: flex; align-items: center; gap: 12px; min-width: 210px; }
+.brand { text-decoration: none; display: flex; align-items: center; gap: 12px; min-width: 210px; flex: 0 0 auto; }
 .brand-mark {
   width: 42px;
   height: 42px;
@@ -61,10 +61,15 @@ img { max-width: 100%; height: auto; }
 }
 .brand strong { display: block; font-size: 1rem; line-height: 1.1; }
 .brand span { display: block; color: var(--muted); font-size: .82rem; }
-.menu { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.menu { display: flex; align-items: center; gap: 6px; flex: 1 1 auto; flex-wrap: wrap; justify-content: flex-end; min-width: 0; }
 .menu a { text-decoration: none; font-size: .92rem; padding: 9px 11px; border-radius: 999px; color: #403933; }
 .menu a:hover, .menu a[aria-current="page"] { background: #fff; box-shadow: inset 0 0 0 1px var(--line); color: var(--kw-red); }
 .nav-cta { background: var(--kw-red) !important; color: #fff !important; box-shadow: none !important; }
+@media (max-width: 1120px) and (min-width: 861px) {
+  .brand { min-width: 170px; }
+  .menu { gap: 4px; }
+  .menu a { font-size: .86rem; padding: 8px 9px; }
+}
 .hero {
   padding: 56px 0 28px;
 }
@@ -624,8 +629,8 @@ body.seo-page::before {
 }
 .seo-page .menu {
   width: 100%;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  flex-wrap: wrap;
+  overflow-x: visible;
   justify-content: flex-start;
   gap: 6px;
   padding-bottom: 2px;
@@ -1030,7 +1035,7 @@ body.seo-page::before {
   justify-content: center;
   cursor: pointer;
 }
-@media (max-width: 860px) {
+@media (max-width: 1120px) {
   .nav {
     position: relative;
   }
@@ -1811,7 +1816,7 @@ body.seo-page::before {
 }
 
 /* Fix global mobile : sticky full-width et menu qui ne reste pas déplié */
-@media (max-width: 860px) {
+@media (max-width: 1120px) {
   body {
     padding-bottom: 88px;
   }
