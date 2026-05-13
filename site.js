@@ -163,6 +163,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  function closeOpenMenusOnScroll() {
+    document.querySelectorAll(".nav .menu.open").forEach(function (menu) {
+      var nav = menu.closest(".nav");
+      var toggle = nav ? nav.querySelector(".nav-toggle") : null;
+      menu.classList.remove("open");
+      if (toggle) {
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.textContent = "Menu";
+      }
+    });
+  }
+
+  var menuScrollStart = window.scrollY;
+  window.addEventListener("scroll", function () {
+    if (Math.abs(window.scrollY - menuScrollStart) < 12) return;
+    menuScrollStart = window.scrollY;
+    closeOpenMenusOnScroll();
+  }, { passive: true });
+
   var form = document.querySelector("[data-estimation-form]");
   if (form) {
     form.addEventListener("submit", function (event) {
