@@ -1825,13 +1825,19 @@ body.seo-page::before {
     background: rgba(250, 248, 244, .96);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--line);
+    transition: transform .22s ease;
+    will-change: transform;
+  }
+  .topbar.is-nav-hidden,
+  .seo-page .topbar.is-nav-hidden {
+    transform: translateY(-105%);
   }
   .nav,
   .seo-page .nav {
     width: 100% !important;
-    min-height: 88px;
+    min-height: 72px;
     margin: 0 !important;
-    padding: 10px 14px !important;
+    padding: 8px 14px !important;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
@@ -1864,7 +1870,7 @@ body.seo-page::before {
   .seo-page .nav-toggle {
     width: 100% !important;
     flex: 0 0 auto;
-    min-height: 44px;
+    min-height: 40px;
     border-radius: 12px;
     border: 1.5px solid var(--kw-red);
     background: var(--kw-red);
@@ -1929,7 +1935,7 @@ body.seo-page::before {
   }
   .nav .menu.open,
   .seo-page .nav .menu.open {
-    max-height: calc(100vh - 120px);
+    max-height: calc(100vh - 104px);
     overflow-y: auto;
     overscroll-behavior: contain;
   }

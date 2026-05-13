@@ -183,11 +183,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  var navBars = Array.prototype.slice.call(document.querySelectorAll(".topbar, .home-nav"));
+  var lastScrollY = window.scrollY;
   var menuScrollStart = window.scrollY;
+
+  function hasOpenMenu() {
+    return Boolean(document.querySelector(".nav .menu.open, .home-menu.open"));
+  }
+
+  function updateAutoHideNav() {
+    if (!navBars.length) return;
+    var currentY = window.scrollY;
+    var delta = currentY - lastScrollY;
+    if (Math.abs(delta) < 8) return;
+
+    var shouldHide = delta > 0 && currentY > 110 && !hasOpenMenu();
+    navBars.forEach(function (bar) {
+      bar.classList.toggle("is-nav-hidden", shouldHide);
+    });
+    lastScrollY = currentY;
+  }
+
   window.addEventListener("scroll", function () {
     if (Math.abs(window.scrollY - menuScrollStart) < 12) return;
     menuScrollStart = window.scrollY;
     closeOpenMenusOnScroll();
+    updateAutoHideNav();
   }, { passive: true });
 
   var form = document.querySelector("[data-estimation-form]");

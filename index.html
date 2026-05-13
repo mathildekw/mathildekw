@@ -33,12 +33,13 @@
     img{max-width:100%;height:auto}
     .wrap{width:min(1120px,calc(100% - 32px));margin:0 auto}
     .page{width:100%;max-width:430px;margin:0 auto;display:flex;flex-direction:column}
-    .home-nav{position:sticky;top:0;z-index:50;width:100vw;margin-left:calc(50% - 50vw);background:rgba(250,248,244,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-    .home-nav-inner{min-height:88px;display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:9px;padding:10px 14px}
+    .home-nav{position:sticky;top:0;z-index:50;width:100vw;margin-left:calc(50% - 50vw);background:rgba(250,248,244,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:transform .22s ease;will-change:transform}
+    .home-nav.is-nav-hidden{transform:translateY(-105%)}
+    .home-nav-inner{min-height:72px;display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:9px;padding:8px 14px}
     .brand{text-decoration:none;display:flex;flex-direction:column;line-height:1}
     .brand strong{font-family:"Cormorant Garamond",serif;font-size:27px;font-weight:600;color:var(--black)}
     .brand span{margin-top:5px;color:var(--grey);font-size:12px;font-weight:500}
-    .menu-toggle{width:100%;min-height:44px;border-radius:12px;border:1.5px solid var(--red);background:var(--red);color:white;font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;cursor:pointer}
+    .menu-toggle{width:100%;min-height:40px;border-radius:12px;border:1.5px solid var(--red);background:var(--red);color:white;font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;cursor:pointer}
     .home-menu{display:none;grid-template-columns:1fr;gap:7px;width:min(430px,100%);margin:0 auto;padding:0 14px 12px}
     .home-menu.open{display:grid}
     .home-menu a{min-height:42px;display:flex;align-items:center;justify-content:center;text-decoration:none;background:white;border:1.5px solid var(--border);border-radius:999px;font-size:13px;font-weight:800;color:var(--black)}
@@ -203,7 +204,7 @@
     </footer>
   </div>
   <a class="sticky-whatsapp" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20j%27ai%20un%20projet%20immobilier%20%C3%A0%20Tahiti.%20Peux-tu%20m%27orienter%20%3F" target="_blank" rel="noopener" data-event="click_whatsapp_home_sticky">Écrire sur WhatsApp</a>
-  <script src="/site.js?v=20260513-home-menu" defer></script>
+  <script src="/site.js?v=20260513-auto-hide-menu" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded",function(){
       var toggle=document.querySelector(".menu-toggle");
