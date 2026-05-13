@@ -1581,3 +1581,231 @@ body.seo-page::before {
     padding-bottom: 0;
   }
 }
+
+/* Page biens : grille plus aérée inspirée des vitrines immobilières modernes */
+.seo-page.airy-properties-page .properties-hero {
+  padding: 18px 0 28px;
+  background: linear-gradient(180deg, #fffaf5 0%, #fff4ec 100%);
+}
+.seo-page.airy-properties-page .properties-hero-inner {
+  display: grid;
+  gap: 16px;
+}
+.seo-page.airy-properties-page .properties-hero h1 {
+  max-width: 760px;
+  font-size: clamp(38px, 10vw, 64px);
+  line-height: .95;
+}
+.seo-page.airy-properties-page .properties-hero .lead {
+  max-width: 720px;
+  color: #443b35;
+  font-weight: 500;
+}
+.property-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.property-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 9px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 900;
+}
+.property-chip.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+.properties-mini-card,
+.property-side-panel,
+.property-criteria-card {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border: 1.5px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(35, 24, 17, .06);
+}
+.properties-mini-card strong,
+.property-side-panel h3,
+.property-criteria-card strong {
+  color: var(--ink);
+}
+.properties-mini-card span,
+.property-side-panel p,
+.property-criteria-card span {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.properties-section-head {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.properties-section-head > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 900;
+}
+.property-showcase-grid {
+  display: grid;
+  gap: 16px;
+}
+.property-card-premium {
+  overflow: hidden;
+  border: 1.5px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(35, 24, 17, .08);
+}
+.property-card-image {
+  position: relative;
+  display: block;
+  min-height: 280px;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.48)),
+    url("/t2-punaauia.jpg") center/cover no-repeat;
+  color: #fff;
+  text-decoration: none;
+}
+.property-status,
+.property-location {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+}
+.property-status {
+  top: 14px;
+  left: 14px;
+  background: var(--kw-red);
+  color: #fff;
+}
+.property-location {
+  left: 14px;
+  bottom: 14px;
+  background: rgba(255,255,255,.92);
+  color: var(--ink);
+}
+.property-card-body {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+}
+.property-card-body .reference {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.property-card-body h3 {
+  margin: 0;
+  font-size: clamp(24px, 7vw, 36px);
+  line-height: 1;
+}
+.property-price {
+  margin: 0;
+  color: var(--kw-red);
+  font-size: 24px;
+  font-weight: 900;
+}
+.property-summary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.property-facts-premium {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.property-facts-premium li {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #fff6f0;
+  color: #3d352f;
+  font-size: 12px;
+  font-weight: 900;
+}
+.property-card-actions {
+  display: grid;
+  gap: 9px;
+  margin-top: 6px;
+}
+.property-side-list {
+  display: grid;
+  gap: 8px;
+}
+.property-side-list span {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #fff6f0;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 900;
+}
+.properties-contact-band {
+  display: grid;
+  gap: 16px;
+  padding: 22px;
+  border-radius: 18px;
+  background: var(--ink);
+  color: #fff;
+}
+.properties-contact-band .eyebrow,
+.properties-contact-band h2 {
+  color: #fff;
+}
+.properties-contact-band p {
+  color: rgba(255,255,255,.75);
+}
+@media (min-width: 760px) {
+  .seo-page.airy-properties-page .properties-hero-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+    align-items: end;
+  }
+  .properties-section-head {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
+  .property-showcase-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+    align-items: start;
+  }
+  .property-card-premium {
+    display: grid;
+    grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  }
+  .property-card-image {
+    min-height: 100%;
+  }
+  .property-card-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+  .properties-contact-band {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+    align-items: center;
+  }
+}
