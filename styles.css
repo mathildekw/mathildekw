@@ -2800,9 +2800,9 @@ body.seo-page::before {
   }
   .nav .menu a.nav-cta,
   .seo-page .nav .menu a.nav-cta {
-    background: var(--kw-red) !important;
-    border-color: var(--kw-red) !important;
-    color: #fff !important;
+    background: #fff !important;
+    border-color: var(--line) !important;
+    color: var(--ink) !important;
   }
   .sticky-whatsapp,
   .seo-page .sticky-whatsapp {
