@@ -27,18 +27,25 @@
     .seo-page.seller-ads-page .seller-photo-card {
       align-self: center;
       justify-self: end;
-      width: min(100%, 430px);
+      width: min(100%, 460px);
       min-height: 0;
       grid-template-rows: auto auto;
+      box-shadow: 0 22px 54px rgba(35, 24, 17, .12);
     }
     .seo-page.seller-ads-page .seller-photo-card img {
       display: block;
       width: 100%;
-      height: min(42vw, 420px);
+      height: min(44vw, 440px);
       min-height: 0;
       object-fit: contain;
       object-position: center center;
       background: linear-gradient(180deg, #f5ede5 0%, #efe3d8 100%);
+    }
+    .seo-page.seller-ads-page .seller-photo-card div {
+      padding: 18px 20px;
+    }
+    .seo-page.seller-ads-page .seller-photo-card strong {
+      font-size: 30px;
     }
     .seo-page.seller-ads-page .seller-review-proof,
     .seo-page.seller-ads-page .seller-review-proof strong {
@@ -54,6 +61,65 @@
       background: #fff;
       color: #171412;
       border-color: rgba(255,255,255,.78);
+    }
+    .seo-page.seller-ads-page .seller-process-grid,
+    .seo-page.seller-ads-page .seller-type-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .seo-page.seller-ads-page .seller-process-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      counter-reset: process-step;
+    }
+    .seo-page.seller-ads-page .seller-process-grid article,
+    .seo-page.seller-ads-page .seller-type-grid span {
+      background: #fff;
+      border: 1.5px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.045);
+    }
+    .seo-page.seller-ads-page .seller-process-grid article {
+      position: relative;
+      padding: 20px 18px 18px 58px;
+    }
+    .seo-page.seller-ads-page .seller-process-grid article::before {
+      counter-increment: process-step;
+      content: counter(process-step);
+      position: absolute;
+      left: 18px;
+      top: 20px;
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 900;
+      font-size: 12px;
+    }
+    .seo-page.seller-ads-page .seller-process-grid h3 {
+      font-size: 17px;
+      margin: 0;
+    }
+    .seo-page.seller-ads-page .seller-process-grid p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .seo-page.seller-ads-page .seller-type-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .seo-page.seller-ads-page .seller-type-grid span {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      padding: 14px 16px;
+      color: #3e342d;
+      font-size: 13px;
+      font-weight: 900;
     }
     .seo-page.seller-ads-page .seller-band-form .form-promise {
       min-height: 0 !important;
@@ -82,29 +148,50 @@
     .seo-page.seller-ads-page .seller-band-form .form-promise .trust-list {
       margin-top: 18px !important;
     }
+    .seller-form-intro {
+      margin: 0 0 14px;
+      padding: 14px 16px;
+      border: 1.5px solid rgba(200,16,46,.16);
+      border-radius: 16px;
+      background: #fff8f6;
+      color: #4b4039;
+      font-size: 13px;
+      line-height: 1.5;
+    }
     @media (min-width: 861px) and (max-width: 1120px) {
       .seo-page.seller-ads-page .seller-photo-card {
         justify-self: center;
-        width: min(100%, 720px);
-        grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+        width: min(100%, 740px);
+        grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
         grid-template-rows: auto;
       }
       .seo-page.seller-ads-page .seller-photo-card img {
-        height: 280px;
+        height: 300px;
+      }
+      .seo-page.seller-ads-page .seller-process-grid,
+      .seo-page.seller-ads-page .seller-type-grid {
+        grid-template-columns: 1fr;
       }
     }
     @media (max-width: 860px) {
       .seo-page.seller-ads-page .seller-photo-card {
         order: 2;
-        width: min(100%, 340px);
+        width: min(100%, 350px);
         margin: 0 auto;
         grid-template-rows: auto auto;
       }
       .seo-page.seller-ads-page .seller-photo-card img {
-        height: min(56vw, 230px);
+        height: min(58vw, 240px);
       }
       .seo-page.seller-ads-page .seller-band-form .form-promise {
         padding: 18px !important;
+      }
+      .seo-page.seller-ads-page .seller-process-grid,
+      .seo-page.seller-ads-page .seller-type-grid {
+        grid-template-columns: 1fr;
+      }
+      .seo-page.seller-ads-page .seller-process-grid article {
+        padding: 18px 16px 16px 54px;
       }
     }
   </style>
@@ -124,9 +211,9 @@
       <div class="wrap seller-hero-grid">
         <div class="seller-hero-copy">
           <p class="eyebrow">Vendre à Tahiti</p>
-          <h1>Vendre ton bien à Tahiti avec une stratégie claire dès le départ</h1>
-          <p class="lead">Maison, appartement, terrain, succession ou indivision : je t’aide à comprendre la vraie valeur de ton bien, à éviter un mauvais prix de départ et à préparer une vente plus efficace.</p>
-          <p class="microcopy">Que ton bien soit à Papeete, Punaauia, Faaa, Moorea ou ailleurs à Tahiti, on peut commencer par clarifier le potentiel, les freins et la meilleure stratégie.</p>
+          <h1>Vendre un bien à Tahiti avec une vraie stratégie dès le départ</h1>
+          <p class="lead">Maison, appartement, terrain, succession ou indivision : obtiens une estimation claire et une stratégie de vente adaptée à ton bien.</p>
+          <p class="microcopy">À Papeete, Punaauia, Faaa, Moorea ou ailleurs à Tahiti, on peut commencer simplement par une première lecture de ton projet.</p>
           <div class="lead-proof-list seller-badges">
             <span>Estimation offerte</span>
             <span>Approche locale & humaine</span>
@@ -136,7 +223,7 @@
             <a class="btn primary" href="#formulaire-vendeur" data-event="click_seller_estimation_hero" data-conversion="form-estimation">Demander mon estimation offerte</a>
             <a class="btn whatsapp" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20je%20souhaite%20vendre%20un%20bien%20%C3%A0%20Tahiti%20et%20j%E2%80%99aimerais%20avoir%20une%20premi%C3%A8re%20estimation.%20Peux-tu%20me%20dire%20quelles%20infos%20t%E2%80%99envoyer%20%3F" target="_blank" rel="noopener" data-event="click_whatsapp_seller_hero" data-conversion="whatsapp-vendeur">Écrire sur WhatsApp</a>
           </div>
-          <p class="microcopy">Aucune obligation de vendre. On peut commencer simplement par WhatsApp.</p>
+          <p class="microcopy">Aucune obligation de vendre. Tu peux commencer simplement par WhatsApp.</p>
         </div>
         <aside class="seller-photo-card" aria-label="Mathilde Tuduri, conseillère immobilier KW Polynésie">
           <img src="/mathilde-avatar.jpg" alt="Mathilde Tuduri, conseillère immobilier KW Polynésie à Tahiti" loading="eager" fetchpriority="high">
@@ -148,12 +235,30 @@
       </div>
     </section>
 
+    <section class="section seller-band-process">
+      <div class="wrap seller-section-card">
+        <div class="section-head">
+          <p class="eyebrow">Simple & humain</p>
+          <h2>Comment ça se passe ?</h2>
+          <p>Tu n’as pas besoin d’avoir tout préparé. L’objectif est d’avancer étape par étape, sans pression.</p>
+        </div>
+        <div class="seller-process-grid">
+          <article><h3>Tu m’envoies les premières infos</h3><p>Commune, type de bien, contexte, photos si tu veux.</p></article>
+          <article><h3>Je fais une première lecture du marché</h3><p>Positionnement, demande, freins possibles et stratégie de vente.</p></article>
+          <article><h3>On échange sur la meilleure suite</h3><p>Simple avis, préparation de vente ou rendez-vous vendeur.</p></article>
+        </div>
+        <div class="cta-row seller-inline-cta">
+          <a class="btn whatsapp" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20je%20souhaite%20%C3%A9changer%20simplement%20sur%20mon%20projet%20de%20vente%20%C3%A0%20Tahiti." target="_blank" rel="noopener" data-event="click_whatsapp_seller_process" data-conversion="whatsapp-vendeur">Échanger simplement sur WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
     <section class="section seller-band-problem">
       <div class="wrap seller-section-card">
         <div class="section-head">
           <p class="eyebrow">Enjeu vendeur</p>
           <h2>Le prix de départ peut faire gagner… ou perdre plusieurs mois</h2>
-          <p>À Tahiti, le but n’est pas seulement de publier une annonce. Le vrai sujet, c’est d’attirer les bons acheteurs au bon moment, avec un prix défendable et une présentation cohérente.</p>
+          <p>Quand on vend, il est normal d’avoir peur de mal fixer le prix, d’attirer des acheteurs pas sérieux ou de ne pas savoir par où commencer. À Tahiti, le but n’est pas seulement de publier une annonce : c’est d’attirer les bons acheteurs, avec un prix défendable et une présentation cohérente.</p>
         </div>
         <div class="grid three seller-impact-grid">
           <article class="card"><h3>Prix trop haut</h3><p>Un mauvais prix de départ peut bloquer un bien pendant plusieurs mois, même s’il a de vrais atouts.</p></article>
@@ -162,7 +267,28 @@
         </div>
         <div class="cta-row seller-inline-cta">
           <a class="btn primary" href="#formulaire-vendeur" data-event="click_seller_problem_cta" data-conversion="form-estimation">Connaître la valeur de mon bien</a>
-          <a class="btn ghost" href="/blog-mandat-success-kw-tahiti.html" data-event="click_seller_mandat_success">Lire l’article Mandat Success</a>
+          <a class="btn whatsapp" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20j%E2%80%99aimerais%20obtenir%20une%20premi%C3%A8re%20lecture%20du%20march%C3%A9%20pour%20mon%20bien." target="_blank" rel="noopener" data-event="click_whatsapp_seller_market_read" data-conversion="whatsapp-vendeur">Obtenir une première lecture du marché</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section seller-band-types">
+      <div class="wrap seller-section-card">
+        <div class="section-head">
+          <p class="eyebrow">Types de projets</p>
+          <h2>J’accompagne notamment :</h2>
+          <p>Chaque projet immobilier à Tahiti a ses particularités. Le but n’est pas seulement de publier une annonce, mais de construire une stratégie cohérente selon le bien et le contexte.</p>
+        </div>
+        <div class="seller-type-grid">
+          <span>Appartements à Papeete & Punaauia</span>
+          <span>Maisons familiales</span>
+          <span>Terrains avec potentiel</span>
+          <span>Biens en succession ou indivision</span>
+          <span>Ventes plus discrètes</span>
+          <span>Investissements locatifs</span>
+        </div>
+        <div class="cta-row seller-inline-cta">
+          <a class="btn whatsapp" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20je%20me%20demande%20si%20mon%20bien%20peut%20%C3%AAtre%20int%C3%A9ressant%20%C3%A0%20vendre.%20Est-ce%20qu%E2%80%99on%20peut%20en%20parler%20%3F" target="_blank" rel="noopener" data-event="click_whatsapp_seller_types" data-conversion="whatsapp-vendeur">Parler de mon projet</a>
         </div>
       </div>
     </section>
@@ -185,7 +311,7 @@
           <span>Stratégie de commercialisation</span>
         </div>
         <div class="cta-row seller-inline-cta">
-          <a class="btn primary" href="#formulaire-vendeur" data-event="click_seller_analysis_cta" data-conversion="form-estimation">Parler de mon projet</a>
+          <a class="btn primary" href="#formulaire-vendeur" data-event="click_seller_analysis_cta" data-conversion="form-estimation">Recevoir une première estimation</a>
           <a class="btn whatsapp" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20j%E2%80%99aimerais%20conna%C3%AEtre%20la%20valeur%20de%20mon%20bien%20%C3%A0%20Tahiti." target="_blank" rel="noopener" data-event="click_whatsapp_seller_analysis" data-conversion="whatsapp-vendeur">Écrire sur WhatsApp</a>
         </div>
       </div>
@@ -237,7 +363,7 @@
         <div class="form-promise">
           <p class="eyebrow">Première étape</p>
           <h2>Demande ton estimation offerte</h2>
-          <p>Tu peux commencer simplement avec les premières informations sur ton bien 😊<br>On pourra compléter ensemble ensuite si besoin.</p>
+          <p>Tu peux commencer simplement avec les premières informations sur ton bien 😊<br>On complétera ensemble ensuite si besoin.</p>
           <ul class="trust-list">
             <li>Estimation offerte et sans engagement</li>
             <li>Retour humain, pas automatique</li>
@@ -245,6 +371,7 @@
           </ul>
         </div>
         <form data-estimation-form>
+          <p class="seller-form-intro">Tu peux commencer simplement avec les premières informations sur ton bien 😊<br>On complétera ensemble ensuite si besoin.</p>
           <div class="form-grid">
             <label>Ton prénom / nom
               <input name="nom" autocomplete="name" placeholder="Ex. Mathilde" required>
@@ -256,7 +383,7 @@
               <input name="email" type="email" autocomplete="email" placeholder="Ex. ton@email.com">
             </label>
             <label>Commune du bien
-              <input name="commune" placeholder="Papeete, Punaauia, Faaa, Moorea..." required>
+              <input name="commune" placeholder="Ex. Papeete, Punaauia, Faaa, Moorea..." required>
             </label>
             <label>Quel type de bien souhaites-tu vendre ?
               <select name="type" required>
@@ -279,16 +406,16 @@
               </select>
             </label>
             <label>Surface approximative
-              <input name="surface" placeholder="Ex. 90 m², 800 m² de terrain...">
+              <input name="surface" placeholder="Ex. 90 m², 800 m² de terrain, T2...">
             </label>
             <label>Secteur ou repère
-              <input name="adresse" placeholder="Quartier, PK, résidence, vallée...">
+              <input name="adresse" placeholder="Ex. quartier, PK, résidence, vallée...">
             </label>
           </div>
-          <label>Parle-moi un peu de ton projet
-            <textarea name="message" placeholder="Ex. Je veux connaître la valeur avant de décider, le bien est loué, il y a des travaux, c’est un terrain familial..."></textarea>
+          <label>Parle-moi un peu de ton projet 😊
+            <textarea name="message" placeholder="Ex. Je ne sais pas encore si je veux vendre, je veux d’abord connaître la valeur. Le bien est loué / familial / à rénover / en indivision..."></textarea>
           </label>
-          <button class="btn primary full" type="submit" data-event="click_seller_form_submit" data-conversion="form-estimation">Recevoir mon estimation offerte</button>
+          <button class="btn primary full" type="submit" data-event="click_seller_form_submit" data-conversion="form-estimation">Recevoir une première estimation</button>
           <p class="cta-note">Le formulaire ouvre WhatsApp avec ton message prérempli. Tu gardes la main sur l’envoi.</p>
         </form>
       </div>
