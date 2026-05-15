@@ -1043,38 +1043,38 @@ body.seo-page::before {
 }
 .seo-page.estimation-page .estimation-band-hero {
   background:
-    radial-gradient(circle at 12% 12%, rgba(7,135,160,.10), transparent 26rem),
-    linear-gradient(180deg, #fffaf5 0%, #fff3ea 100%);
+    radial-gradient(circle at 12% 12%, rgba(7,135,160,.18), transparent 25rem),
+    linear-gradient(180deg, #fff6ed 0%, #ffe6d6 100%);
 }
 .seo-page.estimation-page .estimation-band-problem {
-  background: #fff;
-  border-block: 1px solid rgba(234,223,213,.78);
+  background: #fffdf8;
+  border-block: 1px solid rgba(222,190,162,.90);
 }
 .seo-page.estimation-page .estimation-band-analysis {
-  background: linear-gradient(180deg, #f7fbfa 0%, #eff8f6 100%);
+  background: linear-gradient(180deg, #ecfaf8 0%, #dff4f1 100%);
 }
 .seo-page.estimation-page .estimation-band-cases {
-  background: linear-gradient(180deg, #fff6f0 0%, #fff0e6 100%);
-  border-block: 1px solid rgba(234,205,183,.72);
+  background: linear-gradient(180deg, #ffefe4 0%, #ffe0cc 100%);
+  border-block: 1px solid rgba(224,166,124,.78);
 }
 .seo-page.estimation-page .estimation-band-process {
-  background: #fbf8f2;
+  background: #f2eadf;
 }
 .seo-page.estimation-page .estimation-band-form {
   background:
-    radial-gradient(circle at 86% 18%, rgba(200,16,46,.10), transparent 22rem),
-    linear-gradient(180deg, #fff 0%, #fff7f3 100%);
-  border-block: 1px solid rgba(200,16,46,.12);
+    radial-gradient(circle at 86% 18%, rgba(200,16,46,.18), transparent 22rem),
+    linear-gradient(180deg, #fff4ef 0%, #ffe7df 100%);
+  border-block: 1px solid rgba(200,16,46,.20);
 }
 .seo-page.estimation-page .estimation-band-trust {
-  background: linear-gradient(180deg, #f4faf6 0%, #edf7f1 100%);
+  background: linear-gradient(180deg, #eaf8ee 0%, #dff1e6 100%);
 }
 .seo-page.estimation-page .estimation-band-faq {
-  background: #fff;
-  border-block: 1px solid rgba(234,223,213,.78);
+  background: #fffaf4;
+  border-block: 1px solid rgba(222,190,162,.86);
 }
 .seo-page.estimation-page .estimation-band-final {
-  background: linear-gradient(180deg, #fff5ed 0%, #faf8f4 100%);
+  background: linear-gradient(180deg, #ffeada 0%, #faf3ea 100%);
 }
 .seo-page.estimation-page .estimation-hero-grid {
   align-items: stretch;
