@@ -2074,7 +2074,9 @@ body.seo-page::before {
   font-weight: 800;
   line-height: 1.45;
 }
-.seo-page.t2-landing-page #visite-virtuelle,
+.seo-page.t2-landing-page #visite-virtuelle {
+  scroll-margin-top: 14px;
+}
 .seo-page.t2-landing-page #t2-formulaire-visite {
   scroll-margin-top: 92px;
 }
