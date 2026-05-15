@@ -20,6 +20,49 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css?v=20260515-seller-landing">
+  <style>
+    .seo-page.seller-ads-page .seller-hero-grid {
+      align-items: center;
+    }
+    .seo-page.seller-ads-page .seller-photo-card {
+      align-self: center;
+      justify-self: end;
+      width: min(100%, 430px);
+      min-height: 0;
+      grid-template-rows: auto auto;
+    }
+    .seo-page.seller-ads-page .seller-photo-card img {
+      display: block;
+      width: 100%;
+      height: min(42vw, 420px);
+      min-height: 0;
+      object-fit: contain;
+      object-position: center center;
+      background: linear-gradient(180deg, #f5ede5 0%, #efe3d8 100%);
+    }
+    @media (min-width: 861px) and (max-width: 1120px) {
+      .seo-page.seller-ads-page .seller-photo-card {
+        justify-self: center;
+        width: min(100%, 720px);
+        grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+        grid-template-rows: auto;
+      }
+      .seo-page.seller-ads-page .seller-photo-card img {
+        height: 280px;
+      }
+    }
+    @media (max-width: 860px) {
+      .seo-page.seller-ads-page .seller-photo-card {
+        order: 2;
+        width: min(100%, 340px);
+        margin: 0 auto;
+        grid-template-rows: auto auto;
+      }
+      .seo-page.seller-ads-page .seller-photo-card img {
+        height: min(56vw, 230px);
+      }
+    }
+  </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJHRFHZHER"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-SJHRFHZHER");</script>
   <!-- Meta Pixel Code -->
@@ -51,7 +94,7 @@
           <p class="microcopy">Aucune obligation de vendre. On peut commencer simplement par WhatsApp.</p>
         </div>
         <aside class="seller-photo-card" aria-label="Mathilde Tuduri, conseillère immobilier KW Polynésie">
-          <img src="/mathilde-avatar.jpg" alt="Mathilde Tuduri, conseillère immobilier KW Polynésie à Tahiti">
+          <img src="/mathilde-avatar.jpg" alt="Mathilde Tuduri, conseillère immobilier KW Polynésie à Tahiti" loading="eager" fetchpriority="high">
           <div>
             <strong>Mathilde Tuduri</strong>
             <span>Conseillère immobilier KW Polynésie</span>
