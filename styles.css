@@ -1552,6 +1552,19 @@ body.seo-page::before {
 .seo-page.t2-landing-page .t2-summary-grid .card {
   min-height: 150px;
 }
+.seo-page.t2-landing-page .t2-fit-grid {
+  display: grid;
+  gap: 12px;
+}
+.seo-page.t2-landing-page .t2-fit-grid .card {
+  border-top: 1.5px solid var(--line);
+}
+.seo-page.t2-landing-page .t2-fit-grid .positive {
+  background: linear-gradient(180deg, #ffffff 0%, #f6fff8 100%);
+}
+.seo-page.t2-landing-page .t2-fit-grid .negative {
+  background: linear-gradient(180deg, #ffffff 0%, #fff8f5 100%);
+}
 .seo-page.t2-landing-page .t2-process .conversion-panel div {
   background: #fff;
 }
@@ -1673,6 +1686,16 @@ body.seo-page::before {
   .seo-page.t2-landing-page .t2-summary-grid {
     gap: 16px;
   }
+  .seo-page.t2-landing-page .t2-fit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .seo-page.t2-landing-page .t2-fit-grid .card {
+    padding: 26px;
+  }
+  .seo-page.t2-landing-page .t2-fit-grid h2 {
+    font-size: 32px;
+  }
   .seo-page.t2-landing-page .t2-summary-grid .card,
   .seo-page.t2-landing-page .faq-mini details {
     border-radius: 16px;
@@ -1715,6 +1738,15 @@ body.seo-page::before {
   }
   .seo-page.t2-landing-page .contact-strip .cta-row {
     width: min(320px, 100%);
+  }
+  .seo-page.t2-landing-page .sticky-whatsapp {
+    left: auto;
+    right: 24px;
+    bottom: 24px;
+    width: auto;
+    min-width: 260px;
+    max-width: 320px;
+    border-radius: 16px;
   }
 }
 
