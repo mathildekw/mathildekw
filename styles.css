@@ -2937,3 +2937,364 @@ body.seo-page::before {
     text-align: center;
   }
 }
+
+/* Landing vendeur Google Ads */
+.seo-page.seller-ads-page {
+  background:
+    radial-gradient(circle at 12% 6%, rgba(7, 135, 160, .10), transparent 30rem),
+    linear-gradient(180deg, #fffdf9 0%, #fff6ef 52%, #faf8f4 100%);
+}
+.seo-page.seller-ads-page .hero {
+  padding: 26px 0 24px;
+}
+.seo-page.seller-ads-page .seller-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, .92fr);
+  gap: 18px;
+  align-items: stretch;
+}
+.seo-page.seller-ads-page .seller-hero-copy,
+.seo-page.seller-ads-page .seller-photo-card,
+.seo-page.seller-ads-page .seller-section-card,
+.seo-page.seller-ads-page .seller-form-layout {
+  background: rgba(255,255,255,.94);
+  border: 1.5px solid var(--line);
+  border-radius: 22px;
+  box-shadow: 0 16px 42px rgba(35, 24, 17, .08);
+}
+.seo-page.seller-ads-page .seller-hero-copy {
+  padding: clamp(22px, 4vw, 42px);
+}
+.seo-page.seller-ads-page h1 {
+  max-width: 780px;
+  font-size: clamp(2.35rem, 5.6vw, 4.85rem);
+}
+.seo-page.seller-ads-page .lead {
+  max-width: 720px;
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+}
+.seo-page.seller-ads-page .seller-badges {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 20px;
+}
+.seo-page.seller-ads-page .seller-hero-actions,
+.seo-page.seller-ads-page .seller-inline-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 12px;
+}
+.seo-page.seller-ads-page .seller-hero-actions .btn,
+.seo-page.seller-ads-page .seller-inline-cta .btn,
+.seo-page.seller-ads-page .seller-final-cta .btn {
+  width: auto;
+  max-width: 320px;
+}
+.seo-page.seller-ads-page .microcopy {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.seo-page.seller-ads-page .seller-photo-card {
+  display: grid;
+  grid-template-rows: minmax(340px, 1fr) auto;
+  overflow: hidden;
+  min-height: 100%;
+}
+.seo-page.seller-ads-page .seller-photo-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+}
+.seo-page.seller-ads-page .seller-photo-card div {
+  padding: 16px 18px;
+  background: #15100d;
+  color: #fff;
+}
+.seo-page.seller-ads-page .seller-photo-card strong,
+.seo-page.seller-ads-page .seller-photo-card span {
+  display: block;
+}
+.seo-page.seller-ads-page .seller-photo-card strong {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 27px;
+  font-weight: 600;
+}
+.seo-page.seller-ads-page .seller-photo-card span {
+  color: rgba(255,255,255,.72);
+  font-size: 13px;
+}
+.seo-page.seller-ads-page .section {
+  padding: 18px 0;
+}
+.seo-page.seller-ads-page .seller-band-problem,
+.seo-page.seller-ads-page .seller-band-trust {
+  background: rgba(255, 244, 238, .72);
+}
+.seo-page.seller-ads-page .seller-band-analysis,
+.seo-page.seller-ads-page .seller-band-faq {
+  background: rgba(235, 249, 249, .55);
+}
+.seo-page.seller-ads-page .seller-band-method,
+.seo-page.seller-ads-page .seller-band-form {
+  background: rgba(255, 251, 244, .70);
+}
+.seo-page.seller-ads-page .seller-section-card {
+  padding: clamp(20px, 3.4vw, 34px);
+}
+.seo-page.seller-ads-page .section-head {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  max-width: 830px;
+}
+.seo-page.seller-ads-page .section-head h2 {
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
+}
+.seo-page.seller-ads-page .section-head h2::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: var(--kw-red);
+}
+.seo-page.seller-ads-page .seller-impact-grid,
+.seo-page.seller-ads-page .seller-trust-grid {
+  margin-top: 22px;
+}
+.seo-page.seller-ads-page .seller-impact-grid .card,
+.seo-page.seller-ads-page .seller-trust-grid .card,
+.seo-page.seller-ads-page .seller-steps .step,
+.seo-page.seller-ads-page .faq-mini details {
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: 16px;
+}
+.seo-page.seller-ads-page .seller-check-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 22px;
+}
+.seo-page.seller-ads-page .seller-check-grid span {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 13px 14px;
+  border: 1.5px solid #f0d5da;
+  border-radius: 16px;
+  background: #fff8f8;
+  color: #3e342d;
+  font-size: 13px;
+  font-weight: 850;
+}
+.seo-page.seller-ads-page .seller-review-proof {
+  margin-top: 20px;
+  background: #15100d;
+  color: #fff;
+}
+.seo-page.seller-ads-page .seller-review-proof p {
+  color: rgba(255,255,255,.74);
+}
+.seo-page.seller-ads-page .seller-review-proof .btn {
+  color: #fff;
+  border-color: rgba(255,255,255,.38);
+}
+.seo-page.seller-ads-page .seller-form-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  gap: 18px;
+  padding: clamp(18px, 3vw, 28px);
+}
+.seo-page.seller-ads-page .form-promise {
+  background: #15100d;
+  color: #fff;
+  border-radius: 18px;
+  padding: clamp(20px, 3vw, 30px);
+}
+.seo-page.seller-ads-page .form-promise p,
+.seo-page.seller-ads-page .form-promise .trust-list {
+  color: rgba(255,255,255,.74);
+}
+.seo-page.seller-ads-page .form-promise h2 {
+  color: #fff;
+}
+.seo-page.seller-ads-page .form-promise .trust-list {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.seo-page.seller-ads-page .form-promise .trust-list li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 14px;
+}
+.seo-page.seller-ads-page .form-promise .trust-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--kw-red);
+}
+.seo-page.seller-ads-page form {
+  box-shadow: none;
+  border-radius: 18px;
+  padding: clamp(16px, 2.5vw, 24px);
+}
+.seo-page.seller-ads-page form label {
+  display: grid;
+  gap: 7px;
+  color: #332b25;
+}
+.seo-page.seller-ads-page input,
+.seo-page.seller-ads-page select,
+.seo-page.seller-ads-page textarea {
+  border-radius: 14px;
+  border-color: #ead8ca;
+  background: #fffdfb;
+}
+.seo-page.seller-ads-page input:focus,
+.seo-page.seller-ads-page select:focus,
+.seo-page.seller-ads-page textarea:focus {
+  outline: 3px solid rgba(200, 16, 46, .12);
+  border-color: rgba(200, 16, 46, .45);
+}
+.seo-page.seller-ads-page .seller-final-cta .contact-strip {
+  background:
+    linear-gradient(135deg, rgba(21,16,13,.96), rgba(70,44,36,.94)),
+    url("/ocean-aerial-polynesie.jpg") center/cover no-repeat;
+}
+.seller-sticky-actions {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .seo-page.seller-ads-page {
+    padding-bottom: 92px;
+  }
+  .seo-page.seller-ads-page .seller-hero-grid,
+  .seo-page.seller-ads-page .seller-form-layout {
+    grid-template-columns: 1fr;
+  }
+  .seo-page.seller-ads-page .seller-photo-card {
+    order: -1;
+    grid-template-rows: minmax(180px, 210px) auto;
+  }
+  .seo-page.seller-ads-page .seller-photo-card img {
+    min-height: 180px;
+    object-position: center 16%;
+  }
+  .seo-page.seller-ads-page .seller-photo-card div {
+    padding: 12px 14px;
+  }
+  .seo-page.seller-ads-page h1 {
+    font-size: 32px;
+  }
+  .seo-page.seller-ads-page .seller-hero-copy {
+    padding: 18px 16px;
+  }
+  .seo-page.seller-ads-page .lead {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .seo-page.seller-ads-page .seller-badges {
+    grid-template-columns: 1fr;
+  }
+  .seo-page.seller-ads-page .seller-hero-actions,
+  .seo-page.seller-ads-page .seller-inline-cta {
+    justify-content: center;
+  }
+  .seo-page.seller-ads-page .seller-hero-actions .btn,
+  .seo-page.seller-ads-page .seller-inline-cta .btn,
+  .seo-page.seller-ads-page .seller-final-cta .btn {
+    width: auto;
+    max-width: min(100%, 300px);
+  }
+  .seo-page.seller-ads-page .seller-check-grid,
+  .seo-page.seller-ads-page .seller-impact-grid,
+  .seo-page.seller-ads-page .seller-trust-grid {
+    grid-template-columns: 1fr;
+  }
+  .seo-page.seller-ads-page .seller-form-layout {
+    padding: 12px;
+  }
+  .seo-page.seller-ads-page .form-promise {
+    padding: 20px;
+  }
+  .seller-sticky-actions {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    z-index: 70;
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 8px;
+    padding: 8px;
+    border: 1.5px solid rgba(255,255,255,.78);
+    border-radius: 22px;
+    background: rgba(255,250,245,.94);
+    box-shadow: 0 18px 44px rgba(35,24,17,.22);
+    backdrop-filter: blur(14px);
+  }
+  .seller-sticky-actions a {
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 900;
+    text-align: center;
+  }
+  .seller-sticky-actions a:first-child {
+    background: var(--green);
+    color: #fff;
+  }
+  .seller-sticky-actions a:last-child {
+    background: var(--kw-red);
+    color: #fff;
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1120px) {
+  .seo-page.seller-ads-page .seller-hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .seo-page.seller-ads-page .seller-photo-card {
+    grid-template-columns: 280px 1fr;
+    grid-template-rows: 1fr;
+  }
+  .seo-page.seller-ads-page .seller-photo-card img {
+    min-height: 260px;
+  }
+  .seo-page.seller-ads-page .seller-check-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .seo-page.seller-ads-page .seller-form-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 860px) {
+  .seo-page.seller-ads-page {
+    padding-bottom: 0;
+  }
+  .seller-sticky-actions {
+    display: none;
+  }
+}
