@@ -321,14 +321,15 @@ document.addEventListener("DOMContentLoaded", function () {
       var data = new FormData(t2VirtualForm);
       markFormSubmitted(t2VirtualForm);
       var message = [
-        "Ia ora na Mathilde, je souhaite recevoir la visite virtuelle du T2 a Punaauia PK11.",
+        "Ia ora na Mathilde, je souhaite demander la visite virtuelle du T2 a Punaauia PK11.",
         "",
         "Prenom : " + (data.get("prenom") || ""),
         "Nom : " + (data.get("nom") || ""),
         "Telephone / WhatsApp : " + (data.get("telephone") || ""),
         "Email : " + (data.get("email") || ""),
         "Projet : " + (data.get("projet") || ""),
-        "Confirmation infos exactes : oui, pour preparer le bon de visite a distance.",
+        "Meilleur moment pour l'appel de 5 minutes : " + (data.get("rappel") || ""),
+        "Confirmation infos exactes : oui, je comprends que Mathilde me rappellera pour confirmer mon projet avant l'envoi eventuel de la visite virtuelle.",
         "Message : " + (data.get("message") || "")
       ].join("\n");
       trackEvent("form_submit", {
@@ -336,12 +337,14 @@ document.addEventListener("DOMContentLoaded", function () {
         form_name: "t2_virtual_visit",
         form_location: window.location.pathname,
         buyer_project: data.get("projet") || "",
+        callback_time: data.get("rappel") || "",
         filled_fields_count: Array.from(data.values()).filter(function (value) { return String(value || "").trim(); }).length
       });
       trackEvent("submit_form_t2_virtual", {
         event_category: "buyer_lead",
         form_location: window.location.pathname,
         buyer_project: data.get("projet") || "",
+        callback_time: data.get("rappel") || "",
         filled_fields_count: Array.from(data.values()).filter(function (value) { return String(value || "").trim(); }).length
       });
       trackEvent("click_whatsapp_t2_virtual_form", { event_category: "buyer_lead", form_location: window.location.pathname, source: "t2_virtual_form" });
