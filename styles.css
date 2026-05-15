@@ -1038,6 +1038,118 @@ body.seo-page::before {
   font-size: 13px;
   line-height: 1.6;
 }
+.seo-page.estimation-page .estimation-ads-hero {
+  padding-top: 18px;
+}
+.seo-page.estimation-page .estimation-hero-grid {
+  align-items: stretch;
+}
+.seo-page.estimation-page .estimation-hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.seo-page.estimation-page .micro-copy {
+  max-width: 620px;
+  margin: 14px auto 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+.seo-page.estimation-page .estimation-photo-card {
+  display: grid;
+  align-content: end;
+  min-height: 390px;
+  overflow: hidden;
+  border: 1.5px solid var(--line);
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 18px 44px rgba(35, 24, 17, .11);
+}
+.seo-page.estimation-page .estimation-photo-card img,
+.seo-page.estimation-page .estimation-trust-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+.seo-page.estimation-page .estimation-photo-card div {
+  padding: 18px;
+  background: #171412;
+  color: #fff;
+}
+.seo-page.estimation-page .estimation-photo-card strong,
+.seo-page.estimation-page .estimation-photo-card span {
+  display: block;
+}
+.seo-page.estimation-page .estimation-photo-card span {
+  margin-top: 4px;
+  color: rgba(255,255,255,.72);
+  font-size: 13px;
+}
+.seo-page.estimation-page .estimation-case-grid .card {
+  display: flex;
+  flex-direction: column;
+}
+.seo-page.estimation-page .estimation-case-grid .btn {
+  margin-top: auto;
+}
+.seo-page.estimation-page .estimation-trust-card {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+.seo-page.estimation-page .estimation-trust-card img {
+  border-radius: 16px;
+}
+.seo-page.estimation-page .estimation-trust-card strong {
+  display: block;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.seo-page.estimation-page .review-proof {
+  margin: 12px 0 0;
+  padding: 14px;
+  border: 1.5px solid rgba(200,16,46,.18);
+  border-radius: 16px;
+  background: #fff8f6;
+  color: #443b35;
+  font-weight: 800;
+}
+.seo-page.estimation-page #formulaire-estimation {
+  scroll-margin-top: 96px;
+}
+@media (min-width: 861px) {
+  .seo-page.estimation-page .estimation-hero-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, .72fr);
+    gap: 22px;
+  }
+  .seo-page.estimation-page .grid.two,
+  .seo-page.estimation-page .trust-proof-grid,
+  .seo-page.estimation-page .estimation-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .seo-page.estimation-page .grid.three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .seo-page.estimation-page .grid.four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .seo-page.estimation-page .estimation-photo-card {
+    min-height: 100%;
+  }
+  .seo-page.estimation-page .estimation-photo-card img {
+    height: 100%;
+    min-height: 390px;
+  }
+  .seo-page.estimation-page .micro-copy {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+  }
+}
 .seo-page .sticky-whatsapp {
   left: 50%;
   right: auto;
