@@ -1552,6 +1552,63 @@ body.seo-page::before {
 .seo-page.t2-landing-page .t2-summary-grid .card {
   min-height: 150px;
 }
+.seo-page.t2-landing-page .t2-inline-cta,
+.seo-page.t2-landing-page .t2-anchor-cta {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+  padding: 18px;
+  border: 1.5px solid rgba(200,16,46,.20);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(35, 24, 17, .07);
+}
+.seo-page.t2-landing-page .t2-inline-cta span,
+.seo-page.t2-landing-page .t2-anchor-cta p,
+.seo-page.t2-landing-page .t2-key-stack span {
+  color: var(--muted);
+}
+.seo-page.t2-landing-page .t2-inline-cta span {
+  font-weight: 800;
+  line-height: 1.45;
+}
+.seo-page.t2-landing-page #visite-virtuelle,
+.seo-page.t2-landing-page #t2-formulaire-visite {
+  scroll-margin-top: 92px;
+}
+.seo-page.t2-landing-page .t2-anchor-cta {
+  margin-top: 0;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #fff 0%, #fff4ed 100%);
+}
+.seo-page.t2-landing-page .t2-anchor-cta h2 {
+  font-size: clamp(28px, 8vw, 44px);
+  line-height: .98;
+}
+.seo-page.t2-landing-page .t2-reassurance {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(23,20,18,.07);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.seo-page.t2-landing-page .t2-key-stack {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 16px;
+  background: #171412;
+}
+.seo-page.t2-landing-page .t2-key-stack strong {
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.15;
+}
+.seo-page.t2-landing-page .t2-key-stack span {
+  color: rgba(255,255,255,.76);
+  font-size: 13px;
+  line-height: 1.35;
+}
 .seo-page.t2-landing-page .t2-fit-grid {
   display: grid;
   gap: 12px;
@@ -1585,6 +1642,7 @@ body.seo-page::before {
 .seo-page.t2-landing-page .sticky-whatsapp {
   background: var(--kw-red);
   box-shadow: 0 14px 34px rgba(200,16,46,.28);
+  min-height: 52px;
 }
 @media (min-width: 720px) {
   .seo-page.t2-landing-page .t2-summary-grid {
@@ -1685,6 +1743,25 @@ body.seo-page::before {
   }
   .seo-page.t2-landing-page .t2-summary-grid {
     gap: 16px;
+  }
+  .seo-page.t2-landing-page .t2-inline-cta {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    padding: 22px;
+  }
+  .seo-page.t2-landing-page .t2-inline-cta .btn {
+    width: auto;
+    min-width: 260px;
+  }
+  .seo-page.t2-landing-page .t2-anchor-cta {
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, .75fr);
+    align-items: center;
+    padding: 26px;
+  }
+  .seo-page.t2-landing-page .t2-anchor-cta .cta-row {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
   .seo-page.t2-landing-page .t2-fit-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
