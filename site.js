@@ -69,10 +69,31 @@ function trackEvent(name, params) {
   if (typeof window.gtag === "function") {
     window.gtag("event", name, payload);
   }
+  trackMetaEvent(name, payload);
   if (typeof window.clarity === "function") {
     try {
       window.clarity("event", name);
     } catch (e) {}
+  }
+}
+
+function trackMetaEvent(name, payload) {
+  if (typeof window.fbq !== "function") return;
+  var metaPayload = {
+    content_name: payload && payload.page_title ? cleanText(payload.page_title) : document.title || "",
+    content_category: payload && payload.event_category ? payload.event_category : classifyEvent(name),
+    page_path: window.location.pathname
+  };
+  if (name.indexOf("submit_form") !== -1 || name === "form_submit") {
+    window.fbq("track", "Lead", metaPayload);
+    return;
+  }
+  if (name.indexOf("whatsapp") !== -1 || name.indexOf("call") !== -1 || name.indexOf("email") !== -1) {
+    window.fbq("track", "Contact", metaPayload);
+    return;
+  }
+  if (name.indexOf("virtual_tour") !== -1 || name.indexOf("t2_virtual") !== -1) {
+    window.fbq("trackCustom", "VirtualTourIntent", metaPayload);
   }
 }
 
@@ -148,6 +169,21 @@ document.addEventListener("DOMContentLoaded", function () {
     page_language: document.documentElement.lang || "",
     device_type: window.innerWidth < 768 ? "mobile" : "desktop"
   });
+
+  if (window.location.pathname.indexOf("appartement-t2-punaauia-pk11.html") !== -1 && typeof window.fbq === "function") {
+    var propertyPayload = {
+      content_name: "T2 à Punaauia PK11 avec vue Moorea",
+      content_category: "Bien immobilier",
+      content_ids: ["appartement-t2-punaauia-pk11"],
+      content_type: "product",
+      value: 39500000,
+      currency: "XPF"
+    };
+    window.fbq("track", "ViewContent", propertyPayload);
+    if (window.location.hash === "#visite-virtuelle") {
+      window.fbq("trackCustom", "ViewVirtualTour", propertyPayload);
+    }
+  }
 
   document.querySelectorAll(".nav-toggle").forEach(function (toggle) {
     if (!toggle.textContent.trim() || toggle.textContent.trim() === "☰") {
