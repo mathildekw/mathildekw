@@ -803,6 +803,125 @@ body.seo-page::before {
   box-shadow: 0 8px 24px rgba(0,0,0,.045);
   padding: 18px;
 }
+.seo-page main > .section > .wrap:not(.contact-strip):not(.properties-contact-band):not(.review-proof) {
+  background: rgba(255,255,255,.74);
+  border: 1.5px solid rgba(35,24,17,.10);
+  border-radius: 26px;
+  box-shadow: 0 16px 38px rgba(35,24,17,.075);
+  padding: clamp(20px, 4vw, 38px);
+}
+.seo-page main > .section.alt > .wrap:not(.contact-strip):not(.properties-contact-band):not(.review-proof) {
+  background: rgba(255,255,255,.68);
+}
+.seo-page main > .section > .wrap > .section-head,
+.seo-page main > .section > .wrap.grid > .section-head,
+.seo-page main > .section > .wrap > .form-promise {
+  background: transparent;
+  border: 0;
+  border-bottom: 1.5px solid rgba(35,24,17,.10);
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 22px;
+  max-width: 880px;
+  padding: 0 0 22px;
+}
+.seo-page main > .section > .wrap > .section-head h2,
+.seo-page main > .section > .wrap.grid > .section-head h2 {
+  position: relative;
+  margin-top: 0;
+  padding-bottom: 12px;
+}
+.seo-page main > .section > .wrap > .section-head h2::after,
+.seo-page main > .section > .wrap.grid > .section-head h2::after {
+  content: "";
+  display: block;
+  width: 58px;
+  height: 3px;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: var(--kw-red);
+}
+.seo-page main > .section > .wrap > .grid,
+.seo-page main > .section > .wrap > .steps,
+.seo-page main > .section > .wrap > .faq-mini,
+.seo-page main > .section > .wrap > .conversion-panel,
+.seo-page main > .section > .wrap > .seller-signal-grid,
+.seo-page main > .section > .wrap > .proof-row {
+  gap: 0;
+}
+.seo-page main > .section > .wrap .card:not(.listing):not(.property-card-premium):not(.properties-mini-card):not(.property-criteria-card),
+.seo-page main > .section > .wrap .step,
+.seo-page main > .section > .wrap .conversion-panel,
+.seo-page main > .section > .wrap .faq-mini details,
+.seo-page main > .section > .wrap .seller-signal,
+.seo-page main > .section > .wrap form {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.seo-page main > .section > .wrap .card:not(.listing):not(.property-card-premium):not(.properties-mini-card):not(.property-criteria-card),
+.seo-page main > .section > .wrap .step,
+.seo-page main > .section > .wrap .faq-mini details,
+.seo-page main > .section > .wrap .seller-signal {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(35,24,17,.10);
+}
+.seo-page main > .section > .wrap .grid > .card:last-child,
+.seo-page main > .section > .wrap .steps > .step:last-child,
+.seo-page main > .section > .wrap .faq-mini > details:last-child,
+.seo-page main > .section > .wrap .seller-signal-grid > .seller-signal:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.seo-page main > .section > .wrap .grid > .card:first-child,
+.seo-page main > .section > .wrap .steps > .step:first-child,
+.seo-page main > .section > .wrap .faq-mini > details:first-child,
+.seo-page main > .section > .wrap .seller-signal-grid > .seller-signal:first-child {
+  padding-top: 0;
+}
+.seo-page main > .section > .wrap form {
+  padding: 0;
+}
+@media (min-width: 861px) {
+  .seo-page main > .section > .wrap > .grid.two,
+  .seo-page main > .section > .wrap > .grid.three,
+  .seo-page main > .section > .wrap > .grid.four,
+  .seo-page main > .section > .wrap > .seller-signal-grid,
+  .seo-page main > .section > .wrap > .proof-row {
+    column-gap: 0;
+  }
+  .seo-page main > .section > .wrap > .grid.two > .card:not(.listing):not(.property-card-premium):not(.properties-mini-card):not(.property-criteria-card),
+  .seo-page main > .section > .wrap > .grid.three > .card:not(.listing):not(.property-card-premium):not(.properties-mini-card):not(.property-criteria-card),
+  .seo-page main > .section > .wrap > .grid.four > .card:not(.listing):not(.property-card-premium):not(.properties-mini-card):not(.property-criteria-card),
+  .seo-page main > .section > .wrap > .seller-signal-grid > .seller-signal,
+  .seo-page main > .section > .wrap > .proof-row > .card:not(.listing) {
+    border-bottom: 0;
+    border-right: 1px solid rgba(35,24,17,.10);
+    padding: 0 20px;
+  }
+  .seo-page main > .section > .wrap > .grid.two > .card:first-child,
+  .seo-page main > .section > .wrap > .grid.three > .card:first-child,
+  .seo-page main > .section > .wrap > .grid.four > .card:first-child,
+  .seo-page main > .section > .wrap > .seller-signal-grid > .seller-signal:first-child,
+  .seo-page main > .section > .wrap > .proof-row > .card:first-child {
+    padding-left: 0;
+  }
+  .seo-page main > .section > .wrap > .grid.two > .card:last-child,
+  .seo-page main > .section > .wrap > .grid.three > .card:last-child,
+  .seo-page main > .section > .wrap > .grid.four > .card:last-child,
+  .seo-page main > .section > .wrap > .seller-signal-grid > .seller-signal:last-child,
+  .seo-page main > .section > .wrap > .proof-row > .card:last-child {
+    border-right: 0;
+    padding-right: 0;
+  }
+  .seo-page main > .section > .wrap > .steps {
+    gap: 0;
+  }
+  .seo-page main > .section > .wrap > .steps > .step {
+    padding: 20px 0;
+  }
+}
 .seo-page .steps {
   gap: 10px;
 }
