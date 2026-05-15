@@ -1084,6 +1084,27 @@ body.seo-page::before {
   flex-direction: column;
   justify-content: center;
 }
+.seo-page.estimation-page .section-head {
+  position: relative;
+  max-width: 860px;
+}
+.seo-page.estimation-page .section-head h2 {
+  position: relative;
+  margin-top: 0;
+  padding-bottom: 12px;
+  color: #171412;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: .94;
+}
+.seo-page.estimation-page .section-head h2::after {
+  content: "";
+  display: block;
+  width: 76px;
+  height: 4px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: var(--kw-red);
+}
 .seo-page.estimation-page .micro-copy {
   max-width: 620px;
   margin: 14px auto 0;
@@ -1123,6 +1144,44 @@ body.seo-page::before {
   margin-top: 4px;
   color: rgba(255,255,255,.72);
   font-size: 13px;
+}
+.seo-page.estimation-page .estimation-insight-list,
+.seo-page.estimation-page .estimation-value-list {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  border: 1.5px solid rgba(35,24,17,.10);
+  border-radius: 22px;
+  background: rgba(255,255,255,.62);
+  box-shadow: 0 12px 28px rgba(35,24,17,.055);
+}
+.seo-page.estimation-page .estimation-insight-list p,
+.seo-page.estimation-page .estimation-value-list p {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 18px;
+  border-bottom: 1px solid rgba(35,24,17,.08);
+}
+.seo-page.estimation-page .estimation-insight-list p:last-child,
+.seo-page.estimation-page .estimation-value-list p:last-child {
+  border-bottom: 0;
+}
+.seo-page.estimation-page .estimation-insight-list strong,
+.seo-page.estimation-page .estimation-value-list strong {
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.2;
+}
+.seo-page.estimation-page .estimation-insight-list span,
+.seo-page.estimation-page .estimation-value-list span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.seo-page.estimation-page .estimation-insight-list p {
+  grid-template-columns: minmax(130px, .34fr) minmax(0, 1fr);
+  align-items: start;
 }
 .seo-page.estimation-page .estimation-case-grid .card {
   display: flex;
@@ -1171,6 +1230,15 @@ body.seo-page::before {
   }
   .seo-page.estimation-page .grid.four {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .seo-page.estimation-page .estimation-value-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .seo-page.estimation-page .estimation-value-list p:nth-child(odd) {
+    border-right: 1px solid rgba(35,24,17,.08);
+  }
+  .seo-page.estimation-page .estimation-value-list p:nth-last-child(-n+2) {
+    border-bottom: 0;
   }
   .seo-page.estimation-page .estimation-photo-card {
     min-height: 100%;
