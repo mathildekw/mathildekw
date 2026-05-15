@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Ia ora na Mathilde, je souhaite recevoir les infos sur l'investissement immobilier aux Etats-Unis.",
         "",
         "Prenom : " + (data.get("prenom") || ""),
-        "Telephone / WhatsApp : " + (data.get("telephone") || ""),
+        "Numero de telephone : " + (data.get("telephone") || ""),
         "Budget approximatif : " + (data.get("budget") || ""),
         "Message : " + (data.get("message") || "")
       ].join("\n");
