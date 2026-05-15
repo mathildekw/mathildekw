@@ -263,9 +263,13 @@ document.addEventListener("DOMContentLoaded", function () {
         "Type de bien : " + (data.get("type") || ""),
         "Objectif : " + (data.get("objectif") || ""),
         "Surface approximative : " + (data.get("surface") || ""),
+        "Situation du bien : " + (data.get("situation") || ""),
         "Delai ideal : " + (data.get("delai") || ""),
+        "Meilleur moment pour l'appel vendeur : " + (data.get("rappel") || ""),
         "Secteur / repere : " + (data.get("adresse") || ""),
-        "Message : " + (data.get("message") || "")
+        "Message : " + (data.get("message") || ""),
+        "",
+        "Je comprends que Mathilde me rappellera pour cadrer l'estimation et preparer un avis de valeur adapte."
       ].join("\n");
       trackEvent("submit_form_estimation", {
         event_category: "seller_lead",
@@ -273,7 +277,9 @@ document.addEventListener("DOMContentLoaded", function () {
         property_type: data.get("type") || "",
         property_city: cleanText(data.get("commune") || ""),
         seller_goal: data.get("objectif") || "",
+        seller_context: data.get("situation") || "",
         seller_timing: data.get("delai") || "",
+        callback_time: data.get("rappel") || "",
         filled_fields_count: Array.from(data.values()).filter(function (value) { return String(value || "").trim(); }).length
       });
       trackEvent("click_whatsapp_estimation", { event_category: "seller_lead", form_location: window.location.pathname, source: "estimation_form" });
