@@ -2046,6 +2046,53 @@ body.seo-page::before {
   top: 14px;
   z-index: 2;
 }
+.seo-page.t2-landing-page .t2-gallery-action {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 72px;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,.34);
+  border-radius: 16px;
+  background: rgba(23,20,18,.78);
+  color: #fff;
+  box-shadow: 0 12px 32px rgba(0,0,0,.26);
+  backdrop-filter: blur(10px);
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.seo-page.t2-landing-page .t2-gallery-action span {
+  color: rgba(255,255,255,.86);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.seo-page.t2-landing-page .t2-gallery-action a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 42px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: var(--kw-red);
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 950;
+  box-shadow: 0 10px 26px rgba(200,16,46,.34);
+}
+.seo-page.t2-landing-page .t2-gallery.is-gallery-engaged .t2-gallery-action {
+  background: rgba(23,20,18,.92);
+  box-shadow: 0 16px 38px rgba(0,0,0,.36), 0 0 0 2px rgba(255,255,255,.12);
+  transform: translateY(-2px);
+}
+.seo-page.t2-landing-page .t2-gallery.is-gallery-engaged .t2-gallery-action a::before {
+  content: "✓ ";
+}
 .seo-page.t2-landing-page .t2-gallery-hint,
 .seo-page.t2-landing-page .t2-gallery-counter {
   position: absolute;
@@ -2276,6 +2323,15 @@ body.seo-page::before {
   min-height: 52px;
 }
 @media (min-width: 720px) {
+  .seo-page.t2-landing-page .t2-gallery-action {
+    left: 18px;
+    right: auto;
+    bottom: 90px;
+    width: min(360px, calc(100% - 36px));
+  }
+  .seo-page.t2-landing-page .t2-gallery-action a {
+    min-width: 210px;
+  }
   .seo-page.t2-landing-page .t2-summary-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2391,7 +2447,7 @@ body.seo-page::before {
   }
   .seo-page.t2-landing-page .t2-gallery-main .badge {
     top: auto;
-    bottom: 18px;
+    bottom: 24px;
   }
   .seo-page.t2-landing-page .t2-summary-grid {
     gap: 16px;

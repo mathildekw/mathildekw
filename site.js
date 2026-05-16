@@ -188,13 +188,17 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll("[data-t2-gallery]").forEach(function (gallery) {
     var main = gallery.querySelector("[data-gallery-main]");
     var indexLabel = gallery.querySelector("[data-gallery-index]");
+    var action = gallery.querySelector("[data-gallery-action]");
+    var caption = gallery.querySelector("[data-gallery-caption]");
     var thumbs = Array.prototype.slice.call(gallery.querySelectorAll("[data-gallery-thumb]"));
     if (!main || !thumbs.length) return;
     var current = 0;
+    var photoInteractions = 0;
 
     function showPhoto(index, source) {
       current = (index + thumbs.length) % thumbs.length;
       var thumb = thumbs[current];
+      photoInteractions += source ? 1 : 0;
       main.style.opacity = ".55";
       window.setTimeout(function () {
         main.src = thumb.getAttribute("data-full");
@@ -202,16 +206,29 @@ document.addEventListener("DOMContentLoaded", function () {
         main.style.opacity = "1";
       }, 80);
       if (indexLabel) indexLabel.textContent = String(current + 1);
+      if (caption) caption.textContent = thumb.getAttribute("data-caption") || "Cette photo te plaît ? Demande la fiche complète avant de programmer une visite.";
       thumbs.forEach(function (item, itemIndex) {
         item.classList.toggle("is-active", itemIndex === current);
       });
+      if (action && photoInteractions >= 3) {
+        gallery.classList.add("is-gallery-engaged");
+        action.setAttribute("data-engaged", "true");
+      }
       if (source) {
         trackEvent("view_t2_gallery_photo", {
           event_category: "buyer_lead",
           gallery_index: current + 1,
           gallery_source: source,
-          image_url: thumb.getAttribute("data-full") || ""
+          image_url: thumb.getAttribute("data-full") || "",
+          gallery_interactions: photoInteractions
         });
+        if (photoInteractions === 3) {
+          trackEvent("t2_gallery_cta_prompt", {
+            event_category: "buyer_lead",
+            gallery_index: current + 1,
+            form_location: window.location.pathname
+          });
+        }
       }
     }
 
@@ -371,7 +388,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Ia ora na Mathilde, je souhaite recevoir les informations sur le T2 a Punaauia PK11.",
         "",
         "Prenom : " + (data.get("prenom") || ""),
-        "Telephone / WhatsApp : " + (data.get("telephone") || ""),
+        "Telephone : " + (data.get("telephone") || ""),
         "Projet : " + (data.get("projet") || ""),
         "Message : " + (data.get("message") || ""),
         "",
