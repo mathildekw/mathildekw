@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20260516-seller-badges">
+  <link rel="stylesheet" href="/styles.css?v=20260516-false-buttons">
   <style>
     .article-page .hero { padding-bottom: 34px; }
     .article-page .article-body { max-width: 900px; margin: 0 auto; }
@@ -51,11 +51,13 @@
     .article-page .author-line { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
     .article-page .callout {
       border-left: 4px solid var(--kw-red);
-      background: #fff;
-      border-radius: 12px;
-      padding: 18px;
+      background: transparent;
+      border-radius: 0;
+      padding: 10px 0 10px 16px;
       margin-top: 18px;
-      box-shadow: 0 8px 24px rgba(35,24,17,.045);
+      box-shadow: none;
+      cursor: default;
+      user-select: none;
     }
     .article-page .note-box {
       background: #fff8f1;

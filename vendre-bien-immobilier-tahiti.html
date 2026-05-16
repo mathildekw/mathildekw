@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20260516-seller-badges">
+  <link rel="stylesheet" href="/styles.css?v=20260516-false-buttons">
   <style>
     .seo-page.seller-ads-page .seller-hero-grid { align-items: center; }
     .seo-page.seller-ads-page .seller-photo-card {
@@ -78,7 +78,6 @@
       counter-reset: process-step;
     }
     .seo-page.seller-ads-page .seller-process-grid article,
-    .seo-page.seller-ads-page .seller-type-grid span,
     .seo-page.seller-ads-page .seller-contact-choice-grid a {
       background: #fff;
       border: 1.5px solid var(--line);
@@ -114,14 +113,18 @@
     }
     .seo-page.seller-ads-page .seller-type-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .seo-page.seller-ads-page .seller-type-grid span {
-      min-height: 58px;
+      min-height: 0;
       display: flex;
       align-items: center;
-      padding: 14px 16px;
-      color: #3e342d;
+      gap: 8px;
+      padding: 0;
+      color: var(--muted);
       font-size: 13px;
       font-weight: 900;
+      cursor: default;
+      user-select: none;
     }
+    .seo-page.seller-ads-page .seller-type-grid span::before { content: "✓"; color: var(--kw-red); font-weight: 950; }
     .seo-page.seller-ads-page .seller-contact-choice-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .seo-page.seller-ads-page .seller-contact-choice-grid a {
       display: grid;
