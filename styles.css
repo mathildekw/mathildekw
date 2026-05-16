@@ -2975,7 +2975,30 @@ body.seo-page::before {
 }
 .seo-page.seller-ads-page .seller-badges {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 20px;
+  gap: 10px 14px;
+  margin-top: 18px;
+}
+.seo-page.seller-ads-page .seller-badges span {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: default;
+  user-select: none;
+  font-size: 13px;
+  font-weight: 750;
+}
+.seo-page.seller-ads-page .seller-badges span::before {
+  content: "✓";
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  color: var(--kw-red);
+  flex: 0 0 auto;
+  font-weight: 950;
 }
 .seo-page.seller-ads-page .seller-hero-actions,
 .seo-page.seller-ads-page .seller-inline-cta {
