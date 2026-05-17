@@ -2,6 +2,59 @@ function cleanText(value) {
   return (value || "").replace(/\s+/g, " ").trim().slice(0, 140);
 }
 
+(function injectT2GalleryCtaStyles() {
+  if (window.__mathildeT2GalleryCtaStyles) return;
+  window.__mathildeT2GalleryCtaStyles = true;
+  var css = [
+    "@media (max-width: 860px) {",
+    "  .t2-landing-page .t2-gallery { padding-bottom: 0 !important; }",
+    "  .t2-landing-page .t2-gallery-action {",
+    "    position: static !important;",
+    "    inset: auto !important;",
+    "    width: calc(100% - 20px) !important;",
+    "    max-width: none !important;",
+    "    margin: 8px auto 10px !important;",
+    "    display: grid !important;",
+    "    grid-template-columns: 1fr 1fr !important;",
+    "    align-items: center !important;",
+    "    gap: 8px !important;",
+    "    padding: 8px !important;",
+    "    border: 1px solid rgba(255,255,255,.62) !important;",
+    "    border-radius: 18px !important;",
+    "    background: linear-gradient(135deg, rgba(23,20,18,.94), rgba(42,33,27,.90)) !important;",
+    "    box-shadow: 0 10px 28px rgba(35,24,17,.16) !important;",
+    "    backdrop-filter: blur(10px) !important;",
+    "    text-align: initial !important;",
+    "  }",
+    "  .t2-landing-page .t2-gallery-action [data-gallery-caption] { display: none !important; }",
+    "  .t2-landing-page .t2-gallery-action .cta-gallery,",
+    "  .t2-landing-page .t2-gallery-action .cta-gallery-call {",
+    "    width: 100% !important;",
+    "    min-height: 38px !important;",
+    "    display: inline-flex !important;",
+    "    align-items: center !important;",
+    "    justify-content: center !important;",
+    "    padding: 8px 10px !important;",
+    "    border-radius: 999px !important;",
+    "    font-size: 12px !important;",
+    "    font-weight: 900 !important;",
+    "    line-height: 1 !important;",
+    "    text-decoration: none !important;",
+    "    white-space: nowrap !important;",
+    "  }",
+    "  .t2-landing-page .t2-gallery-action .cta-gallery-call { background: rgba(255,255,255,.96) !important; color: #171412 !important; }",
+    "  .t2-landing-page .t2-gallery-action .cta-gallery { background: var(--kw-red, #c8102e) !important; color: #fff !important; }",
+    "  .t2-landing-page .t2-gallery-thumbs { margin-top: 0 !important; position: relative !important; z-index: 2 !important; }",
+    "  .t2-landing-page .t2-gallery-nav { z-index: 4 !important; }",
+    "  .t2-landing-page .t2-gallery-counter, .t2-landing-page .badge, .t2-landing-page .t2-gallery-hint { z-index: 5 !important; }",
+    "}"
+  ].join("\n");
+  var style = document.createElement("style");
+  style.id = "t2-gallery-cta-placement-fix";
+  style.appendChild(document.createTextNode(css));
+  document.head.appendChild(style);
+})();
+
 (function loadClarity() {
   if (window.clarity || window.__mathildeClarityLoaded) return;
   window.__mathildeClarityLoaded = true;
