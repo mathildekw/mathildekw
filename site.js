@@ -62,40 +62,46 @@ function cleanText(value) {
   function init() {
     if (window.location.pathname.indexOf("appartement-t2-punaauia-pk11.html") === -1) return;
     if (document.querySelector("[data-t2-question-helper]")) return;
-    var summary = document.querySelector("#infos-t2 .t2-summary-grid");
-    if (!summary || !summary.parentNode) return;
 
     var css = [
-      ".t2-question-helper { margin: 18px auto 0; padding: 16px; border: 1.5px solid rgba(35,24,17,.08); border-radius: 22px; background: linear-gradient(135deg,#fff 0%,#fff7f5 100%); box-shadow: 0 12px 32px rgba(35,24,17,.07); }",
-      ".t2-question-helper__top { display:flex; gap:12px; align-items:flex-start; justify-content:space-between; }",
-      ".t2-question-helper__title { display:grid; gap:3px; }",
-      ".t2-question-helper__title strong { color:#171412; font-size:16px; line-height:1.15; }",
-      ".t2-question-helper__title span { color:var(--muted,#756a62); font-size:12px; line-height:1.35; }",
-      ".t2-question-helper__badge { display:inline-flex; align-items:center; justify-content:center; min-width:38px; height:38px; border-radius:999px; background:#171412; color:#fff; font-size:18px; flex:0 0 auto; }",
-      ".t2-question-helper__chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }",
-      ".t2-question-helper__chips[hidden] { display:none !important; }",
-      ".t2-question-helper button, .t2-question-helper a { -webkit-tap-highlight-color: transparent; }",
-      ".t2-question-helper__chip { border:1px solid rgba(200,16,46,.15); background:#fff; color:#3e342d; border-radius:999px; min-height:34px; padding:7px 11px; font-weight:900; font-size:12px; cursor:pointer; }",
-      ".t2-question-helper__chip.is-soft { background:#fff8f6; }",
-      ".t2-question-helper__more { border:0; background:transparent; color:#8e1b2d; font-weight:900; font-size:12px; padding:7px 2px; cursor:pointer; }",
-      ".t2-question-helper__answer { margin-top:12px; padding:12px; border-radius:16px; background:#171412; color:#fff; font-size:13px; line-height:1.45; display:none; }",
-      ".t2-question-helper__answer.is-visible { display:block; }",
-      ".t2-question-helper__answer p { margin:0; color:rgba(255,255,255,.88); }",
-      ".t2-question-helper__cta { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }",
-      ".t2-question-helper__cta a { display:inline-flex; align-items:center; justify-content:center; min-height:34px; padding:7px 12px; border-radius:999px; text-decoration:none; font-weight:900; font-size:12px; }",
-      ".t2-question-helper__cta .whatsapp { background:var(--kw-red,#c8102e); color:#fff; }",
-      ".t2-question-helper__cta .call { background:#fff; color:#171412; }",
-      "@media (max-width:860px){ .t2-question-helper{margin-top:14px;padding:14px;border-radius:18px}.t2-question-helper__top{gap:9px}.t2-question-helper__title strong{font-size:15px}.t2-question-helper__chips{gap:7px}.t2-question-helper__chip{font-size:12px;min-height:33px;padding:7px 10px}.t2-question-helper__badge{min-width:34px;height:34px;font-size:16px} }"
+      ".t2-question-helper { position: fixed; top: 76px; left: 14px; z-index: 95; width: min(340px, calc(100vw - 28px)); font-family: inherit; opacity: 0; transform: translateY(-10px) scale(.98); pointer-events: none; transition: opacity .28s ease, transform .28s ease; }",
+      ".t2-question-helper.is-visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }",
+      ".t2-question-helper__launcher { width: auto; max-width: 270px; display: inline-flex; align-items: center; gap: 10px; padding: 9px 12px 9px 10px; border: 1px solid rgba(255,255,255,.68); border-radius: 999px; background: rgba(23,20,18,.94); color: #fff; box-shadow: 0 14px 36px rgba(35,24,17,.22); backdrop-filter: blur(12px); cursor: pointer; }",
+      ".t2-question-helper__avatar { width: 30px; height: 30px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: var(--kw-red,#c8102e); color: #fff; font-size: 15px; flex: 0 0 auto; }",
+      ".t2-question-helper__launcher-text { display: grid; gap: 1px; text-align: left; }",
+      ".t2-question-helper__launcher-text strong { font-size: 12px; line-height: 1.1; letter-spacing: -.01em; }",
+      ".t2-question-helper__launcher-text span { font-size: 10.5px; line-height: 1.1; color: rgba(255,255,255,.72); font-weight: 800; }",
+      ".t2-question-helper__panel { display: none; margin-top: 8px; border-radius: 22px; overflow: hidden; background: #fff; border: 1px solid rgba(35,24,17,.08); box-shadow: 0 18px 48px rgba(35,24,17,.18); }",
+      ".t2-question-helper.is-open .t2-question-helper__panel { display: block; }",
+      ".t2-question-helper.is-open .t2-question-helper__launcher { max-width: none; width: 100%; border-radius: 20px 20px 12px 12px; }",
+      ".t2-question-helper__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 13px 14px 8px; background: linear-gradient(135deg,#171412,#34271f); color: #fff; }",
+      ".t2-question-helper__head strong { display: block; font-size: 14px; line-height: 1.1; }",
+      ".t2-question-helper__head span { display: block; margin-top: 3px; font-size: 11px; color: rgba(255,255,255,.72); font-weight: 800; line-height: 1.25; }",
+      ".t2-question-helper__close { border: 0; background: rgba(255,255,255,.12); color: #fff; border-radius: 999px; width: 28px; height: 28px; cursor: pointer; font-weight: 900; }",
+      ".t2-question-helper__body { padding: 11px; background: linear-gradient(180deg,#fff,#fff8f6); }",
+      ".t2-question-helper__bubble { display: inline-block; max-width: 92%; padding: 10px 12px; border-radius: 16px 16px 16px 4px; background: #f2eee9; color: #2e2824; font-size: 12px; line-height: 1.35; font-weight: 800; }",
+      ".t2-question-helper__chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }",
+      ".t2-question-helper__chips[hidden] { display: none !important; }",
+      ".t2-question-helper__chip, .t2-question-helper__more { border: 1px solid rgba(200,16,46,.14); background: #fff; color: #332b25; border-radius: 999px; min-height: 32px; padding: 6px 10px; font-weight: 900; font-size: 11.5px; cursor: pointer; }",
+      ".t2-question-helper__more { border-color: transparent; background: transparent; color: #9d1730; padding-left: 2px; }",
+      ".t2-question-helper__answer { margin-top: 10px; display: none; }",
+      ".t2-question-helper__answer.is-visible { display: block; }",
+      ".t2-question-helper__answer p { margin: 0; padding: 10px 12px; border-radius: 16px 16px 4px 16px; background: #171412; color: rgba(255,255,255,.9); font-size: 12px; line-height: 1.38; font-weight: 700; }",
+      ".t2-question-helper__cta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 9px; }",
+      ".t2-question-helper__cta a { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 7px 9px; border-radius: 999px; text-decoration: none; font-weight: 900; font-size: 12px; }",
+      ".t2-question-helper__cta .whatsapp { background: var(--kw-red,#c8102e); color: #fff; }",
+      ".t2-question-helper__cta .call { background: #fff; color: #171412; border: 1px solid rgba(35,24,17,.12); }",
+      "@media (max-width: 860px) { .t2-question-helper { top: 64px; left: 10px; width: min(322px, calc(100vw - 20px)); } .t2-question-helper__launcher { max-width: 245px; padding: 8px 11px 8px 9px; } .t2-question-helper__panel { border-radius: 20px; } }"
     ].join("\n");
     var style = document.createElement("style");
-    style.id = "t2-question-helper-style";
+    style.id = "t2-floating-question-helper-style";
     style.appendChild(document.createTextNode(css));
     document.head.appendChild(style);
 
     var answers = {
       prix: "Le T2 est affiché à 39,5M XPF. Pour savoir s'il correspond à ton projet et à ton financement, le plus simple est d'échanger directement avec Mathilde.",
       surface: "Il fait 59,93 m² habitables, avec une varangue de 14,63 m².",
-      location: "La location saisonnière type Airbnb n'est pas autorisée dans la copropriété. En revanche, la location longue durée est possible et fonctionne très bien sur ce secteur.",
+      location: "La location saisonnière type Airbnb n'est pas autorisée. En revanche, la location longue durée est possible et fonctionne très bien sur ce secteur.",
       video: "La vidéo est envoyée sur demande après un échange rapide, pour vérifier que le bien correspond vraiment à ton projet.",
       visite: "Oui, les visites sont organisées sur demande. Le mieux est d'appeler Mathilde ou d'envoyer un WhatsApp pour valider le projet et les disponibilités.",
       investir: "Le bien peut être intéressant en longue durée selon ton financement et ton objectif. Mathilde peut t'aider à vérifier la cohérence du projet.",
@@ -107,39 +113,58 @@ function cleanText(value) {
     helper.className = "t2-question-helper";
     helper.setAttribute("data-t2-question-helper", "true");
     helper.innerHTML = [
-      '<div class="t2-question-helper__top">',
-      '  <div class="t2-question-helper__title"><strong>💬 Question rapide sur ce T2 ?</strong><span>Quelques réponses utiles, puis Mathilde te confirme les détails par appel ou WhatsApp.</span></div>',
-      '  <span class="t2-question-helper__badge" aria-hidden="true">?</span>',
-      '</div>',
-      '<div class="t2-question-helper__chips">',
-      '  <button class="t2-question-helper__chip" type="button" data-t2-helper-question="prix">Prix</button>',
-      '  <button class="t2-question-helper__chip" type="button" data-t2-helper-question="surface">Surface</button>',
-      '  <button class="t2-question-helper__chip" type="button" data-t2-helper-question="location">Location</button>',
-      '  <button class="t2-question-helper__chip" type="button" data-t2-helper-question="video">Vidéo</button>',
-      '  <button class="t2-question-helper__chip" type="button" data-t2-helper-question="visite">Visiter</button>',
-      '  <button class="t2-question-helper__more" type="button" data-t2-helper-more>+ autres questions</button>',
-      '</div>',
-      '<div class="t2-question-helper__chips" hidden data-t2-helper-extra>',
-      '  <button class="t2-question-helper__chip is-soft" type="button" data-t2-helper-question="investir">Investir</button>',
-      '  <button class="t2-question-helper__chip is-soft" type="button" data-t2-helper-question="charges">Charges / copro</button>',
-      '  <button class="t2-question-helper__chip is-soft" type="button" data-t2-helper-question="adresse">Adresse exacte</button>',
-      '</div>',
-      '<div class="t2-question-helper__answer" data-t2-helper-answer></div>'
+      '<button class="t2-question-helper__launcher" type="button" data-t2-helper-open aria-expanded="false">',
+      '  <span class="t2-question-helper__avatar">💬</span>',
+      '  <span class="t2-question-helper__launcher-text"><strong>Question sur ce T2 ?</strong><span>Réponse rapide</span></span>',
+      '</button>',
+      '<div class="t2-question-helper__panel" role="dialog" aria-label="Questions rapides sur le T2">',
+      '  <div class="t2-question-helper__head"><div><strong>Ia ora na 👋</strong><span>Choisis une question rapide. Pour les détails précis, Mathilde te répond directement.</span></div><button class="t2-question-helper__close" type="button" data-t2-helper-close aria-label="Fermer">×</button></div>',
+      '  <div class="t2-question-helper__body">',
+      '    <div class="t2-question-helper__bubble">Je peux te donner les infos principales sans alourdir la page.</div>',
+      '    <div class="t2-question-helper__chips">',
+      '      <button class="t2-question-helper__chip" type="button" data-t2-helper-question="prix">Prix</button>',
+      '      <button class="t2-question-helper__chip" type="button" data-t2-helper-question="surface">Surface</button>',
+      '      <button class="t2-question-helper__chip" type="button" data-t2-helper-question="location">Location</button>',
+      '      <button class="t2-question-helper__chip" type="button" data-t2-helper-question="video">Vidéo</button>',
+      '      <button class="t2-question-helper__chip" type="button" data-t2-helper-question="visite">Visiter</button>',
+      '      <button class="t2-question-helper__more" type="button" data-t2-helper-more>+ autres</button>',
+      '    </div>',
+      '    <div class="t2-question-helper__chips" hidden data-t2-helper-extra>',
+      '      <button class="t2-question-helper__chip" type="button" data-t2-helper-question="investir">Investir</button>',
+      '      <button class="t2-question-helper__chip" type="button" data-t2-helper-question="charges">Charges</button>',
+      '      <button class="t2-question-helper__chip" type="button" data-t2-helper-question="adresse">Adresse</button>',
+      '    </div>',
+      '    <div class="t2-question-helper__answer" data-t2-helper-answer></div>',
+      '  </div>',
+      '</div>'
     ].join("");
+    document.body.appendChild(helper);
 
-    summary.parentNode.insertBefore(helper, summary.nextSibling);
-
+    var open = helper.querySelector("[data-t2-helper-open]");
+    var close = helper.querySelector("[data-t2-helper-close]");
     var answerBox = helper.querySelector("[data-t2-helper-answer]");
     var extra = helper.querySelector("[data-t2-helper-extra]");
     var more = helper.querySelector("[data-t2-helper-more]");
-    if (more && extra) {
-      more.addEventListener("click", function () {
-        var hidden = extra.hasAttribute("hidden");
-        if (hidden) extra.removeAttribute("hidden"); else extra.setAttribute("hidden", "");
-        more.textContent = hidden ? "- moins" : "+ autres questions";
-        if (typeof trackEvent === "function") trackEvent("click_t2_helper_more", { event_category: "buyer_lead" });
-      });
-    }
+    window.setTimeout(function () {
+      helper.classList.add("is-visible");
+      if (typeof trackEvent === "function") trackEvent("view_t2_helper_bubble", { event_category: "buyer_lead" });
+    }, 2400);
+    if (open) open.addEventListener("click", function () {
+      var isOpen = helper.classList.toggle("is-open");
+      open.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      if (typeof trackEvent === "function") trackEvent(isOpen ? "open_t2_helper_bubble" : "close_t2_helper_bubble", { event_category: "buyer_lead" });
+    });
+    if (close) close.addEventListener("click", function () {
+      helper.classList.remove("is-open");
+      open.setAttribute("aria-expanded", "false");
+      if (typeof trackEvent === "function") trackEvent("close_t2_helper_bubble", { event_category: "buyer_lead" });
+    });
+    if (more && extra) more.addEventListener("click", function () {
+      var hidden = extra.hasAttribute("hidden");
+      if (hidden) extra.removeAttribute("hidden"); else extra.setAttribute("hidden", "");
+      more.textContent = hidden ? "- moins" : "+ autres";
+      if (typeof trackEvent === "function") trackEvent("click_t2_helper_more", { event_category: "buyer_lead" });
+    });
     helper.querySelectorAll("[data-t2-helper-question]").forEach(function (button) {
       button.addEventListener("click", function () {
         var key = button.getAttribute("data-t2-helper-question");
