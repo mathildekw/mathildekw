@@ -47,6 +47,46 @@
       font-weight: 800;
       line-height: 1.35;
     }
+    .t2-landing-page .t2-conversion-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 14px 0 0;
+    }
+    .t2-landing-page .t2-conversion-strip span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 10px;
+      border: 1.5px solid rgba(200,16,46,.12);
+      border-radius: 999px;
+      background: #fff8f6;
+      color: #4b4039;
+      font-size: 12px;
+      font-weight: 900;
+      text-align: center;
+    }
+    .t2-landing-page .t2-gallery-action {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      align-items: center;
+      gap: 8px;
+    }
+    .t2-landing-page .t2-gallery-action .cta-gallery-call {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(23,20,18,.92);
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
     .t2-sticky-actions {
       position: fixed;
       left: 50%;
@@ -86,10 +126,17 @@
       color: #fff;
     }
     @media (max-width: 980px) {
-      .t2-landing-page .t2-hero-actions { grid-template-columns: 1fr; }
+      .t2-landing-page .t2-hero-actions,
+      .t2-landing-page .t2-conversion-strip { grid-template-columns: 1fr; }
     }
     @media (max-width: 860px) {
       .t2-landing-page { padding-bottom: 82px; }
+      .t2-landing-page .t2-gallery-action {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .t2-landing-page .t2-gallery-action .cta-gallery,
+      .t2-landing-page .t2-gallery-action .cta-gallery-call { width: 100%; }
       .t2-sticky-actions {
         bottom: 10px;
         width: calc(100vw - 22px);
@@ -136,7 +183,8 @@
             </button>
             <div class="t2-gallery-action" data-gallery-action>
               <span data-gallery-caption>Salon lumineux, cuisine ouverte et accès vers la varangue.</span>
-              <a class="cta-whatsapp cta-visite cta-gallery" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20j%27ai%20vu%20les%20photos%20du%20T2%20%C3%A0%20Punaauia%20PK11%20et%20je%20souhaite%20recevoir%20la%20fiche%20compl%C3%A8te%20et%20la%20visite%20virtuelle." target="_blank" rel="noopener" data-event="click_t2_whatsapp_gallery" data-conversion="whatsapp-t2-gallery" aria-label="Demander la visite virtuelle du T2 à Punaauia PK11">Demander la vidéo</a>
+              <a class="cta-gallery-call" href="tel:+68988078247" data-event="click_t2_call_gallery" aria-label="Appeler Mathilde pour le T2 à Punaauia PK11">📞 Appeler</a>
+              <a class="cta-whatsapp cta-visite cta-gallery" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20j%27ai%20vu%20les%20photos%20du%20T2%20%C3%A0%20Punaauia%20PK11%20et%20je%20souhaite%20recevoir%20la%20fiche%20compl%C3%A8te%20et%20la%20visite%20virtuelle." target="_blank" rel="noopener" data-event="click_t2_whatsapp_gallery" data-conversion="whatsapp-t2-gallery" aria-label="Demander la visite virtuelle du T2 à Punaauia PK11">📱 Demander la vidéo</a>
             </div>
             <button class="t2-gallery-nav prev" type="button" data-gallery-prev data-event="click_t2_gallery_prev" aria-label="Photo précédente">‹</button>
             <button class="t2-gallery-nav next" type="button" data-gallery-next data-event="click_t2_gallery_next" aria-label="Photo suivante">›</button>
@@ -155,7 +203,7 @@
             <p class="eyebrow">Appartement à vendre · Mandat exclusif</p>
             <h1>T2 à Punaauia PK11 avec vue Moorea</h1>
             <p class="price">39 500 000 XPF</p>
-            <p class="lead">Tu arrives depuis Facebook ? Voici l'essentiel : T2 vendu meublé, résidence avec piscine, vue mer / Moorea, prix sous les 40M XPF. Pour recevoir la visite virtuelle, appelle-moi ou envoie-moi un message : je te présente le bien, je réponds aux premières questions et je vérifie que ton projet correspond à l'appartement.</p>
+            <p class="lead">Tu arrives depuis Facebook ? Voici l'essentiel : T2 vendu meublé, résidence avec piscine, vue mer / Moorea, prix sous les 40M XPF. Tu veux vérifier si le bien peut te correspondre ? Appelle-moi ou écris-moi : je te présente les points importants et je t'envoie la fiche/vidéo si le projet est cohérent.</p>
             <ul class="features t2-features">
               <li>59,93 m² habitables</li>
               <li>Varangue 14,63 m²</li>
@@ -164,12 +212,17 @@
               <li>Résidence avec piscine</li>
               <li>Parking privé</li>
             </ul>
+            <div class="t2-conversion-strip" aria-label="Pourquoi contacter Mathilde">
+              <span>Réponse rapide</span>
+              <span>Infos complètes</span>
+              <span>Visite privée si cohérent</span>
+            </div>
             <div class="t2-hero-actions">
-              <a class="btn primary cta-whatsapp cta-fiche" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20je%20souhaite%20recevoir%20les%20informations%20sur%20le%20T2%20%C3%A0%20Punaauia%20PK11." target="_blank" rel="noopener" data-event="click_t2_whatsapp_hero">Infos WhatsApp</a>
+              <a class="btn primary cta-whatsapp cta-fiche" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20je%20souhaite%20recevoir%20les%20informations%20sur%20le%20T2%20%C3%A0%20Punaauia%20PK11." target="_blank" rel="noopener" data-event="click_t2_whatsapp_hero">📱 Infos WhatsApp</a>
               <a class="btn ghost cta-call" href="tel:+68988078247" data-event="click_t2_call_hero">📞 Appeler Mathilde</a>
               <a class="btn ghost cta-visite" href="#visite-virtuelle" data-event="click_t2_virtual_form_hero" data-event-secondary="click_virtual_tour">Demander la visite virtuelle</a>
             </div>
-            <p class="t2-hero-note">Important : la vidéo n'est pas envoyée automatiquement. L'échange rapide permet de valider le projet, expliquer les spécificités du bien et préparer les documents correctement.</p>
+            <p class="t2-hero-note">La vidéo n'est pas en libre accès : un échange rapide évite les visites inutiles et permet de te donner les bonnes infos avant de te déplacer.</p>
             <p class="t2-call-note">Pas WhatsApp ? Appelle-moi directement au 88 07 82 47.</p>
           </div>
         </article>
@@ -224,15 +277,15 @@
     <section class="section t2-process">
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow">Pourquoi un formulaire ?</p>
-          <h2>La visite virtuelle est réservée aux demandes qualifiées</h2>
-          <p>Avant d'envoyer la vidéo, j'ai besoin de comprendre ton projet en quelques minutes. Ça permet de te présenter le bien correctement, de vérifier que l'appartement peut correspondre à ta recherche et de préparer le bon de visite à distance.</p>
+          <p class="eyebrow">Étape suivante</p>
+          <h2>Tu veux la vidéo ou une visite ? On valide rapidement le projet</h2>
+          <p>Les photos attirent beaucoup de curiosité. Pour éviter les visites inutiles et te donner les bonnes informations, on fait simplement un point rapide avant d'envoyer la vidéo ou de programmer une visite.</p>
         </div>
         <div class="conversion-panel">
-          <div><strong>1. Tu envoies ta demande</strong><span>Prénom, téléphone, projet et message si tu as une question précise.</span></div>
-          <div><strong>2. On échange simplement</strong><span>Par téléphone si tu préfères, ou par WhatsApp si c'est plus pratique.</span></div>
-          <div><strong>3. Je te présente le bien</strong><span>Je réponds aux questions importantes et je vérifie si ton projet correspond.</span></div>
-          <div><strong>4. Je t'envoie la vidéo si c'est cohérent</strong><span>Ensuite seulement, on voit si une visite physique a du sens.</span></div>
+          <div><strong>1. Tu me contactes</strong><span>Appel direct ou WhatsApp, selon ce qui est le plus simple pour toi.</span></div>
+          <div><strong>2. Je te présente le bien</strong><span>Prix, résidence, vue, accès, points forts et points à vérifier.</span></div>
+          <div><strong>3. On vérifie ton projet</strong><span>Budget, timing, usage du bien et cohérence avec ce T2.</span></div>
+          <div><strong>4. Je t'envoie la vidéo</strong><span>Si le bien correspond, on avance vers la visite virtuelle ou physique.</span></div>
         </div>
         <div class="cta-row section-cta">
           <a class="btn primary cta-whatsapp cta-fiche" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20je%20souhaite%20recevoir%20les%20informations%20sur%20le%20T2%20%C3%A0%20Punaauia%20PK11." target="_blank" rel="noopener" data-event="click_t2_whatsapp_after_process">Recevoir les infos sur WhatsApp</a>
@@ -279,7 +332,7 @@
           <p><label for="t2-telephone">Téléphone</label><input id="t2-telephone" name="telephone" autocomplete="tel" inputmode="tel" minlength="6" required></p>
           <p><label for="t2-projet">Projet</label><select id="t2-projet" name="projet" required><option value="">Choisir</option><option>Résidence principale</option><option>Investissement</option><option>Pied-à-terre</option><option>Autre</option></select></p>
           <p><label for="t2-message">Message libre</label><textarea id="t2-message" name="message" rows="3" placeholder="Budget, timing, questions, disponibilité pour un appel..."></textarea></p>
-          <button class="btn primary full cta-formulaire cta-whatsapp" type="submit">Être recontacté</button>
+          <button class="btn primary full cta-formulaire cta-whatsapp" type="submit">Envoyer ma demande</button>
           <p class="form-reassurance">Tu relis le message WhatsApp avant envoi. Les infos servent uniquement au suivi de cette demande.</p>
         </form>
       </div>
