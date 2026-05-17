@@ -55,6 +55,106 @@ function cleanText(value) {
   document.head.appendChild(style);
 })();
 
+(function injectT2QuestionHelper() {
+  if (window.__mathildeT2QuestionHelper) return;
+  window.__mathildeT2QuestionHelper = true;
+
+  function init() {
+    if (window.location.pathname.indexOf("appartement-t2-punaauia-pk11.html") === -1) return;
+    if (document.querySelector("[data-t2-question-helper]")) return;
+    var summary = document.querySelector("#infos-t2 .t2-summary-grid");
+    if (!summary || !summary.parentNode) return;
+
+    var css = [
+      ".t2-question-helper { margin: 18px auto 0; padding: 16px; border: 1.5px solid rgba(35,24,17,.08); border-radius: 22px; background: linear-gradient(135deg,#fff 0%,#fff7f5 100%); box-shadow: 0 12px 32px rgba(35,24,17,.07); }",
+      ".t2-question-helper__top { display:flex; gap:12px; align-items:flex-start; justify-content:space-between; }",
+      ".t2-question-helper__title { display:grid; gap:3px; }",
+      ".t2-question-helper__title strong { color:#171412; font-size:16px; line-height:1.15; }",
+      ".t2-question-helper__title span { color:var(--muted,#756a62); font-size:12px; line-height:1.35; }",
+      ".t2-question-helper__badge { display:inline-flex; align-items:center; justify-content:center; min-width:38px; height:38px; border-radius:999px; background:#171412; color:#fff; font-size:18px; flex:0 0 auto; }",
+      ".t2-question-helper__chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }",
+      ".t2-question-helper__chips[hidden] { display:none !important; }",
+      ".t2-question-helper button, .t2-question-helper a { -webkit-tap-highlight-color: transparent; }",
+      ".t2-question-helper__chip { border:1px solid rgba(200,16,46,.15); background:#fff; color:#3e342d; border-radius:999px; min-height:34px; padding:7px 11px; font-weight:900; font-size:12px; cursor:pointer; }",
+      ".t2-question-helper__chip.is-soft { background:#fff8f6; }",
+      ".t2-question-helper__more { border:0; background:transparent; color:#8e1b2d; font-weight:900; font-size:12px; padding:7px 2px; cursor:pointer; }",
+      ".t2-question-helper__answer { margin-top:12px; padding:12px; border-radius:16px; background:#171412; color:#fff; font-size:13px; line-height:1.45; display:none; }",
+      ".t2-question-helper__answer.is-visible { display:block; }",
+      ".t2-question-helper__answer p { margin:0; color:rgba(255,255,255,.88); }",
+      ".t2-question-helper__cta { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }",
+      ".t2-question-helper__cta a { display:inline-flex; align-items:center; justify-content:center; min-height:34px; padding:7px 12px; border-radius:999px; text-decoration:none; font-weight:900; font-size:12px; }",
+      ".t2-question-helper__cta .whatsapp { background:var(--kw-red,#c8102e); color:#fff; }",
+      ".t2-question-helper__cta .call { background:#fff; color:#171412; }",
+      "@media (max-width:860px){ .t2-question-helper{margin-top:14px;padding:14px;border-radius:18px}.t2-question-helper__top{gap:9px}.t2-question-helper__title strong{font-size:15px}.t2-question-helper__chips{gap:7px}.t2-question-helper__chip{font-size:12px;min-height:33px;padding:7px 10px}.t2-question-helper__badge{min-width:34px;height:34px;font-size:16px} }"
+    ].join("\n");
+    var style = document.createElement("style");
+    style.id = "t2-question-helper-style";
+    style.appendChild(document.createTextNode(css));
+    document.head.appendChild(style);
+
+    var answers = {
+      prix: "Le T2 est affiché à 39,5M XPF. Pour savoir s'il correspond à ton projet et à ton financement, le plus simple est d'échanger directement avec Mathilde.",
+      surface: "Il fait 59,93 m² habitables, avec une varangue de 14,63 m².",
+      location: "La location saisonnière type Airbnb n'est pas autorisée dans la copropriété. En revanche, la location longue durée est possible et fonctionne très bien sur ce secteur.",
+      video: "La vidéo est envoyée sur demande après un échange rapide, pour vérifier que le bien correspond vraiment à ton projet.",
+      visite: "Oui, les visites sont organisées sur demande. Le mieux est d'appeler Mathilde ou d'envoyer un WhatsApp pour valider le projet et les disponibilités.",
+      investir: "Le bien peut être intéressant en longue durée selon ton financement et ton objectif. Mathilde peut t'aider à vérifier la cohérence du projet.",
+      charges: "Bonne question : pour les charges et les éléments de copropriété, Mathilde préfère te répondre directement avec les informations à jour.",
+      adresse: "Le bien est situé à Punaauia PK11. Les informations plus précises sont transmises dans le cadre d'un échange sérieux."
+    };
+
+    var helper = document.createElement("div");
+    helper.className = "t2-question-helper";
+    helper.setAttribute("data-t2-question-helper", "true");
+    helper.innerHTML = [
+      '<div class="t2-question-helper__top">',
+      '  <div class="t2-question-helper__title"><strong>💬 Question rapide sur ce T2 ?</strong><span>Quelques réponses utiles, puis Mathilde te confirme les détails par appel ou WhatsApp.</span></div>',
+      '  <span class="t2-question-helper__badge" aria-hidden="true">?</span>',
+      '</div>',
+      '<div class="t2-question-helper__chips">',
+      '  <button class="t2-question-helper__chip" type="button" data-t2-helper-question="prix">Prix</button>',
+      '  <button class="t2-question-helper__chip" type="button" data-t2-helper-question="surface">Surface</button>',
+      '  <button class="t2-question-helper__chip" type="button" data-t2-helper-question="location">Location</button>',
+      '  <button class="t2-question-helper__chip" type="button" data-t2-helper-question="video">Vidéo</button>',
+      '  <button class="t2-question-helper__chip" type="button" data-t2-helper-question="visite">Visiter</button>',
+      '  <button class="t2-question-helper__more" type="button" data-t2-helper-more>+ autres questions</button>',
+      '</div>',
+      '<div class="t2-question-helper__chips" hidden data-t2-helper-extra>',
+      '  <button class="t2-question-helper__chip is-soft" type="button" data-t2-helper-question="investir">Investir</button>',
+      '  <button class="t2-question-helper__chip is-soft" type="button" data-t2-helper-question="charges">Charges / copro</button>',
+      '  <button class="t2-question-helper__chip is-soft" type="button" data-t2-helper-question="adresse">Adresse exacte</button>',
+      '</div>',
+      '<div class="t2-question-helper__answer" data-t2-helper-answer></div>'
+    ].join("");
+
+    summary.parentNode.insertBefore(helper, summary.nextSibling);
+
+    var answerBox = helper.querySelector("[data-t2-helper-answer]");
+    var extra = helper.querySelector("[data-t2-helper-extra]");
+    var more = helper.querySelector("[data-t2-helper-more]");
+    if (more && extra) {
+      more.addEventListener("click", function () {
+        var hidden = extra.hasAttribute("hidden");
+        if (hidden) extra.removeAttribute("hidden"); else extra.setAttribute("hidden", "");
+        more.textContent = hidden ? "- moins" : "+ autres questions";
+        if (typeof trackEvent === "function") trackEvent("click_t2_helper_more", { event_category: "buyer_lead" });
+      });
+    }
+    helper.querySelectorAll("[data-t2-helper-question]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var key = button.getAttribute("data-t2-helper-question");
+        var text = answers[key] || "Bonne question : Mathilde peut te répondre directement pour éviter une information incomplète.";
+        answerBox.innerHTML = '<p>' + text + '</p><div class="t2-question-helper__cta"><a class="whatsapp" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20j%27ai%20une%20question%20sur%20le%20T2%20%C3%A0%20Punaauia%20PK11.%20Peux-tu%20m%27aider%20%C3%A0%20voir%20s%27il%20correspond%20%C3%A0%20mon%20projet%20%3F" target="_blank" rel="noopener" data-event="click_t2_helper_whatsapp">📱 WhatsApp</a><a class="call" href="tel:+68988078247" data-event="click_t2_helper_call">📞 Appeler</a></div>';
+        answerBox.classList.add("is-visible");
+        if (typeof trackEvent === "function") trackEvent("click_t2_helper_question", { event_category: "buyer_lead", question: key });
+      });
+    });
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+
 (function loadClarity() {
   if (window.clarity || window.__mathildeClarityLoaded) return;
   window.__mathildeClarityLoaded = true;
