@@ -39,7 +39,7 @@
   function getProperty() {
     var params = new URLSearchParams(window.location.search);
     var isDemo = document.body.hasAttribute("data-seller-dashboard-demo");
-    var slug = isDemo ? "t2-punaauia-demo" : params.get("bien");
+    var slug = isDemo ? "maison-papeete-demo" : params.get("bien");
     var token = params.get("token");
     var data = window.MathildeClientSpaces && window.MathildeClientSpaces.sellerProperties;
     var property = data && data[slug];

@@ -2,7 +2,24 @@
 
 Cette V1 ajoute un espace vendeur privé statique pour montrer et suivre la commercialisation d’un bien. Elle est conçue pour rester simple à modifier aujourd’hui, tout en pouvant être branchée plus tard à Google Analytics, Airtable, Google Sheets ou une base de données.
 
-## Accès à la démo
+## Page d’accès propriétaire
+
+Le lien du menu “Suivi vendeur” mène vers :
+
+`/suivi-vendeur.html`
+
+Cette page sert d’entrée propriétaire. Le vendeur peut saisir :
+
+- l’identifiant du bien ;
+- le code privé transmis par Mathilde KW.
+
+Le formulaire redirige ensuite vers :
+
+`/espace-vendeur.html?bien=identifiant-du-bien&token=code-prive`
+
+Cette page d’accès est en `noindex` pour éviter une indexation inutile.
+
+## Accès à la démo fictive
 
 Page publique de démonstration :
 
@@ -10,7 +27,9 @@ Page publique de démonstration :
 
 Elle affiche des données fictives pour le bien :
 
-`T2 avec vue Moorea — Punaauia`
+`Maison familiale fictive — Papeete`
+
+La démo est aussi en `noindex`, car elle sert surtout d’outil commercial en rendez-vous ou depuis la page d’accès.
 
 ## Créer un nouvel espace vendeur
 
@@ -25,6 +44,8 @@ L’URL privée devient :
 `/espace-vendeur.html?bien=maison-paea-familiale&token=client-2026-paea`
 
 Sans le bon token, la page affiche un écran d’accès privé.
+
+Le client peut aussi passer par `/suivi-vendeur.html` et saisir son identifiant + son code.
 
 ## Modifier les statistiques
 
@@ -45,7 +66,7 @@ Aujourd’hui, ces chiffres sont manuels. Plus tard, les vues et événements po
 Modifier le tableau `marketingActions` :
 
 ```js
-{ label: "Publication Facebook", status: "termine", date: "16 mai 2026", comment: "Publication orientée vue Moorea." }
+{ label: "Publication Facebook", status: "termine", date: "16 mai 2026", comment: "Publication orientée maison familiale et secteur pratique." }
 ```
 
 Statuts acceptés :
@@ -115,6 +136,8 @@ Paramètres envoyés quand disponibles :
 - Rendu de la démo depuis `seller-dashboard-data.js`
 - Rendu d’un espace privé par `bien` + `token`
 - Noindex sur la page privée `espace-vendeur.html`
+- Page d’accès propriétaire `suivi-vendeur.html`
+- Démo fictive avec maison à Papeete, sans reprise d’un vrai bien client
 - Tracking de vue du dashboard
 - Tracking des clics WhatsApp et téléphone
 - Ajout automatique du raccourci “Suivi vendeur” dans les menus gérés par `site.js`
@@ -154,7 +177,7 @@ Pour un vrai espace client sécurisé, prévoir une authentification serveur et 
 Le raccourci “Suivi vendeur” est ajouté :
 
 - automatiquement dans `site.js` pour les menus `.menu` et `.home-menu`
-- manuellement dans la page démo et la page privée
+- manuellement dans la page d’accès, la page démo et la page privée
 - dans la section commerciale de `vendre-bien-immobilier-tahiti.html`
 
 Pour modifier le libellé, chercher `Suivi vendeur` dans `site.js` et dans les pages HTML concernées.

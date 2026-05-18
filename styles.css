@@ -3434,6 +3434,22 @@ body.seo-page::before {
 }
 
 /* Seller dashboard MVP */
+.seller-access-page{background:#fffaf7}
+.seller-access-hero{padding:110px 0 54px;background:linear-gradient(135deg,#fff8f6 0%,#fff 52%,#f3eee8 100%)}
+.seller-access-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.75fr);gap:28px;align-items:center}
+.seller-access-copy h1{max-width:780px}
+.seller-access-points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:24px;max-width:680px}
+.seller-access-points span{display:flex;align-items:center;min-height:48px;padding:12px 14px;border:1px solid rgba(200,16,46,.12);border-radius:18px;background:rgba(255,255,255,.74);font-weight:900;color:#3f342e}
+.seller-access-card{padding:24px;border:1px solid rgba(35,24,17,.1);border-radius:24px;background:#fff;box-shadow:0 22px 54px rgba(35,24,17,.12)}
+.seller-access-card h2{margin-bottom:8px}
+.seller-access-card form{display:grid;gap:14px;margin:18px 0}
+.seller-access-card label{display:grid;gap:7px;font-weight:900;color:#3f342e}
+.seller-access-card input{width:100%;min-height:48px;border:1px solid rgba(35,24,17,.13);border-radius:14px;padding:12px 14px;font:inherit;background:#fff;color:#1f1a17}
+.seller-access-card input:focus{outline:2px solid rgba(200,16,46,.18);border-color:rgba(200,16,46,.42)}
+.seller-access-note{font-size:13px;color:var(--muted);font-weight:800;line-height:1.45}
+.seller-access-demo{padding-top:36px}
+.seller-access-demo-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center}
+@media(max-width:860px){.seller-access-hero{padding:92px 0 36px}.seller-access-grid,.seller-access-demo-grid{grid-template-columns:1fr}.seller-access-points{grid-template-columns:1fr}.seller-access-card{padding:18px}.seller-access-demo-grid .btn{width:100%}}
 .seo-page.seller-ads-page .seller-client-space-grid {
   display: grid;
   grid-template-columns: 1.05fr .95fr;
