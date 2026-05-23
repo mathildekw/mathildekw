@@ -94,7 +94,7 @@
         price: source.price || source.prix,
         location: source.location || source.commune || source.secteur,
         launchDate: source.launchDate || source.dateMiseEnLigne || source.date,
-        welcomeMessage: source.welcomeMessage || source.message || "Ia ora na, bienvenue dans ton espace vendeur. Tu peux suivre ici les actions réalisées, les statistiques de visibilité, les retours du marché et les prochaines étapes.",
+        welcomeMessage: source.welcomeMessage || source.message || "Ia ora na, bienvenue dans ton espace vendeur. Tu peux suivre ici les visites prévues, les retours des visites réalisées et les prochaines informations utiles pour avancer clairement.",
         stats: source.stats || {},
         marketingActions: source.marketingActions || source.actionsMarketing || [],
         plannedVisits: source.plannedVisits || source.visitesPrevues || [],
@@ -179,15 +179,6 @@
     });
   }
 
-  function statCard(key, value) {
-    return '<article class="client-stat-card"><span>' + labels[key] + '</span><strong>' + text(value) + '</strong></article>';
-  }
-
-  function actionRow(item) {
-    var cls = slugStatus(item.status || item.statut || "prevu");
-    return '<article class="client-action-row"><div><span class="client-status ' + cls + '">' + text(statusLabels[cls] || item.status || item.statut) + '</span><strong>' + text(item.label || item.action) + '</strong><p>' + text(item.comment || item.commentaire) + '</p></div><time>' + text(item.date) + '</time></article>';
-  }
-
   function visitRow(item, completed) {
     var cls = slugStatus(item.interest || item.niveauInteret || "tiede");
     var status = item.status || item.statut || (completed ? "Réalisée" : "Prévue");
@@ -198,40 +189,42 @@
     return '<article class="client-feedback-row"><div><time>' + text(item.date) + (item.time || item.heure ? " · " + text(item.time || item.heure) : "") + '</time><strong>' + text(item.buyerProfile || item.profilAcheteur || item.profil) + '</strong>' + (completed ? '<span class="client-interest ' + cls + '">' + text(interestLabels[cls] || item.interest || item.niveauInteret) + '</span>' : '<span class="client-interest planifiee">' + text(status) + '</span>') + '</div>' + body + '</article>';
   }
 
-  function documentCard(item) {
-    return '<a class="client-doc-card" href="' + (item.url || "#") + '" data-client-doc><strong>' + text(item.label || item.document) + '</strong><span>' + text(item.status || item.statut) + '</span></a>';
+  function latestVisitAction(visits) {
+    for (var index = visits.length - 1; index >= 0; index -= 1) {
+      var item = visits[index] || {};
+      var action = item.nextAction || item.prochaineAction;
+      if (action) return action;
+    }
+    return "À compléter après les prochains retours.";
   }
 
-  function nextStep(item) {
-    return '<article class="client-next-card"><strong>' + text(item.action) + '</strong><dl><dt>Date cible</dt><dd>' + text(item.targetDate || item.datePrevue || item.date) + '</dd><dt>Statut</dt><dd>' + text(item.status || item.statut || item.owner || item.responsable) + '</dd></dl><p>' + text(item.comment || item.commentaire) + '</p></article>';
+  function ownerWelcomeMessage(property) {
+    var fallback = "Ia ora na, bienvenue dans ton espace vendeur. Tu peux suivre ici les visites prévues, les retours des visites réalisées et les prochaines informations utiles pour avancer clairement.";
+    var message = String(property.welcomeMessage || "");
+    if (!message || /actions réalisées|statistiques|actions, les statistiques/i.test(message)) return fallback;
+    return message;
   }
 
   function renderDashboard(root, property, isDemo, source) {
     document.body.setAttribute("data-property-slug", property.slug);
     document.body.setAttribute("data-property-title", property.title);
 
-    var stats = property.stats || {};
-    var statKeys = Object.keys(labels).filter(function (key) {
-      return stats[key] != null && stats[key] !== "";
-    });
-    if (!statKeys.length) statKeys = ["whatsappClicks", "phoneClicks", "smsClicks", "videoRequests", "visitRequests", "completedVisits", "qualifiedProspects"];
+    var plannedItems = property.plannedVisits || [];
+    var completedItems = property.completedVisitFeedback || property.marketFeedback || [];
+    var plannedVisits = plannedItems.map(function (item) { return visitRow(item, false); }).join("") || '<p class="client-empty">Aucune visite prévue pour le moment. Dès qu’un créneau est confirmé, il apparaîtra ici.</p>';
+    var completed = completedItems.map(function (item) { return visitRow(item, true); }).join("") || '<p class="client-empty">Les retours de visites seront ajoutés après les premiers rendez-vous.</p>';
+    var lastAction = latestVisitAction(completedItems);
+    var visitSummary = '<div class="client-stats-grid owner-visit-summary">' +
+      '<article class="client-stat-card"><span>Visites prévues</span><strong>' + plannedItems.length + '</strong></article>' +
+      '<article class="client-stat-card"><span>Retours de visites</span><strong>' + completedItems.length + '</strong></article>' +
+      '<article class="client-stat-card"><span>Prochaine action liée aux visites</span><strong>' + text(lastAction) + '</strong></article>' +
+      '</div>';
 
-    var statHtml = statKeys.map(function (key) {
-      return statCard(key, stats[key]);
-    }).join("");
-    var actions = (property.marketingActions || []).map(actionRow).join("") || '<p class="client-empty">Les premières actions seront ajoutées ici.</p>';
-    var plannedVisits = (property.plannedVisits || []).map(function (item) { return visitRow(item, false); }).join("") || '<p class="client-empty">Les visites prévues seront ajoutées ici.</p>';
-    var completed = (property.completedVisitFeedback || property.marketFeedback || []).map(function (item) { return visitRow(item, true); }).join("") || '<p class="client-empty">Les retours de visites seront ajoutés après les premiers rendez-vous.</p>';
-    var docs = (property.documents || []).map(documentCard).join("") || '<p class="client-empty">Les statuts documents seront ajoutés lorsque le dossier avance.</p>';
-    var next = (property.nextSteps || []).map(nextStep).join("") || '<p class="client-empty">Les prochaines étapes seront ajoutées ici.</p>';
-
-    root.innerHTML = '<section class="client-hero"><div class="wrap client-hero-grid"><div><p class="eyebrow">' + (isDemo ? "Démonstration vendeur" : "Espace vendeur privé") + '</p><h1>' + text(property.title) + '</h1><p class="lead">' + text(property.welcomeMessage) + '</p><div class="client-hero-meta"><span>' + text(property.status) + '</span><span>' + text(property.price) + '</span><span>' + text(property.location) + '</span><span>Mise en ligne : ' + text(property.launchDate) + '</span></div></div><aside class="client-demo-note"><strong>' + (isDemo ? "Données fictives" : "Suivi propriétaire") + '</strong><p>' + (isDemo ? "Cette page sert à montrer le niveau de suivi possible en rendez-vous vendeur." : "Les données affichées viennent du suivi préparé par Mathilde KW. Les notes internes restent privées.") + '</p></aside></div></section>' +
+    root.innerHTML = '<section class="client-hero"><div class="wrap client-hero-grid"><div><p class="eyebrow">' + (isDemo ? "Démonstration vendeur" : "Espace vendeur privé") + '</p><h1>' + text(property.title) + '</h1><p class="lead">' + text(ownerWelcomeMessage(property)) + '</p><div class="client-hero-meta"><span>' + text(property.status) + '</span><span>' + text(property.price) + '</span><span>' + text(property.location) + '</span><span>Mise en ligne : ' + text(property.launchDate) + '</span></div></div><aside class="client-demo-note"><strong>' + (isDemo ? "Données fictives" : "Suivi propriétaire") + '</strong><p>' + (isDemo ? "Cette page sert à montrer le niveau de suivi possible en rendez-vous vendeur." : "Les données affichées viennent du suivi préparé par Mathilde KW. Les notes internes restent privées.") + '</p></aside></div></section>' +
       '<main class="client-dashboard wrap">' +
-      '<section class="client-section"><div class="client-section-head"><p class="eyebrow">Chiffres simples</p><h2>Demandes et activité</h2></div><div class="client-stats-grid">' + statHtml + '</div></section>' +
+      '<section class="client-section"><div class="client-section-head"><p class="eyebrow">Vue rapide</p><h2>Suivi des visites</h2><p>L’espace propriétaire se concentre volontairement sur les visites : les rendez-vous prévus, les retours reçus et les prochaines actions utiles.</p></div>' + visitSummary + '</section>' +
       '<section class="client-section client-two-cols"><div><div class="client-section-head"><p class="eyebrow">À venir</p><h2>Visites prévues</h2></div><div class="client-feedback-list">' + plannedVisits + '</div></div><div><div class="client-section-head"><p class="eyebrow">Retours terrain</p><h2>Visites réalisées</h2></div><div class="client-feedback-list">' + completed + '</div></div></section>' +
-      '<section class="client-section"><div class="client-section-head"><p class="eyebrow">Commercialisation</p><h2>Actions marketing réalisées</h2></div><div class="client-action-list">' + actions + '</div></section>' +
-      '<section class="client-section client-two-cols"><div><div class="client-section-head"><p class="eyebrow">Documents</p><h2>Documents utiles</h2></div><div class="client-doc-grid">' + docs + '</div></div><div><div class="client-section-head"><p class="eyebrow">Suite</p><h2>Prochaines étapes</h2></div><div class="client-next-list">' + next + '</div></div></section>' +
-      '<section class="client-final"><div><h2>Besoin d’un point rapide ?</h2><p>Un tableau de bord aide à suivre, mais rien ne remplace une conversation claire quand une décision doit être prise.</p></div><div class="cta-row single"><a class="btn whatsapp" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20je%20souhaite%20faire%20un%20point%20sur%20mon%20espace%20vendeur." target="_blank" rel="noopener" data-event="whatsapp_click">Écrire sur WhatsApp</a><a class="btn ghost" href="tel:+68988078247" data-event="phone_click">Appeler Mathilde</a></div></section>' +
+      '<section class="client-final"><div><h2>Besoin d’un point rapide ?</h2><p>Les retours de visites donnent une vraie lecture du marché. Si une décision doit être prise, on en parle simplement ensemble.</p></div><div class="cta-row single"><a class="btn whatsapp" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20je%20souhaite%20faire%20un%20point%20sur%20les%20visites%20de%20mon%20bien." target="_blank" rel="noopener" data-event="whatsapp_click">Écrire sur WhatsApp</a><a class="btn ghost" href="tel:+68988078247" data-event="phone_click">Appeler Mathilde</a></div></section>' +
       '</main>';
 
     safeTrack("seller_dashboard_view", {

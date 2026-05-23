@@ -3639,6 +3639,10 @@ body.seo-page::before {
   font-size: clamp(28px, 4vw, 42px);
   line-height: 1;
 }
+.owner-visit-summary .client-stat-card:last-child strong {
+  font-size: clamp(17px, 2vw, 22px);
+  line-height: 1.25;
+}
 .client-action-list,
 .client-feedback-list,
 .client-next-list {

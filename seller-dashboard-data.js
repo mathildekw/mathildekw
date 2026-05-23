@@ -18,7 +18,7 @@ window.MathildeClientSpaces.sellerProperties = {
     price: "76 500 000 XPF",
     location: "Papeete",
     launchDate: "15 mai 2026",
-    welcomeMessage: "Ia ora na, bienvenue dans ton espace vendeur. Tu peux suivre ici les actions réalisées, les statistiques de visibilité, les retours du marché et les prochaines étapes.",
+    welcomeMessage: "Ia ora na, bienvenue dans ton espace vendeur. Tu peux suivre ici les visites prévues, les retours des visites réalisées et les prochaines informations utiles pour avancer clairement.",
     stats: {
       pageViews: 428,
       whatsappClicks: 37,
@@ -70,7 +70,7 @@ window.MathildeClientSpaces.sellerProperties = {
     price: "Prix à confirmer",
     location: "Commune à compléter",
     launchDate: "À définir",
-    welcomeMessage: "Ia ora na, bienvenue dans ton espace vendeur. Cette V1 permet de suivre les actions, les statistiques et les prochaines étapes avec des données mises à jour manuellement.",
+    welcomeMessage: "Ia ora na, bienvenue dans ton espace vendeur. Cette V1 se concentre sur les visites prévues et les retours terrain utiles pour suivre la vente simplement.",
     stats: {
       pageViews: 0,
       whatsappClicks: 0,

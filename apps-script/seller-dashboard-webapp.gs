@@ -159,7 +159,7 @@ function parseMandatSheet_(sheet, indexEntry, config) {
     price: clean(lookup["Prix affiché"] || indexEntry["Prix"] || ""),
     location: clean(lookup["Commune / secteur"] || indexEntry["Commune"] || ""),
     launchDate: clean(indexEntry["Date mise en ligne"] || indexEntry["Date de mise en ligne"] || ""),
-    welcomeMessage: clean(lookup["Message propriétaire"] || "Ia ora na, bienvenue dans ton espace vendeur. Tu peux suivre ici les actions réalisées, les statistiques de visibilité, les retours du marché et les prochaines étapes."),
+    welcomeMessage: clean(lookup["Message propriétaire"] || "Ia ora na, bienvenue dans ton espace vendeur. Tu peux suivre ici les visites prévues, les retours des visites réalisées et les prochaines informations utiles pour avancer clairement."),
     stats,
     plannedVisits,
     completedVisitFeedback,
