@@ -40,6 +40,40 @@ function trackEvent(n,p){p=p||{};p.page_location=location.href;p.page_path=locat
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',addHelpers);else addHelpers();
 })();
+;(function(){
+  if(window.__mathildeContactWidget)return;window.__mathildeContactWidget=true;
+  function messageForPage(){
+    var p=location.pathname;
+    if(p.indexOf('vendre')!==-1||p.indexOf('estimation')!==-1||p.indexOf('prix-immobilier')!==-1)return 'Ia ora na Mathilde, je souhaite parler de mon projet immobilier à Tahiti. Peux-tu me recontacter ?';
+    if(p.indexOf('acheter')!==-1||p.indexOf('biens-a-vendre')!==-1)return 'Ia ora na Mathilde, je cherche un bien à Tahiti. Peux-tu me recontacter ?';
+    if(p.indexOf('appartement-t2-punaauia-pk11')!==-1)return 'Ia ora na Mathilde, je suis intéressé(e) par le T2 à Punaauia PK11. Peux-tu me donner plus d’informations ?';
+    return 'Ia ora na Mathilde, j’ai une question sur mon projet immobilier à Tahiti. Peux-tu me recontacter ?';
+  }
+  function addContactWidget(){
+    if(document.querySelector('[data-mk-contact-widget]'))return;
+    var msg=messageForPage();
+    var wa='https://wa.me/33782475958?text='+encodeMessage(msg);
+    var sms='sms:+68988078247?body='+encodeURIComponent(msg);
+    var tel='tel:+68988078247';
+    var widget=document.createElement('div');
+    widget.className='mk-contact-widget';
+    widget.setAttribute('data-mk-contact-widget','true');
+    widget.innerHTML='<button class="mk-contact-toggle" type="button" aria-expanded="false">Me contacter</button><div class="mk-contact-panel" aria-label="Options de contact"><strong>Contacter Mathilde</strong><p>Choisis le canal le plus simple pour toi.</p><div class="mk-contact-options"><a class="whatsapp" href="'+wa+'" target="_blank" rel="noopener" data-event="click_contact_widget_whatsapp">WhatsApp</a><a class="sms" href="'+sms+'" data-event="click_contact_widget_sms">SMS</a><a class="call" href="'+tel+'" data-event="click_contact_widget_call">Appeler</a></div></div>';
+    document.body.appendChild(widget);
+    var toggle=widget.querySelector('.mk-contact-toggle');
+    toggle.addEventListener('click',function(){
+      var open=widget.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded',open?'true':'false');
+      trackEvent(open?'open_contact_widget':'close_contact_widget',{event_category:'contact'});
+    });
+    document.addEventListener('click',function(e){
+      if(widget.contains(e.target))return;
+      widget.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded','false');
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',addContactWidget);else addContactWidget();
+})();
 document.addEventListener('click',function(e){var t=e.target.closest('[data-event]');if(t)trackEvent(t.getAttribute('data-event'),{link_text:cleanText(t.textContent),link_url:t.href||''})});
 document.addEventListener('DOMContentLoaded',function(){trackEvent('page_ready',{event_category:'engagement'});document.querySelectorAll('[data-t2-gallery]').forEach(function(g){var main=g.querySelector('[data-gallery-main]'),idx=g.querySelector('[data-gallery-index]'),cap=g.querySelector('[data-gallery-caption]'),thumbs=[].slice.call(g.querySelectorAll('[data-gallery-thumb]')),cur=0;if(!main||!thumbs.length)return;function show(i,src){cur=(i+thumbs.length)%thumbs.length;var th=thumbs[cur];main.style.opacity='.55';setTimeout(function(){main.src=th.getAttribute('data-full');main.alt=th.getAttribute('data-alt')||'';main.style.opacity='1'},80);if(idx)idx.textContent=String(cur+1);if(cap)cap.textContent=th.getAttribute('data-caption')||'';thumbs.forEach(function(x,n){x.classList.toggle('is-active',n===cur)});if(src)trackEvent('view_t2_gallery_photo',{event_category:'buyer_lead',gallery_index:cur+1,gallery_source:src})}g.querySelectorAll('[data-gallery-next]').forEach(function(b){b.addEventListener('click',function(){show(cur+1,'next')})});g.querySelectorAll('[data-gallery-prev]').forEach(function(b){b.addEventListener('click',function(){show(cur-1,'prev')})});thumbs.forEach(function(b,i){b.addEventListener('click',function(){show(i,'thumb')})})});document.querySelectorAll('.nav-toggle').forEach(function(btn){btn.addEventListener('click',function(){var nav=btn.closest('.nav'),m=nav&&nav.querySelector('.menu');if(!m)return;var o=m.classList.toggle('open');btn.setAttribute('aria-expanded',o?'true':'false');btn.textContent=o?'Fermer le menu':'Menu'})});var t2=document.querySelector('[data-t2-virtual-form]');if(t2)t2.addEventListener('submit',function(e){e.preventDefault();var d=new FormData(t2);var msg=['Ia ora na Mathilde, je souhaite recevoir les informations sur le T2 a Punaauia PK11.','','Prenom : '+(d.get('prenom')||''),'Telephone : '+(d.get('telephone')||''),'Projet : '+(d.get('projet')||''),'Message : '+(d.get('message')||''),'','Je souhaite etre recontacte pour la fiche complete, la visite virtuelle ou une visite privee.'].join('\n');trackEvent('submit_form_t2_virtual',{event_category:'buyer_lead'});location.href='https://wa.me/33782475958?text='+encodeMessage(msg)});var est=document.querySelector('[data-estimation-form]');if(est)est.addEventListener('submit',function(e){e.preventDefault();var d=new FormData(est);var msg=['Ia ora na Mathilde, je souhaite une estimation gratuite de mon bien a Tahiti.','','Nom : '+(d.get('nom')||''),'Telephone : '+(d.get('telephone')||''),'Email : '+(d.get('email')||''),'Commune : '+(d.get('commune')||''),'Type de bien : '+(d.get('type')||''),'Objectif : '+(d.get('objectif')||''),'Surface approximative : '+(d.get('surface')||''),'Secteur / repere : '+(d.get('adresse')||''),'Message : '+(d.get('message')||'')].join('\n');trackEvent('submit_form_estimation',{event_category:'seller_lead'});location.href='https://wa.me/33782475958?text='+encodeMessage(msg)})});
 
