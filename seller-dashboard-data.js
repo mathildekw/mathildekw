@@ -1,7 +1,7 @@
 window.MathildeClientSpaces = window.MathildeClientSpaces || {};
 
 window.MathildeClientSpaces.config = {
-  appsScriptUrl: "",
+  appsScriptUrl: "https://script.google.com/macros/s/AKfycbz4enH0HwIrDP05pEtfjF2MO10oXFPPdfHeb4l5FwQvrpaH8rwi00-pwdm6IG2zM6Sc0A/exec",
   defaultDemoMandatId: "MANDAT_DEMO_FICTIF",
   ownerLoginPage: "/suivi-vendeur.html",
   ownerDashboardPage: "/espace-vendeur.html",
