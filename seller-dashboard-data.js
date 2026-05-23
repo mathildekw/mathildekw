@@ -1,5 +1,13 @@
 window.MathildeClientSpaces = window.MathildeClientSpaces || {};
 
+window.MathildeClientSpaces.config = {
+  appsScriptUrl: "",
+  defaultDemoMandatId: "MANDAT_DEMO_FICTIF",
+  ownerLoginPage: "/suivi-vendeur.html",
+  ownerDashboardPage: "/espace-vendeur.html",
+  tokenMode: "private-token"
+};
+
 window.MathildeClientSpaces.sellerProperties = {
   "maison-papeete-demo": {
     slug: "maison-papeete-demo",
