@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /espace-vendeur.html
+Disallow: /schema-mathildekw.html
 
 Sitemap: https://mathildekw.com/sitemap.xml
