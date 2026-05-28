@@ -47,6 +47,7 @@ function trackEvent(n,p){p=p||{};p.page_location=location.href;p.page_path=locat
     if(p.indexOf('vendre')!==-1||p.indexOf('estimation')!==-1||p.indexOf('prix-immobilier')!==-1)return 'Ia ora na Mathilde, je souhaite parler de mon projet immobilier à Tahiti. Peux-tu me recontacter ?';
     if(p.indexOf('acheter')!==-1||p.indexOf('biens-a-vendre')!==-1)return 'Ia ora na Mathilde, je cherche un bien à Tahiti. Peux-tu me recontacter ?';
     if(p.indexOf('appartement-t2-punaauia-pk11')!==-1)return 'Ia ora na Mathilde, je suis intéressé(e) par le T2 à Punaauia PK11. Peux-tu me donner plus d’informations ?';
+    if(p.indexOf('t2-renove-paofai-papeete')!==-1)return 'Ia ora na Mathilde, je souhaite recevoir plus d’informations sur le T2 secteur Paofai à Papeete.';
     return 'Ia ora na Mathilde, j’ai une question sur mon projet immobilier à Tahiti. Peux-tu me recontacter ?';
   }
   function addContactWidget(){
