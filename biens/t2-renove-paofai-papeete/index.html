@@ -91,11 +91,62 @@
     .paofai-page .human-card>div{padding:24px 22px;align-self:center}
     .paofai-page .human-card .kw-tag{display:inline-flex;margin-top:8px;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.14);font-size:12px;font-weight:900;color:#fff}
     .seo-page.paofai-page main > .section > .wrap .human-card.contact-panel{padding:0!important;border:0!important;border-radius:24px!important;background:linear-gradient(135deg,#171412,#34271f)!important;box-shadow:0 18px 46px rgba(35,24,17,.14)!important;overflow:hidden;color:#fff}
-    .seo-page.paofai-page main > .section > .wrap .human-card.contact-panel img{display:block!important;width:100%!important;height:100%!important;min-height:360px;object-fit:cover;object-position:center;border:0!important}
-    .seo-page.paofai-page main > .section > .wrap .human-card.contact-panel>div{padding:24px 22px!important}
+      .seo-page.paofai-page main > .section > .wrap .human-card.contact-panel img{display:block!important;width:100%!important;height:100%!important;min-height:360px;object-fit:cover;object-position:center;border:0!important}
+      .seo-page.paofai-page main > .section > .wrap .human-card.contact-panel>div{padding:24px 22px!important}
     .paofai-page .paofai-faq .faq-mini{display:grid;gap:10px}
     .paofai-page .paofai-sticky-contact{display:none}
     @keyframes paofaiContactPulse{0%,100%{box-shadow:0 16px 34px rgba(200,16,46,.28),0 0 0 0 rgba(200,16,46,.20)}50%{box-shadow:0 18px 40px rgba(200,16,46,.36),0 0 0 7px rgba(200,16,46,0)}}
+    @media(min-width:981px){
+      body.seo-page.paofai-page{display:block;background:#fbf8f4}
+      .paofai-page main{overflow:visible}
+      .paofai-page .wrap{width:min(1180px,calc(100% - 56px))}
+      .paofai-page .property-hero{padding:86px 0 34px;background:linear-gradient(135deg,#fff8f4 0%,#fff 48%,#f4ede6 100%)}
+      .paofai-page .property-hero-grid{grid-template-columns:minmax(0,1fr) minmax(520px,1.08fr);gap:36px;align-items:center}
+      .seo-page.paofai-page .hero-grid>div:first-child,
+      .seo-page.paofai-page .property-hero-grid>div:first-child{padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+      .paofai-page .property-hero h1{font-size:clamp(42px,4.1vw,58px);line-height:.96;max-width:690px}
+      .paofai-page .property-price-large{margin:18px 0 10px;font-size:clamp(44px,3.8vw,58px);line-height:.92;letter-spacing:0}
+      .paofai-page .lead{max-width:610px;font-size:17px;line-height:1.62}
+      .paofai-page .property-location-safe{margin-top:18px;background:#fff;box-shadow:0 10px 26px rgba(35,24,17,.07)}
+      .paofai-page .property-actions{justify-content:flex-start;gap:12px;margin-top:22px;max-width:560px}
+      .paofai-page .property-actions .btn{width:auto;max-width:310px;min-height:50px;padding:13px 18px}
+      .paofai-page .property-hero .property-actions .btn:nth-child(3){width:auto;max-width:none;min-height:0;margin-top:2px;padding:0;border:0;background:transparent;color:var(--kw-red);box-shadow:none;font-size:14px;text-decoration:underline;text-underline-offset:4px}
+      .paofai-page .property-hero .property-actions .btn:nth-child(3):hover{transform:none;box-shadow:none}
+      .paofai-page .property-hero .note{max-width:590px;margin-top:14px}
+      .paofai-page .property-hero-media{border-radius:26px;box-shadow:0 28px 70px rgba(35,24,17,.18)}
+      .paofai-page .paofai-carousel{border-radius:26px}
+      .paofai-page .property-hero-media .paofai-carousel-main,
+      .paofai-page .property-hero-media .paofai-carousel-main img{height:520px;min-height:520px}
+      .paofai-page .paofai-carousel-thumbs{grid-auto-columns:100px;padding:12px}
+      .paofai-page .paofai-carousel-thumbs button{height:70px}
+      .paofai-page .quick-facts-section{padding:0 0 30px;margin-top:-6px}
+      .paofai-page .quick-facts-title{margin-bottom:12px}
+      .paofai-page .quick-facts{grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+      .paofai-page .fact-card{min-height:86px;padding:14px 13px;border-radius:16px;box-shadow:0 12px 28px rgba(35,24,17,.06)}
+      .paofai-page .fact-card strong{font-size:17px}
+      .paofai-page .section{padding:38px 0}
+      .seo-page.paofai-page main > .section > .wrap:not(.contact-strip):not(.properties-contact-band):not(.review-proof){width:min(1180px,calc(100% - 56px));padding:32px;border-radius:24px;background:rgba(255,255,255,.78);border:1px solid rgba(35,24,17,.08);box-shadow:0 18px 44px rgba(35,24,17,.07)}
+      .seo-page.paofai-page main > .section.alt > .wrap:not(.contact-strip):not(.properties-contact-band):not(.review-proof){background:rgba(255,255,255,.72)}
+      .seo-page.paofai-page main > .section > .wrap .card:not(.listing):not(.property-card-premium):not(.properties-mini-card):not(.property-criteria-card){padding:0 24px}
+      .seo-page.paofai-page main > .section > .wrap .grid.two > .card:first-child{padding-left:0}
+      .seo-page.paofai-page main > .section > .wrap .grid.two > .card:last-child{padding-right:0}
+      .paofai-page .grid.two{grid-template-columns:minmax(0,1.06fr) minmax(360px,.94fr);align-items:start}
+      .paofai-page .card h2{font-size:clamp(30px,2.8vw,42px);line-height:1.02}
+      .paofai-page .card p,.paofai-page .trust-list li,.paofai-page .info-row{font-size:15px}
+      .paofai-page .criteria-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:center;padding:28px!important;border-radius:22px!important}
+      .paofai-page .criteria-card .btn{margin-top:0;white-space:nowrap}
+      .paofai-page .notice-card{padding:0 0 0 28px!important;border-left:1px solid rgba(200,16,46,.24)}
+      .seo-page.paofai-page main > .section > .wrap .human-card.contact-panel{grid-template-columns:minmax(360px,.82fr) minmax(0,1fr);min-height:520px}
+      .seo-page.paofai-page main > .section > .wrap .human-card.contact-panel img{min-height:520px;object-position:center}
+      .seo-page.paofai-page main > .section > .wrap .human-card.contact-panel>div{padding:40px!important}
+      .paofai-page .mathilde-section .grid.two{grid-template-columns:minmax(0,1.38fr) minmax(320px,.62fr);align-items:stretch}
+      .seo-page.paofai-page main > .mathilde-section > .wrap .human-card.contact-panel{height:520px;min-height:520px;grid-template-columns:minmax(310px,.86fr) minmax(0,1fr)}
+      .seo-page.paofai-page main > .mathilde-section > .wrap .human-card.contact-panel img{height:520px!important;min-height:520px!important}
+      .seo-page.paofai-page main > .mathilde-section > .wrap .human-card.contact-panel>div{padding:44px!important}
+      .paofai-page .mathilde-section .grid.two>.card:last-child{padding-left:28px!important}
+      .paofai-page .paofai-faq .faq-mini{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+      .paofai-page .paofai-faq .faq-mini details:first-child{grid-column:span 2}
+    }
     @media(max-width:980px){.paofai-page{padding-bottom:calc(82px + env(safe-area-inset-bottom))}.paofai-page .property-hero{padding-top:74px}.paofai-page .property-hero-grid,.paofai-page .property-gallery,.paofai-page .contact-options,.paofai-page .human-card{grid-template-columns:1fr}.paofai-page .quick-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.paofai-page .property-hero-media{order:-1}.paofai-page .property-gallery a:first-child{grid-row:auto}.paofai-page .property-gallery img{min-height:230px}.paofai-page .property-actions .btn{width:100%}.paofai-page .section{padding:28px 0}.paofai-page .paofai-carousel-main,.paofai-page .paofai-carousel-main img{height:390px;min-height:390px}.paofai-page .human-card img{min-height:360px;max-height:480px}.paofai-page .paofai-sticky-contact{position:fixed;left:50%;right:auto;bottom:calc(14px + env(safe-area-inset-bottom));z-index:190;display:block;width:min(232px,calc(100vw - 40px));opacity:1;transform:translateX(-50%);transition:opacity .18s ease,transform .18s ease;pointer-events:none}.paofai-page .paofai-sticky-contact.is-hidden-for-cta{opacity:0;transform:translate(-50%,14px);pointer-events:none}.paofai-page .paofai-contact-menu{position:absolute;left:50%;bottom:60px;display:grid;width:min(270px,calc(100vw - 36px));gap:8px;padding:10px;border:1px solid rgba(35,24,17,.10);border-radius:20px;background:rgba(255,255,255,.98);box-shadow:0 22px 58px rgba(15,23,42,.18);opacity:0;transform:translate(-50%,8px) scale(.98);pointer-events:none;transition:opacity .18s ease,transform .18s ease}.paofai-page .paofai-sticky-contact.is-open .paofai-contact-menu{opacity:1;transform:translate(-50%,0) scale(1);pointer-events:auto}.paofai-page .paofai-contact-main{width:100%;min-height:48px;border:1px solid rgba(255,255,255,.78);border-radius:999px;background:var(--kw-red);color:#fff;animation:paofaiContactPulse 2.8s ease-in-out infinite;font:inherit;font-weight:950;font-size:14px;cursor:pointer;pointer-events:auto}.paofai-page .paofai-sticky-contact.is-open .paofai-contact-main{animation:none}.paofai-page .paofai-contact-menu a{min-height:46px;display:flex;align-items:center;justify-content:center;border-radius:999px;text-decoration:none;font-weight:950;font-size:14px}.paofai-page .paofai-contact-menu .call{background:#171412;color:#fff}.paofai-page .paofai-contact-menu .sms{background:#fff7f7;color:#171412;border:1px solid rgba(200,16,46,.16)}.paofai-page .paofai-contact-menu .whatsapp{background:var(--kw-red);color:#fff}}
     @media(max-width:520px){.paofai-page .property-hero{padding-top:64px;padding-bottom:14px}.paofai-page .property-hero-grid{gap:14px}.paofai-page .property-hero h1{font-size:30px;line-height:1.03}.paofai-page .property-hero-media{border-radius:20px}.paofai-page .property-price-large{font-size:30px;line-height:1.02}.paofai-page .lead{font-size:14px;margin-top:10px}.paofai-page .property-actions{display:grid;grid-template-columns:1fr;gap:8px}.paofai-page .property-actions .btn{width:100%;max-width:100%;padding:12px 14px;font-size:13px;line-height:1.18}.paofai-page .property-location-safe{max-width:100%;font-size:12px;line-height:1.25;white-space:normal}.paofai-page .quick-facts-section{padding:14px 0 16px}.paofai-page .quick-facts{gap:8px}.paofai-page .fact-card{padding:10px}.paofai-page .fact-card strong{font-size:14px}.paofai-page .fact-card span{font-size:11px;line-height:1.25}.paofai-page .property-gallery img{min-height:200px}.paofai-page .paofai-carousel{border-radius:18px}.paofai-page .paofai-carousel-main,.paofai-page .paofai-carousel-main img{height:310px;min-height:310px}.paofai-page .paofai-carousel-caption{left:12px;right:12px;bottom:12px}.paofai-page .paofai-carousel-caption strong{font-size:14px}.paofai-page .paofai-carousel-caption span{font-size:11px}.paofai-page .paofai-carousel-nav{width:36px;height:36px;font-size:24px}.paofai-page .paofai-carousel-thumbs{grid-auto-columns:82px}.paofai-page .paofai-carousel-thumbs button{height:58px}.paofai-page .info-row{display:block}.paofai-page .info-row strong{display:block;margin-bottom:3px}.seo-page.paofai-page main > .section > .wrap .human-card.contact-panel img{height:auto!important;min-height:0!important}.seo-page.paofai-page main > .section > .wrap .human-card.contact-panel>div{padding:22px 18px!important}}
     @media(max-width:380px){.paofai-page .property-hero h1{font-size:28px}.paofai-page .property-price-large{font-size:27px}.paofai-page .quick-facts{grid-template-columns:1fr 1fr}.paofai-page .paofai-sticky-contact{width:min(216px,calc(100vw - 34px))}.paofai-page .paofai-contact-main{font-size:14px}}
@@ -234,7 +285,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section mathilde-section">
       <div class="wrap grid two">
         <article class="card contact-panel human-card">
           <img src="/images/mathilde-kw-polynesie-large.jpg" alt="Mathilde KW Polynésie, conseillère immobilière à Tahiti" width="1050" height="1400" loading="lazy">
