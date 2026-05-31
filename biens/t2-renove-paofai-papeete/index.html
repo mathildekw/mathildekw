@@ -13,7 +13,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260517">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#C8102E">
-  <link rel="preload" as="image" href="/images/t2-paofai/t2-paofai-exterieur-privatif-720.jpg" imagesrcset="/images/t2-paofai/t2-paofai-exterieur-privatif-720.jpg 720w, /images/t2-paofai/t2-paofai-exterieur-privatif-960.jpg 960w, /images/t2-paofai/t2-paofai-exterieur-privatif.jpg 1195w" imagesizes="(max-width: 980px) calc(100vw - 32px), 42vw" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/t2-paofai/t2-paofai-exterieur-privatif-720.jpg" imagesrcset="/images/t2-paofai/t2-paofai-exterieur-privatif-720.jpg 720w, /images/t2-paofai/t2-paofai-exterieur-privatif-960.jpg 960w" imagesizes="(max-width: 980px) calc(100vw - 32px), 42vw" fetchpriority="high">
   <meta property="og:type" content="website">
   <meta property="og:title" content="T2 rénové avec extérieur privatif – Paofai, Papeete">
   <meta property="og:description" content="T2 rénové de 50 m² avec extérieur privatif d’environ 30 m², parking en sous-sol et emplacement central à Papeete.">
@@ -40,7 +40,7 @@
     .paofai-page .property-location-safe{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid rgba(200,16,46,.16);color:#4b4039;font-size:13px;font-weight:900}
     .paofai-page .property-hero-media{border-radius:28px;overflow:hidden;border:1px solid rgba(35,24,17,.08);box-shadow:0 26px 70px rgba(35,24,17,.15);background:#fff}
     .paofai-page .property-hero-media img{display:block;width:100%;height:420px;object-fit:cover}
-    .paofai-page .property-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .paofai-page .property-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px}
     .paofai-page .property-actions .btn{min-height:48px}
     .paofai-page .quick-facts-section{padding:20px 0 24px}
     .paofai-page .quick-facts-title{margin:0 0 10px;color:#4b4039;font-size:13px;font-weight:950;text-transform:uppercase;letter-spacing:.12em}
@@ -56,6 +56,23 @@
     .paofai-page .property-gallery img{width:100%;height:100%;min-height:220px;object-fit:cover;display:block;transition:transform .25s ease}
     .paofai-page .property-gallery a:hover img{transform:scale(1.025)}
     .paofai-page .image-label{position:absolute;left:12px;bottom:12px;right:12px;display:inline-flex;width:fit-content;max-width:calc(100% - 24px);padding:7px 10px;border-radius:999px;background:rgba(23,20,18,.78);color:#fff;font-size:11px;font-weight:900;backdrop-filter:blur(10px)}
+    .paofai-page .paofai-carousel{position:relative;overflow:hidden;border-radius:24px;border:1px solid rgba(35,24,17,.08);background:#171412;box-shadow:0 24px 62px rgba(35,24,17,.14)}
+    .paofai-page .paofai-carousel-main{position:relative;display:block;width:100%;min-height:520px;padding:0;border:0;background:#171412;cursor:pointer;overflow:hidden}
+    .paofai-page .paofai-carousel-main::after{content:"";position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(180deg,transparent,rgba(0,0,0,.56));pointer-events:none}
+    .paofai-page .paofai-carousel-main img{display:block;width:100%;height:520px;object-fit:cover;transition:opacity .16s ease,transform .24s ease}
+    .paofai-page .paofai-carousel-main:hover img{transform:scale(1.015)}
+    .paofai-page .paofai-carousel-caption{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#fff;text-align:left}
+    .paofai-page .paofai-carousel-caption strong{display:block;font-size:16px;line-height:1.15}
+    .paofai-page .paofai-carousel-caption span{display:block;margin-top:3px;font-size:12px;font-weight:800;color:rgba(255,255,255,.78)}
+    .paofai-page .paofai-carousel-count{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.92);color:#171412;font-size:12px;font-weight:950;white-space:nowrap}
+    .paofai-page .paofai-carousel-nav{position:absolute;top:50%;z-index:3;display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.72);border-radius:999px;background:rgba(255,255,255,.92);color:#171412;font-size:28px;line-height:1;box-shadow:0 12px 28px rgba(0,0,0,.18);cursor:pointer;transform:translateY(-50%)}
+    .paofai-page .paofai-carousel-nav.prev{left:14px}
+    .paofai-page .paofai-carousel-nav.next{right:14px}
+    .paofai-page .paofai-carousel-thumbs{display:grid;grid-auto-flow:column;grid-auto-columns:92px;gap:8px;overflow-x:auto;padding:10px;background:#fff;scrollbar-width:none}
+    .paofai-page .paofai-carousel-thumbs::-webkit-scrollbar{display:none}
+    .paofai-page .paofai-carousel-thumbs button{height:66px;padding:0;border:2px solid transparent;border-radius:12px;background:#eee;overflow:hidden;cursor:pointer;opacity:.72}
+    .paofai-page .paofai-carousel-thumbs button.is-active{border-color:var(--kw-red);opacity:1}
+    .paofai-page .paofai-carousel-thumbs img{display:block;width:100%;height:100%;object-fit:cover}
     .paofai-page .notice-card{border-left:4px solid var(--kw-red);background:#fff8f7}
     .paofai-page .info-list{display:grid;gap:10px;margin-top:12px}
     .paofai-page .info-row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(35,24,17,.08)}
@@ -71,8 +88,8 @@
     .paofai-page .human-card .kw-tag{display:inline-flex;margin-top:8px;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.14);font-size:12px;font-weight:900;color:#fff}
     .paofai-page .paofai-faq .faq-mini{display:grid;gap:10px}
     .paofai-page .paofai-sticky-contact{display:none}
-    @media(max-width:980px){.paofai-page{padding-bottom:calc(82px + env(safe-area-inset-bottom))}.paofai-page .property-hero{padding-top:74px}.paofai-page .property-hero-grid,.paofai-page .property-gallery,.paofai-page .contact-options{grid-template-columns:1fr}.paofai-page .quick-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.paofai-page .property-hero-media{order:-1}.paofai-page .property-hero-media img{height:280px}.paofai-page .property-gallery a:first-child{grid-row:auto}.paofai-page .property-gallery img{min-height:230px}.paofai-page .property-actions .btn{width:100%}.paofai-page .section{padding:28px 0}.paofai-page .paofai-sticky-contact{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:190;display:block;pointer-events:none}.paofai-page .paofai-contact-menu{position:absolute;left:0;right:0;bottom:62px;display:grid;gap:8px;padding:10px;border:1px solid rgba(35,24,17,.10);border-radius:20px;background:rgba(255,255,255,.98);box-shadow:0 22px 58px rgba(15,23,42,.18);opacity:0;transform:translateY(8px) scale(.98);pointer-events:none;transition:opacity .18s ease,transform .18s ease}.paofai-page .paofai-sticky-contact.is-open .paofai-contact-menu{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}.paofai-page .paofai-contact-main{width:100%;min-height:52px;border:1px solid rgba(255,255,255,.74);border-radius:999px;background:var(--kw-red);color:#fff;box-shadow:0 18px 44px rgba(35,24,17,.20);font:inherit;font-weight:950;font-size:15px;cursor:pointer;pointer-events:auto}.paofai-page .paofai-contact-menu a{min-height:46px;display:flex;align-items:center;justify-content:center;border-radius:999px;text-decoration:none;font-weight:950;font-size:14px}.paofai-page .paofai-contact-menu .call{background:#171412;color:#fff}.paofai-page .paofai-contact-menu .sms{background:#fff7f7;color:#171412;border:1px solid rgba(200,16,46,.16)}.paofai-page .paofai-contact-menu .whatsapp{background:var(--kw-red);color:#fff}}
-    @media(max-width:520px){.paofai-page .property-hero{padding-top:64px;padding-bottom:16px}.paofai-page .property-hero-media{border-radius:20px}.paofai-page .property-hero-media img{height:230px}.paofai-page .property-price-large{font-size:36px}.paofai-page .lead{font-size:15px;margin-top:10px}.paofai-page .quick-facts-section{padding:16px 0 18px}.paofai-page .fact-card{padding:10px}.paofai-page .fact-card strong{font-size:15px}.paofai-page .property-gallery img{min-height:200px}.paofai-page .info-row{display:block}.paofai-page .info-row strong{display:block;margin-bottom:3px}.paofai-page .human-card{grid-template-columns:66px minmax(0,1fr);gap:12px}.paofai-page .human-card img{width:66px;height:66px}}
+    @media(max-width:980px){.paofai-page{padding-bottom:calc(82px + env(safe-area-inset-bottom))}.paofai-page .property-hero{padding-top:74px}.paofai-page .property-hero-grid,.paofai-page .property-gallery,.paofai-page .contact-options{grid-template-columns:1fr}.paofai-page .quick-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.paofai-page .property-hero-media{order:-1}.paofai-page .property-hero-media img{height:280px}.paofai-page .property-gallery a:first-child{grid-row:auto}.paofai-page .property-gallery img{min-height:230px}.paofai-page .property-actions .btn{width:100%}.paofai-page .section{padding:28px 0}.paofai-page .paofai-carousel-main,.paofai-page .paofai-carousel-main img{height:360px;min-height:360px}.paofai-page .paofai-sticky-contact{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:190;display:block;pointer-events:none}.paofai-page .paofai-contact-menu{position:absolute;left:0;right:0;bottom:62px;display:grid;gap:8px;padding:10px;border:1px solid rgba(35,24,17,.10);border-radius:20px;background:rgba(255,255,255,.98);box-shadow:0 22px 58px rgba(15,23,42,.18);opacity:0;transform:translateY(8px) scale(.98);pointer-events:none;transition:opacity .18s ease,transform .18s ease}.paofai-page .paofai-sticky-contact.is-open .paofai-contact-menu{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}.paofai-page .paofai-contact-main{width:100%;min-height:52px;border:1px solid rgba(255,255,255,.74);border-radius:999px;background:var(--kw-red);color:#fff;box-shadow:0 18px 44px rgba(35,24,17,.20);font:inherit;font-weight:950;font-size:15px;cursor:pointer;pointer-events:auto}.paofai-page .paofai-contact-menu a{min-height:46px;display:flex;align-items:center;justify-content:center;border-radius:999px;text-decoration:none;font-weight:950;font-size:14px}.paofai-page .paofai-contact-menu .call{background:#171412;color:#fff}.paofai-page .paofai-contact-menu .sms{background:#fff7f7;color:#171412;border:1px solid rgba(200,16,46,.16)}.paofai-page .paofai-contact-menu .whatsapp{background:var(--kw-red);color:#fff}}
+    @media(max-width:520px){.paofai-page .property-hero{padding-top:64px;padding-bottom:16px}.paofai-page .property-hero-media{border-radius:20px}.paofai-page .property-hero-media img{height:230px}.paofai-page .property-price-large{font-size:36px}.paofai-page .lead{font-size:15px;margin-top:10px}.paofai-page .quick-facts-section{padding:16px 0 18px}.paofai-page .fact-card{padding:10px}.paofai-page .fact-card strong{font-size:15px}.paofai-page .property-gallery img{min-height:200px}.paofai-page .paofai-carousel{border-radius:18px}.paofai-page .paofai-carousel-main,.paofai-page .paofai-carousel-main img{height:260px;min-height:260px}.paofai-page .paofai-carousel-caption{left:12px;right:12px;bottom:12px}.paofai-page .paofai-carousel-caption strong{font-size:14px}.paofai-page .paofai-carousel-caption span{font-size:11px}.paofai-page .paofai-carousel-nav{width:36px;height:36px;font-size:24px}.paofai-page .paofai-carousel-thumbs{grid-auto-columns:76px}.paofai-page .paofai-carousel-thumbs button{height:54px}.paofai-page .info-row{display:block}.paofai-page .info-row strong{display:block;margin-bottom:3px}.paofai-page .human-card{grid-template-columns:66px minmax(0,1fr);gap:12px}.paofai-page .human-card img{width:66px;height:66px}}
   </style>
 </head>
 <body class="seo-page paofai-page" data-property-slug="t2-renove-paofai-papeete" data-property-title="T2 rénové avec extérieur privatif — Paofai, Papeete">
@@ -108,7 +125,7 @@
           <p class="note">Envoie-moi un message et je te confirme rapidement les infos importantes : charges, documents, disponibilité de visite et points à vérifier.</p>
         </div>
         <figure class="property-hero-media">
-          <img src="/images/t2-paofai/t2-paofai-exterieur-privatif-720.jpg" srcset="/images/t2-paofai/t2-paofai-exterieur-privatif-720.jpg 720w, /images/t2-paofai/t2-paofai-exterieur-privatif-960.jpg 960w, /images/t2-paofai/t2-paofai-exterieur-privatif.jpg 1195w" sizes="(max-width: 980px) calc(100vw - 32px), 42vw" alt="Terrasse privative d’un appartement T2 à Papeete secteur Paofai" width="720" height="540" fetchpriority="high" decoding="async">
+          <img src="/images/t2-paofai/t2-paofai-exterieur-privatif-720.jpg" srcset="/images/t2-paofai/t2-paofai-exterieur-privatif-720.jpg 720w, /images/t2-paofai/t2-paofai-exterieur-privatif-960.jpg 960w" sizes="(max-width: 980px) calc(100vw - 32px), 42vw" alt="Terrasse privative d’un appartement T2 à Papeete secteur Paofai" width="720" height="540" fetchpriority="high" decoding="async">
         </figure>
       </div>
     </section>
@@ -134,14 +151,22 @@
           <h2>Un T2 rénové avec un extérieur rare en centre-ville</h2>
           <p>Les photos permettent de visualiser les volumes, l’extérieur et le potentiel. Les visuels home staging IA sont indiqués comme non contractuels.</p>
         </div>
-        <div class="property-gallery">
-          <a href="/images/t2-paofai/t2-paofai-exterieur-privatif.jpg" target="_blank" rel="noopener" data-event="click_paofai_gallery_photo"><img src="/images/t2-paofai/t2-paofai-exterieur-privatif-720.jpg" srcset="/images/t2-paofai/t2-paofai-exterieur-privatif-720.jpg 720w, /images/t2-paofai/t2-paofai-exterieur-privatif-960.jpg 960w, /images/t2-paofai/t2-paofai-exterieur-privatif.jpg 1195w" sizes="(max-width: 980px) calc(100vw - 32px), 44vw" alt="Extérieur privatif d’environ 30 m² du T2 à Papeete secteur Paofai" width="720" height="540" loading="lazy" decoding="async"><span class="image-label">Extérieur privatif</span></a>
-          <a href="/images/t2-paofai/t2-paofai-sejour-cuisine.jpg" target="_blank" rel="noopener" data-event="click_paofai_gallery_photo"><img src="/images/t2-paofai/t2-paofai-sejour-cuisine.jpg" alt="Séjour avec cuisine ouverte du T2 à Papeete secteur Paofai" width="1195" height="896" loading="lazy" decoding="async"><span class="image-label">Séjour / cuisine</span></a>
-          <a href="/images/t2-paofai/t2-paofai-chambre.jpg" target="_blank" rel="noopener" data-event="click_paofai_gallery_photo"><img src="/images/t2-paofai/t2-paofai-chambre.jpg" alt="Chambre du T2 à Papeete secteur Paofai" width="1195" height="896" loading="lazy" decoding="async"><span class="image-label">Chambre</span></a>
-          <a href="/images/t2-paofai/t2-paofai-cuisine.jpg" target="_blank" rel="noopener" data-event="click_paofai_gallery_photo"><img src="/images/t2-paofai/t2-paofai-cuisine.jpg" alt="Cuisine du T2 à Papeete secteur Paofai" width="1195" height="896" loading="lazy" decoding="async"><span class="image-label">Cuisine</span></a>
-          <a href="/images/t2-paofai/t2-paofai-sejour-terrasse.jpg" target="_blank" rel="noopener" data-event="click_paofai_gallery_photo"><img src="/images/t2-paofai/t2-paofai-sejour-terrasse.jpg" alt="Séjour ouvert vers terrasse du T2 à Papeete secteur Paofai" width="1195" height="896" loading="lazy" decoding="async"><span class="image-label">Ouverture terrasse</span></a>
-          <a href="/images/t2-paofai/t2-paofai-home-staging-sejour.jpg" target="_blank" rel="noopener" data-event="click_paofai_gallery_photo"><img src="/images/t2-paofai/t2-paofai-home-staging-sejour.jpg" alt="Idée de home staging IA du séjour du T2 à Papeete, visuel non contractuel" width="1448" height="1086" loading="lazy" decoding="async"><span class="image-label">Home staging IA · non contractuel</span></a>
-          <a href="/images/t2-paofai/t2-paofai-home-staging-chambre.jpg" target="_blank" rel="noopener" data-event="click_paofai_gallery_photo"><img src="/images/t2-paofai/t2-paofai-home-staging-chambre.jpg" alt="Idée de home staging IA de la chambre du T2 à Papeete, visuel non contractuel" width="1448" height="1086" loading="lazy" decoding="async"><span class="image-label">Home staging IA · non contractuel</span></a>
+        <div class="paofai-carousel" data-paofai-carousel>
+          <button class="paofai-carousel-main" type="button" data-paofai-next data-event="click_paofai_gallery_next" aria-label="Voir la photo suivante du T2 Paofai">
+            <img data-paofai-main src="/images/t2-paofai/t2-paofai-exterieur-privatif-720.jpg" srcset="/images/t2-paofai/t2-paofai-exterieur-privatif-720.jpg 720w, /images/t2-paofai/t2-paofai-exterieur-privatif-960.jpg 960w" sizes="(max-width: 980px) calc(100vw - 32px), 960px" alt="Extérieur privatif d’environ 30 m² du T2 à Papeete secteur Paofai" width="720" height="540" loading="lazy" decoding="async">
+            <span class="paofai-carousel-caption"><span><strong data-paofai-title>Extérieur privatif</strong><span data-paofai-caption>Environ 30 m², rare en centre-ville.</span></span><span class="paofai-carousel-count"><span data-paofai-index>1</span>/7</span></span>
+          </button>
+          <button class="paofai-carousel-nav prev" type="button" data-paofai-prev data-event="click_paofai_gallery_prev" aria-label="Photo précédente">‹</button>
+          <button class="paofai-carousel-nav next" type="button" data-paofai-next data-event="click_paofai_gallery_next" aria-label="Photo suivante">›</button>
+          <div class="paofai-carousel-thumbs" aria-label="Miniatures des photos du T2">
+            <button type="button" class="is-active" data-paofai-thumb data-index="0" data-full="/images/t2-paofai/t2-paofai-exterieur-privatif-960.jpg" data-srcset="/images/t2-paofai/t2-paofai-exterieur-privatif-720.jpg 720w, /images/t2-paofai/t2-paofai-exterieur-privatif-960.jpg 960w" data-alt="Extérieur privatif d’environ 30 m² du T2 à Papeete secteur Paofai" data-title="Extérieur privatif" data-caption="Environ 30 m², rare en centre-ville." data-event="click_paofai_gallery_thumb"><img src="/images/t2-paofai/t2-paofai-exterieur-privatif-thumb.jpg" alt="" width="360" height="270" loading="lazy"></button>
+            <button type="button" data-paofai-thumb data-index="1" data-full="/images/t2-paofai/t2-paofai-sejour-cuisine-960.jpg" data-alt="Séjour avec cuisine ouverte du T2 à Papeete secteur Paofai" data-title="Séjour / cuisine" data-caption="Volume clair, rénové, facile à projeter." data-event="click_paofai_gallery_thumb"><img src="/images/t2-paofai/t2-paofai-sejour-cuisine-thumb.jpg" alt="" width="360" height="270" loading="lazy"></button>
+            <button type="button" data-paofai-thumb data-index="2" data-full="/images/t2-paofai/t2-paofai-chambre-960.jpg" data-alt="Chambre du T2 à Papeete secteur Paofai" data-title="Chambre" data-caption="Une chambre séparée, bien à vérifier selon ton projet." data-event="click_paofai_gallery_thumb"><img src="/images/t2-paofai/t2-paofai-chambre-thumb.jpg" alt="" width="360" height="270" loading="lazy"></button>
+            <button type="button" data-paofai-thumb data-index="3" data-full="/images/t2-paofai/t2-paofai-cuisine-960.jpg" data-alt="Cuisine du T2 à Papeete secteur Paofai" data-title="Cuisine" data-caption="Vendu non meublé et non équipé." data-event="click_paofai_gallery_thumb"><img src="/images/t2-paofai/t2-paofai-cuisine-thumb.jpg" alt="" width="360" height="270" loading="lazy"></button>
+            <button type="button" data-paofai-thumb data-index="4" data-full="/images/t2-paofai/t2-paofai-sejour-terrasse-960.jpg" data-alt="Séjour ouvert vers terrasse du T2 à Papeete secteur Paofai" data-title="Ouverture terrasse" data-caption="Le séjour s’ouvre vers l’extérieur privatif." data-event="click_paofai_gallery_thumb"><img src="/images/t2-paofai/t2-paofai-sejour-terrasse-thumb.jpg" alt="" width="360" height="270" loading="lazy"></button>
+            <button type="button" data-paofai-thumb data-index="5" data-full="/images/t2-paofai/t2-paofai-home-staging-sejour-960.jpg" data-alt="Idée de home staging IA du séjour du T2 à Papeete, visuel non contractuel" data-title="Home staging séjour" data-caption="Visuel IA non contractuel, pour projection." data-event="click_paofai_gallery_thumb"><img src="/images/t2-paofai/t2-paofai-home-staging-sejour-thumb.jpg" alt="" width="360" height="270" loading="lazy"></button>
+            <button type="button" data-paofai-thumb data-index="6" data-full="/images/t2-paofai/t2-paofai-home-staging-chambre-960.jpg" data-alt="Idée de home staging IA de la chambre du T2 à Papeete, visuel non contractuel" data-title="Home staging chambre" data-caption="Visuel IA non contractuel, pour projection." data-event="click_paofai_gallery_thumb"><img src="/images/t2-paofai/t2-paofai-home-staging-chambre-thumb.jpg" alt="" width="360" height="270" loading="lazy"></button>
+          </div>
         </div>
       </div>
     </section>
@@ -280,6 +305,37 @@
   <script src="/site.js?v=20260523-contact-widget" defer></script>
   <script>
     (function(){
+      function initPaofaiCarousel(){
+        document.querySelectorAll('[data-paofai-carousel]').forEach(function(gallery){
+          var main=gallery.querySelector('[data-paofai-main]');
+          var index=gallery.querySelector('[data-paofai-index]');
+          var title=gallery.querySelector('[data-paofai-title]');
+          var caption=gallery.querySelector('[data-paofai-caption]');
+          var thumbs=[].slice.call(gallery.querySelectorAll('[data-paofai-thumb]'));
+          var current=0;
+          if(!main||!thumbs.length)return;
+          function show(next,source){
+            current=(next+thumbs.length)%thumbs.length;
+            var thumb=thumbs[current];
+            var srcset=thumb.getAttribute('data-srcset')||'';
+            main.style.opacity='.58';
+            setTimeout(function(){
+              main.src=thumb.getAttribute('data-full');
+              if(srcset)main.srcset=srcset;else main.removeAttribute('srcset');
+              main.alt=thumb.getAttribute('data-alt')||'';
+              main.style.opacity='1';
+            },70);
+            if(index)index.textContent=String(current+1);
+            if(title)title.textContent=thumb.getAttribute('data-title')||'';
+            if(caption)caption.textContent=thumb.getAttribute('data-caption')||'';
+            thumbs.forEach(function(item,i){item.classList.toggle('is-active',i===current)});
+            if(typeof trackEvent==='function')trackEvent('view_paofai_gallery_photo',{event_category:'buyer_lead',gallery_index:current+1,gallery_source:source||'unknown'});
+          }
+          gallery.querySelectorAll('[data-paofai-next]').forEach(function(button){button.addEventListener('click',function(){show(current+1,'next')})});
+          gallery.querySelectorAll('[data-paofai-prev]').forEach(function(button){button.addEventListener('click',function(){show(current-1,'prev')})});
+          thumbs.forEach(function(button,i){button.addEventListener('click',function(){show(i,'thumb')})});
+        });
+      }
       function initPaofaiContact(){
         var widget=document.querySelector('[data-paofai-sticky-contact]');
         if(!widget)return;
@@ -295,7 +351,8 @@
         document.addEventListener('click',function(e){if(!widget.contains(e.target))close()});
         document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
       }
-      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initPaofaiContact);else initPaofaiContact();
+      function initPaofaiPage(){initPaofaiCarousel();initPaofaiContact()}
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initPaofaiPage);else initPaofaiPage();
     })();
   </script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Offer","name":"T2 rénové avec extérieur privatif à vendre à Papeete secteur Paofai","url":"https://mathildekw.com/biens/t2-renove-paofai-papeete/","price":"32900000","priceCurrency":"XPF","availability":"https://schema.org/InStock","itemOffered":{"@type":"Apartment","name":"T2 rénové avec extérieur privatif","address":{"@type":"PostalAddress","addressLocality":"Papeete","addressRegion":"Tahiti","addressCountry":"PF"},"floorSize":{"@type":"QuantitativeValue","value":"50","unitCode":"MTK"},"numberOfRooms":2,"description":"Appartement T2 rénové d’environ 50 m² à Papeete secteur Paofai, avec extérieur privatif d’environ 30 m², parking en sous-sol et disponibilité immédiate."},"seller":{"@type":"RealEstateAgent","name":"Mathilde KW","telephone":"+68988078247","brand":{"@type":"Brand","name":"KW Polynésie"},"areaServed":[{"@type":"Place","name":"Papeete"},{"@type":"Place","name":"Tahiti"},{"@type":"Place","name":"Polynésie française"}]}}</script>
