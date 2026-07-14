@@ -66,6 +66,10 @@
       });
       setStatus(result.message || "Demande recue. La video sera disponible apres signature.", "ok");
       form.reset();
+      if(result.signingUrl){
+        setStatus("Demande recue. Redirection vers la signature Documenso...", "ok");
+        window.location.href = result.signingUrl;
+      }
     }catch(error){
       setStatus(error.message || "Impossible d'envoyer la demande.", "error");
     }finally{

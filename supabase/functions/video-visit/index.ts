@@ -35,6 +35,7 @@ const bucket = env("SUPABASE_VIDEO_BUCKET") || env("VIDEO_BUCKET", "property-vid
 const documensoToken = env("DOCUMENSO_API_TOKEN");
 const documensoApiBaseUrl = env("DOCUMENSO_API_BASE_URL", "https://app.documenso.com/api/v1").replace(/\/+$/, "");
 const documensoTemplateId = env("DOCUMENSO_TEMPLATE_ID");
+const documensoTemplateRecipientId = Number(env("DOCUMENSO_TEMPLATE_RECIPIENT_ID", "2821345"));
 const frontendBaseUrl = env("FRONTEND_BASE_URL", "https://mathildekw.com").replace(/\/+$/, "");
 const signedUrlExpiresIn = Number(env("VIDEO_LINK_EXPIRES_SECONDS", "10368000"));
 const inviteExpiresIn = Number(env("VIDEO_INVITE_EXPIRES_SECONDS", "2592000"));
@@ -95,11 +96,12 @@ async function createDocumensoSignature(row: Record<string, unknown>) {
 
   const payload = {
     title: `Bon de visite video - Bien ${row.property_reference}`,
+    externalId: String(row.id),
     recipients: [
       {
+        id: documensoTemplateRecipientId,
         name: row.full_name,
-        email: row.email,
-        role: "SIGNER"
+        email: row.email
       }
     ],
     meta: {
@@ -108,9 +110,12 @@ async function createDocumensoSignature(row: Record<string, unknown>) {
       timezone: "Pacific/Tahiti",
       dateFormat: "dd/MM/yyyy HH:mm",
       language: "fr",
-      signingOrder: "PARALLEL"
+      signingOrder: "PARALLEL",
+      distributionMethod: "EMAIL",
+      typedSignatureEnabled: true,
+      uploadSignatureEnabled: true,
+      drawSignatureEnabled: true
     },
-    externalId: String(row.id),
     formValues: {
       fullName: row.full_name,
       full_name: row.full_name,
@@ -132,7 +137,7 @@ async function createDocumensoSignature(row: Record<string, unknown>) {
     }
   };
 
-  const response = await fetch(`${documensoApiBaseUrl}/templates/${encodeURIComponent(documensoTemplateId)}/create-document`, {
+  const response = await fetch(`${documensoApiBaseUrl}/templates/${encodeURIComponent(documensoTemplateId)}/generate-document`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${documensoToken}`,
@@ -146,25 +151,11 @@ async function createDocumensoSignature(row: Record<string, unknown>) {
   if (!response.ok) throw new Error(`Documenso ${response.status}: ${text}`);
 
   const documentId = String(data.documentId || data.document?.id || data.id || "");
-  if (documentId) {
-    const sendResponse = await fetch(`${documensoApiBaseUrl}/documents/${encodeURIComponent(documentId)}/send`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${documensoToken}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({})
-    });
-
-    if (!sendResponse.ok) {
-      const sendText = await sendResponse.text();
-      throw new Error(`Documenso send ${sendResponse.status}: ${sendText}`);
-    }
-  }
 
   return {
     documentId,
-    recipientId: String(data.recipients?.[0]?.recipientId || data.recipients?.[0]?.id || data.recipientId || "")
+    recipientId: String(data.recipients?.[0]?.recipientId || data.recipients?.[0]?.id || data.recipientId || ""),
+    signingUrl: String(data.recipients?.[0]?.signingUrl || "")
   };
 }
 
@@ -249,6 +240,7 @@ async function requestSignature(body: VisitRequest) {
     ok: true,
     requestId: row.id,
     status: signature && "documentId" in signature && signature.documentId ? "signature_sent" : "pending_manual_signature",
+    signingUrl: signature && "signingUrl" in signature ? signature.signingUrl : "",
     message: "Demande recue. Le lien video sera disponible uniquement apres signature."
   });
 }
