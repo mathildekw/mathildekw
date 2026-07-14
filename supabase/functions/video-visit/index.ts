@@ -151,11 +151,32 @@ async function createDocumensoSignature(row: Record<string, unknown>) {
   if (!response.ok) throw new Error(`Documenso ${response.status}: ${text}`);
 
   const documentId = String(data.documentId || data.document?.id || data.id || "");
+  let signingUrl = String(data.recipients?.[0]?.signingUrl || "");
+
+  if (documentId) {
+    const sendResponse = await fetch(`${documensoApiBaseUrl}/documents/${encodeURIComponent(documentId)}/send`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${documensoToken}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({})
+    });
+
+    const sendText = await sendResponse.text();
+    const sendData = sendText ? JSON.parse(sendText) : {};
+
+    if (!sendResponse.ok) {
+      throw new Error(`Documenso send ${sendResponse.status}: ${sendText}`);
+    }
+
+    signingUrl = String(sendData.recipients?.[0]?.signingUrl || signingUrl);
+  }
 
   return {
     documentId,
     recipientId: String(data.recipients?.[0]?.recipientId || data.recipients?.[0]?.id || data.recipientId || ""),
-    signingUrl: String(data.recipients?.[0]?.signingUrl || "")
+    signingUrl
   };
 }
 
