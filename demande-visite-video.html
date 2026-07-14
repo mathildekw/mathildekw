@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demande de visite vidéo sécurisée — Mathilde KW</title>
+  <meta name="description" content="Demander une visite vidéo sécurisée d'un bien immobilier. La vidéo est transmise uniquement après signature électronique du bon de visite.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="canonical" href="https://mathildekw.com/demande-visite-video.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/styles.css?v=20260523-contact-widget">
+  <style>
+    .video-access-page .secure-hero{padding:46px 0 24px}
+    .video-access-page .secure-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(340px,1.05fr);gap:20px;align-items:start}
+    .video-access-page .secure-panel{background:#fff;border:1px solid var(--line);border-radius:8px;padding:24px;box-shadow:0 10px 30px rgba(35,24,17,.06)}
+    .video-access-page .secure-panel form{display:grid;gap:12px}
+    .video-access-page label{display:block;font-weight:900;margin-bottom:6px}
+    .video-access-page input,.video-access-page select,.video-access-page textarea{width:100%;min-height:46px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:inherit;background:#fff;color:var(--ink)}
+    .video-access-page textarea{resize:vertical}
+    .video-access-page .status-box{display:none;margin-top:14px;border-radius:8px;padding:12px 14px;font-weight:800}
+    .video-access-page .status-box.is-visible{display:block}
+    .video-access-page .status-box.ok{background:#eefaf3;color:#10623f;border:1px solid rgba(20,125,79,.18)}
+    .video-access-page .status-box.error{background:#fff1f1;color:#9f001f;border:1px solid rgba(200,16,46,.18)}
+    .video-access-page .video-result{display:none;margin-top:18px}
+    .video-access-page .video-result.is-visible{display:block}
+    .video-access-page .video-result video{width:100%;border-radius:8px;background:#171412}
+    .video-access-page .secure-steps{display:grid;gap:12px;margin-top:18px}
+    .video-access-page .secure-step{display:grid;grid-template-columns:32px minmax(0,1fr);gap:10px;align-items:start}
+    .video-access-page .secure-step span{width:32px;height:32px;border-radius:999px;background:#fff;color:var(--kw-red);display:grid;place-items:center;font-weight:950;border:1px solid var(--line)}
+    .video-access-page .secure-step strong{display:block}
+    .video-access-page .secure-step p{margin:4px 0 0;color:var(--muted)}
+    @media(max-width:860px){.video-access-page .secure-grid{grid-template-columns:1fr}.video-access-page .secure-hero{padding-top:30px}}
+  </style>
+</head>
+<body class="seo-page video-access-page">
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Navigation principale">
+      <a class="brand text-brand" href="/"><span><strong>Mathilde KW</strong><span>Conseillère immobilière</span></span></a>
+      <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button>
+      <div class="menu">
+        <a href="/">Accueil</a>
+        <a href="/biens-a-vendre-tahiti.html">Biens</a>
+        <a href="/contact.html">Contact</a>
+        <a class="nav-cta" href="https://wa.me/33782475958" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="secure-hero">
+      <div class="wrap secure-grid">
+        <article class="secure-panel">
+          <p class="eyebrow">Accès sécurisé</p>
+          <h1>Demande de visite vidéo</h1>
+          <p class="lead">La vidéo est transmise uniquement après signature électronique du bon de visite. Les informations précises du bien ne sont pas publiées en ligne.</p>
+          <div class="secure-steps">
+            <div class="secure-step"><span>1</span><div><strong>Tu envoies ta demande</strong><p>Je reçois tes coordonnées et le bien concerné.</p></div></div>
+            <div class="secure-step"><span>2</span><div><strong>Bon de visite Documenso</strong><p>Le document est envoyé pour signature électronique.</p></div></div>
+            <div class="secure-step"><span>3</span><div><strong>Vidéo après signature</strong><p>Le lien privé est généré uniquement quand la signature est validée.</p></div></div>
+          </div>
+        </article>
+
+        <article class="secure-panel">
+          <form data-video-visit-form>
+            <p>
+              <label for="video-reference">Bien concerné</label>
+              <select id="video-reference" name="reference" required>
+                <option value="">Choisir un bien</option>
+                <option value="979">Mandat N° 979 — T2 Punaauia</option>
+                <option value="971">Mandat N° 971 — T3 Punaauia</option>
+                <option value="888">Mandat N° 888 — T2 secteur Paofai</option>
+              </select>
+            </p>
+            <p>
+              <label for="video-full-name">Nom et prénom</label>
+              <input id="video-full-name" name="fullName" autocomplete="name" required>
+            </p>
+            <p>
+              <label for="video-email">Email pour la signature</label>
+              <input id="video-email" name="email" type="email" autocomplete="email" required>
+            </p>
+            <p>
+              <label for="video-phone">Téléphone / WhatsApp</label>
+              <input id="video-phone" name="phone" autocomplete="tel" inputmode="tel" required>
+            </p>
+            <p>
+              <label for="video-project">Projet</label>
+              <select id="video-project" name="project">
+                <option value="">Choisir</option>
+                <option>Résidence principale</option>
+                <option>Pied-à-terre</option>
+                <option>Investissement locatif longue durée</option>
+                <option>Autre</option>
+              </select>
+            </p>
+            <p>
+              <label for="video-financing">Financement</label>
+              <select id="video-financing" name="financingStatus">
+                <option value="">Choisir</option>
+                <option>Budget validé</option>
+                <option>Financement en cours</option>
+                <option>Pas encore validé</option>
+              </select>
+            </p>
+            <p>
+              <label for="video-message">Message</label>
+              <textarea id="video-message" name="message" rows="3" placeholder="Disponibilités, questions, contexte du projet..."></textarea>
+            </p>
+            <button class="btn primary full" type="submit">Demander la vidéo sécurisée</button>
+          </form>
+          <div class="status-box" data-video-status></div>
+          <div class="video-result" data-video-result>
+            <p><strong>Accès validé.</strong> La vidéo privée est disponible ci-dessous.</p>
+            <video controls playsinline preload="metadata" data-video-player></video>
+            <a class="btn ghost full" data-video-download href="#" target="_blank" rel="noopener">Ouvrir / télécharger la vidéo</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div><strong>Mathilde KW</strong><p class="note">Conseillère immobilière à Tahiti.</p></div>
+      <div><strong>Contact</strong><a href="tel:+68988078247">88 07 82 47</a><a href="https://wa.me/33782475958" target="_blank" rel="noopener">WhatsApp</a></div>
+    </div>
+  </footer>
+
+  <script src="/site.js?v=20260523-contact-widget" defer></script>
+  <script src="/video-visit.js?v=20260714" defer></script>
+</body>
+</html>

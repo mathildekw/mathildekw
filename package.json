@@ -1,0 +1,14 @@
+{
+  "name": "mathildekw-site-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "upload-videos": "node scripts/upload-videos.mjs",
+    "video-link": "node scripts/create-video-link.mjs",
+    "video-invite": "node scripts/create-video-invitation.mjs",
+    "video-mark-signed": "node scripts/admin-mark-video-signed.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
