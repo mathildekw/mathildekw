@@ -255,13 +255,38 @@ async function requestSignature(body: VisitRequest) {
     }
   } catch (error) {
     console.error(error);
+    await supabaseFetch(`/rest/v1/video_visit_requests?id=eq.${row.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        status: "signature_error",
+        updated_at: new Date().toISOString()
+      })
+    });
+
+    return json({
+      error: "La demande est enregistree, mais la signature Documenso n'a pas pu etre creee. Contacte Mathilde pour recevoir le bon de visite."
+    }, 502);
+  }
+
+  if (!signature || !("signingUrl" in signature) || !signature.signingUrl) {
+    await supabaseFetch(`/rest/v1/video_visit_requests?id=eq.${row.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        status: "signature_error",
+        updated_at: new Date().toISOString()
+      })
+    });
+
+    return json({
+      error: "La demande est enregistree, mais Documenso n'a pas renvoye de lien de signature. Contacte Mathilde pour recevoir le bon de visite."
+    }, 502);
   }
 
   return json({
     ok: true,
     requestId: row.id,
-    status: signature && "documentId" in signature && signature.documentId ? "signature_sent" : "pending_manual_signature",
-    signingUrl: signature && "signingUrl" in signature ? signature.signingUrl : "",
+    status: "signature_sent",
+    signingUrl: signature.signingUrl,
     message: "Demande recue. Le lien video sera disponible uniquement apres signature."
   });
 }
