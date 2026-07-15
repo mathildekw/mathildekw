@@ -12,7 +12,7 @@ create table if not exists public.video_visit_requests (
   project text,
   financing_status text,
   message text,
-  status text not null default 'pending' check (status in ('pending', 'signature_sent', 'signed', 'access_sent', 'rejected')),
+  status text not null default 'pending' check (status in ('pending', 'signature_sent', 'signature_error', 'signed', 'access_sent', 'rejected')),
   documenso_document_id text,
   documenso_recipient_id text,
   access_token_hash text,

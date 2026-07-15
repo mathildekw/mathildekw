@@ -107,6 +107,7 @@ async function createDocumensoSignature(row: Record<string, unknown>) {
     meta: {
       subject: `Bon de visite video - Bien ${row.property_reference}`,
       message: "Ia ora na, merci de signer ce bon de visite video afin de recevoir l'acces a la visite video du bien concerne.",
+      redirectUrl: `${frontendBaseUrl}/demande-visite-video.html?verify=${row.id}`,
       timezone: "Pacific/Tahiti",
       dateFormat: "dd/MM/yyyy HH:mm",
       language: "fr",
@@ -326,6 +327,19 @@ async function documensoWebhook(request: Request) {
 
   if (!rows.length) return json({ ok: true, ignored: true });
   const row = rows[0];
+  const signed = await markRequestSigned(row);
+
+  return json({
+    ok: true,
+    requestId: row.id,
+    accessUrl: signed.accessUrl
+  });
+}
+
+async function markRequestSigned(row: Record<string, unknown>) {
+  const token = randomToken();
+  const tokenHash = await sha256(token);
+  const accessExpiresAt = new Date(Date.now() + signedUrlExpiresIn * 1000).toISOString();
 
   await supabaseFetch(`/rest/v1/video_visit_requests?id=eq.${row.id}`, {
     method: "PATCH",
@@ -338,11 +352,53 @@ async function documensoWebhook(request: Request) {
     })
   });
 
-  return json({
-    ok: true,
-    requestId: row.id,
+  return {
     accessUrl: `${frontendBaseUrl}/demande-visite-video.html?request=${row.id}&token=${token}`
+  };
+}
+
+function isDocumensoDocumentSigned(document: Record<string, unknown>) {
+  const status = String(document.status || "").toLowerCase();
+  if (status.includes("complete") || status.includes("signed")) return true;
+
+  const recipients = Array.isArray(document.recipients) ? document.recipients : [];
+  return recipients.length > 0 && recipients.every((recipient) => {
+    const recipientStatus = String((recipient as Record<string, unknown>).signingStatus || "").toLowerCase();
+    const signedAt = (recipient as Record<string, unknown>).signedAt;
+    return Boolean(signedAt) || recipientStatus.includes("complete") || recipientStatus.includes("signed");
   });
+}
+
+async function verifyDocumensoSignature(body: VisitRequest) {
+  const requestId = clean(body.requestId, 80);
+  if (!isUuid(requestId)) return json({ error: "Demande introuvable." }, 404);
+
+  const rows = await supabaseFetch(`/rest/v1/video_visit_requests?id=eq.${encodeURIComponent(requestId)}&select=*`, { method: "GET" });
+  if (!rows.length) return json({ error: "Demande introuvable." }, 404);
+
+  const row = rows[0];
+  if (!row.documenso_document_id) {
+    return json({ error: "Le bon de visite Documenso n'est pas encore disponible." }, 403);
+  }
+
+  if (!documensoToken) {
+    return json({ error: "Verification Documenso non configuree." }, 500);
+  }
+
+  const response = await fetch(`${documensoApiBaseUrl}/documents/${encodeURIComponent(row.documenso_document_id)}`, {
+    headers: { Authorization: `Bearer ${documensoToken}` }
+  });
+
+  const text = await response.text();
+  const document = text ? JSON.parse(text) : {};
+  if (!response.ok) throw new Error(`Documenso ${response.status}: ${text}`);
+
+  if (!isDocumensoDocumentSigned(document)) {
+    return json({ error: "La signature n'est pas encore validee par Documenso." }, 403);
+  }
+
+  const signed = await markRequestSigned(row);
+  return json({ ok: true, accessUrl: signed.accessUrl });
 }
 
 async function signedAccess(body: VisitRequest) {
@@ -397,23 +453,8 @@ async function adminMarkSigned(body: VisitRequest, request: Request) {
   if (!isUuid(requestId)) return json({ error: "Demande introuvable." }, 404);
   const rows = await supabaseFetch(`/rest/v1/video_visit_requests?id=eq.${encodeURIComponent(requestId)}&select=*`, { method: "GET" });
   if (!rows.length) return json({ error: "Demande introuvable." }, 404);
-
-  const token = randomToken();
-  const tokenHash = await sha256(token);
-  const accessExpiresAt = new Date(Date.now() + signedUrlExpiresIn * 1000).toISOString();
-
-  await supabaseFetch(`/rest/v1/video_visit_requests?id=eq.${requestId}`, {
-    method: "PATCH",
-    body: JSON.stringify({
-      status: "signed",
-      signed_at: new Date().toISOString(),
-      access_token_hash: tokenHash,
-      access_expires_at: accessExpiresAt,
-      updated_at: new Date().toISOString()
-    })
-  });
-
-  return json({ ok: true, accessUrl: `${frontendBaseUrl}/demande-visite-video.html?request=${requestId}&token=${token}` });
+  const signed = await markRequestSigned(rows[0]);
+  return json({ ok: true, accessUrl: signed.accessUrl });
 }
 
 async function adminCreateInvitation(body: VisitRequest, request: Request) {
@@ -475,6 +516,7 @@ Deno.serve(async (request) => {
     const action = body.action || pathAction;
 
     if (request.method === "POST" && action === "request-signature") return await requestSignature(body);
+    if (request.method === "POST" && action === "verify-signature") return await verifyDocumensoSignature(body);
     if (request.method === "POST" && action === "access") return await signedAccess(body);
     if (request.method === "POST" && action === "admin-create-invitation") return await adminCreateInvitation(body, request);
     if (request.method === "POST" && action === "admin-mark-signed") return await adminMarkSigned(body, request);
