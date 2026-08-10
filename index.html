@@ -3,250 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mathilde KW | Conseillère immobilière à Tahiti</title>
-  <meta name="description" content="Mathilde KW, conseillère immobilière en Polynésie française : estimation, vente, achat et accompagnement immobilier à Tahiti, Moorea et communes locales.">
+  <title>Mathilde KW | Immobilier premium à Tahiti et Moorea</title>
+  <meta name="description" content="Mathilde TUDURI, conseillère immobilière Keller Williams Polynésie : vendre, acheter, voir les biens et préparer un projet immobilier à Tahiti, Moorea et en Polynésie française.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://mathildekw.com/">
-
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20260517">
-  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png?v=20260517">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260517">
-  <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#C8102E">
+  <meta name="theme-color" content="#14232B">
   <link rel="preload" as="image" href="/ocean-aerial-polynesie.jpg" fetchpriority="high">
   <link rel="preload" as="image" href="/mathilde-avatar.jpg" fetchpriority="high">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mathildekw.com/">
-  <meta property="og:title" content="Mathilde KW | Conseillère immobilière à Tahiti">
-  <meta property="og:description" content="Estimation, vente, achat et accompagnement immobilier à Tahiti et en Polynésie française.">
+  <meta property="og:title" content="Mathilde KW | Immobilier premium à Tahiti et Moorea">
+  <meta property="og:description" content="Vendre, acheter, voir les biens ou investir avec une conseillère immobilière locale, moderne et humaine.">
   <meta property="og:image" content="https://mathildekw.com/ocean-aerial-polynesie.jpg">
   <meta property="og:locale" content="fr_FR">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mathilde KW | Conseillère immobilière à Tahiti">
-  <meta name="twitter:description" content="Estimation, vente, achat et accompagnement immobilier à Tahiti et en Polynésie française.">
+  <meta name="twitter:title" content="Mathilde KW | Immobilier premium à Tahiti et Moorea">
+  <meta name="twitter:description" content="Vendre, acheter ou investir en Polynésie française avec Mathilde KW.">
   <meta name="twitter:image" content="https://mathildekw.com/ocean-aerial-polynesie.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--red:#C8102E;--red2:#e8334a;--black:#171412;--grey:#6f6862;--sand:#FAF8F4;--white:#fff;--border:#eadfd5;--green:#22c55e;--shadow:0 18px 45px rgba(35,24,17,.10)}
-    html{scroll-behavior:smooth}
-    body{min-height:100vh;background:var(--sand);color:var(--black);font-family:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55;padding-bottom:84px}
-    body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at top left,rgba(7,135,160,.13),transparent 32rem),linear-gradient(180deg,#fffdf9 0%,#fff7ef 100%)}
-    a{color:inherit}
-    img{max-width:100%;height:auto}
-    .wrap{width:min(1120px,calc(100% - 32px));margin:0 auto}
-    .page{width:100%;max-width:430px;margin:0 auto;display:flex;flex-direction:column}
-    .home-nav{position:fixed;top:max(12px,env(safe-area-inset-top));right:12px;z-index:90;width:auto;max-width:calc(100vw - 24px);background:transparent;border-bottom:0;transition:transform .22s ease;will-change:transform}
-    .home-nav.is-nav-hidden{transform:translateY(calc(-100% - 18px))}
-    .home-nav-inner{min-height:0;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;gap:9px;padding:0}
-    .brand{text-decoration:none;display:none;flex-direction:column;line-height:1}
-    .brand strong{font-family:"Cormorant Garamond",serif;font-size:27px;font-weight:600;color:var(--black)}
-    .brand span{margin-top:5px;color:var(--grey);font-size:12px;font-weight:500}
-    .menu-toggle{width:auto;min-width:96px;min-height:46px;padding:0 18px;border-radius:999px;border:1.5px solid var(--red);background:var(--red);color:white;font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 14px 30px rgba(200,16,46,.28)}
-    .home-menu{display:none;grid-template-columns:1fr;gap:7px;width:min(300px,calc(100vw - 24px));margin:9px 0 0;padding:10px;border:1.5px solid var(--border);border-radius:22px;background:rgba(250,248,244,.98);box-shadow:0 18px 42px rgba(35,24,17,.16);backdrop-filter:blur(14px)}
-    .home-menu.open{display:grid}
-    .home-menu a{min-height:42px;display:flex;align-items:center;justify-content:center;text-decoration:none;background:white;border:1.5px solid var(--border);border-radius:999px;font-size:13px;font-weight:800;color:var(--black)}
-    .home-menu a.nav-cta{background:white;border-color:var(--border);color:var(--black)}
-    .hero{position:relative;height:370px;overflow:hidden;background:linear-gradient(180deg,rgba(0,40,80,.08),rgba(0,0,0,.24)),url("/ocean-aerial-polynesie.jpg") center/cover no-repeat;background-color:#1a3a4a}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,40,80,.16) 0%,rgba(0,0,0,.68) 100%)}
-    .hero-content{position:absolute;bottom:0;left:0;right:0;padding:0 22px 26px;display:flex;align-items:flex-end;gap:16px}
-    .hero-avatar{width:116px;height:116px;border-radius:50%;flex-shrink:0;border:5px solid white;overflow:hidden;box-shadow:0 10px 32px rgba(0,0,0,.36)}
-    .hero-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
-    .hero-name{font-family:"Cormorant Garamond",serif;font-size:31px;font-weight:400;color:white;line-height:1;text-shadow:0 2px 10px rgba(0,0,0,.4)}
-    .hero-badge{display:inline-block;background:rgba(200,16,46,.92);backdrop-filter:blur(4px);color:white;font-size:11px;font-weight:700;letter-spacing:1.7px;text-transform:uppercase;padding:6px 10px;border-radius:6px;margin-top:8px}
-    .hero-mini{color:rgba(255,255,255,.82);font-family:"Cormorant Garamond",serif;font-size:14px;font-style:italic;font-weight:300;margin-top:7px;line-height:1.35}
-    .intro{padding:16px 16px 0}
-    .intro-card{background:white;border:1.5px solid var(--border);border-radius:18px;padding:20px 18px;box-shadow:0 8px 24px rgba(0,0,0,.045)}
-    .eyebrow{color:var(--red);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:11px;margin-bottom:10px}
-    h1,h2,h3{line-height:1.08;margin:0}
-    h1,h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400}
-    h1{font-size:33px;letter-spacing:0}
-    h2{font-size:28px}
-    h3{font-size:18px}
-    .lead{color:var(--grey);font-size:14px;line-height:1.6;margin-top:12px}
-    .cta-row{display:grid;grid-template-columns:1fr;gap:9px;margin-top:18px}
-    .cta-row.single{grid-template-columns:1fr}
-    .btn{display:flex;align-items:center;justify-content:center;min-height:50px;padding:13px 16px;border-radius:14px;border:1.5px solid transparent;text-decoration:none;text-align:center;font-size:13px;font-weight:900;cursor:pointer}
-    .btn.primary{background:var(--red);color:white}
-    .btn.dark{background:var(--black);color:white}
-    .btn.whatsapp{background:var(--green);color:white}
-    .btn.ghost{background:white;border-color:var(--border);color:var(--black)}
-    .proof-line{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;color:var(--grey);font-size:12px}
-    .proof-line span{display:inline-flex;align-items:center;gap:6px;background:transparent;border:0;border-radius:0;padding:0;font-weight:850;color:var(--grey);cursor:default;user-select:none}
-    .proof-line span::before{content:"✓";color:var(--red);font-weight:950}
-    .section{padding:22px 16px 0}
-    .section.alt{padding-block:22px;background:rgba(255,255,255,.42);border-block:1px solid var(--border);margin-top:22px}
-    .section-head{margin-bottom:12px}
-    .section-head p{color:var(--grey);font-size:13px;line-height:1.6;margin-top:8px}
-    .route-grid,.benefit-grid,.property-grid,.trust-grid,.faq-list{display:grid;grid-template-columns:1fr;gap:10px}
-    .route-card,.benefit,.property-card,.trust-card,.faq-item,.review-card{background:white;border:1.5px solid var(--border);border-radius:18px;padding:17px;box-shadow:0 8px 24px rgba(0,0,0,.045)}
-    .route-card{text-decoration:none;display:flex;flex-direction:column;gap:9px}
-    .route-card .tag{width:fit-content;border-radius:999px;padding:5px 9px;background:#fff7f7;color:var(--red);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
-    .route-card p,.benefit p,.property-card p,.trust-card p,.faq-item p,.review-card p{color:var(--grey);font-size:13px;line-height:1.55;margin-top:7px}
-    .route-card .btn,.property-card .btn{margin-top:6px}
-    .route-link{margin-top:6px;color:inherit;font-size:13px;font-weight:900}
-    .route-card.seller{background:var(--red);border-color:var(--red);color:white}
-    .route-card.seller p{color:rgba(255,255,255,.78)}
-    .route-card.seller .tag{background:rgba(255,255,255,.18);color:white}
-    .route-card.buyer{background:var(--black);border-color:var(--black);color:white}
-    .route-card.buyer p{color:rgba(255,255,255,.74)}
-    .route-card.buyer .tag{background:rgba(255,255,255,.14);color:white}
-    .benefit strong,.trust-card strong{display:block;font-size:15px;color:var(--black)}
-    .benefit strong::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--red);margin-right:8px}
-    .property-media{height:142px;border-radius:14px;overflow:hidden;margin:-4px -4px 12px;background:#eee}
-    .property-media img{width:100%;height:100%;object-fit:cover;display:block}
-    .badge{display:inline-flex;width:fit-content;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:900;background:#fff7f7;color:var(--red);margin-bottom:8px}
-    .price{font-size:18px;color:var(--red);font-weight:900;margin-top:7px}
-    .features{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0;padding:0;list-style:none}
-    .features li{display:inline-flex;align-items:center;gap:6px;background:transparent;border:0;border-radius:0;padding:0;font-size:12px;font-weight:850;color:var(--grey);cursor:default;user-select:none}
-    .features li::before{content:"✓";color:var(--red);font-weight:950}
-    .review-card .stars{color:#f4b400;letter-spacing:.08em;font-size:18px;margin-bottom:6px}
-    .footer{display:none!important;padding:24px 16px 30px}
-    .footer-card{background:white;border:1.5px solid var(--border);border-radius:18px;padding:18px;display:grid;gap:16px}
-    .footer-card strong{display:block;margin-bottom:5px}
-    .footer-card a{display:block;text-decoration:none;color:var(--grey);font-size:13px;margin:6px 0}
-    .sticky-whatsapp{display:none!important}
-    .mk-contact-widget{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));z-index:180;font-family:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    .mk-contact-toggle{min-height:48px;padding:0 18px;border:0;border-radius:999px;background:var(--red);color:white;font:900 13px/1 "DM Sans",system-ui,sans-serif;letter-spacing:.02em;box-shadow:0 16px 34px rgba(200,16,46,.32);cursor:pointer;display:inline-flex;align-items:center;gap:8px}
-    .mk-contact-toggle::before{content:"✉";font-size:15px;line-height:1}
-    .mk-contact-panel{position:absolute;right:0;bottom:62px;width:min(310px,calc(100vw - 28px));padding:14px;border-radius:18px;background:rgba(255,255,255,.98);border:1.5px solid var(--border);box-shadow:0 22px 54px rgba(35,24,17,.18);opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .18s ease,transform .18s ease;backdrop-filter:blur(12px)}
-    .mk-contact-widget.is-open .mk-contact-panel{opacity:1;transform:translateY(0);pointer-events:auto}
-    .mk-contact-panel strong{display:block;font-size:15px;margin-bottom:4px;color:var(--black)}
-    .mk-contact-panel p{margin:0 0 10px;color:var(--grey);font-size:12px;line-height:1.45}
-    .mk-contact-options{display:grid;gap:8px}
-    .mk-contact-options a{min-height:44px;border-radius:12px;text-decoration:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;border:1.5px solid transparent}
-    .mk-contact-options a.whatsapp{background:var(--red);color:white;box-shadow:0 12px 26px rgba(200,16,46,.22)}
-    .mk-contact-options a.sms{background:#fff7f7;color:var(--black);border-color:rgba(200,16,46,.16)}
-    .mk-contact-options a.call{background:var(--black);color:white}
-    @media (min-width:720px){body{padding-bottom:0}.page{max-width:920px}.home-nav{position:sticky;top:0;right:auto;width:100vw;max-width:none;margin-left:calc(50% - 50vw);background:rgba(250,248,244,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}.home-nav.is-nav-hidden{transform:translateY(-105%)}.home-nav-inner{width:min(920px,100%);margin:0 auto;min-height:72px;flex-direction:row;align-items:center;justify-content:space-between;padding:8px 14px}.home-menu{width:auto;margin:0;display:flex;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}.menu-toggle{display:none}.home-menu a{padding:0 14px}.home-menu a.nav-cta{background:var(--red);border-color:var(--red);color:white}.intro,.section,.footer{padding-inline:24px}.route-grid{grid-template-columns:repeat(2,1fr)}.footer-card{grid-template-columns:1.1fr 1fr 1fr 1fr}.cta-row{grid-template-columns:repeat(2,1fr)}.cta-row.single{display:flex;justify-content:center}.cta-row.single .btn{width:auto;min-width:260px;max-width:320px}}
-    @media (min-width:720px) and (max-width:1120px){.home-nav{position:fixed;top:max(12px,env(safe-area-inset-top));right:12px;width:auto;max-width:calc(100vw - 24px);margin-left:0;background:transparent;backdrop-filter:none;border-bottom:0}.home-nav.is-nav-hidden{transform:translateY(calc(-100% - 18px))}.home-nav-inner{width:auto;min-height:0;margin:0;flex-direction:column;align-items:flex-end;justify-content:flex-start;padding:0}.menu-toggle{display:flex}.home-menu{display:none;width:min(300px,calc(100vw - 24px));margin:0;padding:10px;border:1.5px solid var(--border);border-radius:22px;background:rgba(250,248,244,.98);box-shadow:0 18px 42px rgba(35,24,17,.16);backdrop-filter:blur(14px)}.home-menu.open{display:grid}.home-menu a{min-height:42px;padding:0 14px;background:#fff;border:1.5px solid var(--border);color:var(--black)}.home-menu a.nav-cta{background:white;border-color:var(--border);color:var(--black)}}
-    @media (min-width:1121px){.home-nav{position:fixed;top:16px;right:16px;width:auto;max-width:calc(100vw - 32px);margin-left:0;background:transparent;backdrop-filter:none;border-bottom:0;z-index:90}.home-nav.is-nav-hidden{transform:translateY(calc(-100% - 22px))}.home-nav-inner{width:auto;min-height:0;margin:0;flex-direction:column;align-items:flex-end;justify-content:flex-start;padding:0}.brand{display:none}.menu-toggle{display:flex;min-width:104px;min-height:48px}.home-menu{display:none;width:min(320px,calc(100vw - 32px));margin:0;padding:10px;border:1.5px solid var(--border);border-radius:22px;background:rgba(250,248,244,.98);box-shadow:0 18px 42px rgba(35,24,17,.16);backdrop-filter:blur(14px)}.home-menu.open{display:grid}.home-menu a{min-height:42px;padding:0 14px;background:#fff;border:1.5px solid var(--border);color:var(--black)}.home-menu a.nav-cta{background:white;border-color:var(--border);color:var(--black)}}
-    @media (max-width:480px){body{padding-bottom:78px}.hero{height:260px;background-position:center 43%}.hero-content{padding:0 16px 16px;gap:12px}.hero-avatar{width:84px;height:84px;border-width:3px}.hero-name{font-size:26px}.hero-badge{font-size:9px;letter-spacing:1.15px;padding:5px 8px;border-radius:5px;margin-top:6px}.hero-mini{font-size:12px;line-height:1.28;max-width:210px;margin-top:5px}.intro{padding-top:12px}.intro-card{padding:18px 16px}h1{font-size:29px}.section{padding-top:20px}.mk-contact-widget{right:12px;bottom:max(12px,env(safe-area-inset-bottom))}.mk-contact-toggle{min-height:46px;padding:0 16px;font-size:12px}.mk-contact-panel{bottom:58px;width:min(300px,calc(100vw - 24px))}}
-  </style>
+  <link rel="stylesheet" href="/styles.css?v=20260809-premium-tools">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M05321XKGN"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-M05321XKGN");</script>
-  <!-- Meta Pixel Code -->
-  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '1635998494357484');fbq('track', 'PageView');</script>
-  <!-- End Meta Pixel Code -->
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1635998494357484');fbq('track','PageView');</script>
 </head>
-<body>
-  <!-- Meta Pixel Noscript -->
+<body class="premium-home">
   <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1635998494357484&ev=PageView&noscript=1"></noscript>
-
-  <div class="page">
-    <header class="home-nav">
-      <div class="home-nav-inner">
-        <a class="brand" href="/"><strong>Mathilde KW</strong><span>Conseillère immobilière</span></a>
-        <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-controls="home-menu" aria-expanded="false">Menu</button>
+  <header class="topbar premium-topbar"><nav class="nav wrap" aria-label="Navigation principale"><a class="brand text-brand" href="/"><span><strong>Mathilde KW</strong><span>Conseillère immobilière</span></span></a><button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button><div class="menu"><a href="/">Accueil</a><a href="/vendre-bien-immobilier-tahiti.html">Vendre</a><a href="/acheter-bien-immobilier-tahiti.html">Acheter</a><a href="/biens-a-vendre-tahiti.html">Biens</a><a href="/outils-immobilier-tahiti.html">Outils</a><a class="nav-cta" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20je%20souhaite%20parler%20de%20mon%20projet%20immobilier." target="_blank" rel="noopener" data-event="whatsapp_clicked">Écrire à Mathilde</a></div></nav></header>
+  <main>
+    <section class="premium-home-hero">
+      <div class="premium-home-media" aria-hidden="true"></div>
+      <div class="wrap premium-home-hero-inner">
+        <div class="premium-hero-copy">
+          <p class="eyebrow">Ia ora na</p>
+          <h1>Vendre, acheter ou investir en Polynésie avec une approche plus claire, plus locale, plus premium.</h1>
+          <p class="lead">Je suis Mathilde TUDURI, conseillère immobilière Keller Williams Polynésie. J’aide les propriétaires et les acquéreurs à avancer avec méthode à Tahiti, Moorea et dans les communes clés du marché local.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="/estimation-immobiliere-tahiti.html" data-event="homepage_cta_clicked">Demander une estimation</a>
+            <a class="btn ghost" href="#parcours" data-event="homepage_cta_clicked">Choisir mon parcours</a>
+          </div>
+          <div class="proof-line"><span>KW Polynésie</span><span>Tahiti & Moorea</span><span>Accompagnement humain</span></div>
+        </div>
+        <aside class="premium-agent-card">
+          <img src="/mathilde-avatar.jpg" alt="Portrait de Mathilde TUDURI, conseillère immobilière KW Polynésie" width="300" height="300">
+          <div><strong>Mathilde TUDURI</strong><span>Conseillère en immobilier · Keller Williams Polynésie</span></div>
+        </aside>
       </div>
-      <nav class="home-menu" id="home-menu" aria-label="Navigation principale">
-        <a href="/">Accueil</a>
-        <a href="/vendre-bien-immobilier-tahiti.html">Vendre</a>
-        <a href="/acheter-bien-immobilier-tahiti.html">Acheter</a>
-        <a href="/biens-a-vendre-tahiti.html">Biens</a>
-        <a class="nav-cta" href="/contact.html">Contact</a>
-      </nav>
-    </header>
+    </section>
 
-    <section class="hero" aria-label="Mathilde KW immobilier Tahiti">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <div class="hero-avatar"><img src="/mathilde-avatar.jpg" alt="Portrait de Mathilde KW" width="300" height="300"></div>
-        <div class="hero-text">
-          <div class="hero-name">Mathilde</div>
-          <span class="hero-badge">Conseillère immobilière KW</span>
-          <p class="hero-mini">Vendre, acheter ou investir à Tahiti avec une conseillère locale.</p>
+    <section class="section" id="parcours">
+      <div class="wrap">
+        <div class="section-head premium-section-head"><p class="eyebrow">Que veux-tu faire ?</p><h2>Quatre parcours, un seul objectif : avancer proprement.</h2><p>Tu choisis ton point de départ. Le reste doit être fluide, lisible et utile.</p></div>
+        <div class="route-grid premium-journey-grid">
+          <a class="route-card seller" href="/vendre-bien-immobilier-tahiti.html" data-event="journey_seller_clicked"><span class="tag">Vendre</span><h3>Vendre un bien</h3><p>Prix, stratégie, mise en valeur, qualification des acquéreurs et suivi jusqu’à la signature.</p><span class="route-link">Préparer ma vente →</span></a>
+          <a class="route-card buyer" href="/acheter-bien-immobilier-tahiti.html" data-event="journey_buyer_clicked"><span class="tag">Acheter</span><h3>Acheter à Tahiti ou Moorea</h3><p>Budget, communes, usage, timing : on filtre avant de multiplier les visites.</p><span class="route-link">Décrire mon projet →</span></a>
+          <a class="route-card" href="/biens-a-vendre-tahiti.html" data-event="property_opened"><span class="tag">Biens</span><h3>Voir les biens disponibles</h3><p>Une sélection courte, photographique et claire des biens actuellement publics.</p><span class="route-link">Voir la sélection →</span></a>
+          <a class="route-card" href="/investir-usa.html" data-event="click_home_invest_usa_page"><span class="tag">Investir</span><h3>Investir</h3><p>Explorer les options d’investissement avec une lecture simple du risque et du projet.</p><span class="route-link">Étudier une piste →</span></a>
         </div>
       </div>
     </section>
 
-    <section class="intro">
-      <div class="intro-card">
-        <p class="eyebrow">Ia ora na</p>
-        <h1>Conseillère immobilière à Tahiti — vendre, acheter ou investir avec méthode</h1>
-        <p class="lead">Je t'aide à vendre, acheter ou investir en Polynésie avec un accompagnement clair, local et humain.</p>
-        <div class="proof-line" aria-label="Preuves rapides">
-          <span>5,0 Google</span>
-          <span>Tahiti & Moorea</span>
-          <span>KW Polynésie</span>
-        </div>
-        <div class="cta-row">
-          <a class="btn primary" href="/estimation-immobiliere-tahiti.html" data-event="click_home_estimation">Estimation gratuite</a>
-          <a class="btn ghost" href="#parcours" data-event="click_home_choose_path">Choisir mon parcours</a>
+    <section class="section alt">
+      <div class="wrap">
+        <div class="section-head premium-section-head"><p class="eyebrow">Une sélection de biens</p><h2>Quelques opportunités à regarder en priorité.</h2></div>
+        <div class="property-grid premium-property-grid">
+          <article class="property-card"><div class="property-media"><img src="/images/maison-moorea-jardin/maison-moorea-jardin-maison.jpg" alt="Maison à Moorea avec jardin tropical" width="720" height="540" loading="lazy"></div><span class="badge">Moorea</span><h3>Maison dans un écrin de verdure</h3><p>Grande terrasse couverte, jardin tropical, cadre calme. Prix sur demande.</p><a class="route-link" href="/maison-a-vendre-moorea.html">Voir la fiche →</a></article>
+          <article class="property-card"><div class="property-media"><img src="/images/t2-punaauia-libre/t2-punaauia-sejour-cuisine.jpg" alt="T2 à Punaauia avec terrasse couverte" width="720" height="540" loading="lazy"></div><span class="badge">Punaauia</span><h3>T2 avec terrasse couverte</h3><p>53,50 m² habitables, terrasse 16 m², parking, cellier, piscine et ascenseur.</p><a class="route-link" href="/appartement-t2-punaauia.html">Voir la fiche →</a></article>
+          <article class="property-card"><div class="property-media"><img src="/images/t3-punaauia/t3-punaauia-sejour-cuisine.jpg" alt="T3 à Punaauia" width="720" height="540" loading="lazy"></div><span class="badge">Punaauia</span><h3>T3 avec piscine et ascenseur</h3><p>Appartement familial, terrasse, parking couvert, cellier et résidence calme.</p><a class="route-link" href="/appartement-t3-punaauia.html">Voir la fiche →</a></article>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <article class="review-card" aria-label="Avis Google Mathilde KW">
-        <div class="stars" aria-label="Note 5 étoiles">★★★★★</div>
-        <strong>5,0/5 sur Google</strong>
-        <p>“Très professionnelle, réactive et elle connaît parfaitement le marché immobilier à Tahiti, notamment sur Papeete et Punaauia.”</p>
-        <a class="route-link" href="/avis-clients-immobilier-tahiti.html" data-event="click_home_reviews">Voir l'avis client →</a>
-      </article>
-    </section>
-
-    <section class="section" id="parcours">
-      <div class="section-head">
-        <p class="eyebrow">Choisis ton parcours</p>
-        <h2>Que veux-tu faire ?</h2>
-        <p>Chaque besoin a sa page dédiée. Tu choisis ton point de départ, je t'oriente ensuite vers les bonnes étapes.</p>
-      </div>
-      <div class="route-grid">
-        <a class="route-card seller" href="/vendre-bien-immobilier-tahiti.html" data-event="click_home_seller_page">
-          <span class="tag">Vendre</span>
-          <h3>Je veux vendre</h3>
-          <p>Estimation offerte, stratégie de prix, mise en valeur et suivi jusqu'à la signature.</p>
-          <span class="route-link">Préparer ma vente →</span>
-        </a>
-        <a class="route-card buyer" href="/acheter-bien-immobilier-tahiti.html" data-event="click_home_buyer_page">
-          <span class="tag">Acheter</span>
-          <h3>Je veux acheter</h3>
-          <p>Envoie-moi tes critères, ton budget et ton timing pour recevoir les biens vraiment cohérents.</p>
-          <span class="route-link">Décrire mon projet →</span>
-        </a>
-        <a class="route-card" href="/biens-a-vendre-tahiti.html" data-event="click_home_properties">
-          <span class="tag">Biens</span>
-          <h3>Voir les biens disponibles</h3>
-          <p>Découvre les biens actuellement proposés ou demande une opportunité ciblée.</p>
-          <span class="route-link">Voir les biens →</span>
-        </a>
-        <a class="route-card" href="/investir-usa.html" data-event="click_home_invest_usa_page">
-          <span class="tag">Investir</span>
-          <h3>Investir aux USA</h3>
-          <p>Une alternative locative à étudier si tu as un budget cash et une logique investisseur.</p>
-          <span class="route-link">Découvrir l'investissement USA →</span>
-        </a>
+      <div class="wrap premium-tools-band">
+        <div><p class="eyebrow">Outils immobiliers</p><h2>Prépare ton projet avant de te déplacer.</h2><p>Capacité d’emprunt, mensualité, rendement locatif, budget d’achat ou préparation vendeur : les outils donnent une première base, sans remplacer un avis professionnel.</p></div>
+        <a class="btn dark" href="/outils-immobilier-tahiti.html" data-event="calculator_started">Ouvrir les outils</a>
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="footer-card">
-        <div><strong>Mathilde KW</strong><p class="lead" style="font-size:13px;margin-top:6px">Conseillère immobilière à Tahiti, Keller Williams Polynésie.</p></div>
-        <div><strong>Pages principales</strong><a href="/">Accueil</a><a href="/vendre-bien-immobilier-tahiti.html">Vendre</a><a href="/acheter-bien-immobilier-tahiti.html">Acheter</a><a href="/estimation-immobiliere-tahiti.html">Estimation gratuite</a><a href="/biens-a-vendre-tahiti.html">Biens</a><a href="/investir-usa.html">Investir USA</a><a href="/blog.html">Blog</a><a href="/contact.html">Contact</a></div>
-        <div><strong>Communes</strong><a href="/prix-immobilier-papeete.html">Papeete</a><a href="/immobilier-punaauia.html">Punaauia</a><a href="/prix-immobilier-paea.html">Paea</a><a href="/estimation-maison-faaa.html">Faa'a</a><a href="/estimation-maison-mahina.html">Mahina</a><a href="/estimation-maison-moorea.html">Moorea</a></div>
-        <div><strong>Contact</strong><a href="tel:+68988078247" data-event="click_call">88 07 82 47</a><a href="https://wa.me/33782475958" target="_blank" rel="noopener" data-event="click_whatsapp_footer">WhatsApp</a><a href="/contact.html">Email</a><a href="https://www.instagram.com/mathilde.kw.tahiti/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/profile.php?id=61580583342225" target="_blank" rel="noopener">Facebook</a></div>
+    <section class="section alt">
+      <div class="wrap grid two premium-mathilde-grid">
+        <div class="premium-portrait"><img src="/images/mathilde-kw-polynesie-large.jpg" alt="Mathilde TUDURI Keller Williams Polynésie" width="900" height="1200" loading="lazy"></div>
+        <div class="card premium-editorial-card"><p class="eyebrow">Mathilde</p><h2>Une présence locale, un accompagnement direct.</h2><p>Je travaille avec une approche simple : écouter le projet, clarifier les contraintes, présenter les biens ou la stratégie de vente avec honnêteté, puis avancer étape par étape.</p><p>Tahiti, Moorea, Keller Williams Polynésie : le site doit rester utile, humain et facile à utiliser.</p><a class="btn ghost" href="/contact.html">Me contacter</a></div>
       </div>
-    </footer>
-  </div>
-  <script src="/site.js?v=20260523-contact-widget" defer></script>
-  <script>
-    document.addEventListener("DOMContentLoaded",function(){
-      var toggle=document.querySelector(".menu-toggle");
-      var menu=document.getElementById("home-menu");
-      if(toggle&&menu){
-        toggle.addEventListener("click",function(){
-          var open=menu.classList.toggle("open");
-          toggle.setAttribute("aria-expanded",open?"true":"false");
-          toggle.textContent=open?"Fermer le menu":"Menu";
-        });
-      }
-    });
-  </script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","@id":"https://mathildekw.com/#realestateagent","name":"Mathilde KW","url":"https://mathildekw.com/","logo":"https://mathildekw.com/favicon-512x512.png","image":"https://mathildekw.com/mathilde-avatar.jpg","telephone":"+68988078247","description":"Conseillère immobilière KW en Polynésie française, spécialisée dans l’estimation, la vente et l’accompagnement immobilier à Tahiti.","address":{"@type":"PostalAddress","addressLocality":"Papeete","addressRegion":"Tahiti","addressCountry":"PF"},"areaServed":[{"@type":"Place","name":"Tahiti"},{"@type":"Place","name":"Papeete"},{"@type":"Place","name":"Punaauia"},{"@type":"Place","name":"Faa’a"},{"@type":"Place","name":"Paea"},{"@type":"Place","name":"Mahina"},{"@type":"Place","name":"Arue"},{"@type":"Place","name":"Pirae"},{"@type":"Place","name":"Moorea"},{"@type":"Place","name":"Polynésie française"}],"contactPoint":{"@type":"ContactPoint","telephone":"+68988078247","contactType":"sales","availableLanguage":["fr-FR"]},"sameAs":["https://www.instagram.com/mathilde.kw.tahiti/","https://www.facebook.com/profile.php?id=61580583342225"],"brand":{"@type":"Brand","name":"KW Polynésie"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services immobiliers à Tahiti","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Estimation immobilière offerte à Tahiti","url":"https://mathildekw.com/estimation-immobiliere-tahiti.html"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Accompagnement vendeur immobilier à Tahiti","url":"https://mathildekw.com/vendre-bien-immobilier-tahiti.html"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Accompagnement achat immobilier à Tahiti","url":"https://mathildekw.com/acheter-bien-immobilier-tahiti.html"}}]}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://mathildekw.com/#website","name":"Mathilde KW","url":"https://mathildekw.com/","publisher":{"@id":"https://mathildekw.com/#realestateagent"},"inLanguage":"fr-FR"}</script>
+    </section>
+
+    <section class="section">
+      <div class="wrap grid two">
+        <article class="review-card"><div class="stars" aria-label="Note 5 étoiles">★★★★★</div><strong>5,0/5 sur Google</strong><p>Un avis client existant met en avant le professionnalisme, la réactivité et la connaissance du marché local à Tahiti.</p><a class="route-link" href="/avis-clients-immobilier-tahiti.html">Voir les avis →</a></article>
+        <article class="contact-strip premium-final-cta"><div><p class="eyebrow">On en parle ?</p><h2>Parlons de ton projet.</h2><p>Vente, achat, estimation ou investissement : envoie-moi le contexte, je t’aide à clarifier la suite.</p></div><div class="cta-row"><a class="btn primary" href="https://wa.me/33782475958?text=Ia%20ora%20na%20Mathilde%2C%20je%20souhaite%20parler%20de%20mon%20projet%20immobilier." target="_blank" rel="noopener" data-event="whatsapp_clicked">Écrire à Mathilde</a><a class="btn ghost" href="/contact.html">Formulaire</a></div></article>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap footer-grid"><div><strong>Mathilde KW</strong><p class="note">Conseillère immobilière à Tahiti, Keller Williams Polynésie.</p></div><div><strong>Parcours</strong><a href="/vendre-bien-immobilier-tahiti.html">Vendre</a><a href="/acheter-bien-immobilier-tahiti.html">Acheter</a><a href="/biens-a-vendre-tahiti.html">Biens à vendre</a><a href="/outils-immobilier-tahiti.html">Outils</a></div><div><strong>Contact</strong><a href="tel:+68988078247">88 07 82 47</a><a href="https://wa.me/33782475958" target="_blank" rel="noopener">WhatsApp</a><a href="/contact.html">Contact</a><a href="/politique-confidentialite.html">Confidentialité</a></div></div></footer>
+  <script src="/site.js?v=20260809-premium-tools" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","@id":"https://mathildekw.com/#realestateagent","name":"Mathilde TUDURI - Keller Williams Polynésie","url":"https://mathildekw.com/","image":"https://mathildekw.com/mathilde-avatar.jpg","telephone":"+68988078247","description":"Conseillère immobilière Keller Williams en Polynésie française, spécialisée dans l’estimation, la vente et l’accompagnement immobilier à Tahiti et Moorea.","areaServed":[{"@type":"Place","name":"Tahiti"},{"@type":"Place","name":"Moorea"},{"@type":"Place","name":"Polynésie française"}],"brand":{"@type":"Brand","name":"Keller Williams Polynésie"},"sameAs":["https://www.instagram.com/mathilde.kw.tahiti/","https://www.facebook.com/profile.php?id=61580583342225"]}</script>
 </body>
 </html>

@@ -3,6 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "test": "node tests/finance-calculators.test.mjs",
+    "build": "node tests/finance-calculators.test.mjs",
     "upload-videos": "node scripts/upload-videos.mjs",
     "video-link": "node scripts/create-video-link.mjs",
     "video-invite": "node scripts/create-video-invitation.mjs",
