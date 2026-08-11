@@ -1,267 +1,279 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://mathildekw.com/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/acheter-bien-immobilier-tahiti.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.88</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/appartement-t2-punaauia-pk11.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://mathildekw.com/appartement-t2-punaauia.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://mathildekw.com/images/t2-punaauia-libre/t2-punaauia-sejour-cuisine.jpg</image:loc>
+      <image:title>T2 à vendre Punaauia | Terrasse, piscine, parking</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mathildekw.com/images/t2-punaauia-libre/t2-punaauia-terrasse-couverte.jpg</image:loc>
+      <image:title>T2 à vendre Punaauia | Terrasse, piscine, parking</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mathildekw.com/appartement-t3-punaauia.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://mathildekw.com/images/t3-punaauia/t3-punaauia-sejour-cuisine.jpg</image:loc>
+      <image:title>T3 à vendre Punaauia | 76 m², terrasse, piscine</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mathildekw.com/images/t3-punaauia/t3-punaauia-terrasse-vue.jpg</image:loc>
+      <image:title>T3 à vendre Punaauia | 76 m², terrasse, piscine</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://mathildekw.com/avis-clients-immobilier-tahiti.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/biens-a-vendre-tahiti.html</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
-  </url>
-  <url>
-    <loc>https://mathildekw.com/biens/t2-renove-paofai-papeete/</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.86</priority>
+    <priority>0.94</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/blog-mandat-success-kw-tahiti.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/blog-prix-immobilier-tahiti-2025.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/blog-vendre-maison-tahiti.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/blog-vendre-terrain-tahiti.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/blog.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.78</priority>
-  </url>
-  <url>
-    <loc>https://mathildekw.com/blog/estimation-succession-indivision-terrain-familial-tahiti/</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/checklist-vendre-maison-tahiti.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/contact.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/estimation-appartement-tahiti.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/estimation-immobiliere-tahiti.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.98</priority>
+    <priority>0.90</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/estimation-maison-arue.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/estimation-maison-faaa.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/estimation-maison-mahina.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/estimation-maison-moorea.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/estimation-maison-paea.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/estimation-maison-papara.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/estimation-maison-papeete.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/estimation-maison-pirae.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/estimation-maison-tahiti.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/estimation-maison-taravao.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/estimation-terrain-tahiti.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/immobilier-punaauia.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/immobilier-tahiti.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.94</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/investir-usa.html</loc>
-    <lastmod>2026-05-24</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://mathildekw.com/prix-immobilier-paea.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mathildekw.com/prix-immobilier-papeete.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mathildekw.com/prix-immobilier-punaauia.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mathildekw.com/vendre-bien-immobilier-tahiti.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.96</priority>
-  </url>
-  <url>
-    <loc>https://mathildekw.com/vendre-discretement-tahiti.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.78</priority>
-  </url>
-  <url>
-    <loc>https://mathildekw.com/vendre-maison-papeete.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mathildekw.com/vendre-maison-punaauia.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mathildekw.com/vendre-terrain-tahiti.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mathildekw.com/vendre-terrain-taravao.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mathildekw.com/appartement-t3-punaauia.html</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.92</priority>
-  </url>
-  <url>
-    <loc>https://mathildekw.com/appartement-t2-punaauia.html</loc>
-    <lastmod>2026-07-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.92</priority>
-  </url>
-  <url>
     <loc>https://mathildekw.com/maison-a-vendre-moorea.html</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.92</priority>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://mathildekw.com/images/maison-moorea-jardin/maison-moorea-jardin-maison.jpg</image:loc>
+      <image:title>Maison à vendre Moorea | Jardin tropical et terrasse</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mathildekw.com/images/maison-moorea-jardin/maison-moorea-jardin-terrasse.jpg</image:loc>
+      <image:title>Maison à vendre Moorea | Jardin tropical et terrasse</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://mathildekw.com/outils-immobilier-tahiti.html</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.88</priority>
   </url>
   <url>
     <loc>https://mathildekw.com/politique-confidentialite.html</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.40</priority>
+    <priority>0.30</priority>
+  </url>
+  <url>
+    <loc>https://mathildekw.com/prix-immobilier-paea.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://mathildekw.com/prix-immobilier-papeete.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://mathildekw.com/prix-immobilier-punaauia.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://mathildekw.com/vendre-bien-immobilier-tahiti.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.96</priority>
+  </url>
+  <url>
+    <loc>https://mathildekw.com/vendre-discretement-tahiti.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://mathildekw.com/vendre-maison-papeete.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://mathildekw.com/vendre-maison-punaauia.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://mathildekw.com/vendre-terrain-tahiti.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://mathildekw.com/vendre-terrain-taravao.html</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
   </url>
 </urlset>

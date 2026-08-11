@@ -1,6 +1,11 @@
 User-agent: *
 Allow: /
+
 Disallow: /espace-vendeur.html
+Disallow: /suivi-vendeur.html
+Disallow: /demo-espace-vendeur.html
+Disallow: /demande-visite-video.html
+Disallow: /merci-avis-google.html
 Disallow: /schema-mathildekw.html
 
 Sitemap: https://mathildekw.com/sitemap.xml
