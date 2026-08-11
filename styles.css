@@ -4682,3 +4682,249 @@ body.premium-home::before {
     height: 64px;
   }
 }
+
+/* Home mobile repair - 2026-08-10 */
+.premium-home a,
+.premium-home a:visited,
+.premium-home .route-card,
+.premium-home .route-card *,
+.premium-home .property-card,
+.premium-home .property-card *,
+.premium-home .menu a {
+  text-decoration: none !important;
+}
+
+.premium-home .route-card {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  min-width: 0;
+  color: #14232b;
+}
+
+.premium-home .route-card .tag {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  padding: 6px 10px;
+  border-radius: 999px;
+  line-height: 1;
+}
+
+.premium-home .route-card h3 {
+  margin: 0;
+  font-size: clamp(1.18rem, 2vw, 1.35rem);
+  line-height: 1.15;
+}
+
+.premium-home .route-card p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.premium-home .route-card .route-link {
+  margin-top: 8px;
+  font-weight: 900;
+}
+
+.premium-home .premium-journey-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+@media (max-width: 1120px) {
+  body.premium-home {
+    padding-bottom: 92px;
+  }
+
+  .premium-home .topbar {
+    position: sticky !important;
+    top: 0 !important;
+    right: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    background: rgba(250, 248, 244, .96) !important;
+    border-bottom: 1px solid rgba(20,35,43,.08) !important;
+    backdrop-filter: blur(14px);
+    transform: none !important;
+  }
+
+  .premium-home .nav {
+    position: relative;
+    width: min(100% - 32px, 1180px) !important;
+    min-height: 64px;
+    margin: 0 auto !important;
+    padding: 10px 0 !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px;
+  }
+
+  .premium-home .brand {
+    display: flex !important;
+    min-width: 0;
+    max-width: calc(100% - 124px);
+  }
+
+  .premium-home .brand strong {
+    font-size: .92rem;
+  }
+
+  .premium-home .brand span span {
+    font-size: .74rem;
+  }
+
+  .premium-home .nav-toggle {
+    position: static !important;
+    inset: auto !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: auto !important;
+    min-width: 108px;
+    min-height: 46px;
+    margin-left: auto;
+    padding: 0 22px;
+    border: 0;
+    border-radius: 999px;
+    background: #c8102e;
+    color: #fff;
+    box-shadow: none;
+    font-size: .86rem;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .premium-home .menu {
+    display: none !important;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    left: 0;
+    z-index: 90;
+    width: 100% !important;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin: 0;
+    padding: 12px;
+    border: 1px solid rgba(20,35,43,.12);
+    border-radius: 12px;
+    background: rgba(255,255,255,.98);
+    box-shadow: 0 18px 40px rgba(20,35,43,.14);
+    backdrop-filter: blur(14px);
+  }
+
+  .premium-home .menu.open {
+    display: grid !important;
+  }
+
+  .premium-home .menu a,
+  .premium-home .menu a.nav-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 42px;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 8px;
+    background: #f7f5f0 !important;
+    box-shadow: none;
+    color: #14232b !important;
+    font-size: .95rem;
+    font-weight: 800;
+    text-align: left;
+  }
+
+  .premium-home .section {
+    padding: 38px 0;
+  }
+
+  .premium-home #parcours {
+    padding-top: 34px;
+  }
+
+  .premium-home .premium-section-head {
+    margin-bottom: 18px;
+  }
+
+  .premium-home .premium-section-head h2 {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+    line-height: 1;
+  }
+
+  .premium-home .premium-section-head p {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .premium-home .premium-journey-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    width: 100%;
+  }
+
+  .premium-home .premium-journey-grid .route-card {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 18px !important;
+    border-radius: 10px !important;
+    background: #fff !important;
+  }
+
+  .premium-home .premium-journey-grid .route-card h3 {
+    font-size: 1.35rem;
+  }
+
+  .premium-home .premium-journey-grid .route-card p {
+    font-size: .98rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .premium-home .wrap {
+    width: min(100% - 32px, 520px);
+  }
+
+  .premium-home-hero {
+    padding-bottom: 28px;
+  }
+
+  .premium-home .premium-journey-grid .route-card {
+    gap: 9px !important;
+  }
+
+  .premium-home .premium-journey-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .premium-home .premium-property-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+
+  .premium-home .property-card,
+  .premium-home .review-card,
+  .premium-home .premium-editorial-card {
+    padding: 18px;
+  }
+
+  .premium-home .premium-hero-visual .premium-agent-card {
+    left: auto !important;
+    right: auto !important;
+    width: auto !important;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
