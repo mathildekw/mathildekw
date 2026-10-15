@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tests/finance-calculators.test.mjs && node tests/foncier-engine.test.mjs && node tests/te-fenua.test.mjs",
-    "build": "node tests/finance-calculators.test.mjs && node tests/foncier-engine.test.mjs && node tests/te-fenua.test.mjs",
+    "test": "node tests/finance-calculators.test.mjs && node tests/foncier-engine.test.mjs && node tests/te-fenua.test.mjs && node tests/prospecting-engine.test.mjs",
+    "build": "node tests/finance-calculators.test.mjs && node tests/foncier-engine.test.mjs && node tests/te-fenua.test.mjs && node tests/prospecting-engine.test.mjs",
     "upload-videos": "node scripts/upload-videos.mjs",
     "video-link": "node scripts/create-video-link.mjs",
     "video-invite": "node scripts/create-video-invitation.mjs",

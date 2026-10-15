@@ -16,6 +16,7 @@ window.MK_SITE_CONFIG = {
   },
   foncier: {
     apiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/foncier-promotion",
+    prospectingApiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/foncier-prospecting",
     supabaseUrl: "https://rqjuvutlnpwecjkpkiuw.supabase.co",
     anonKey: ""
   }
