@@ -1,5 +1,34 @@
-import assert from"node:assert/strict";import{readFile}from"node:fs/promises";import{normalizeContact,idempotencyKey,retryDelay,portalView,dossierMode}from"../foncier-workflows.mjs";
-assert.equal(normalizeContact(" TEST @MAIL.PF "),"test@mail.pf");assert.equal(idempotencyKey("sheet","abc"),"sheet:abc");assert.equal(retryDelay(1),5);assert.equal(retryDelay(20),1440);
+import assert from"node:assert/strict";
+import{readFile}from"node:fs/promises";
+import{normalizeContact,idempotencyKey,retryDelay,portalView,dossierMode}from"../foncier-workflows.mjs";
+
+assert.equal(normalizeContact(" TEST @MAIL.PF "),"test@mail.pf");
+assert.equal(idempotencyKey("sheet","abc"),"sheet:abc");
+assert.equal(retryDelay(1),5);
+assert.equal(retryDelay(20),1440);
+
 const study={id:"synthetic",title:"Projet synthétique",surface:2600,analysis:{relief:"calcul synthétique",private_note:"secret"},scenarios:[{label:"Illustration"}]},timeline=[{title:"Visible",body:"Compte rendu validé",event_at:"2026-10-15",event_type:"report",visibility:"owner"},{title:"Interne",body:"Ne pas partager",visibility:"internal"}],documents=[{id:"1",label:"Rapport validé",category:"report",owner_visible:true,storage_path:"secret/path"},{id:"2",label:"Note interne",owner_visible:false,storage_path:"secret/internal"}];
-const portal=portalView(study,timeline,documents);assert.equal(portal.timeline.length,1);assert.equal(portal.documents.length,1);assert.equal("storage_path"in portal.documents[0],false);assert.equal(JSON.stringify(portal).includes("Ne pas partager"),false);const teaser=dossierMode(study,"teaser");assert.equal(teaser.analysis.private_note,undefined);assert.match(teaser.notice,/propriétaire/);assert.equal(dossierMode(study,"full").scenarios.length,1);
-const studies=await readFile(new URL("../supabase/functions/foncier-studies/index.ts",import.meta.url),"utf8"),leads=await readFile(new URL("../supabase/functions/foncier-leads/index.ts",import.meta.url),"utf8"),portalHtml=await readFile(new URL("../portail-foncier.html",import.meta.url),"utf8"),dossierHtml=await readFile(new URL("../dossier-promoteur.html",import.meta.url),"utf8"),dossierJs=await readFile(new URL("../dossier-promoteur.js",import.meta.url),"utf8");assert.match(studies,/rpc\/is_foncier_admin/);assert.match(studies,/foncier_portal_access/);assert.match(studies,/foncier_dossier_access/);assert.doesNotMatch(studies,/adminEmails/);assert.match(leads,/possible_duplicate_of/);assert.match(leads,/foncier_integration_outbox/);assert.match(portalHtml,/noindex,nofollow,noarchive/);assert.match(dossierHtml,/data-mode="teaser"/);assert.match(dossierJs,/\/dossier\//);assert.match(dossierJs,/disabled=true/);console.log("foncier-workflows: 22 assertions réussies");
+
+const portal=portalView(study,timeline,documents);
+assert.equal(portal.timeline.length,1);
+assert.equal(portal.documents.length,1);
+assert.equal("storage_path"in portal.documents[0],false);
+assert.equal(JSON.stringify(portal).includes("Ne pas partager"),false);
+const teaser=dossierMode(study,"teaser");
+assert.equal(teaser.analysis.private_note,undefined);
+assert.match(teaser.notice,/propriétaire/);
+assert.equal(dossierMode(study,"full").scenarios.length,1);
+
+const studies=await readFile(new URL("../supabase/functions/foncier-studies/index.ts",import.meta.url),"utf8"),leads=await readFile(new URL("../supabase/functions/foncier-leads/index.ts",import.meta.url),"utf8"),portalHtml=await readFile(new URL("../portail-foncier.html",import.meta.url),"utf8"),dossierHtml=await readFile(new URL("../dossier-promoteur.html",import.meta.url),"utf8"),dossierJs=await readFile(new URL("../dossier-promoteur.js",import.meta.url),"utf8");
+assert.match(studies,/rpc\/is_foncier_admin/);
+assert.match(studies,/foncier_portal_access/);
+assert.match(studies,/foncier_dossier_access/);
+assert.doesNotMatch(studies,/adminEmails/);
+assert.match(leads,/method:"PATCH"/);
+assert.match(leads,/updated_existing/);
+assert.match(leads,/foncier_integration_outbox/);
+assert.match(portalHtml,/noindex,nofollow,noarchive/);
+assert.match(dossierHtml,/data-mode="teaser"/);
+assert.match(dossierJs,/\/dossier\//);
+assert.match(dossierJs,/disabled=true/);
+console.log("foncier-workflows: 23 assertions réussies");

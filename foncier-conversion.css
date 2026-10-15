@@ -1,0 +1,13 @@
+.fp-result-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 26px 0;
+  background: var(--fp-line);
+  border: 1px solid var(--fp-line);
+}
+.fp-result-facts div { padding: 16px; background: var(--fp-paper); }
+.fp-result-facts dt { color: var(--fp-muted); font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.fp-result-facts dd { margin: 7px 0 0; font-size: 13px; font-weight: 700; }
+.fp-result-next { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--fp-line); }
+@media (max-width: 580px) { .fp-result-facts { grid-template-columns: 1fr 1fr; } }

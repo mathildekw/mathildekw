@@ -9,5 +9,6 @@ var variant=localStorage.getItem("pk_funnel_variant");if(!/[ABC]/.test(variant||
 var copy={A:"Ton terrain intéresse-t-il un promoteur ?",B:"Et si ton terrain valait davantage grâce à son potentiel immobilier ?",C:"Tu possèdes un terrain en bord de route à Tahiti ?"},hero=document.querySelector("[data-ab-headline]");if(hero){hero.textContent=copy[variant];hero.dataset.variant=variant}
 function track(name,metadata){if(!endpoint)return Promise.resolve(false);return fetch(endpoint.replace(/\/$/,"")+"/public/events",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({event_name:name,session_id:session,page_path:location.pathname,traffic_source:source(),utm:utm,ab_variant:variant,metadata:metadata||{}}),keepalive:true}).then(function(r){return r.ok}).catch(function(){return false})}
 window.PKFunnel={track:track,context:{session_id:session,traffic_source:source(),utm:utm,ab_variant:variant}};
+document.addEventListener("click",function(event){var cta=event.target.closest("[data-foncier-cta]");if(cta)track("cta_clicked",{placement:cta.dataset.foncierCta||"unknown",destination:cta.getAttribute("href")||""})});
 if(document.body.classList.contains("fp")&&!document.getElementById("land-form"))track("landing_view");
 })();
