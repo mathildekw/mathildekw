@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "timezone": "Pacific/Tahiti",
+  "siteUrl": "https://mathildekw.com",
+  "productionBranch": "main",
+  "autoMerge": false,
+  "autoDeploy": false,
+  "modelCalls": {
+    "enabled": false,
+    "provider": null,
+    "dailyBudgetUsd": 0,
+    "monthlyBudgetUsd": 0,
+    "maxRetries": 1
+  },
+  "agents": [
+    {"id":"project-manager","name":"AI Project Manager","enabled":true,"mode":"deterministic","cadences":["weekly"]},
+    {"id":"conversion","name":"Conversion Optimizer","enabled":true,"mode":"deterministic","cadences":["weekly"]},
+    {"id":"design","name":"Design Director","enabled":true,"mode":"deterministic","cadences":["weekly"]},
+    {"id":"seo","name":"SEO Growth Agent","enabled":true,"mode":"deterministic","cadences":["weekly"]},
+    {"id":"developer","name":"AI Developer","enabled":false,"mode":"approval-required","cadences":[]},
+    {"id":"security","name":"Security & QA Guardian","enabled":true,"mode":"deterministic","cadences":["daily","monthly"]},
+    {"id":"land","name":"Land Intelligence Agent","enabled":true,"mode":"deterministic","cadences":["daily","weekly"]},
+    {"id":"content","name":"Real Estate Content Strategist","enabled":false,"mode":"approval-required","cadences":[]}
+  ],
+  "publicPages": [
+    "/",
+    "/estimation-immobiliere-tahiti.html",
+    "/foncier-promotion.html",
+    "/diagnostic-foncier.html",
+    "/promoteur-foncier.html",
+    "/laboratoire-horizon.html"
+  ],
+  "externalChecks": [
+    {
+      "id": "te-fenua-parcels",
+      "url": "https://services.arcgis.com/L4H4rU26VyhEF588/arcgis/rest/services/CAD_parcelles_open/FeatureServer/0?f=json",
+      "method": "GET",
+      "required": true
+    }
+  ]
+}

@@ -25,3 +25,22 @@ window.MK_SITE_CONFIG = {
     anonKey: ""
   }
 };
+
+// Provide an accessible name for legacy controls whose visual label is adjacent
+// but not programmatically associated. This does not alter form behavior.
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".fp-field > input, .fp-field > select, .fp-field > textarea").forEach(function (control) {
+    var label = control.parentElement && control.parentElement.querySelector("label");
+    if (label && !(control.labels && control.labels.length) && !control.getAttribute("aria-label")) {
+      control.setAttribute("aria-label", label.textContent.trim());
+    }
+  });
+});
+
+// Load the containment fix only on the immersive Foncier landing page.
+if (document.body && document.body.classList.contains("hz-page")) {
+  var mobileFix = document.createElement("link");
+  mobileFix.rel = "stylesheet";
+  mobileFix.href = "/foncier-mobile-fix.css?v=1";
+  document.head.appendChild(mobileFix);
+}

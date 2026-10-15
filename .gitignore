@@ -1,4 +1,6 @@
 node_modules/
 .env
 .DS_Store
+ai-reports/*.json
+!ai-reports/latest.json
 private-videos/

@@ -1,0 +1,38 @@
+name: AI Team - Revue sécurité mensuelle
+
+on:
+  schedule:
+    - cron: "30 17 1 * *" # Le 1er à 07:30 à Tahiti (UTC-10)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ai-monthly-security
+  cancel-in-progress: false
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Récupérer le code approuvé
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Exécuter la revue mensuelle
+        id: audit
+        continue-on-error: true
+        run: node scripts/ai-team/run-audit.mjs --cadence=monthly
+      - name: Conserver le rapport
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ai-monthly-security-${{ github.run_id }}
+          path: ai-reports/
+          retention-days: 180
+          if-no-files-found: error
+      - name: Signaler les contrôles en échec
+        if: steps.audit.outcome == 'failure'
+        run: exit 1

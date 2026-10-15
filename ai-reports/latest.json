@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "runId": "weekly-2026-10-15T18-56-06-530Z",
+  "cadence": "weekly",
+  "timezone": "Pacific/Tahiti",
+  "startedAt": "2026-10-15T18:56:06.530Z",
+  "finishedAt": "2026-10-15T18:56:08.744Z",
+  "source": "local",
+  "productionCommit": null,
+  "status": "healthy",
+  "summary": {
+    "checks": 16,
+    "passed": 16,
+    "warnings": 0,
+    "failures": 0,
+    "proposals": 0
+  },
+  "agents": [
+    {
+      "id": "project-manager",
+      "name": "AI Project Manager",
+      "enabled": true,
+      "mode": "deterministic",
+      "cadences": [
+        "weekly"
+      ],
+      "activeThisRun": true,
+      "lastRunStatus": "completed"
+    },
+    {
+      "id": "conversion",
+      "name": "Conversion Optimizer",
+      "enabled": true,
+      "mode": "deterministic",
+      "cadences": [
+        "weekly"
+      ],
+      "activeThisRun": true,
+      "lastRunStatus": "completed"
+    },
+    {
+      "id": "design",
+      "name": "Design Director",
+      "enabled": true,
+      "mode": "deterministic",
+      "cadences": [
+        "weekly"
+      ],
+      "activeThisRun": true,
+      "lastRunStatus": "completed"
+    },
+    {
+      "id": "seo",
+      "name": "SEO Growth Agent",
+      "enabled": true,
+      "mode": "deterministic",
+      "cadences": [
+        "weekly"
+      ],
+      "activeThisRun": true,
+      "lastRunStatus": "completed"
+    },
+    {
+      "id": "developer",
+      "name": "AI Developer",
+      "enabled": false,
+      "mode": "approval-required",
+      "cadences": [],
+      "activeThisRun": false,
+      "lastRunStatus": "not_scheduled"
+    },
+    {
+      "id": "security",
+      "name": "Security & QA Guardian",
+      "enabled": true,
+      "mode": "deterministic",
+      "cadences": [
+        "daily",
+        "monthly"
+      ],
+      "activeThisRun": false,
+      "lastRunStatus": "not_scheduled"
+    },
+    {
+      "id": "land",
+      "name": "Land Intelligence Agent",
+      "enabled": true,
+      "mode": "deterministic",
+      "cadences": [
+        "daily",
+        "weekly"
+      ],
+      "activeThisRun": true,
+      "lastRunStatus": "completed"
+    },
+    {
+      "id": "content",
+      "name": "Real Estate Content Strategist",
+      "enabled": false,
+      "mode": "approval-required",
+      "cadences": [],
+      "activeThisRun": false,
+      "lastRunStatus": "not_scheduled"
+    }
+  ],
+  "cost": {
+    "modelCalls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "estimatedUsd": 0,
+    "budgetUsd": 0,
+    "modelLayerEnabled": false
+  },
+  "checks": [
+    {
+      "agent": "security",
+      "id": "uptime:/",
+      "status": "pass",
+      "title": "Disponibilité /",
+      "detail": "HTTP 200",
+      "url": "https://mathildekw.com/",
+      "durationClass": "network",
+      "evidence": "2ffe2397c295357b"
+    },
+    {
+      "agent": "seo",
+      "id": "seo:/",
+      "status": "pass",
+      "title": "SEO essentiel /",
+      "detail": "title=true, description=true, h1=1",
+      "url": "https://mathildekw.com/"
+    },
+    {
+      "agent": "security",
+      "id": "uptime:/estimation-immobiliere-tahiti.html",
+      "status": "pass",
+      "title": "Disponibilité /estimation-immobiliere-tahiti.html",
+      "detail": "HTTP 200",
+      "url": "https://mathildekw.com/estimation-immobiliere-tahiti.html",
+      "durationClass": "network",
+      "evidence": "63b419b4094aa545"
+    },
+    {
+      "agent": "seo",
+      "id": "seo:/estimation-immobiliere-tahiti.html",
+      "status": "pass",
+      "title": "SEO essentiel /estimation-immobiliere-tahiti.html",
+      "detail": "title=true, description=true, h1=1",
+      "url": "https://mathildekw.com/estimation-immobiliere-tahiti.html"
+    },
+    {
+      "agent": "security",
+      "id": "uptime:/foncier-promotion.html",
+      "status": "pass",
+      "title": "Disponibilité /foncier-promotion.html",
+      "detail": "HTTP 200",
+      "url": "https://mathildekw.com/foncier-promotion.html",
+      "durationClass": "network",
+      "evidence": "6fc6318db4f7a871"
+    },
+    {
+      "agent": "seo",
+      "id": "seo:/foncier-promotion.html",
+      "status": "pass",
+      "title": "SEO essentiel /foncier-promotion.html",
+      "detail": "title=true, description=true, h1=1",
+      "url": "https://mathildekw.com/foncier-promotion.html"
+    },
+    {
+      "agent": "security",
+      "id": "uptime:/diagnostic-foncier.html",
+      "status": "pass",
+      "title": "Disponibilité /diagnostic-foncier.html",
+      "detail": "HTTP 200",
+      "url": "https://mathildekw.com/diagnostic-foncier.html",
+      "durationClass": "network",
+      "evidence": "4dcc0685b7e983d2"
+    },
+    {
+      "agent": "seo",
+      "id": "seo:/diagnostic-foncier.html",
+      "status": "pass",
+      "title": "SEO essentiel /diagnostic-foncier.html",
+      "detail": "title=true, description=true, h1=1",
+      "url": "https://mathildekw.com/diagnostic-foncier.html"
+    },
+    {
+      "agent": "security",
+      "id": "uptime:/promoteur-foncier.html",
+      "status": "pass",
+      "title": "Disponibilité /promoteur-foncier.html",
+      "detail": "HTTP 200",
+      "url": "https://mathildekw.com/promoteur-foncier.html",
+      "durationClass": "network",
+      "evidence": "8e014b287164bc89"
+    },
+    {
+      "agent": "seo",
+      "id": "seo:/promoteur-foncier.html",
+      "status": "pass",
+      "title": "SEO essentiel /promoteur-foncier.html",
+      "detail": "title=true, description=true, h1=1",
+      "url": "https://mathildekw.com/promoteur-foncier.html"
+    },
+    {
+      "agent": "security",
+      "id": "uptime:/laboratoire-horizon.html",
+      "status": "pass",
+      "title": "Disponibilité /laboratoire-horizon.html",
+      "detail": "HTTP 200",
+      "url": "https://mathildekw.com/laboratoire-horizon.html",
+      "durationClass": "network",
+      "evidence": "6270d81f32975078"
+    },
+    {
+      "agent": "seo",
+      "id": "seo:/laboratoire-horizon.html",
+      "status": "pass",
+      "title": "SEO essentiel /laboratoire-horizon.html",
+      "detail": "title=true, description=true, h1=1",
+      "url": "https://mathildekw.com/laboratoire-horizon.html"
+    },
+    {
+      "agent": "land",
+      "id": "external:te-fenua-parcels",
+      "status": "pass",
+      "title": "Service te-fenua-parcels",
+      "detail": "HTTP 200, métadonnées exploitables",
+      "url": "https://services.arcgis.com/L4H4rU26VyhEF588/arcgis/rest/services/CAD_parcelles_open/FeatureServer/0?f=json"
+    },
+    {
+      "agent": "security",
+      "id": "links:internal",
+      "status": "pass",
+      "title": "Liens et ressources internes",
+      "detail": "63 pages contrôlées"
+    },
+    {
+      "agent": "security",
+      "id": "security:secrets",
+      "status": "pass",
+      "title": "Recherche de secrets versionnés",
+      "detail": "Aucun motif de secret exploitable détecté"
+    },
+    {
+      "agent": "security",
+      "id": "tests:smoke",
+      "status": "pass",
+      "title": "Tests de calcul critiques",
+      "detail": "Tests exécutés avec succès"
+    }
+  ],
+  "proposals": []
+}

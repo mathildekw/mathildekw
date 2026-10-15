@@ -8,6 +8,7 @@ window.MathildeClientSpaces.config = {
   tokenMode: "private-token"
 };
 
+// Démonstrations publiques uniquement. Ne jamais ajouter de dossier vendeur réel ici.
 window.MathildeClientSpaces.sellerProperties = {
   "maison-papeete-demo": {
     slug: "maison-papeete-demo",
@@ -64,7 +65,7 @@ window.MathildeClientSpaces.sellerProperties = {
   "jambolana-pk11": {
     slug: "jambolana-pk11",
     accessToken: "changer-ce-token",
-    isDemo: false,
+    isDemo: true,
     title: "Bien vendeur privé — exemple à personnaliser",
     status: "Préparation de commercialisation",
     price: "Prix à confirmer",
