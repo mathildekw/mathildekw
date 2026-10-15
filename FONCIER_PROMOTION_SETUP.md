@@ -33,3 +33,7 @@ Le webhook reçoit `{ kind, row }`. Il doit effectuer un upsert sur `row.referen
 ## Urbanisme
 
 Tous les champs réglementaires démarrent à `À vérifier`. Le statut passe de `to_verify` à `validated` uniquement après contrôle manuel. Chaque validation doit conserver les sources documentaires et leur date. Le système ne calcule pas automatiquement de nombre de logements autorisé.
+
+## Te Fenua
+
+La sélection cadastrale publique utilise uniquement la couche DAF annoncée sous Licence Ouverte Etalab 2.0. Consulter `TE_FENUA_AUDIT.md` avant d’activer de nouvelles couches. Le PGA et le PPR restent « À vérifier » tant que leurs droits de réutilisation ne sont pas confirmés par la DCA.
