@@ -1,0 +1,138 @@
+/* Direction artistique Mathilde KW 2026 — pages internes */
+:root{--kw-red:#de735a;--kw-dark:#0b2728;--kw-ink:#142127;--kw-cream:#f5f0e7;--kw-sand:#ddd0bd;--kw-lime:#c9ff72;--kw-muted:#647074;--ink:#142127;--muted:#647074;--soft:#f5f0e7;--line:#d9cfc0}
+body.seo-page{background:var(--kw-cream);color:var(--kw-ink);font-family:"DM Sans",Arial,sans-serif}
+body.seo-page h1,body.seo-page h2,body.seo-page h3,body.seo-page .property-price,body.seo-page .seller-photo-card strong{font-family:"Cormorant Garamond",Georgia,serif;letter-spacing:-.025em}
+body.seo-page h1{font-size:clamp(52px,6.6vw,92px);font-weight:400;line-height:.94;letter-spacing:-.055em}
+body.seo-page h2{font-size:clamp(38px,4.5vw,64px);font-weight:400;line-height:.98}
+body.seo-page h3{font-weight:600}
+body.seo-page .lead{font-size:clamp(17px,1.7vw,21px);line-height:1.65}
+body.seo-page .eyebrow{color:var(--kw-red);font-size:11px;font-weight:900;letter-spacing:.19em;text-transform:uppercase}
+
+/* Navigation commune avec l'accueil */
+body.seo-page .topbar{position:relative;z-index:50;background:var(--kw-dark);color:#fff;border:0;box-shadow:none}
+body.seo-page .nav{min-height:88px}
+body.seo-page .text-brand{position:relative;padding-left:54px;color:#fff;text-decoration:none}
+body.seo-page .text-brand:before{content:"M";position:absolute;left:0;top:50%;translate:0 -50%;width:39px;height:39px;border:1px solid rgba(255,255,255,.5);border-radius:50%;display:grid;place-items:center;font:600 18px "Cormorant Garamond",serif}
+body.seo-page .text-brand strong{font:800 14px "DM Sans",sans-serif;letter-spacing:.07em;text-transform:uppercase}
+body.seo-page .text-brand strong{display:block!important;color:#fff!important}
+body.seo-page .text-brand span span{color:rgba(255,255,255,.64);font-size:9px;letter-spacing:.15em;text-transform:uppercase}
+body.seo-page .menu a{color:#fff;font-size:12px;font-weight:700}
+body.seo-page .menu a:hover{color:var(--kw-lime)}
+body.seo-page .menu .nav-cta{background:transparent!important;color:#fff!important;border:1px solid rgba(255,255,255,.5)!important;border-radius:99px!important;padding:13px 19px!important}
+body.seo-page .menu .nav-cta:hover{background:var(--kw-lime)!important;color:var(--kw-dark)!important;border-color:var(--kw-lime)!important}
+body.seo-page .nav-toggle{color:#fff;border-color:rgba(255,255,255,.45);background:transparent;border-radius:99px}
+
+/* Héros éditoriaux */
+body.seo-page .hero,body.seo-page .property-hero,body.seo-page .article-hero,body.seo-page .secure-hero,body.seo-page .seller-access-hero{position:relative;background:var(--kw-dark);color:#fff;border:0;overflow:hidden}
+body.seo-page .hero:before,body.seo-page .property-hero:before,body.seo-page .article-hero:before{content:"";position:absolute;inset:auto -12% -55% auto;width:600px;height:600px;border:1px solid rgba(201,255,114,.16);border-radius:50%;pointer-events:none}
+body.seo-page .hero .eyebrow,body.seo-page .property-hero .eyebrow,body.seo-page .article-hero .eyebrow,body.seo-page .secure-hero .eyebrow{color:var(--kw-lime)}
+body.seo-page .hero h1,body.seo-page .hero h2,body.seo-page .property-hero h1,body.seo-page .article-hero h1,body.seo-page .secure-hero h1,body.seo-page .seller-access-hero h1{color:#fff}
+body.seo-page .hero p,body.seo-page .property-hero p,body.seo-page .article-hero p,body.seo-page .secure-hero p,body.seo-page .seller-access-hero p{color:rgba(255,255,255,.75)}
+body.seo-page .hero-grid,body.seo-page .seller-hero-grid,body.seo-page .properties-hero-inner,body.seo-page .usa-hero-grid,body.seo-page .property-hero-grid{padding-top:clamp(70px,9vw,130px);padding-bottom:clamp(70px,9vw,130px)}
+body.seo-page .properties-mini-card,body.seo-page .visual-card,body.seo-page .seller-photo-card,body.seo-page .usa-hero-form,body.seo-page .article-card.hero-aside{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);color:#fff;box-shadow:none;backdrop-filter:blur(12px)}
+body.seo-page .properties-mini-card span,body.seo-page .visual-card p,body.seo-page .usa-hero-form p{color:rgba(255,255,255,.7)}
+
+/* Boutons */
+body.seo-page .btn{border-radius:999px;padding:16px 24px;font-size:12px;font-weight:900;letter-spacing:.015em;box-shadow:none;transition:transform .2s ease,background .2s ease,color .2s ease}
+body.seo-page .btn:hover{transform:translateY(-2px)}
+body.seo-page .btn.primary{background:var(--kw-red);border-color:var(--kw-red);color:#fff}
+body.seo-page .btn.primary:hover{background:#c95e47;border-color:#c95e47}
+body.seo-page .btn.ghost{background:transparent;border-color:currentColor;color:inherit}
+body.seo-page .hero .btn.ghost,body.seo-page .property-hero .btn.ghost{color:#fff;border-color:rgba(255,255,255,.55)}
+body.seo-page .btn.dark{background:var(--kw-dark);color:#fff}
+
+/* Sections, cartes et grilles */
+body.seo-page .section{padding-top:clamp(74px,8vw,112px);padding-bottom:clamp(74px,8vw,112px)}
+body.seo-page .section.alt{background:#eee7dc}
+body.seo-page .section-head{margin-bottom:44px}
+body.seo-page .card,body.seo-page .mini-card,body.seo-page .criteria-card,body.seo-page .factor-card,body.seo-page .fact-card,body.seo-page .result-card,body.seo-page .seller-access-card,body.seo-page .property-criteria-card{background:rgba(255,255,255,.68);border:1px solid #d8cdbd;border-radius:0;box-shadow:none;padding:clamp(26px,3vw,38px)}
+body.seo-page .card:hover,body.seo-page .mini-card:hover,body.seo-page .factor-card:hover{border-color:var(--kw-red)}
+body.seo-page .grid.three>.card{border-top:3px solid var(--kw-red)}
+body.seo-page .card p,body.seo-page .mini-card p,body.seo-page .factor-card p{color:var(--kw-muted);line-height:1.7}
+body.seo-page .seller-section-card{border-radius:0;background:rgba(255,255,255,.7);border:1px solid #d8cdbd;box-shadow:none}
+body.seo-page .route-link,body.seo-page .text-link{color:var(--kw-red);font-weight:900;text-underline-offset:4px}
+
+/* Biens */
+body.seo-page .property-card-premium,body.seo-page .listing-card{border:0;border-radius:0;background:#fff;box-shadow:none;overflow:hidden}
+body.seo-page .property-card-image{min-height:390px;border-radius:0;filter:saturate(.9);transition:filter .3s ease,transform .3s ease}
+body.seo-page .property-card-premium:hover .property-card-image{filter:saturate(1.05)}
+body.seo-page .property-card-body{padding:clamp(26px,4vw,46px)}
+body.seo-page .property-card-body h3{font-size:clamp(34px,4vw,50px);line-height:1;margin:.18em 0}
+body.seo-page .property-price{color:var(--kw-red);font-size:28px;font-weight:600}
+body.seo-page .property-status,body.seo-page .property-location,body.seo-page .badge{border-radius:999px;background:var(--kw-lime);color:var(--kw-dark);font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+body.seo-page .property-side-panel{background:var(--kw-dark);color:#fff;border-radius:0;box-shadow:none}
+body.seo-page .property-side-panel p,body.seo-page .property-side-panel span{color:rgba(255,255,255,.72)}
+body.seo-page .property-side-panel .eyebrow{color:var(--kw-lime)}
+body.seo-page .property-chip{border-radius:999px;border-color:rgba(255,255,255,.3);color:#fff}
+body.seo-page .property-chip.is-active{background:var(--kw-lime);border-color:var(--kw-lime);color:var(--kw-dark)}
+
+/* Formulaires et FAQ */
+body.seo-page input,body.seo-page select,body.seo-page textarea{border:1px solid #cfc3b3!important;border-radius:0!important;background:#fff!important;color:var(--kw-ink)!important;padding:15px 16px!important;box-shadow:none!important}
+body.seo-page input:focus,body.seo-page select:focus,body.seo-page textarea:focus{outline:2px solid var(--kw-lime)!important;border-color:var(--kw-dark)!important}
+body.seo-page label{font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+body.seo-page details{border-color:#d0c5b6!important;border-radius:0!important;background:rgba(255,255,255,.55)!important}
+body.seo-page summary{font-family:"Cormorant Garamond",serif;font-size:22px;font-weight:600}
+
+/* Bandes de conversion */
+body.seo-page .contact-strip,body.seo-page .seller-final-cta,body.seo-page .final-cta,body.seo-page .form-promise{background:var(--kw-dark)!important;color:#fff!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+body.seo-page .contact-strip h2,body.seo-page .contact-strip p,body.seo-page .seller-final-cta h2,body.seo-page .seller-final-cta p,body.seo-page .form-promise h2,body.seo-page .form-promise p{color:#fff!important}
+body.seo-page .contact-strip .eyebrow,body.seo-page .seller-final-cta .eyebrow,body.seo-page .form-promise .eyebrow{color:var(--kw-lime)!important}
+
+/* Footer */
+body.seo-page .footer{background:#081b1c;color:#fff;border:0;padding-top:62px}
+body.seo-page .footer strong{font-family:"Cormorant Garamond",serif;font-size:23px}
+body.seo-page .footer a,body.seo-page .footer p,body.seo-page .footer .note{color:rgba(255,255,255,.62)}
+body.seo-page .footer a:hover{color:var(--kw-lime)}
+
+/* Petits détails signature */
+body.seo-page .stars{color:var(--kw-lime)}
+body.seo-page hr{border-color:#d8cdbd}
+body.seo-page ::selection{background:var(--kw-lime);color:var(--kw-dark)}
+
+@media(max-width:820px){
+  body.seo-page .nav{min-height:78px}
+  body.seo-page .menu{background:var(--kw-dark);border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 50px rgba(0,0,0,.24)}
+  body.seo-page h1{font-size:clamp(46px,13vw,67px)}
+  body.seo-page h2{font-size:clamp(38px,10vw,52px)}
+  body.seo-page .hero-grid,body.seo-page .seller-hero-grid,body.seo-page .properties-hero-inner,body.seo-page .usa-hero-grid,body.seo-page .property-hero-grid{padding-top:62px;padding-bottom:68px}
+  body.seo-page .property-card-image{min-height:280px}
+}
+@media(max-width:520px){
+  body.seo-page .text-brand{padding-left:47px}
+  body.seo-page .text-brand:before{width:35px;height:35px}
+  body.seo-page .section{padding-top:62px;padding-bottom:62px}
+  body.seo-page .btn{width:100%;justify-content:center;text-align:center}
+  body.seo-page .property-card-body{padding:24px 20px}
+}
+
+/* Neutralise l'ancien menu flottant et les cartes de landing blanches */
+body.seo-page{padding-bottom:0!important}
+body.seo-page .topbar{position:relative!important;inset:auto!important;width:100%!important;max-width:none!important;margin:0!important;display:block!important;background:var(--kw-dark)!important;transform:none!important}
+body.seo-page .nav{position:relative!important;width:min(1180px,calc(100% - 40px))!important;min-height:88px!important;margin:0 auto!important;padding:0!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important}
+body.seo-page .nav{background:transparent!important;border:0!important;box-shadow:none!important}
+body.seo-page .brand{display:flex!important;min-width:210px!important}
+body.seo-page .nav-toggle{display:none!important}
+body.seo-page .nav .menu{position:static!important;display:flex!important;width:auto!important;max-width:none!important;min-height:0!important;margin:0!important;padding:0!important;grid-template-columns:none!important;flex-direction:row!important;align-items:center!important;justify-content:flex-end!important;gap:6px!important;overflow:visible!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;backdrop-filter:none!important}
+body.seo-page .nav .menu a{width:auto!important;min-height:0!important;display:block!important;padding:10px 11px!important;border:0!important;border-radius:999px!important;background:transparent!important;color:#fff!important;box-shadow:none!important}
+body.seo-page.seller-ads-page .seller-hero-copy{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:#fff!important;padding:0!important}
+body.seo-page.seller-ads-page .seller-hero-copy .lead,body.seo-page.seller-ads-page .seller-badges span{color:rgba(255,255,255,.74)!important}
+body.seo-page.seller-ads-page .seller-badges span:before{color:var(--kw-lime)!important}
+body.seo-page.airy-properties-page .properties-hero-inner>div:first-child{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:#fff!important;padding:0!important}
+body.seo-page.airy-properties-page .properties-hero{background:var(--kw-dark)!important}
+body.seo-page.airy-properties-page .properties-hero-inner h1{color:#fff!important}
+body.seo-page.airy-properties-page .properties-hero-inner .lead{color:rgba(255,255,255,.74)!important}
+body.seo-page.airy-properties-page .properties-mini-card{background:rgba(255,255,255,.09)!important;border-color:rgba(255,255,255,.16)!important;color:#fff!important}
+body.seo-page.airy-properties-page .properties-mini-card strong{color:#fff!important}
+body.seo-page.airy-properties-page .properties-mini-card span{color:rgba(255,255,255,.7)!important}
+body.seo-page.airy-properties-page .property-chip{background:transparent!important;color:#fff!important;border-color:rgba(255,255,255,.35)!important}
+body.seo-page.airy-properties-page .property-chip.is-active{background:var(--kw-lime)!important;color:var(--kw-dark)!important;border-color:var(--kw-lime)!important}
+body.seo-page.article-page .article-hero{width:100%!important;max-width:none!important;margin:0!important;box-sizing:border-box!important}
+@media(max-width:900px){
+  body.seo-page .topbar{position:relative!important;top:auto!important;right:auto!important}
+  body.seo-page .nav{width:calc(100% - 28px)!important;min-height:78px!important;flex-direction:row!important;align-items:center!important}
+  body.seo-page .brand{display:flex!important;min-width:0!important}
+  body.seo-page .nav-toggle{display:flex!important;min-width:0!important;min-height:40px!important;padding:0 15px!important;background:transparent!important;border:1px solid rgba(255,255,255,.5)!important;box-shadow:none!important}
+  body.seo-page .nav .menu{display:none!important;position:absolute!important;top:68px!important;left:0!important;right:0!important;width:100%!important;padding:13px!important;grid-template-columns:1fr!important;flex-direction:column!important;align-items:stretch!important;background:var(--kw-dark)!important;border:1px solid rgba(255,255,255,.14)!important;border-radius:18px!important;box-shadow:0 24px 50px rgba(0,0,0,.28)!important}
+  body.seo-page .nav .menu.open{display:flex!important}
+  body.seo-page .nav .menu a{width:100%!important;text-align:center!important;padding:12px!important;border:1px solid rgba(255,255,255,.12)!important}
+}
