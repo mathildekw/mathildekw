@@ -13,5 +13,10 @@ window.MK_SITE_CONFIG = {
     whatsapp: "33782475958",
     phoneDisplay: "88 07 82 47",
     phoneHref: "+68988078247"
+  },
+  foncier: {
+    apiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/foncier-promotion",
+    supabaseUrl: "https://rqjuvutlnpwecjkpkiuw.supabase.co",
+    anonKey: ""
   }
 };
