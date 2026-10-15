@@ -1,6 +1,6 @@
 const THREE_URL="https://esm.sh/three@0.169.0";
 const ORBIT_URL="https://esm.sh/three@0.169.0/examples/jsm/controls/OrbitControls.js";
-const synthetic={name:"Projet HORIZON",area:2400,minAltitude:18,maxAltitude:29,relief:11,points:[[-24,-17],[20,-20],[30,-5],[22,22],[-11,27],[-30,8]],contours:[[-19,-10,16],[-15,-5,14],[-10,1,12],[-4,8,10],[2,14,8]]};
+const synthetic={name:"Projet HORIZON",area:2600,minAltitude:18,maxAltitude:29,relief:11,points:[[-24,-17],[20,-20],[30,-5],[22,22],[-11,27],[-30,8]],contours:[[-19,-10,16],[-15,-5,14],[-10,1,12],[-4,8,10],[2,14,8]]};
 function fallback(root,message){root.classList.add("hz-fallback");root.innerHTML='<div class="hz-fallback-art"><i></i><i></i><i></i><span>18 m</span><span>29 m</span></div><p>'+(message||"Aperçu 3D indisponible sur ce navigateur.")+'</p>'}
 function label(text,kind="soft"){const e=document.createElement("span");e.className="hz-label "+kind;e.textContent=text;return e}
 function terrainHeight(x,z,amp=1){return ((x+30)/60*7+(z+22)/50*4+Math.sin(x*.13)*.7)*amp}

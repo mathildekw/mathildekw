@@ -1,0 +1,58 @@
+.lab-shell{background:#061b1c;color:#fff;min-height:100vh}
+.lab-intro{padding:80px 0 45px}
+.lab-intro h1{font-size:clamp(58px,9vw,120px);line-height:.86;font-weight:400;margin:20px 0}
+.lab-intro p{max-width:760px;color:#ffffffa8;line-height:1.7}
+.lab-nav{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0}
+.lab-nav a{border:1px solid #ffffff24;border-radius:999px;padding:11px 15px;text-decoration:none;font-size:11px;font-weight:800}
+.lab-section{padding:75px 0;border-top:1px solid #ffffff17}
+.lab-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(270px,.65fr);gap:18px}
+.lab-stage{position:relative;height:620px;background:#0d292a;border:1px solid #ffffff20;overflow:hidden;touch-action:none}
+.lab-stage canvas{width:100%;height:100%;display:block}
+.lab-panel{background:#102e2f;padding:28px}
+.lab-shell .lab-panel,.lab-shell .lab-panel h2,.lab-shell .lab-panel label,.lab-shell .lab-panel span{color:#fff}
+.lab-shell .lab-finance .lab-panel,.lab-shell .lab-finance .lab-panel h2,.lab-shell .lab-finance .lab-panel label,.lab-shell .lab-finance .lab-panel span{color:#142127}
+.lab-panel h2{font-size:42px;font-weight:400;margin:6px 0 15px}
+.lab-panel p{color:#ffffff9a;line-height:1.65;font-size:13px}
+.lab-control{margin:18px 0}
+.lab-control label{display:flex;justify-content:space-between;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.lab-control input,.lab-control select{width:100%}
+.lab-buttons{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.lab-buttons button{background:#ffffff0a;border:1px solid #ffffff25;color:#fff;padding:11px;cursor:pointer;font:700 11px "DM Sans"}
+.lab-buttons button.active{background:#c9ff72;color:#071d1e}
+.lab-note{font-size:10px!important;color:#ffffff6e!important;border-top:1px solid #ffffff17;padding-top:15px}
+.lab-split{position:absolute;top:0;bottom:0;width:2px;background:#c9ff72;left:50%;pointer-events:none}
+.lab-split:after{content:"↔";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#c9ff72;color:#071d1e;border-radius:50%;padding:10px}
+.lab-caption{position:absolute;top:15px;padding:8px 11px;background:#061b1cda;font-size:10px;font-weight:900;letter-spacing:.12em}
+.lab-caption.before{left:15px}
+.lab-caption.after{right:15px}
+.lab-legend{display:grid;gap:7px;margin:20px 0}
+.lab-legend span{display:flex;align-items:center;gap:9px;font-size:11px}
+.lab-legend i{width:26px;height:8px}
+.lab-profile{width:100%;height:140px;background:#0a2526;border:1px solid #ffffff17}
+.lab-profile polyline{fill:none;stroke:#c9ff72;stroke-width:3}
+.lab-profile line{stroke:#ffffff20}
+.lab-finance{background:#f5f0e7;color:#142127}
+.lab-finance .lab-panel{background:#fff;color:#142127;border:1px solid #ddd4c7}
+.lab-finance .lab-panel p{color:#687376}
+.lab-results{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.lab-result{padding:18px;background:#f2eee6;min-width:0}
+.lab-result strong{display:block;font:600 clamp(20px,2.2vw,30px) "Cormorant Garamond";overflow-wrap:anywhere}
+.lab-chart{display:flex;align-items:end;height:180px;gap:10px;border-bottom:1px solid #c8c0b4;margin-top:25px}
+.lab-bar{flex:1;background:#153839;min-height:2px;position:relative}
+.lab-bar span{position:absolute;bottom:calc(100% + 5px);font-size:9px;white-space:nowrap}
+.lab-source{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.lab-source article{padding:18px;border:1px solid #ffffff1c}
+.lab-source b{color:#c9ff72;font-size:10px;text-transform:uppercase}
+.lab-source p{font-size:12px;color:#ffffff8a}
+.lab-tabs{display:flex;gap:7px;flex-wrap:wrap}
+.lab-tabs button{border-radius:999px}
+.lab-hidden{display:none!important}
+@media(max-width:900px){.lab-grid{grid-template-columns:1fr}
+.lab-stage{height:500px;touch-action:pan-y}
+.lab-source{grid-template-columns:1fr 1fr}
+}
+@media(max-width:580px){.lab-stage{height:410px}
+.lab-results,.lab-source{grid-template-columns:1fr}
+.lab-buttons{grid-template-columns:1fr 1fr}
+.lab-intro{padding-top:50px}
+}

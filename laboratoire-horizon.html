@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Laboratoire 3D HORIZON | Pacific Keys</title>
+<meta name="description" content="Explore une démonstration foncière 3D entièrement synthétique : avant/après, pentes, soleil, bâtiment démontable et simulations indicatives.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/foncier-promotion.css?v=4">
+<link rel="stylesheet" href="/foncier-premium.css?v=2">
+<link rel="stylesheet" href="/horizon-lab.css?v=3">
+</head>
+<body class="fp lab-shell">
+<header class="fp-nav">
+<div class="fp-wrap">
+<a class="fp-brand" href="/foncier-promotion.html">
+<span class="fp-brand-mark">M</span>
+<span>
+<strong>Pacific Keys</strong>
+<small>Laboratoire HORIZON</small>
+</span>
+</a>
+<nav class="fp-links">
+<a href="#comparateur">Avant / Après</a>
+<a href="#analyse">Relief & soleil</a>
+<a href="#finance">Simulation</a>
+<a class="pill" href="/diagnostic-foncier.html?utm_source=horizon-lab&utm_medium=demo&utm_campaign=v2">Étudier mon terrain ↗</a>
+</nav>
+</div>
+</header>
+<main>
+<section class="lab-intro">
+<div class="fp-wrap">
+<p class="fp-kicker">Projet HORIZON · laboratoire 3D synthétique</p>
+<h1>Explorer.<br>Comprendre.<br>Comparer.</h1>
+<p>Un territoire insulaire imaginaire de 2 600 m², créé pour illustrer notre méthode sans utiliser la moindre parcelle ou donnée client.</p>
+<div class="lab-nav">
+<a href="#comparateur">Avant / Après</a>
+<a href="#building">Bâtiment démontable</a>
+<a href="#analyse">Pentes & soleil</a>
+<a href="#placement">Implantations</a>
+<a href="#finance">Simulateur foncier</a>
+</div>
+<p class="hz-disclaimer">Démonstration fictive — simulation illustrative non contractuelle.</p>
+</div>
+</section>
+<section class="lab-section" id="comparateur">
+<div class="fp-wrap lab-grid">
+<div class="lab-stage" data-lab-stage data-mode="compare">
+<div class="lab-caption before">AVANT · TERRAIN NATUREL</div>
+<div class="lab-caption after">APRÈS · HYPOTHÈSE CONCEPTUELLE</div>
+<div class="lab-split">
+</div>
+</div>
+<aside class="lab-panel">
+<p class="hz-eyebrow">01 · Comparateur synchronisé</p>
+<h2>Le même terrain, deux lectures.</h2>
+<p>La caméra, l’échelle et le relief restent identiques. Le curseur ne révèle qu’une hypothèse architecturale illustrative.</p>
+<div class="lab-control">
+<label>Comparaison <span>Avant / Après</span>
+</label>
+<input data-split type="range" min="5" max="95" value="50">
+</div>
+<div class="lab-buttons">
+<button data-lab="side">Mode côte à côte</button>
+<button data-lab="top">Vue du dessus</button>
+</div>
+<p class="lab-note">Aucune implantation présentée n’est validée techniquement ou réglementairement.</p>
+</aside>
+</div>
+</section>
+<section class="lab-section" id="building">
+<div class="fp-wrap lab-grid">
+<div class="lab-stage" data-lab-stage data-mode="building">
+<div class="lab-caption before">BÂTIMENT CONCEPTUEL DÉMONTABLE</div>
+</div>
+<aside class="lab-panel">
+<p class="hz-eyebrow">02 · Lecture par niveau</p>
+<h2>Comprendre le volume.</h2>
+<p>Rez-de-chaussée commercial, deux niveaux résidentiels et toiture : chaque couche peut être isolée ou séparée.</p>
+<div class="lab-buttons">
+<button data-lab="explode">Vue éclatée</button>
+<button data-lab="assemble">Réassembler</button>
+<button data-lab="top">Vue du toit</button>
+</div>
+<div class="lab-control">
+<label for="level">Niveau visible</label>
+<select id="level" data-level>
+<option value="all">Bâtiment complet</option>
+<option value="0">RDC commercial</option>
+<option value="1">Niveau 1 résidentiel</option>
+<option value="2">Niveau 2 résidentiel</option>
+<option value="3">Toiture</option>
+</select>
+</div>
+<p class="lab-note">Plans et volumes entièrement synthétiques. Aucun plan client n’est utilisé.</p>
+</aside>
+</div>
+</section>
+<section class="lab-section" id="analyse">
+<div class="fp-wrap lab-grid">
+<div class="lab-stage" data-lab-stage data-mode="analysis">
+<div class="lab-caption before">MODÈLE ALTIMÉTRIQUE SYNTHÉTIQUE · MAILLE 2 M</div>
+</div>
+<aside class="lab-panel">
+<p class="hz-eyebrow">03 · Relief & ensoleillement</p>
+<h2>Lire les phénomènes, pas inventer des certitudes.</h2>
+<div class="lab-buttons">
+<button data-lab="slope">Carte des pentes</button>
+<button data-lab="contours" class="active">Courbes de niveau</button>
+<button data-lab="top">Vue du dessus</button>
+</div>
+<div class="lab-legend">
+<span>
+<i style="background:#61a875">
+</i>Pente douce calculée</span>
+<span>
+<i style="background:#d6c45d">
+</i>Pente modérée</span>
+<span>
+<i style="background:#de8b45">
+</i>Pente marquée</span>
+<span>
+<i style="background:#c74b4b">
+</i>Pente forte</span>
+</div>
+<div class="lab-control">
+<label>Seuil pente douce <span data-slope-label>8 %</span>
+</label>
+<input data-slope-threshold type="range" min="3" max="18" value="8">
+</div>
+<div class="lab-control">
+<label>Date solaire artificielle</label>
+<input data-solar-date type="date" value="2026-06-21">
+</div>
+<div class="lab-buttons">
+<button data-season="2026-03-20">Équinoxe</button>
+<button data-season="2026-06-21">Juin</button>
+<button data-season="2026-12-21">Décembre</button>
+</div>
+<div class="lab-control">
+<label>Heure solaire simulée <span data-hour-label>10:00</span>
+</label>
+<input data-hour type="range" min="6" max="18" value="10" step=".25">
+</div>
+<div class="lab-control">
+<label>Point A du profil</label>
+<input data-profile-a type="range" min="0" max="90" value="5">
+</div>
+<div class="lab-control">
+<label>Point B du profil</label>
+<input data-profile-b type="range" min="10" max="100" value="95">
+</div>
+<svg class="lab-profile" viewBox="0 0 300 100" role="img" aria-label="Profil altimétrique synthétique entre deux points">
+<line x1="0" y1="85" x2="300" y2="85"/>
+<polyline data-profile-line points="0,78 300,18"/>
+</svg>
+<p data-profile-label>Dénivelé calculé : 8,0 m</p>
+<p class="lab-note">Coordonnées artificielles de simulation. Ombres indicatives du modèle, sans valeur réglementaire ni certification d’ensoleillement.</p>
+</aside>
+</div>
+</section>
+<section class="lab-section" id="placement">
+<div class="fp-wrap lab-grid">
+<div class="lab-stage" data-lab-stage data-mode="placement">
+<div class="lab-caption before">CONFIGURATEUR CONCEPTUEL · FAISABILITÉ INCONNUE</div>
+</div>
+<aside class="lab-panel">
+<p class="hz-eyebrow">04 · Implantations</p>
+<h2>Tester une composition.</h2>
+<div class="lab-control">
+<label>Typologie</label>
+<select data-placement>
+<option value="mixed">Programme mixte</option>
+<option value="townhouses">Townhouses</option>
+<option value="residential">Immeuble résidentiel</option>
+<option value="commercial">Commerces</option>
+<option value="offices">Bureaux</option>
+<option value="subdivision">Petit lotissement / maisons groupées</option>
+</select>
+</div>
+<div class="lab-control">
+<label>Nombre de bâtiments</label>
+<input data-building-count type="range" min="1" max="8" value="4">
+</div>
+<div class="lab-control">
+<label>Espacement conceptuel</label>
+<input data-spacing type="range" min="8" max="16" value="12">
+</div>
+<div class="lab-control">
+<label>Orientation</label>
+<input data-rotation type="range" min="-45" max="45" value="0">
+</div>
+<div class="lab-source">
+<article>
+<b>Géométrique</b>
+<p>Volumes contenus dans le modèle synthétique.</p>
+</article>
+<article>
+<b>Réglementaire</b>
+<p>Non renseigné — à confirmer.</p>
+</article>
+<article>
+<b>Technique</b>
+<p>Faisabilité inconnue — à étudier.</p>
+</article>
+</div>
+<p class="lab-note">Une compatibilité géométrique n’est jamais assimilée à une autorisation.</p>
+</aside>
+</div>
+</section>
+<section class="lab-section lab-finance" id="finance">
+<div class="fp-wrap">
+<div class="hz-intro">
+<p class="hz-eyebrow">05 · Simulateur foncier</p>
+<h2>Comparer des hypothèses, sans promettre un résultat.</h2>
+</div>
+<div class="lab-grid" style="margin-top:45px">
+<form class="lab-panel" data-finance-form>
+<div class="fp-fields">
+<div class="fp-field">
+<label>Surface (m²)</label>
+<input name="area" type="number" value="2600">
+</div>
+<div class="fp-field">
+<label>Prix de vente/m² hypothétique</label>
+<input name="salePrice" type="number" value="0">
+</div>
+<div class="fp-field">
+<label>Valeur foncière hypothétique</label>
+<input name="land" type="number" value="0">
+</div>
+<div class="fp-field">
+<label>Travaux estimés</label>
+<input name="works" type="number" value="0">
+</div>
+<div class="fp-field">
+<label>Aménagement</label>
+<input name="development" type="number" value="0">
+</div>
+<div class="fp-field">
+<label>VRD</label>
+<input name="vrd" type="number" value="0">
+</div>
+<div class="fp-field">
+<label>Honoraires</label>
+<input name="fees" type="number" value="0">
+</div>
+<div class="fp-field">
+<label>Frais d’acquisition</label>
+<input name="acquisition" type="number" value="0">
+</div>
+<div class="fp-field">
+<label>Fiscalité saisie manuellement</label>
+<input name="tax" type="number" value="0">
+</div>
+<div class="fp-field">
+<label>Coûts financiers</label>
+<input name="finance" type="number" value="0">
+</div>
+<div class="fp-field">
+<label>Aléas</label>
+<input name="contingency" type="number" value="0">
+</div>
+<div class="fp-field">
+<label>Marge cible (%)</label>
+<input name="targetMargin" type="number" value="15">
+</div>
+</div>
+<p class="lab-note">Aucune règle fiscale n’est codée en dur. Toutes les valeurs sont saisies comme hypothèses en XPF.</p>
+</form>
+<div class="lab-panel" data-finance-results>
+</div>
+</div>
+</div>
+</section>
+<section class="fp-band">
+<div class="fp-wrap">
+<div>
+<p class="fp-kicker">Passer de la démonstration à ton terrain</p>
+<h2>Révélons ensemble son potentiel.</h2>
+</div>
+<a class="fp-btn light" href="/diagnostic-foncier.html?utm_source=horizon-lab&utm_medium=demo&utm_campaign=final-cta">Étudier mon terrain →</a>
+</div>
+</section>
+</main>
+<script type="module" src="/horizon-lab.js?v=2">
+</script>
+<script type="module" src="/foncier-simulator.js?v=1">
+</script>
+</body>
+</html>
