@@ -5,6 +5,13 @@ body.hz-page .hz-hero-grid>*,body.hz-page .hz-demo-grid>*,body.hz-page .fp-nav .
 body.hz-page canvas{max-width:100%}
 body.hz-page .fp-nav,body.hz-page .hz-hero,body.hz-page .hz-project{box-shadow:0 0 0 100vmax #071d1e;clip-path:inset(0 -100vmax)}
 body.hz-page .hz-project-head,body.hz-page .hz-gallery-card,body.hz-page .hz-cap,body.hz-page .hz-data{overflow-wrap:anywhere;min-width:0;max-width:100%}
+body.hz-page.visual-viewport-fit .fp-wrap{width:calc(var(--fp-visible-width) - 28px)!important;max-width:calc(var(--fp-visible-width) - 28px)!important;margin-left:14px!important;margin-right:0!important}
+body.hz-page.visual-viewport-fit .hz-hero-grid,body.hz-page.visual-viewport-fit .hz-demo-grid,body.hz-page.visual-viewport-fit .hz-capabilities,body.hz-page.visual-viewport-fit .hz-project-head,body.hz-page.visual-viewport-fit .hz-gallery-card{width:100%!important;max-width:100%!important;min-width:0!important}
+body.hz-page.visual-viewport-fit .hz-hero h1{font-size:var(--fp-visible-title)!important;overflow-wrap:anywhere!important;word-break:normal}
+body.hz-page.visual-viewport-fit .fp-lead{font-size:var(--fp-visible-copy)!important}
+body.hz-page.visual-viewport-fit .hz-tech,body.hz-page.visual-viewport-fit .hz-viewer{width:100%!important;max-width:100%!important;min-width:0!important}
+body.hz-page.visual-viewport-fit .fp-actions,body.hz-page.visual-viewport-fit .fp-actions .fp-btn{width:100%!important;max-width:100%!important;min-width:0!important}
+body.hz-page.visual-viewport-fit .hz-controls{width:100%!important;max-width:100%!important;overflow-x:auto!important}
 @media(max-width:600px){
   body.hz-page .fp-wrap{width:calc(100% - 28px)}
   body.hz-page .fp-nav .fp-wrap{gap:10px}

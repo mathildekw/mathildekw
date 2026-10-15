@@ -41,6 +41,23 @@ document.addEventListener("DOMContentLoaded", function () {
 if (document.body && document.body.classList.contains("hz-page")) {
   var mobileFix = document.createElement("link");
   mobileFix.rel = "stylesheet";
-  mobileFix.href = "/foncier-mobile-fix.css?v=2";
+  mobileFix.href = "/foncier-mobile-fix.css?v=3";
   document.head.appendChild(mobileFix);
+
+  // Chrome/iOS can expose a visual viewport narrower than the CSS layout
+  // viewport when page zoom or enlarged text is active. Reflow the landing
+  // content to the width the visitor can actually see instead of clipping it.
+  var fitFoncierToVisualViewport = function () {
+    var visibleWidth = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+    var layoutWidth = document.documentElement.clientWidth;
+    var needsFit = visibleWidth > 0 && visibleWidth + 2 < layoutWidth;
+    document.body.classList.toggle("visual-viewport-fit", needsFit);
+    if (needsFit) {
+      document.body.style.setProperty("--fp-visible-width", visibleWidth + "px");
+      document.body.style.setProperty("--fp-visible-title", Math.max(34, Math.min(52, visibleWidth * 0.135)) + "px");
+      document.body.style.setProperty("--fp-visible-copy", Math.max(14, Math.min(16, visibleWidth * 0.052)) + "px");
+    }
+  };
+  fitFoncierToVisualViewport();
+  if (window.visualViewport) window.visualViewport.addEventListener("resize", fitFoncierToVisualViewport, { passive: true });
 }
