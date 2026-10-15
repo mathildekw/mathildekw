@@ -1,0 +1,27 @@
+import assert from "node:assert/strict";
+import { readFile, readdir } from "node:fs/promises";
+import { join } from "node:path";
+
+const root = new URL("../", import.meta.url);
+const shell = await readFile(new URL("global-shell.js", root), "utf8");
+const css = await readFile(new URL("global-shell.css", root), "utf8");
+
+for (const label of ["Accueil", "Nos biens", "Vendre", "Estimer", "Foncier & Promotion", "Contact"])
+  assert.match(shell, new RegExp(`label:\"${label.replace("&", "&")}\"`));
+for (const behavior of ["aria-expanded", "Escape", "popstate", "mk-menu-open", "aria-current"])
+  assert.ok(shell.includes(behavior), `Comportement manquant : ${behavior}`);
+assert.ok(css.includes("--mk-shell-z:10000"), "Le menu doit rester au-dessus des scènes 3D");
+assert.ok(css.includes("prefers-reduced-motion"), "Les animations réduites doivent être respectées");
+
+const entries = await readdir(root, { withFileTypes: true });
+const publicPages = [];
+for (const entry of entries) {
+  if (!entry.isFile() || !entry.name.endsWith(".html")) continue;
+  const html = await readFile(new URL(entry.name, root), "utf8");
+  if (!/<header class="(?:topbar|h26-header|fp-nav)/.test(html)) continue;
+  if (/^(?:admin-|portail-foncier|espace-vendeur|demo-espace-vendeur|suivi-vendeur|etude-fonciere-privee|dossier-promoteur)/.test(entry.name)) continue;
+  publicPages.push(entry.name);
+  assert.match(html, /(?:site\.js|site-config\.js|global-shell\.js)/, `${entry.name} ne charge pas la navigation globale`);
+}
+assert.ok(publicPages.length >= 30, "L'audit doit couvrir les pages publiques profondes");
+console.log(`global-shell: ${publicPages.length} pages publiques couvertes`);
