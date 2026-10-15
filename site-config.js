@@ -41,6 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
 if (document.body && document.body.classList.contains("hz-page")) {
   var mobileFix = document.createElement("link");
   mobileFix.rel = "stylesheet";
-  mobileFix.href = "/foncier-mobile-fix.css?v=1";
+  mobileFix.href = "/foncier-mobile-fix.css?v=2";
   document.head.appendChild(mobileFix);
 }

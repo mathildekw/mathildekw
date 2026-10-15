@@ -3,6 +3,8 @@ body.hz-page .fp-nav,body.hz-page main,body.hz-page section,body.hz-page .fp-foo
 body.hz-page .fp-wrap,body.hz-page .hz-hero-grid,body.hz-page .hz-demo-grid,body.hz-page .hz-tech,body.hz-page .hz-viewer{min-width:0;max-width:100%}
 body.hz-page .hz-hero-grid>*,body.hz-page .hz-demo-grid>*,body.hz-page .fp-nav .fp-wrap>*{min-width:0}
 body.hz-page canvas{max-width:100%}
+body.hz-page .fp-nav,body.hz-page .hz-hero,body.hz-page .hz-project{box-shadow:0 0 0 100vmax #071d1e;clip-path:inset(0 -100vmax)}
+body.hz-page .hz-project-head,body.hz-page .hz-gallery-card,body.hz-page .hz-cap,body.hz-page .hz-data{overflow-wrap:anywhere;min-width:0;max-width:100%}
 @media(max-width:600px){
   body.hz-page .fp-wrap{width:calc(100% - 28px)}
   body.hz-page .fp-nav .fp-wrap{gap:10px}
@@ -17,4 +19,17 @@ body.hz-page canvas{max-width:100%}
   body.hz-page .fp-actions .fp-btn{width:100%;max-width:100%;white-space:normal;text-align:center}
   body.hz-page .hz-badge{max-width:calc(100% - 24px);white-space:normal;line-height:1.4}
   body.hz-page .hz-gallery-card,body.hz-page .hz-capabilities{min-width:0;max-width:100%}
+}
+@media(max-width:300px){
+  body.hz-page .fp-wrap{width:calc(100% - 20px)}
+  body.hz-page .fp-nav .fp-wrap{gap:6px}
+  body.hz-page .fp-brand-mark{width:34px;height:34px;flex-basis:34px}
+  body.hz-page .fp-brand strong{font-size:9px}
+  body.hz-page .fp-brand small{font-size:6px;letter-spacing:.08em}
+  body.hz-page .fp-links .pill{max-width:136px;padding:9px 8px;font-size:9px}
+  body.hz-page .hz-hero h1{font-size:39px}
+  body.hz-page .hz-project-head h2{font-size:42px}
+  body.hz-page .hz-controls{max-width:100%;overscroll-behavior-inline:contain}
+  body.hz-page .hz-gallery-copy{padding:24px 18px}
+  body.hz-page .hz-gallery-copy .fp-btn{white-space:normal;text-align:center}
 }
