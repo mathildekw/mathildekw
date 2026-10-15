@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Load the containment fix only on the immersive Foncier landing page.
+// This file can execute from <head>, before document.body exists.
+var initFoncierMobileFix = function () {
 if (document.body && document.body.classList.contains("hz-page")) {
   var mobileFix = document.createElement("link");
   mobileFix.rel = "stylesheet";
@@ -60,4 +62,10 @@ if (document.body && document.body.classList.contains("hz-page")) {
   };
   fitFoncierToVisualViewport();
   if (window.visualViewport) window.visualViewport.addEventListener("resize", fitFoncierToVisualViewport, { passive: true });
+}
+};
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initFoncierMobileFix, { once: true });
+} else {
+  initFoncierMobileFix();
 }
