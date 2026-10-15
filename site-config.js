@@ -17,13 +17,16 @@ window.MK_SITE_CONFIG = {
   },
   foncier: {
     apiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/foncier-promotion",
-    leadApiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/foncier-leads",
+    leadApiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/foncier-leads-v2",
     conversionApiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/foncier-conversion",
     reportApiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/foncier-report",
     studiesApiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/foncier-studies",
     prospectingApiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/foncier-prospecting",
+    adminApiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/foncier-admin",
     supabaseUrl: "https://rqjuvutlnpwecjkpkiuw.supabase.co",
-    anonKey: ""
+    // Public publishable key only. Privileged service-role credentials remain
+    // server-side in Supabase Edge Functions and must never be added here.
+    anonKey: "sb_publishable_lHIm5SqXealczmGZtid3Yg_oYmZ96BK"
   }
 };
 
