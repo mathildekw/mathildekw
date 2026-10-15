@@ -4,3 +4,8 @@ node_modules/
 ai-reports/*.json
 !ai-reports/latest.json
 private-videos/
+node_modules/
+.playwright-browsers/
+playwright-report/
+test-results/
+*-darwin.png

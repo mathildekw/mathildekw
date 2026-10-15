@@ -5,6 +5,8 @@
   "scripts": {
     "test": "node tests/global-shell.test.mjs && node tests/finance-calculators.test.mjs && node tests/foncier-engine.test.mjs && node tests/te-fenua.test.mjs && node tests/prospecting-engine.test.mjs && node tests/conversion-funnel.test.mjs && node tests/horizon-demo.test.mjs && node tests/horizon-v2.test.mjs && node tests/foncier-workflows.test.mjs",
     "build": "npm test",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots",
     "upload-videos": "node scripts/upload-videos.mjs",
     "video-link": "node scripts/create-video-link.mjs",
     "video-invite": "node scripts/create-video-invitation.mjs",
@@ -12,5 +14,8 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
   }
 }
