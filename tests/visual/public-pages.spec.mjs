@@ -1,4 +1,7 @@
 import { expect, test } from "@playwright/test";
+import { fileURLToPath } from "node:url";
+
+const stableScreenshotCss = fileURLToPath(new URL("./stable-screenshot.css", import.meta.url));
 
 const routes = [
   ["accueil", "/"],
@@ -51,7 +54,8 @@ for (const [name, path] of routes) {
       // Remote/lazy media can be encoded differently across runners. Masking
       // it keeps the comparison focused on layout, spacing and crop defects.
       mask: [page.locator("img, video, canvas, iframe")],
-      maskColor: "#607d8b"
+      maskColor: "#607d8b",
+      stylePath: stableScreenshotCss
     });
   });
 }
