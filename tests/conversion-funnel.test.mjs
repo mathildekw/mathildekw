@@ -10,12 +10,14 @@ assert.equal(overlap({start:"2026-10-15T20:00:00Z",end:"2026-10-15T20:45:00Z"},{
 assert.equal(source("instagram"),"instagram");assert.equal(source("",""),"direct");
 assert.ok(!({phone:"",email:"",consent:false}.consent),"Un abandon anonyme ne doit pas être relancé");
 const root=new URL("../",import.meta.url);
-const [landing,funnel,leads,conversion,migration]=await Promise.all([
+const [landing,funnel,leads,conversion,migration,analytics,analyticsMigration]=await Promise.all([
   readFile(new URL("foncier-promotion.html",root),"utf8"),
   readFile(new URL("foncier-promotion.js",root),"utf8"),
   readFile(new URL("supabase/functions/foncier-leads/index.ts",root),"utf8"),
   readFile(new URL("supabase/functions/foncier-conversion/index.ts",root),"utf8"),
-  readFile(new URL("supabase/migrations/20261015080000_conversion_tunnel_optimization.sql",root),"utf8")
+  readFile(new URL("supabase/migrations/20261015080000_conversion_tunnel_optimization.sql",root),"utf8"),
+  readFile(new URL("funnel-analytics.js",root),"utf8"),
+  readFile(new URL("supabase/migrations/20261016110000_privacy_safe_site_analytics.sql",root),"utf8")
 ]);
 assert.match(landing,/Et si ton terrain valait bien plus que tu ne l’imagines/);
 assert.match(landing,/Bilan de potentiel foncier offert/);
@@ -28,4 +30,10 @@ assert.match(leads,/resolution=merge-duplicates/);
 assert.match(conversion,/callback_requested.*notification_deliveries/s);
 assert.match(migration,/cta_clicked/);
 assert.match(migration,/step_completion/);
-console.log("conversion-funnel: 18 assertions réussies");
+assert.match(analytics,/mk_analytics_consent/);
+assert.match(analytics,/formulaire ni donnée cadastrale/);
+assert.match(analytics,/privateRoute/);
+assert.match(analyticsMigration,/page_view/);
+assert.match(analyticsMigration,/scroll_depth/);
+assert.match(conversion,/!d\.consent/);
+console.log("conversion-funnel: 24 assertions réussies");
