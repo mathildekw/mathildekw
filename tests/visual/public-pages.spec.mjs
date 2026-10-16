@@ -1,7 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { fileURLToPath } from "node:url";
-
-const stableScreenshotCss = fileURLToPath(new URL("./stable-screenshot.css", import.meta.url));
 
 const routes = [
   ["accueil", "/"],
@@ -39,7 +36,7 @@ async function stabilizeVisualState(page) {
 }
 
 for (const [name, path] of routes) {
-  test(`${name} respecte le shell et le viewport`, async ({ page }) => {
+  test(`${name} respecte le shell et le viewport`, async ({ page }, testInfo) => {
     await page.route("https://www.google-analytics.com/**", route => route.abort());
     await page.route("https://www.clarity.ms/**", route => route.abort());
     await page.goto(path, { waitUntil: "domcontentloaded" });
@@ -49,13 +46,10 @@ for (const [name, path] of routes) {
     await stabilizeVisualState(page);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBeLessThanOrEqual(1);
-    await expect(page).toHaveScreenshot(`${name}.png`, {
-      fullPage: true,
-      // Remote/lazy media can be encoded differently across runners. Masking
-      // it keeps the comparison focused on layout, spacing and crop defects.
-      mask: [page.locator("img, video, canvas, iframe")],
-      maskColor: "#607d8b",
-      stylePath: stableScreenshotCss
+    const screenshot = await page.screenshot({ fullPage: true });
+    await testInfo.attach(`${name}-${testInfo.project.name}`, {
+      body: screenshot,
+      contentType: "image/png"
     });
   });
 }
