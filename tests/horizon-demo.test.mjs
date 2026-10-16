@@ -3,7 +3,7 @@ import{readFile}from"node:fs/promises";
 
 const [home,project,scene,privatePage,migration,api]=await Promise.all([readFile(new URL("../foncier-promotion.html",import.meta.url),"utf8"),readFile(new URL("../projet-horizon.html",import.meta.url),"utf8"),readFile(new URL("../horizon-3d.js",import.meta.url),"utf8"),readFile(new URL("../etude-fonciere-privee.html",import.meta.url),"utf8"),readFile(new URL("../supabase/migrations/20261015050000_foncier_studies.sql",import.meta.url),"utf8"),readFile(new URL("../supabase/functions/foncier-studies/index.ts",import.meta.url),"utf8")]);
 
-assert.match(home,/Et si ton terrain intéressait un promoteur immobilier/);
+assert.match(home,/Et si ton terrain valait bien plus que tu ne l’imagines/);
 assert.match(project,/Démonstration fictive/);
 assert.match(project,/Townhouses/);
 assert.match(project,/Résidentiel/);

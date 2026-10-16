@@ -1,4 +1,4 @@
-(function(){if(document.querySelector('script[data-mk-shell-loader]'))return;var s=document.createElement('script');s.src='/global-shell.js?v=5';s.defer=true;s.dataset.mkShellLoader='';document.head.appendChild(s)})();
+(function(){if(document.querySelector('script[data-mk-shell-loader]'))return;var s=document.createElement('script');s.src='/global-shell.js?v=6';s.defer=true;s.dataset.mkShellLoader='';document.head.appendChild(s)})();
 window.MK_SITE_CONFIG = {
   finance: {
     borrowingEffortRate: 0.35,
@@ -48,7 +48,7 @@ var initFoncierMobileFix = function () {
 if (document.body && document.body.classList.contains("hz-page")) {
   var mobileFix = document.createElement("link");
   mobileFix.rel = "stylesheet";
-  mobileFix.href = "/foncier-mobile-fix.css?v=3";
+  mobileFix.href = "/foncier-mobile-fix.css?v=7";
   document.head.appendChild(mobileFix);
 
   // Chrome/iOS can expose a visual viewport narrower than the CSS layout
