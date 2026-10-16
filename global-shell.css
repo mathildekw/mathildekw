@@ -104,3 +104,22 @@ body.mk-shell-ready:not(.home-26){background:var(--mk-cream)}
 body.mk-shell-ready:not(.home-26) main :is(.card,.mini-card,.factor-card,.criteria-card,.property-card-premium,.listing-card,.form-card,.contact-card){border-radius:var(--mk-radius)!important;border-color:var(--mk-line)!important;box-shadow:0 14px 42px rgba(18,54,51,.055)}
 body.mk-shell-ready:not(.home-26) main :is(.btn,.fp-btn,.route-link){border-radius:999px!important}
 @media(max-width:960px){.mk-shell-inner{width:calc(100% - 28px)}.mk-shell-nav{background:#f8f4ec}.mk-shell-toggle{background:#fffdf8}}
+
+/* Motion et composants tactiles renforcés. */
+body.mk-motion-ready .mk-reveal.mk-visible{animation:mk-reveal-in .72s cubic-bezier(.2,.75,.2,1) var(--mk-reveal-delay,0ms) both}
+@keyframes mk-reveal-in{from{opacity:.38;transform:translateY(28px) scale(.985)}to{opacity:1;transform:none}}
+body.mk-shell-ready :is(.btn,.h26-btn,.fp-btn,.mk-shell-cta,.contact-pill,.contact-action-btn){position:relative;isolation:isolate;overflow:hidden;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,background-color .28s ease}
+body.mk-shell-ready :is(.btn,.h26-btn,.fp-btn,.mk-shell-cta,.contact-pill,.contact-action-btn)::after{content:"";position:absolute;z-index:-1;inset:-40% auto -40% -35%;width:24%;background:rgba(255,255,255,.24);transform:skewX(-18deg) translateX(-260%);transition:transform .62s cubic-bezier(.2,.8,.2,1)}
+@media(hover:hover) and (pointer:fine){body.mk-shell-ready :is(.btn,.h26-btn,.fp-btn,.mk-shell-cta,.contact-pill,.contact-action-btn):hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(18,54,51,.17)}body.mk-shell-ready :is(.btn,.h26-btn,.fp-btn,.mk-shell-cta,.contact-pill,.contact-action-btn):hover::after{transform:skewX(-18deg) translateX(650%)}}
+body.mk-shell-ready :is(.form-card,.t2-contact-card,.conversion-panel,.estimation-form-grid,.seller-form-layout,.usa-hero-form,.fp-form-main,.fp-card,.lead-dialog-card,.contact-strip){border-radius:28px!important;overflow:hidden}
+body.mk-shell-ready :is(input:not([type="checkbox"]):not([type="radio"]),select,textarea){border-radius:14px!important;border-color:rgba(18,54,51,.2)!important;background:#fffdf8!important;transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+body.mk-shell-ready :is(input:not([type="checkbox"]):not([type="radio"]),select,textarea):focus{border-color:var(--mk-coral)!important;box-shadow:0 0 0 4px rgba(223,118,95,.14)!important}
+
+@media(max-width:960px){
+  .mk-shell-nav{left:auto;right:10px;top:calc(var(--mk-shell-height) + 8px);width:min(390px,calc(100vw - 20px));max-height:calc(100dvh - var(--mk-shell-height) - 18px);grid-template-columns:minmax(0,1fr);justify-content:stretch;align-items:stretch;padding:14px;border:1px solid var(--mk-line);border-radius:24px;box-shadow:0 28px 70px rgba(8,45,42,.22);transform:translateY(-12px) scale(.97);transform-origin:top right;opacity:0;transition:transform .32s cubic-bezier(.2,.8,.2,1),opacity .22s ease,visibility .32s}
+  .mk-shell-nav[data-open="true"]{transform:none;opacity:1}
+  .mk-shell-link{max-width:none!important;width:100%!important;min-height:52px;border-radius:14px;padding-inline:18px}
+  .mk-shell-cta{margin:8px 0 0!important;justify-content:center!important}
+  .mk-shell-backdrop{background:rgba(6,39,37,.38);backdrop-filter:blur(3px)}
+}
+@media(max-width:560px){body.mk-shell-ready :is(.form-card,.t2-contact-card,.conversion-panel,.estimation-form-grid,.seller-form-layout,.usa-hero-form,.fp-form-main,.fp-card,.lead-dialog-card,.contact-strip){border-radius:20px!important}}

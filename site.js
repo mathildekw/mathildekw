@@ -1,4 +1,4 @@
-(function(){if(document.querySelector('script[data-mk-shell-loader]'))return;var s=document.createElement('script');s.src='/global-shell.js?v=4';s.defer=true;s.dataset.mkShellLoader='';document.head.appendChild(s)})();
+(function(){if(document.querySelector('script[data-mk-shell-loader]'))return;var s=document.createElement('script');s.src='/global-shell.js?v=5';s.defer=true;s.dataset.mkShellLoader='';document.head.appendChild(s)})();
 function cleanText(v){return(v||'').replace(/\s+/g,' ').trim().slice(0,140)}
 function encodeMessage(t){return encodeURIComponent(t).replace(/%20/g,'+')}
 function trackEvent(n,p){p=p||{};p.page_location=location.href;p.page_path=location.pathname;p.page_title=document.title||'';try{if(typeof gtag==='function')gtag('event',n,p)}catch(e){}try{if(typeof clarity==='function')clarity('event',n)}catch(e){}try{if(typeof fbq==='function'&&(n.includes('whatsapp')||n.includes('call')||n.includes('sms')||n.includes('contact')))fbq('track','Contact',{content_name:document.title||'',page_path:location.pathname})}catch(e){}}

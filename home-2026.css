@@ -139,3 +139,17 @@ body.home-26{background:#f8f4ec;color:#123633}
   .home-26 .h26-cta{padding:12px}.home-26 .h26-cta-inner{padding:32px 24px;border-radius:22px}
 }
 @media(max-width:350px){.home-26 .h26-tool-grid{grid-template-columns:1fr}}
+
+/* Motion éditorial : expressif sur grand écran, toujours lisible et performant. */
+.home-26 .h26-hero-grid>div:first-child{animation:h26-hero-copy .9s cubic-bezier(.16,.84,.28,1) both}
+.home-26 .h26-hero-bg{animation:h26-hero-image 1.15s cubic-bezier(.16,.84,.28,1) .08s both}
+.home-26 .h26-proof{animation:h26-proof-in .8s cubic-bezier(.2,.82,.2,1) .42s both}
+@keyframes h26-hero-copy{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@keyframes h26-hero-image{from{opacity:0;transform:scale(.94) translateX(36px);border-radius:70px}to{opacity:1;transform:none}}
+@keyframes h26-proof-in{from{opacity:0;transform:translateY(26px) scale(.94)}to{opacity:1;transform:none}}
+.home-26 .h26-path,.home-26 .h26-listing,.home-26 .h26-tool{transition:transform .42s cubic-bezier(.2,.8,.2,1),box-shadow .42s ease,background-color .3s ease}
+.home-26 .h26-listing img{transition:transform .9s cubic-bezier(.2,.75,.2,1),filter .4s ease}
+@media(hover:hover) and (pointer:fine){.home-26 .h26-path:hover,.home-26 .h26-tool:hover{transform:translateY(-9px);box-shadow:0 30px 72px rgba(18,54,51,.14)}.home-26 .h26-listing:hover{transform:translateY(-6px);box-shadow:0 32px 76px rgba(18,54,51,.22)}.home-26 .h26-listing:hover img{transform:scale(1.075);filter:saturate(1.08)}}
+.home-26 .h26-seal{animation:h26-seal-float 4.5s ease-in-out infinite}
+@keyframes h26-seal-float{0%,100%{transform:rotate(-7deg) translateY(0)}50%{transform:rotate(-4deg) translateY(-9px)}}
+@media(prefers-reduced-motion:reduce){.home-26 .h26-hero-grid>div:first-child,.home-26 .h26-hero-bg,.home-26 .h26-proof,.home-26 .h26-seal{animation:none!important}}
