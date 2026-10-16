@@ -12,7 +12,10 @@ export default defineConfig({
   // Chromium font rasterization differs slightly between macOS and Linux.
   // Six percent still catches layout/cropping regressions while avoiding
   // false failures caused only by antialiasing and image decoding.
-  expect: { toHaveScreenshot: { animations: "disabled", caret: "hide", maxDiffPixelRatio: 0.06 } },
+  // Linux and macOS rasterize gradients and form controls differently. Keep
+  // pixel comparisons useful for large layout regressions while the tests
+  // below separately enforce strict viewport overflow and shell assertions.
+  expect: { toHaveScreenshot: { animations: "disabled", caret: "hide", maxDiffPixelRatio: 0.12 } },
   use: {
     baseURL: "http://127.0.0.1:4173",
     // Use the same Playwright-managed Chromium locally and in CI so visual
