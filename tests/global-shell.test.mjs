@@ -24,4 +24,10 @@ for (const entry of entries) {
   assert.match(html, /(?:site\.js|site-config\.js|global-shell\.js)/, `${entry.name} ne charge pas la navigation globale`);
 }
 assert.ok(publicPages.length >= 30, "L'audit doit couvrir les pages publiques profondes");
+
+const foncier = await readFile(new URL("foncier-promotion.html", root), "utf8");
+assert.match(foncier, /global-shell\.css/, "La page Foncier doit charger les styles du shell global");
+assert.match(foncier, /global-shell\.js/, "La page Foncier doit charger le shell global");
+assert.doesNotMatch(foncier, /<header class="fp-nav"/, "La page Foncier ne doit pas embarquer un second header");
+assert.doesNotMatch(foncier, /<nav class="fp-links"/, "La page Foncier ne doit pas embarquer une navigation concurrente");
 console.log(`global-shell: ${publicPages.length} pages publiques couvertes`);
