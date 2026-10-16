@@ -36,7 +36,7 @@ function doPost(event) {
     const now = new Date();
     const values = [[
       Utilities.formatDate(now, TIMEZONE, "dd/MM/yyyy"),
-      Utilities.formatDate(now, TIMEZONE, "HH:mm"),
+      momentLabel(now),
       [lead.first_name, lead.last_name].filter(Boolean).join(" "),
       ["Terrain", lead.commune, lead.surface ? `${lead.surface} m²` : "", lead.cadastre || ""].filter(Boolean).join(" · "),
       [lead.phone, lead.email].filter(Boolean).join(" / "),
@@ -78,6 +78,14 @@ function pipelineLabel(value) {
     agreement: "Compromis", sold: "Vente réalisée", follow_up: "À relancer",
     not_relevant: "Non pertinent", abandoned: "Abandonné"
   })[value] || "Nouveau lead";
+}
+
+function momentLabel(date) {
+  const hour = Number(Utilities.formatDate(date, TIMEZONE, "H"));
+  if (hour < 11) return "Matin";
+  if (hour < 14) return "Midi";
+  if (hour < 18) return "Aprem";
+  return "Soir";
 }
 
 function reply(body, status) {
