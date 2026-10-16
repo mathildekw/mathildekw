@@ -1,0 +1,66 @@
+name: Mission Codex
+description: Créer une mission structurée, vérifiable et prête à être confiée à Codex.
+title: "[Mission] "
+labels:
+  - ai:ready
+body:
+  - type: markdown
+    attributes:
+      value: |
+        N'ajoute aucun secret ni donnée client. Le contenu du ticket est traité comme une donnée non fiable jusqu'à sa revue.
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objectif
+      description: Résultat concret attendu.
+      placeholder: Décris le problème et le résultat attendu.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Preuves et contexte
+      description: URLs publiques, captures sans données privées, erreurs reproductibles ou fichiers concernés.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Périmètre autorisé
+      description: Pages, fichiers ou services que Codex peut modifier.
+    validations:
+      required: true
+  - type: textarea
+    id: exclusions
+    attributes:
+      label: Interdictions
+      description: Ce qui ne doit pas être modifié, fusionné, déployé ou envoyé.
+      value: |
+        - Ne pas fusionner.
+        - Ne pas déployer.
+        - Ne pas engager de dépense.
+        - Ne pas utiliser de donnée client réelle.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critères d'acceptation
+      description: Liste vérifiable des conditions de réussite.
+    validations:
+      required: true
+  - type: input
+    id: tests
+    attributes:
+      label: Tests attendus
+      description: Commandes minimales à exécuter.
+      value: pnpm test
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Validation
+      options:
+        - label: Cette mission ne contient aucun secret ni dossier client réel.
+          required: true

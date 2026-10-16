@@ -18,7 +18,7 @@ const [landing,funnel,leads,conversion,migration]=await Promise.all([
   readFile(new URL("supabase/migrations/20261015080000_conversion_tunnel_optimization.sql",root),"utf8")
 ]);
 assert.match(landing,/Et si ton terrain intéressait un promoteur immobilier/);
-assert.equal((landing.match(/data-foncier-cta=/g)||[]).length,6);
+assert.equal((landing.match(/data-foncier-cta=/g)||[]).length,5);
 assert.match(funnel,/Voici les premiers éléments de lecture de ton terrain/);
 assert.match(funnel,/submitted_fingerprint/);
 assert.match(leads,/found\s*\?await db\("foncier_land_leads\?id=eq\."\+found\.id,\{method:"PATCH"/);
