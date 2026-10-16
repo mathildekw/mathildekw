@@ -1,4 +1,4 @@
-(function(){if(document.querySelector('script[data-mk-shell-loader]'))return;var s=document.createElement('script');s.src='/global-shell.js?v=2';s.defer=true;s.dataset.mkShellLoader='';document.head.appendChild(s)})();
+(function(){if(document.querySelector('script[data-mk-shell-loader]'))return;var s=document.createElement('script');s.src='/global-shell.js?v=3';s.defer=true;s.dataset.mkShellLoader='';document.head.appendChild(s)})();
 window.MK_SITE_CONFIG = {
   finance: {
     borrowingEffortRate: 0.35,
@@ -35,8 +35,9 @@ window.MK_SITE_CONFIG = {
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".fp-field > input, .fp-field > select, .fp-field > textarea").forEach(function (control) {
     var label = control.parentElement && control.parentElement.querySelector("label");
-    if (label && !(control.labels && control.labels.length) && !control.getAttribute("aria-label")) {
-      control.setAttribute("aria-label", label.textContent.trim());
+    if (label && !(control.labels && control.labels.length)) {
+      if (!control.id) control.id = "mk-field-" + Math.random().toString(36).slice(2, 9);
+      label.htmlFor = control.id;
     }
   });
 });
