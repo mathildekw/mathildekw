@@ -12,7 +12,9 @@ export default defineConfig({
   expect: { toHaveScreenshot: { animations: "disabled", caret: "hide", maxDiffPixelRatio: 0.012 } },
   use: {
     baseURL: "http://127.0.0.1:4173",
-    channel: process.env.CI ? undefined : "chrome",
+    // Use the same Playwright-managed Chromium locally and in CI so visual
+    // baselines are reproducible across macOS and GitHub runners.
+    browserName: "chromium",
     colorScheme: "light",
     locale: "fr-FR",
     timezoneId: "Pacific/Tahiti",
