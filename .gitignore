@@ -1,10 +1,16 @@
 node_modules/
 .env
+.env.*
+!.env.example
 .DS_Store
 ai-reports/*.json
 !ai-reports/latest.json
 private-videos/
-node_modules/
+**/private-payload.json
+**/private-exports/
+**/exports-private/
+supabase/.temp/
+supabase/temp/
 .playwright-browsers/
 playwright-report/
 test-results/
