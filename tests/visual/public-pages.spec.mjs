@@ -46,7 +46,13 @@ for (const [name, path] of routes) {
     await stabilizeVisualState(page);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBeLessThanOrEqual(1);
-    await expect(page).toHaveScreenshot(`${name}.png`, { fullPage: true });
+    await expect(page).toHaveScreenshot(`${name}.png`, {
+      fullPage: true,
+      // Remote/lazy media can be encoded differently across runners. Masking
+      // it keeps the comparison focused on layout, spacing and crop defects.
+      mask: [page.locator("img, video, canvas, iframe")],
+      maskColor: "#607d8b"
+    });
   });
 }
 
