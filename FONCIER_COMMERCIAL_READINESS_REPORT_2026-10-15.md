@@ -2,7 +2,7 @@
 
 ## Statut général
 
-Les corrections sont préparées sur la branche locale `feat/foncier-commercial-readiness`. Rien n'a été déployé ni poussé pendant cette mission.
+Les corrections ont été déployées le 15 octobre 2026 et poussées sur `main` au commit `7d59ed4`.
 
 ## Audit Supabase
 
@@ -12,13 +12,13 @@ Les corrections sont préparées sur la branche locale `feat/foncier-commercial-
 - Écriture anonyme directe testée : refusée par RLS (`42501`).
 - Aucune clé `service_role` ou `sb_secret_*` présente dans le code navigateur.
 - La clé publiée dans `site-config.js` est une clé **publishable**, prévue pour le navigateur ; les droits restent imposés par RLS.
-- Aucun compte Supabase Auth ni administrateur foncier n'existe encore. La migration prépare l'attribution automatique du rôle administrateur à l'adresse autorisée lors de sa première connexion par lien magique.
+- Aucun compte Supabase Auth ni administrateur foncier n'existait au moment de l'audit. La migration attribue automatiquement le rôle administrateur à l'adresse autorisée lors de sa première connexion par lien magique.
 
 ## Corrections préparées
 
-- Nouvelle fonction publique `foncier-leads-v2` : déduplication par téléphone/email normalisés et empreinte de soumission, blocage des répétitions pendant 10 minutes, alertes P1, outbox idempotente.
+- Nouvelle fonction publique `foncier-leads-v2` déployée : déduplication par téléphone/email normalisés et empreinte de soumission, blocage des répétitions pendant 10 minutes, alertes P1, outbox idempotente.
 - Nouveau dashboard `foncier-admin` : propriétaires, terrains, diagnostic, score, priorité, pipeline, historique, prochaines actions, relances, rendez-vous, promoteurs, matching et état des intégrations.
-- Nouvelle fonction `foncier-maintenance` : génération des relances échues et reprise automatique de la synchronisation Google Sheets avec temporisation progressive.
+- Nouvelle fonction `foncier-maintenance` déployée : génération des relances échues et reprise automatique de la synchronisation Google Sheets avec temporisation progressive.
 - Migration commerciale : index de déduplication, automatismes rendez-vous/CRM, relances, configuration du classeur KW Impact et planification toutes les 15 minutes.
 - Connecteur Apps Script préparé pour l'onglet `Journal`, avec identifiant Supabase invisible et mise à jour idempotente.
 - Le tunnel envoie désormais une empreinte stable de soumission.
@@ -27,7 +27,12 @@ Les corrections sont préparées sur la branche locale `feat/foncier-commercial-
 
 - Tunnel fictif soumis deux fois sur la production actuelle : un seul prospect créé, mais deux activités et deux alertes ont révélé le défaut corrigé dans `foncier-leads-v2`.
 - Prospect fictif, activités et notifications supprimés après le test ; vérification finale : zéro ligne restante pour cet identifiant.
-- Simulation de migration Supabase réussie : seule `20261015100000_foncier_commercial_readiness.sql` serait appliquée, aucune migration n'a été exécutée.
+- Migration `20261015100000_foncier_commercial_readiness.sql` appliquée avec succès.
+- Fonctions `foncier-admin`, `foncier-leads-v2` et `foncier-maintenance` déployées.
+- Maintenance planifiée toutes les 15 minutes avec un secret serveur dédié.
+- Déduplication réelle : deux soumissions identiques ont produit un seul prospect, une seule activité, une seule alerte P1 et une seule entrée d'outbox.
+- Rendez-vous réel fictif confirmé en `Pacific/Tahiti`; le second essai sur le même créneau a été refusé avec HTTP 409.
+- Pipeline CRM passé automatiquement à `appointment`, avec prochaine action et activité de préparation.
 - Tests automatisés locaux : 117 assertions réussies.
   - Tunnel de conversion : 16.
   - Préparation commerciale : 27.
@@ -53,12 +58,11 @@ Les corrections sont préparées sur la branche locale `feat/foncier-commercial-
 
 ## Configuration encore nécessaire avant mise en service
 
-1. Autoriser le déploiement de la migration et des trois fonctions Edge.
-2. Créer la première session administrateur par lien magique avec l'adresse autorisée.
-3. Déployer le script Apps Script dans « Suivi KW Impact » puis renseigner `FONCIER_GOOGLE_SHEETS_WEBHOOK` et `FONCIER_GOOGLE_SHEETS_SECRET`.
-4. Renseigner `FONCIER_CRON_SECRET` pour la maintenance planifiée.
-5. Facultatif : choisir/configurer un canal de notification externe.
-6. Rejouer le parcours bout en bout après configuration, puis supprimer les données fictives.
+1. Créer la première session administrateur par lien magique avec l'adresse autorisée.
+2. Déployer le script Apps Script dans « Suivi KW Impact » puis renseigner `FONCIER_GOOGLE_SHEETS_WEBHOOK` et `FONCIER_GOOGLE_SHEETS_SECRET`.
+3. Facultatif : choisir/configurer un canal de notification externe.
+
+Les données fictives du test de production ont été supprimées et leur disparition a été vérifiée dans six tables.
 
 ## Coûts récurrents
 
