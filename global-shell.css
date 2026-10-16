@@ -91,3 +91,16 @@ body.mk-shell-ready .article-body {
   body.mk-shell-ready :is(.btn,.h26-btn,.fp-btn){padding:13px 18px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}body.mk-motion-ready .mk-reveal,body.mk-motion-ready .mk-reveal.mk-visible{opacity:1;transform:none;animation:none!important;transition:none!important}body.mk-shell-ready *,body.mk-shell-ready *::before,body.mk-shell-ready *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Navigation et surfaces — nouvelle direction éditoriale commune. */
+:root{--mk-cream:#f8f4ec;--mk-surface:#fffdf8;--mk-deep:#0c3431;--mk-ink:#123633;--mk-coral:#df765f;--mk-coral-dark:#bd5541;--mk-line:rgba(18,54,51,.14);--mk-radius:20px;--mk-shadow:0 22px 60px rgba(18,54,51,.10)}
+.mk-shell{background:rgba(248,244,236,.94);box-shadow:none;border-bottom-color:rgba(18,54,51,.1)!important}
+.mk-shell-inner{width:min(1320px,calc(100% - clamp(32px,7vw,112px)))}
+.mk-shell-mark{background:var(--mk-deep);border-color:var(--mk-deep);color:#fff}
+.mk-shell-brand strong{letter-spacing:.13em}.mk-shell-link{color:#36524f!important}.mk-shell-link:hover,.mk-shell-link:focus-visible,.mk-shell-link[aria-current="page"]{background:#e9eee8}.mk-shell-link[aria-current="page"]:after{background:var(--mk-coral)}
+.mk-shell-cta{background:var(--mk-coral)!important;box-shadow:0 10px 24px rgba(223,118,95,.2)}
+.mk-global-footer{background:#062725;padding-top:68px}.mk-global-footer h2{font-size:38px}.mk-footer-grid{padding-bottom:10px}
+body.mk-shell-ready:not(.home-26){background:var(--mk-cream)}
+body.mk-shell-ready:not(.home-26) main :is(.card,.mini-card,.factor-card,.criteria-card,.property-card-premium,.listing-card,.form-card,.contact-card){border-radius:var(--mk-radius)!important;border-color:var(--mk-line)!important;box-shadow:0 14px 42px rgba(18,54,51,.055)}
+body.mk-shell-ready:not(.home-26) main :is(.btn,.fp-btn,.route-link){border-radius:999px!important}
+@media(max-width:960px){.mk-shell-inner{width:calc(100% - 28px)}.mk-shell-nav{background:#f8f4ec}.mk-shell-toggle{background:#fffdf8}}

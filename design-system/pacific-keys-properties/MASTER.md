@@ -9,6 +9,7 @@ Ce fichier formalise l’identité réellement retenue après l’audit du site.
 - Contenu immobilier réel conservé ; aucune preuve sociale ou donnée commerciale inventée.
 - Mobile d’abord : contenu essentiel immédiat, sections plus denses, aucune largeur fixe.
 - Mouvement discret et fonctionnel, avec contenu visible sans JavaScript et respect de `prefers-reduced-motion`.
+- Composition éditoriale inspirée d’un magazine d’architecture : asymétrie maîtrisée, grandes images réelles et surfaces franches plutôt que glassmorphism décoratif.
 
 ## Identité
 
@@ -30,6 +31,7 @@ Ce fichier formalise l’identité réellement retenue après l’audit du site.
 - Titres : un seul `h1` par page, puis `h2`, puis `h3` sans saut de niveau.
 - Taille des titres via `clamp()` ; largeur de ligne limitée et `text-wrap: balance`.
 - Rayon carte : `18px` ; bouton pilule seulement pour CTA courts.
+- Accueil : hero lumineux en deux panneaux sur desktop, contenu puis image sur mobile ; les textes et preuves restent strictement identiques.
 
 ## Composants
 
