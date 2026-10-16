@@ -17,8 +17,10 @@ const [landing,funnel,leads,conversion,migration]=await Promise.all([
   readFile(new URL("supabase/functions/foncier-conversion/index.ts",root),"utf8"),
   readFile(new URL("supabase/migrations/20261015080000_conversion_tunnel_optimization.sql",root),"utf8")
 ]);
-assert.match(landing,/Et si ton terrain intéressait un promoteur immobilier/);
-assert.equal((landing.match(/data-foncier-cta=/g)||[]).length,6);
+assert.match(landing,/Et si ton terrain valait bien plus que tu ne l’imagines/);
+assert.match(landing,/Bilan de potentiel foncier offert/);
+assert.match(landing,/Vente classique[\s\S]*Présentation à des promoteurs[\s\S]*Division éventuelle/);
+assert.equal((landing.match(/data-foncier-cta=/g)||[]).length,11);
 assert.match(funnel,/Voici les premiers éléments de lecture de ton terrain/);
 assert.match(funnel,/submitted_fingerprint/);
 assert.match(leads,/found\s*\?await db\("foncier_land_leads\?id=eq\."\+found\.id,\{method:"PATCH"/);
@@ -26,4 +28,4 @@ assert.match(leads,/resolution=merge-duplicates/);
 assert.match(conversion,/callback_requested.*notification_deliveries/s);
 assert.match(migration,/cta_clicked/);
 assert.match(migration,/step_completion/);
-console.log("conversion-funnel: 16 assertions réussies");
+console.log("conversion-funnel: 18 assertions réussies");

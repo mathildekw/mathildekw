@@ -48,7 +48,7 @@ body.mk-shell-ready .hz-reveal{opacity:1!important;transform:none!important}
   body.mk-shell-ready :is(.section-head,.h26-section-head,.fp-head){margin-bottom:24px}
   body.mk-shell-ready :is(.card,.mini-card,.factor-card,.criteria-card,.property-criteria-card){padding:22px 18px}
   body.mk-shell-ready :is(.grid,.steps,.property-list-stack){gap:14px}
-  body.mk-shell-ready :is(button,.btn,.h26-btn,.fp-btn,summary,input:not([type="checkbox"]):not([type="radio"]),select,textarea){min-height:44px!important}
+  body.mk-shell-ready :is(button,.btn,.h26-btn,.fp-btn,summary,input:not([type="checkbox"]):not([type="radio"]),select,textarea){min-height:48px!important}
   body.mk-shell-ready :is(button,.btn,.h26-btn,.fp-btn){min-width:44px!important}
   body.mk-shell-ready .t2-gallery-nav{width:44px!important;height:44px!important}
   body.mk-shell-ready .t2-scroll-top{width:46px!important;height:46px!important}
