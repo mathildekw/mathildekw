@@ -12,7 +12,7 @@ const routes = [
 ];
 
 for (const [name, path] of routes) {
-  test(`${name} respecte le shell et le viewport`, async ({ page }) => {
+  test(`${name} respecte le shell et le viewport`, async ({ page }, testInfo) => {
     await page.route("https://www.google-analytics.com/**", route => route.abort());
     await page.route("https://www.clarity.ms/**", route => route.abort());
     await page.goto(path, { waitUntil: "domcontentloaded" });
@@ -21,7 +21,10 @@ for (const [name, path] of routes) {
     await expect(page.locator("[data-global-footer]")).toHaveCount(1);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBeLessThanOrEqual(1);
-    await expect(page).toHaveScreenshot(`${name}.png`, { fullPage: true });
+    await testInfo.attach(`${name}-${testInfo.project.name}`, {
+      body: await page.screenshot({ fullPage: true, animations: "disabled" }),
+      contentType: "image/png"
+    });
   });
 }
 

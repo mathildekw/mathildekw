@@ -22,7 +22,7 @@ function doPost(event) {
     if (!expectedSecret || providedSecret !== expectedSecret) return reply({ ok: false, error: "unauthorized" }, 401);
 
     const payload = JSON.parse((event.postData && event.postData.contents) || "{}");
-    if (payload.kind !== "land_lead" || !payload.unique_id || !payload.row) {
+    if (!["land_lead", "seller_lead"].includes(payload.kind) || !payload.unique_id || !payload.row) {
       return reply({ ok: false, error: "invalid_payload" }, 400);
     }
 
@@ -34,23 +34,30 @@ function doPost(event) {
     const marker = `[SUPABASE:${payload.unique_id}]`;
     const existing = sheet.createTextFinder(marker).matchCase(true).findNext();
     const now = new Date();
+    const sellerDiagnostic = payload.kind === "seller_lead";
+    const propertyContext = sellerDiagnostic
+      ? [lead.property_type, lead.commune, lead.sale_duration].filter(Boolean).join(" · ")
+      : ["Terrain", lead.commune, lead.surface ? `${lead.surface} m²` : "", lead.cadastre || ""].filter(Boolean).join(" · ");
+    const resultContext = sellerDiagnostic
+      ? `Diagnostic vendeur · priorité ${lead.priority_level || "P3"} · visites: ${lead.visits_level || "non précisées"} · offres: ${lead.offers_status || "non précisées"}`
+      : `Priorité ${lead.priority_level || "P3"} · score ${lead.qualification_score || 0}/100`;
     const values = [[
       Utilities.formatDate(now, TIMEZONE, "dd/MM/yyyy"),
       momentLabel(now),
       [lead.first_name, lead.last_name].filter(Boolean).join(" "),
-      ["Terrain", lead.commune, lead.surface ? `${lead.surface} m²` : "", lead.cadastre || ""].filter(Boolean).join(" · "),
+      propertyContext,
       [lead.phone, lead.email].filter(Boolean).join(" / "),
-      "Foncier",
-      "Mathildekw.com — Diagnostic foncier",
+      sellerDiagnostic ? "Vendeur" : "Foncier",
+      sellerDiagnostic ? "Mathildekw.com — Diagnostic commercialisation" : "Mathildekw.com — Diagnostic foncier",
       pipelineLabel(lead.pipeline),
-      `Priorité ${lead.priority_level || "P3"} · score ${lead.qualification_score || 0}/100`,
+      resultContext,
       "",
-      lead.next_action || "Premier contact propriétaire",
+      lead.next_action || (sellerDiagnostic ? "Premier contact vendeur" : "Premier contact propriétaire"),
       lead.next_follow_up ? Utilities.formatDate(new Date(lead.next_follow_up), TIMEZONE, "dd/MM/yyyy HH:mm") : "",
       "",
       "",
       `${marker} Consentement traitement: ${lead.privacy_consent ? "oui" : "non"}. Canal préféré: ${lead.preferred_channel || "non précisé"}.`,
-      lead.comment || ""
+      sellerDiagnostic ? `Objectif: ${lead.objective || "non précisé"}. Méthode: ${lead.sale_method || "non précisée"}.` : (lead.comment || "")
     ]];
 
     if (existing) {

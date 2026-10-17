@@ -1,4 +1,4 @@
-(function(){if(document.querySelector('script[data-mk-shell-loader]'))return;var s=document.createElement('script');s.src='/global-shell.js?v=2';s.defer=true;s.dataset.mkShellLoader='';document.head.appendChild(s)})();
+(function(){if(document.querySelector('script[data-mk-shell-loader]'))return;var s=document.createElement('script');s.src='/global-shell.js?v=7';s.defer=true;s.dataset.mkShellLoader='';document.head.appendChild(s)})();
 window.MK_SITE_CONFIG = {
   finance: {
     borrowingEffortRate: 0.35,
@@ -34,6 +34,9 @@ window.MK_SITE_CONFIG = {
     // Public publishable key only. Privileged service-role credentials remain
     // server-side in Supabase Edge Functions and must never be added here.
     anonKey: "sb_publishable_lHIm5SqXealczmGZtid3Yg_oYmZ96BK"
+  },
+  sellerDiagnostic: {
+    apiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/seller-diagnostic"
   }
 };
 
@@ -42,8 +45,9 @@ window.MK_SITE_CONFIG = {
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".fp-field > input, .fp-field > select, .fp-field > textarea").forEach(function (control) {
     var label = control.parentElement && control.parentElement.querySelector("label");
-    if (label && !(control.labels && control.labels.length) && !control.getAttribute("aria-label")) {
-      control.setAttribute("aria-label", label.textContent.trim());
+    if (label && !(control.labels && control.labels.length)) {
+      if (!control.id) control.id = "mk-field-" + Math.random().toString(36).slice(2, 9);
+      label.htmlFor = control.id;
     }
   });
 });
@@ -54,7 +58,7 @@ var initFoncierMobileFix = function () {
 if (document.body && document.body.classList.contains("hz-page")) {
   var mobileFix = document.createElement("link");
   mobileFix.rel = "stylesheet";
-  mobileFix.href = "/foncier-mobile-fix.css?v=3";
+  mobileFix.href = "/foncier-mobile-fix.css?v=7";
   document.head.appendChild(mobileFix);
 
   // Chrome/iOS can expose a visual viewport narrower than the CSS layout

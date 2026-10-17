@@ -31,11 +31,11 @@ jobs:
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test
       - run: pnpm test:visual
-      - if: failure()
+      - if: always()
         uses: actions/upload-artifact@v4
         with:
           name: visual-regression-report
           path: |
             playwright-report
             test-results/visual
-          retention-days: 14
+          retention-days: 7
