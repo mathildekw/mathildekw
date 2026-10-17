@@ -15,6 +15,11 @@ window.MK_SITE_CONFIG = {
     phoneDisplay: "88 07 82 47",
     phoneHref: "+68988078247"
   },
+  referral: {
+    // Part de la commission totale HT de l'agence, après rétrocessions et
+    // frais de franchise. Source unique pour l'affichage et les calculs.
+    commissionRate: 0.1125
+  },
   buyer: {
     apiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/buyer-funnel",
     // Official third-party connectors remain disabled until server-side
