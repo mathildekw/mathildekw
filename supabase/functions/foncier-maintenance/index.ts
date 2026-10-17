@@ -68,9 +68,9 @@ async function processOutbox() {
 Deno.serve(async (request) => {
   if (!cronSecret || request.headers.get("x-cron-secret") !== cronSecret) return output({ error: "Non autorisé" }, 401);
   try {
-    const followups = await rpc("generate_foncier_due_followups");
+    const [followups, sellerFollowups] = await Promise.all([rpc("generate_foncier_due_followups"), rpc("generate_seller_diagnostic_followups")]);
     const sheets = await processOutbox();
-    return output({ followups_created: Number(followups) || 0, google_sheets: sheets });
+    return output({ followups_created: Number(followups) || 0, seller_followups_created: Number(sellerFollowups) || 0, google_sheets: sheets });
   } catch (error) {
     console.error(error);
     return output({ error: String(error).slice(0, 500) }, 500);

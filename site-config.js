@@ -27,6 +27,9 @@ window.MK_SITE_CONFIG = {
     // Public publishable key only. Privileged service-role credentials remain
     // server-side in Supabase Edge Functions and must never be added here.
     anonKey: "sb_publishable_lHIm5SqXealczmGZtid3Yg_oYmZ96BK"
+  },
+  sellerDiagnostic: {
+    apiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/seller-diagnostic"
   }
 };
 

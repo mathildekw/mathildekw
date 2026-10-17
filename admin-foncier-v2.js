@@ -8,7 +8,7 @@
   var title = document.querySelector("[data-title]");
   var client = null;
   var view = "overview";
-  var state = { lands: [], promoters: [], matches: [], activities: [], appointments: [], notifications: [], settings: [], outbox: [] };
+  var state = { lands: [], sellers: [], sellerActivities: [], sellerAppointments: [], sellerMetrics: {}, promoters: [], matches: [], activities: [], appointments: [], notifications: [], settings: [], outbox: [] };
 
   var labels = {
     new: "Nouveau lead", qualify: "À qualifier", contacted: "Premier contact",
@@ -60,8 +60,17 @@
       [state.appointments.filter(function (x) { return x.status === "confirmed" && new Date(x.start_at) >= new Date(); }).length, "Rendez-vous à venir"],
       [due, "Relances dues"],
       [state.lands.filter(function (x) { return x.pipeline === "mandate_signed"; }).length, "Mandats signés"],
+      [state.sellers.length, "Diagnostics vendeurs"],
       [state.outbox.filter(function (x) { return x.status !== "delivered"; }).length, "Synchros en attente"]
     ].map(function (item) { return '<div class="fp-metric"><strong>' + item[0] + '</strong><span>' + item[1] + '</span></div>'; }).join("") + '</div>';
+  }
+
+  function sellerRows() {
+    if (!state.sellers.length) return '<div class="fp-empty">Aucun diagnostic vendeur.</div>';
+    var metrics = state.sellerMetrics || {};
+    return '<div class="fp-metrics">' + [[metrics.started || 0,"Diagnostics commencés"],[metrics.completed || 0,"Terminés"],[metrics.appointments || 0,"Rendez-vous"],[String(metrics.conversion_rate || 0)+" %","Conversion"]].map(function(item){return '<div class="fp-metric"><strong>'+item[0]+'</strong><span>'+item[1]+'</span></div>';}).join("") + '</div><div class="fp-panel"><table class="fp-table"><thead><tr><th>Vendeur</th><th>Bien & contexte</th><th>Diagnostic</th><th>Priorité</th><th>Statut</th><th>Action / relance</th><th>Suivi</th></tr></thead><tbody>' + state.sellers.map(function(item){
+      return '<tr><td><b>'+esc(item.first_name+' '+item.last_name)+'</b><br><a href="tel:'+esc(item.phone)+'">'+esc(item.phone)+'</a><br>'+esc(item.email||"")+'</td><td><b>'+esc(item.reference)+'</b><br>'+esc(item.property_type)+' · '+esc(item.commune)+'<br><small>'+esc(item.sale_duration)+' · '+esc(item.sale_method)+'</small></td><td>'+esc(item.visits_level)+'<br>'+esc(item.offers_status)+'<br><small>'+esc(item.objective)+'</small></td><td><select data-seller-priority="'+item.id+'"><option '+(item.priority_level==="P1"?"selected":"")+'>P1</option><option '+(item.priority_level==="P2"?"selected":"")+'>P2</option><option '+(item.priority_level==="P3"?"selected":"")+'>P3</option></select></td><td><select data-seller-pipeline="'+item.id+'">'+pipelineOptions(item.pipeline)+'</select></td><td><input data-seller-action="'+item.id+'" value="'+esc(item.next_action||"")+'" placeholder="Action suivante"><input data-seller-followup="'+item.id+'" type="datetime-local" value="'+esc(inputDate(item.next_follow_up))+'"></td><td><button class="fp-btn dark" data-seller-save="'+item.id+'">Enregistrer</button></td></tr>';
+    }).join("")+'</tbody></table></div>';
   }
 
   function pipelineOptions(selected) {
@@ -117,9 +126,10 @@
   }
 
   function render() {
-    var titles = { overview: "Vue d’ensemble", lands: "Terrains", promoters: "Promoteurs", matching: "Matching", pipeline: "Pipeline", tasks: "Relances", settings: "Intégrations" };
+    var titles = { overview: "Vue d’ensemble", sellers: "Diagnostics vendeurs", lands: "Terrains", promoters: "Promoteurs", matching: "Matching", pipeline: "Pipeline", tasks: "Relances", settings: "Intégrations" };
     title.textContent = titles[view];
     if (view === "overview") content.innerHTML = metrics() + landRows(state.lands.slice(0, 8));
+    else if (view === "sellers") content.innerHTML = sellerRows();
     else if (view === "lands") content.innerHTML = landRows(state.lands);
     else if (view === "promoters") content.innerHTML = renderPromoters();
     else if (view === "tasks") content.innerHTML = renderTasks();
@@ -130,6 +140,13 @@
   }
 
   function bind() {
+    content.querySelectorAll("[data-seller-save]").forEach(function (button) {
+      button.onclick = async function () {
+        var id = button.dataset.sellerSave;
+        await api("/sellers/" + id, { method: "PATCH", body: JSON.stringify({ pipeline: content.querySelector('[data-seller-pipeline="' + id + '"]').value, priority_level: content.querySelector('[data-seller-priority="' + id + '"]').value, next_action: content.querySelector('[data-seller-action="' + id + '"]').value, next_follow_up: content.querySelector('[data-seller-followup="' + id + '"]').value || null }) });
+        await load(); view = "sellers"; render();
+      };
+    });
     content.querySelectorAll("[data-save]").forEach(function (button) {
       button.onclick = async function () {
         var id = button.dataset.save;

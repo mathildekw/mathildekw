@@ -73,7 +73,7 @@ Deno.serve(async (request) => {
     const path = url.pathname.split("/foncier-admin")[1] || "/";
 
     if (request.method === "GET" && path === "/summary") {
-      const [lands, promoters, matches, activities, appointments, notifications, settings, outbox] = await Promise.all([
+      const [lands, promoters, matches, activities, appointments, notifications, settings, outbox, sellers, sellerActivities, sellerAppointments, sellerMetrics] = await Promise.all([
         database("foncier_land_leads?select=*&order=created_at.desc"),
         database("foncier_promoters?select=*&order=created_at.desc"),
         database("foncier_matches?select=*&order=score.desc"),
@@ -82,8 +82,31 @@ Deno.serve(async (request) => {
         database("foncier_notifications?select=*&order=created_at.desc&limit=200"),
         database("foncier_settings?select=*"),
         database("foncier_integration_outbox?select=status,destination,last_error,attempts,next_attempt_at,entity_id&order=created_at.desc&limit=200"),
+        database("seller_diagnostic_leads?select=*&order=created_at.desc"),
+        database("seller_diagnostic_activities?select=*&order=created_at.desc&limit=1000"),
+        database("seller_diagnostic_appointments?select=*&order=start_at.desc&limit=500"),
+        database("rpc/seller_diagnostic_metrics", { method: "POST", body: JSON.stringify({ date_from: new Date(Date.now() - 30 * 86400000).toISOString() }) }),
       ]);
-      return json({ lands, promoters, matches, activities, appointments, notifications, settings, outbox });
+      return json({ lands, promoters, matches, activities, appointments, notifications, settings, outbox, sellers, sellerActivities, sellerAppointments, sellerMetrics });
+    }
+
+    const sellerMatch = path.match(/^\/sellers\/([0-9a-f-]+)$/i);
+    if (request.method === "PATCH" && sellerMatch) {
+      const body = await request.json();
+      const allowed: Record<string, unknown> = {};
+      for (const key of ["pipeline", "priority_level", "next_action", "next_follow_up"]) if (key in body) allowed[key] = body[key] || null;
+      allowed.updated_at = new Date().toISOString();
+      const rows = await database(`seller_diagnostic_leads?id=eq.${encodeURIComponent(sellerMatch[1])}`, { method: "PATCH", body: JSON.stringify(allowed) });
+      await audit(request, "seller_diagnostic_updated", "seller_diagnostic", sellerMatch[1], { fields: Object.keys(allowed) });
+      return json(rows[0]);
+    }
+
+    if (request.method === "POST" && path === "/seller-activities") {
+      const body = await request.json();
+      if (!body.lead_id || !clean(body.body)) return json({ error: "Prospect et compte rendu requis" }, 400);
+      const rows = await database("seller_diagnostic_activities", { method: "POST", body: JSON.stringify({ lead_id: body.lead_id, kind: clean(body.kind, 80) || "contact_note", body: clean(body.body, 2000), due_at: body.due_at || null, metadata: { channel: clean(body.channel, 40) || null } }) });
+      await audit(request, "seller_activity_created", "seller_diagnostic", body.lead_id, { activity_id: rows[0].id });
+      return json(rows[0], 201);
     }
 
     const landMatch = path.match(/^\/lands\/([0-9a-f-]+)$/i);
