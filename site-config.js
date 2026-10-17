@@ -15,6 +15,13 @@ window.MK_SITE_CONFIG = {
     phoneDisplay: "88 07 82 47",
     phoneHref: "+68988078247"
   },
+  buyer: {
+    apiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/buyer-funnel",
+    // Official third-party connectors remain disabled until server-side
+    // credentials and written authorization are configured.
+    modeloConnector: "manual",
+    acteloConnector: "manual"
+  },
   foncier: {
     apiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/foncier-promotion",
     leadApiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/foncier-leads-v2",
