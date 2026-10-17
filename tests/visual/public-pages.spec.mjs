@@ -3,6 +3,7 @@ import { expect, test } from "@playwright/test";
 const routes = [
   ["accueil", "/"],
   ["biens", "/biens-a-vendre-tahiti.html"],
+  ["acquereur", "/acheter-bien-immobilier-tahiti.html"],
   ["estimation", "/estimation-immobiliere-tahiti.html"],
   ["foncier", "/foncier-promotion.html"],
   ["diagnostic", "/diagnostic-foncier.html"],
