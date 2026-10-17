@@ -10,7 +10,9 @@ test("join hub and referral funnel are responsive", async ({ page }) => {
     await route.fulfill({ status: 201, contentType: "application/json", body: '{"lead_id":"synthetic-test","possible_duplicate":false}' });
   });
   await page.goto("/nous-rejoindre/");
-  await expect(page.locator("h1")).toContainText("travaillait ensemble");
+  await expect(page.locator("h1")).toContainText("l'immobilier devenait aussi ton aventure");
+  await page.getByRole("button", { name: "Je suis étudiant(e)" }).click();
+  await expect(page.locator("[data-path-result-link]")).toHaveAttribute("href", "/nous-rejoindre/stage/");
   const menuButton = page.getByRole("button", { name: "Ouvrir le menu" });
   if (await menuButton.isVisible()) await menuButton.click();
   await expect(page.getByRole("link", { name: "Nous rejoindre" })).toBeVisible();
@@ -42,5 +44,42 @@ test("join hub and referral funnel are responsive", async ({ page }) => {
   await page.getByRole("button", { name: "Envoyer la recommandation" }).click();
   await expect(page.getByRole("heading", { name: "Merci pour la mise en relation" })).toBeVisible();
   await expect(page.locator("[data-whatsapp]")).toHaveAttribute("href", /wa\.me/);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1)).toBe(false);
+});
+
+test("internship landing and application funnel work end to end", async ({ page }) => {
+  await page.route("**/buyer-funnel/public/events", (route) => route.fulfill({ status: 201, contentType: "application/json", body: '{"recorded":true}' }));
+  await page.route("**/buyer-funnel/public/join", async (route) => {
+    const payload = route.request().postDataJSON();
+    expect(payload.lead_type).toBe("internship_candidate");
+    expect(payload.motivation).toContain("Niveau : Bac +3");
+    expect(payload.motivation).toContain("ordinateur : yes");
+    await route.fulfill({ status: 201, contentType: "application/json", body: '{"lead_id":"synthetic-internship"}' });
+  });
+  await page.goto("/nous-rejoindre/stage/");
+  await expect(page.locator("h1")).toContainText("autrement qu'en cours");
+  await expect(page.locator("[data-internship-requirements] li")).toHaveCount(4);
+  await page.getByRole("link", { name: "Candidater pour un stage" }).first().click();
+  await page.locator("#first_name").fill("Étudiante");
+  await page.locator("#last_name").fill("Fictive");
+  await page.locator("#phone").fill("+689 87 00 00 00");
+  await page.locator("#email").fill("stage@example.test");
+  await page.locator("#school").fill("Établissement fictif");
+  await page.locator("#education").fill("Commerce");
+  await page.locator("#education_level").fill("Bac +3");
+  await page.getByRole("button", { name: "Continuer" }).click();
+  await page.locator("#start_date").fill("2027-01-04");
+  await page.locator("#end_date").fill("2027-02-26");
+  await page.locator("#duration").fill("8");
+  await page.getByRole("button", { name: "Continuer" }).click();
+  await page.locator('[name="preferred_missions"][value="Prospection commerciale"]').check();
+  await page.locator("#has_laptop").selectOption("yes");
+  await page.locator("#phone_comfort").selectOption("learning");
+  await page.locator("#mobility").selectOption("discuss");
+  await page.locator("#motivation").fill("Je souhaite découvrir une activité immobilière réelle.");
+  await page.locator('[name="privacy_consent"]').check();
+  await page.getByRole("button", { name: "Envoyer ma candidature" }).click();
+  await expect(page.getByRole("heading", { name: "Merci !" })).toBeVisible();
+  await expect(page.locator("[data-whatsapp]")).toHaveAttribute("href", /stage%20immobilier/);
   expect(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1)).toBe(false);
 });

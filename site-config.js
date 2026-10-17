@@ -20,6 +20,14 @@ window.MK_SITE_CONFIG = {
     // frais de franchise. Source unique pour l'affichage et les calculs.
     commissionRate: 0.1125
   },
+  internship: {
+    requirements: [
+      "Ton propre ordinateur portable",
+      "Un téléphone utilisable pendant le stage",
+      "Une connexion ou un forfait adapté aux missions",
+      "De l'autonomie dans les déplacements lorsque du terrain est prévu"
+    ]
+  },
   buyer: {
     apiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/buyer-funnel",
     // Official third-party connectors remain disabled until server-side
