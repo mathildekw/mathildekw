@@ -1,4 +1,7 @@
-(function(){if(document.querySelector('script[data-mk-shell-loader]'))return;var s=document.createElement('script');s.src='/global-shell.js?v=8';s.defer=true;s.dataset.mkShellLoader='';document.head.appendChild(s)})();
+(function(){
+  if(!document.querySelector('script[data-mk-shell-loader]')){var s=document.createElement('script');s.src='/global-shell.js?v=9';s.defer=true;s.dataset.mkShellLoader='';document.head.appendChild(s)}
+  if(!document.querySelector('script[data-mk-motion-v3]')){var motion=document.createElement('script');motion.src='/mk-motion-system.js?v=1';motion.defer=true;motion.dataset.mkMotionV3='';document.head.appendChild(motion)}
+})();
 window.MK_SITE_CONFIG = {
   finance: {
     borrowingEffortRate: 0.35,

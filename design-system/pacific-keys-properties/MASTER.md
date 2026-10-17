@@ -1,6 +1,6 @@
 # Design system — Mathilde KW / Pacific Keys Properties
 
-Ce fichier formalise l’identité réellement retenue après l’audit du site. Les suggestions génériques de type glassmorphism, bleu SaaS et polices Cinzel/Josefin ont été écartées car elles ne correspondent ni à l’existant ni au positionnement humain et local de Mathilde.
+Ce fichier formalise l’identité retenue après la refonte architecturale 2026. Le glassmorphism est désormais un langage de profondeur centralisé, jamais un filtre décoratif appliqué partout. Les suggestions génériques bleu SaaS et les polices Cinzel/Josefin restent écartées afin de conserver l’identité humaine et locale de Mathilde.
 
 ## Principes
 
@@ -9,7 +9,17 @@ Ce fichier formalise l’identité réellement retenue après l’audit du site.
 - Contenu immobilier réel conservé ; aucune preuve sociale ou donnée commerciale inventée.
 - Mobile d’abord : contenu essentiel immédiat, sections plus denses, aucune largeur fixe.
 - Mouvement discret et fonctionnel, avec contenu visible sans JavaScript et respect de `prefers-reduced-motion`.
-- Composition éditoriale inspirée d’un magazine d’architecture : asymétrie maîtrisée, grandes images réelles et surfaces franches plutôt que glassmorphism décoratif.
+- Composition éditoriale inspirée d’un magazine d’architecture : asymétrie maîtrisée, grandes images réelles, surfaces franches et verre utilisé aux points de profondeur utiles.
+
+## Système glass
+
+- `glass-subtle` : petits contrôles et badges, blur 10 px.
+- `glass-card` : cartes de contenu, blur 18 px et bordure lumineuse fine.
+- `glass-elevated` : panneaux prioritaires et éléments flottants, blur 28 px.
+- `glass-dark` : surfaces techniques sombres et Foncier & Promotion.
+- `glass-nav` : navigation flottante, contraste stable au repos et au défilement.
+- Fallback opaque obligatoire lorsque `backdrop-filter` n’est pas disponible.
+- Le verre n’est jamais posé sur une photographie trop contrastée sans voile de lisibilité.
 
 ## Identité
 
@@ -30,7 +40,7 @@ Ce fichier formalise l’identité réellement retenue après l’audit du site.
 - Sections : `clamp(56px, 8vw, 112px)` sur grand écran, `40–56px` sur mobile.
 - Titres : un seul `h1` par page, puis `h2`, puis `h3` sans saut de niveau.
 - Taille des titres via `clamp()` ; largeur de ligne limitée et `text-wrap: balance`.
-- Rayon carte : `18px` ; bouton pilule seulement pour CTA courts.
+- Rayons : `12px`, `20px`, `30px`, `42px` ; bouton pilule seulement pour CTA courts.
 - Accueil : hero lumineux en deux panneaux sur desktop, contenu puis image sur mobile ; les textes et preuves restent strictement identiques.
 
 ## Composants
@@ -51,9 +61,10 @@ Ce fichier formalise l’identité réellement retenue après l’audit du site.
 
 ## Mouvement
 
-- Durée courte : 180–360 ms.
+- Durées : 180 ms (feedback), 420 ms (transition), 760 ms (reveal éditorial).
 - Propriétés privilégiées : `opacity` et `transform`.
-- Apparition douce au défilement uniquement après initialisation JavaScript ; contenu visible par défaut.
+- Apparition douce au défilement avec fade, translation et blur très bref ; contenu visible par défaut.
+- Progression de lecture globale, header compact au scroll et halo pointeur réservés aux périphériques fins.
 - Toute animation non essentielle est supprimée avec `prefers-reduced-motion: reduce`.
 
 ## Règles permanentes

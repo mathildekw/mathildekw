@@ -1,6 +1,13 @@
 # Modèles de pages officiels
 
-Chaque nouvelle page publique charge `global-shell.js` et réutilise les tokens de `global-shell.css`.
+Chaque nouvelle page publique charge `site-config.js`. Celui-ci initialise le shell, puis `mk-design-system.css` et `mk-motion-system.js`. Les contenus restent dans les pages ; présentation, surfaces et mouvement restent centralisés.
+
+## Primitives officielles
+
+- `.mk-glass-subtle`, `.mk-glass-card`, `.mk-glass-elevated`, `.mk-glass-dark`
+- `.mk-ambient` pour les halos décoratifs non interactifs
+- `.mk-reveal` pour les révélations progressives accessibles
+- Les composants historiques sont mappés vers ces primitives dans `mk-design-system.css` pendant la migration.
 
 ## Accueil
 
