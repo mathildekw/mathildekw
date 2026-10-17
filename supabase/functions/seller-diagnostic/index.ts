@@ -10,6 +10,7 @@ function clean(value: unknown, max = 500) { return String(value ?? "").trim().sl
 function list(value: unknown, max = 20) { return Array.isArray(value) ? value.slice(0, max).map((item) => clean(item, 120)).filter(Boolean) : []; }
 function phone(value: unknown) { return clean(value, 50).replace(/\D/g, ""); }
 function email(value: unknown) { return clean(value, 180).toLowerCase(); }
+function validEmail(value: unknown) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email(value)); }
 async function sha(value: string) { const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value)); return Array.from(new Uint8Array(digest)).map((byte) => byte.toString(16).padStart(2, "0")).join(""); }
 function token() { const bytes = new Uint8Array(24); crypto.getRandomValues(bytes); return btoa(String.fromCharCode(...bytes)).replaceAll("+", "-").replaceAll("/", "_").replaceAll("=", ""); }
 
@@ -89,7 +90,7 @@ Deno.serve(async (request) => {
     if (path === "/leads" && request.method === "POST") {
       const data = await request.json();
       if (clean(data.website)) return reply({ accepted: true }, 202);
-      if (!data.privacy_consent || !clean(data.first_name) || !clean(data.last_name) || !phone(data.phone) || !clean(data.property_type) || !clean(data.commune) || !clean(data.sale_duration) || !clean(data.sale_method) || !clean(data.visits_level) || !clean(data.offers_status) || !clean(data.objective)) return reply({ error: "Champs obligatoires manquants" }, 400);
+      if (!data.privacy_consent || !clean(data.first_name) || !clean(data.last_name) || !phone(data.phone) || !validEmail(data.email) || !clean(data.property_type) || !clean(data.commune) || !clean(data.sale_duration) || !clean(data.sale_method) || !clean(data.visits_level) || !clean(data.offers_status) || !clean(data.objective)) return reply({ error: "Champs obligatoires manquants ou invalides" }, 400);
       const normalizedPhone = phone(data.phone);
       const normalizedEmail = email(data.email);
       const fingerprint = clean(data.submission_fingerprint, 5000) || JSON.stringify([normalizedPhone, normalizedEmail, data.commune, data.property_type, data.sale_duration, data.objective]);

@@ -13,8 +13,9 @@ assert.equal(qualifySeller({ objective: "Vendre au plus vite", sale_duration: "6
 assert.equal(qualifySeller({ objective: "Je réfléchis à changer de stratégie", sale_duration: "1 à 3 mois" }), "P2");
 assert.equal(qualifySeller({ objective: "Je ne suis pas pressé", sale_duration: "Moins d'un mois" }), "P3");
 
-const [html, browser, edge, migration, admin, sheet] = await Promise.all([
+const [html, sellerPage, browser, edge, migration, admin, sheet] = await Promise.all([
   readFile(new URL("../pourquoi-mon-bien-ne-se-vend-pas.html", import.meta.url), "utf8"),
+  readFile(new URL("../vendre-bien-immobilier-tahiti.html", import.meta.url), "utf8"),
   readFile(new URL("../seller-diagnostic.js", import.meta.url), "utf8"),
   readFile(new URL("../supabase/functions/seller-diagnostic/index.ts", import.meta.url), "utf8"),
   readFile(new URL("../supabase/migrations/20261017100000_seller_diagnostic_funnel.sql", import.meta.url), "utf8"),
@@ -26,7 +27,10 @@ assert.match(html, /id="seller-diagnostic-form"/);
 assert.match(html, /type="module" src="\/seller-diagnostic\.js/);
 assert.match(browser, /diagnoseSeller/);
 assert.match(browser, /privacy_consent/);
+assert.match(browser, /required: \["first_name", "last_name", "phone", "email", "privacy_consent"\]/);
+assert.match(browser, /field\("email", "Email \*", "email", "required autocomplete=email"\)/);
 assert.match(browser, /appointment_confirmed/);
+assert.match(edge, /validEmail\(data\.email\)/);
 assert.match(edge, /last_submission_hash/);
 assert.match(edge, /book_seller_diagnostic_appointment/);
 assert.match(edge, /seller_lead/);
@@ -35,4 +39,6 @@ assert.match(migration, /is_foncier_admin/);
 assert.match(migration, /pg_advisory_xact_lock/);
 assert.match(admin, /seller_diagnostic_leads/);
 assert.match(sheet, /seller_lead/);
-console.log("seller-diagnostic: 22 assertions réussies");
+assert.match(sellerPage, /href="\/pourquoi-mon-bien-ne-se-vend-pas\.html"/);
+assert.match(sellerPage, /Votre bien ne se vend pas/);
+console.log("seller-diagnostic: 27 assertions réussies");

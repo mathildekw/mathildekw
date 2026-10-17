@@ -74,6 +74,23 @@
       box-shadow: 0 8px 18px rgba(35,24,17,.055);
     }
     .seo-page.seller-ads-page .hero-phone-link span { color: var(--muted); font-weight: 700; }
+    .seo-page.seller-ads-page .seller-diagnostic-callout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 24px;
+      margin-top: 28px;
+      padding: clamp(24px, 4vw, 40px);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 28px;
+      background: #0b2728;
+      color: #fff;
+      box-shadow: 0 20px 50px rgba(11,39,40,.14);
+    }
+    .seo-page.seller-ads-page .seller-diagnostic-callout .eyebrow { color: #bfff6c; }
+    .seo-page.seller-ads-page .seller-diagnostic-callout h2 { margin: 8px 0 10px; color: #fff; }
+    .seo-page.seller-ads-page .seller-diagnostic-callout p:not(.eyebrow) { max-width: 700px; margin: 0; color: rgba(255,255,255,.76); }
+    .seo-page.seller-ads-page .seller-diagnostic-callout .btn { min-width: 230px; margin: 0; background: #bfff6c; color: #0b2728; border-color: #bfff6c; }
     .seo-page.seller-ads-page .seller-review-proof,
     .seo-page.seller-ads-page .seller-review-proof strong { color: #fff; }
     .seo-page.seller-ads-page .seller-review-proof p { color: rgba(255,255,255,.78); }
@@ -298,6 +315,8 @@
       .seo-page.seller-ads-page .seller-contact-choice-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 860px) {
+      .seo-page.seller-ads-page .seller-diagnostic-callout { grid-template-columns: 1fr; gap: 18px; border-radius: 22px; }
+      .seo-page.seller-ads-page .seller-diagnostic-callout .btn { width: 100%; min-width: 0; }
       .seo-page.seller-ads-page .seller-photo-card {
         order: 2;
         width: min(100%, 350px);
@@ -343,6 +362,14 @@
           <a class="hero-phone-link" href="tel:+68988078247" data-event="click_call_seller_hero" data-conversion="appel"><span>Tu préfères simplement échanger par téléphone ?</span> 📞 Appeler Mathilde</a>
         </div>
         <aside class="seller-photo-card" aria-label="Mathilde KW, conseillère immobilière KW Polynésie"><img src="/mathilde-avatar.jpg" alt="Mathilde KW, conseillère immobilière KW Polynésie à Tahiti" loading="eager" fetchpriority="high"><div><strong>Mathilde KW</strong><span>Conseillère immobilière KW Polynésie</span></div></aside>
+      </div>
+      <div class="wrap seller-diagnostic-callout" aria-labelledby="seller-diagnostic-title">
+        <div>
+          <p class="eyebrow">Bien déjà en vente</p>
+          <h2 id="seller-diagnostic-title">Votre bien ne se vend pas&nbsp;?</h2>
+          <p>Fais le point sur les visites, les offres, la présentation et le positionnement de ton bien grâce à un premier diagnostic gratuit, prudent et sans engagement.</p>
+        </div>
+        <a class="btn primary" href="/pourquoi-mon-bien-ne-se-vend-pas.html" data-event="click_seller_diagnostic_callout" data-conversion="diagnostic-vendeur">Faire mon diagnostic gratuit</a>
       </div>
     </section>
 

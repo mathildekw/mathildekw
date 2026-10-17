@@ -36,6 +36,7 @@ test("le diagnostic vendeur complet crée un lead puis un rendez-vous", async ({
   await page.getByLabel("Prénom *").fill("Malia");
   await page.getByLabel("Nom *", { exact: true }).fill("Test-Fictif");
   await page.getByLabel("Téléphone *").fill("+689 87 00 00 00");
+  await page.getByLabel("Email *").fill("malia.test@example.invalid");
   await page.getByLabel(/J'accepte le traitement/).check();
   await page.getByRole("button", { name: /Continuer/ }).click();
   await expect(page.getByText(/Ton bien suscite un certain intérêt/)).toBeVisible();
@@ -48,7 +49,7 @@ test("le diagnostic vendeur complet crée un lead puis un rendez-vous", async ({
 test("une panne serveur conserve les réponses et affiche une erreur utile", async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem("mk_analytics_consent", "denied");
-    localStorage.setItem("mk_seller_diagnostic_v1", JSON.stringify({ property_type:"Maison", island:"Tahiti", commune:"Commune fictive", sale_duration:"3 à 6 mois", sale_method:"Je vends seul", mandate_active:"Non", diffusion_channels:["Sites immobiliers"], presentation_assets:[], visits_level:"Quelques visites", offers_status:"Aucune", feedback:["Aucun retour"], objective:"Vendre dans les 3 mois", first_name:"Malia", last_name:"Test-Fictif", phone:"87000000", privacy_consent:true }));
+    localStorage.setItem("mk_seller_diagnostic_v1", JSON.stringify({ property_type:"Maison", island:"Tahiti", commune:"Commune fictive", sale_duration:"3 à 6 mois", sale_method:"Je vends seul", mandate_active:"Non", diffusion_channels:["Sites immobiliers"], presentation_assets:[], visits_level:"Quelques visites", offers_status:"Aucune", feedback:["Aucun retour"], objective:"Vendre dans les 3 mois", first_name:"Malia", last_name:"Test-Fictif", phone:"87000000", email:"malia.test@example.invalid", privacy_consent:true }));
   });
   await page.route("**/seller-diagnostic/leads", (route) => route.fulfill({ status: 503, contentType: "application/json", body: JSON.stringify({ error: "indisponible" }) }));
   await page.goto("/pourquoi-mon-bien-ne-se-vend-pas.html");
