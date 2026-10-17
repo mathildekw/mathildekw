@@ -84,3 +84,25 @@ if (document.readyState === "loading") {
 } else {
   initFoncierMobileFix();
 }
+
+// Connect the financing simulation with the existing buyer journey without
+// duplicating page-specific navigation or personal data in URLs.
+var initBuyerFinancingBridge = function () {
+  if (!document.body || !document.body.classList.contains("buyer-funnel-page")) return;
+  var shell = document.querySelector(".buyer-funnel-shell .buyer-wrap");
+  var form = document.querySelector("[data-buyer-form]");
+  if (shell && form && !document.querySelector("[data-financing-bridge]")) {
+    var card = document.createElement("aside");
+    card.className = "buyer-form-card";
+    card.dataset.financingBridge = "";
+    card.style.marginBottom = "24px";
+    card.innerHTML = '<p class="buyer-kicker">Avant de chercher</p><h2>Tu ne connais pas encore ton budget&nbsp;?</h2><p class="buyer-step-intro">Estime ta capacité d\'emprunt en 2 minutes, gratuitement et sans engagement.</p><a class="buyer-btn" href="/capacite-emprunt-polynesie.html">Calculer ma capacité</a>';
+    shell.insertBefore(card, form);
+  }
+  var handoff = document.createElement("script");
+  handoff.src = "/buyer-handoff.js?v=1";
+  handoff.defer = true;
+  document.head.appendChild(handoff);
+};
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initBuyerFinancingBridge, { once: true });
+else initBuyerFinancingBridge();
