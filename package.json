@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tests/ui-structure.test.mjs && node tests/global-shell.test.mjs && node tests/finance-calculators.test.mjs && node tests/foncier-engine.test.mjs && node tests/te-fenua.test.mjs && node tests/prospecting-engine.test.mjs && node tests/conversion-funnel.test.mjs && node tests/buyer-funnel.test.mjs && node tests/financing-funnel.test.mjs && node tests/join-hub.test.mjs && node tests/seller-diagnostic.test.mjs && node tests/horizon-demo.test.mjs && node tests/horizon-v2.test.mjs && node tests/foncier-workflows.test.mjs",
+    "test": "node tests/ui-structure.test.mjs && node tests/global-shell.test.mjs && node tests/sales-architecture.test.mjs && node tests/finance-calculators.test.mjs && node tests/foncier-engine.test.mjs && node tests/te-fenua.test.mjs && node tests/prospecting-engine.test.mjs && node tests/conversion-funnel.test.mjs && node tests/buyer-funnel.test.mjs && node tests/financing-funnel.test.mjs && node tests/join-hub.test.mjs && node tests/seller-diagnostic.test.mjs && node tests/horizon-demo.test.mjs && node tests/horizon-v2.test.mjs && node tests/foncier-workflows.test.mjs",
     "audit:headings": "node scripts/audit-page-headings.mjs --check",
     "build": "pnpm test",
     "test:visual": "playwright test",

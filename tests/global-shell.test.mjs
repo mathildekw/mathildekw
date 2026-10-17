@@ -6,8 +6,10 @@ const root = new URL("../", import.meta.url);
 const shell = await readFile(new URL("global-shell.js", root), "utf8");
 const css = await readFile(new URL("global-shell.css", root), "utf8");
 
-for (const label of ["Accueil", "Nos biens", "Vendre", "Estimer", "Foncier & Promotion", "Contact"])
+for (const label of ["Vendre", "Acheter", "Guide", "Nous rejoindre", "Contact"])
   assert.match(shell, new RegExp(`label:\"${label.replace("&", "&")}\"`));
+for (const destination of ["/vendre/nos-accompagnements/", "/guide/", "/capacite-emprunt-polynesie.html"])
+  assert.ok(shell.includes(destination), `Destination commerciale manquante : ${destination}`);
 for (const behavior of ["aria-expanded", "Escape", "popstate", "mk-menu-open", "aria-current"])
   assert.ok(shell.includes(behavior), `Comportement manquant : ${behavior}`);
 assert.ok(css.includes("--mk-shell-z:10000"), "Le menu doit rester au-dessus des scènes 3D");
