@@ -1,0 +1,52 @@
+:root{--rental-dark:#0b2728;--rental-cream:#f5f0e7;--rental-paper:#fffdf8;--rental-coral:#de735a;--rental-lime:#c9ff72;--rental-line:#d4c8b8;--rental-muted:#647074}
+html:has(body.rental-page),body.rental-page{overflow-x:clip}
+.rental-page .rental-hero{background:var(--rental-dark);color:#fff;overflow:hidden}
+.rental-page .rental-hero-grid{min-height:680px;display:grid;grid-template-columns:1.15fr .65fr;gap:80px;align-items:center;padding:86px 0}
+.rental-page .rental-hero h1{max-width:850px;margin:18px 0 28px;color:#fff;font-size:clamp(58px,7vw,102px)}
+.rental-page .rental-hero .lead{max-width:690px;color:#ffffffbf}
+.rental-page .rental-hero aside{padding:38px;border:1px solid #ffffff2b;background:#ffffff0d}
+.rental-page .rental-hero aside>span{color:var(--rental-lime);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.15em}
+.rental-page .rental-hero aside strong{display:block;margin:20px 0;font:500 38px/1 "Cormorant Garamond",serif}
+.rental-page .rental-hero aside p{color:#ffffffa6;line-height:1.7}
+.rental-page .rental-route{background:var(--rental-lime)}
+.rental-page .rental-route-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.rental-page .rental-route-grid>div{padding:30px;border-right:1px solid #0b27282b}
+.rental-page .rental-route-grid>div:first-child{border-left:1px solid #0b27282b}
+.rental-page .rental-route span,.rental-page .rental-points span{font:600 25px "Cormorant Garamond",serif}
+.rental-page .rental-route strong{display:block;margin:10px 0;font-size:15px}.rental-page .rental-route p{margin:0;font-size:12px;line-height:1.6}
+.rental-page .rental-included{background:var(--rental-paper)}
+.rental-page .rental-included-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--rental-line)}
+.rental-page .rental-included-list li{display:grid;grid-template-columns:90px minmax(0,1fr);gap:28px;padding:31px 0;border-bottom:1px solid var(--rental-line)}
+.rental-page .rental-included-list span{color:var(--rental-coral);font:600 25px "Cormorant Garamond",serif}
+.rental-page .rental-included-list h3{margin:0 0 8px;font-size:clamp(24px,2.3vw,34px)}
+.rental-page .rental-included-list p{max-width:850px;margin:0;color:var(--rental-muted);line-height:1.7}
+.rental-page .rental-included-footer{display:flex;align-items:center;justify-content:space-between;gap:36px;padding-top:34px}
+.rental-page .rental-included-footer p{max-width:680px;margin:0;color:var(--rental-muted);font-size:12px;line-height:1.7}
+.rental-page .rental-included-footer .btn{flex:none}
+.rental-page .rental-editorial{display:grid;grid-template-columns:.7fr 1.3fr;gap:80px}
+.rental-page .rental-editorial h2{margin-top:10px}
+.rental-page .rental-points{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rental-line);border-left:1px solid var(--rental-line)}
+.rental-page .rental-points article{min-height:250px;padding:30px;border-right:1px solid var(--rental-line);border-bottom:1px solid var(--rental-line)}
+.rental-page .rental-points span{color:var(--rental-coral)}.rental-page .rental-points h3{font-size:28px;margin:34px 0 12px}.rental-page .rental-points p{color:var(--rental-muted);line-height:1.7}
+.rental-page .rental-fees{background:#e9dfd1}.rental-page .rental-section-head{display:grid;grid-template-columns:1fr .9fr;gap:50px;align-items:end;margin-bottom:42px}.rental-page .rental-section-head h2{margin:8px 0 0}.rental-page .rental-section-head>p{color:var(--rental-muted);line-height:1.7}
+.rental-page .rental-fee-grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--rental-line);border-left:1px solid var(--rental-line)}
+.rental-page .rental-fee-grid article{min-height:210px;padding:30px;border-right:1px solid var(--rental-line);border-bottom:1px solid var(--rental-line);background:#ffffff73}.rental-page .rental-fee-grid .rental-fee-main{grid-column:span 2;background:var(--rental-dark);color:#fff}
+.rental-page .rental-fee-grid span{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.rental-page .rental-fee-grid strong{display:block;margin:22px 0 8px;font:500 52px "Cormorant Garamond",serif}.rental-page .rental-fee-main strong{color:var(--rental-lime);font-size:70px}.rental-page .rental-fee-grid p{margin:0;line-height:1.65}.rental-page .rental-fee-note{max-width:900px;color:var(--rental-muted);font-size:12px;line-height:1.7;margin-top:22px}
+.rental-page .rental-landlord-guide{background:var(--rental-paper)}
+.rental-page .rental-advice-grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--rental-line);border-left:1px solid var(--rental-line)}
+.rental-page .rental-advice-grid article{padding:clamp(26px,4vw,42px);border-right:1px solid var(--rental-line);border-bottom:1px solid var(--rental-line)}
+.rental-page .rental-advice-grid .rental-advice-feature{grid-column:1/-1;background:var(--rental-dark);color:#fff}
+.rental-page .rental-advice-grid span{color:var(--rental-coral);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
+.rental-page .rental-advice-feature span{color:var(--rental-lime)}
+.rental-page .rental-advice-feature h3{color:#fff!important}
+.rental-page .rental-advice-grid h3{margin:18px 0 12px;font-size:clamp(28px,3vw,42px)}
+.rental-page .rental-advice-grid p{max-width:920px;margin:0;color:var(--rental-muted);line-height:1.7}
+.rental-page .rental-advice-feature p{color:#ffffffbd}
+.rental-page .rental-advice-grid a{display:inline-block;margin-top:18px;font-weight:800;text-decoration:underline;text-underline-offset:4px}
+.rental-page .rental-advice-feature a{color:#fff}
+.rental-page .rental-advice-grid .rental-sources{margin-top:20px;font-size:12px}
+.rental-page .rental-form-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:70px}.rental-page .rental-form-copy h2{margin:10px 0 22px}.rental-page .rental-form-copy>p{color:var(--rental-muted);line-height:1.7}.rental-page .rental-form-copy ul{padding:0;list-style:none}.rental-page .rental-form-copy li{padding:14px 0;border-bottom:1px solid var(--rental-line)}
+.rental-page .rental-form{padding:clamp(26px,4vw,46px);background:#fff;border:1px solid var(--rental-line)}.rental-page .rental-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}.rental-page .rental-form-grid p{display:grid;gap:8px;margin:0}.rental-page .rental-form-grid .full{grid-column:1/-1}.rental-page .rental-form textarea{resize:vertical}.rental-page .rental-form button{margin-top:22px}.rental-page .rental-consent{display:flex!important;grid-template-columns:auto 1fr!important;align-items:flex-start;gap:10px!important;font-size:12px;line-height:1.6;text-transform:none!important;letter-spacing:0!important}.rental-page .rental-consent input{width:auto!important;margin-top:3px}.rental-page .rental-honeypot{position:absolute;left:-10000px}.rental-page .rental-status{font-weight:700;line-height:1.6}.rental-page .rental-status.success{color:#19614b}.rental-page .rental-status.error{color:#a5231d}
+.rental-page .rental-faq{background:#eee7dc}
+@media(max-width:900px){.rental-page .rental-hero-grid,.rental-page .rental-editorial,.rental-page .rental-form-layout{grid-template-columns:1fr}.rental-page .rental-hero-grid{min-height:0;gap:35px}.rental-page .rental-section-head{grid-template-columns:1fr;gap:12px}}
+@media(max-width:720px){.rental-page .rental-route-grid,.rental-page .rental-points,.rental-page .rental-fee-grid,.rental-page .rental-advice-grid,.rental-page .rental-form-grid{grid-template-columns:1fr}.rental-page .rental-route-grid>div{border-left:0!important;border-right:0;border-bottom:1px solid #0b27282b}.rental-page .rental-included-list li{grid-template-columns:48px 1fr;gap:14px}.rental-page .rental-included-footer{align-items:flex-start;flex-direction:column}.rental-page .rental-included-footer .btn{width:100%}.rental-page .rental-fee-grid .rental-fee-main,.rental-page .rental-advice-grid .rental-advice-feature{grid-column:auto}.rental-page .rental-form-grid .full{grid-column:auto}.rental-page .rental-hero-grid{padding:60px 0}.rental-page .rental-hero h1{font-size:50px}}

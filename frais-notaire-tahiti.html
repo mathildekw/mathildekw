@@ -15,14 +15,44 @@
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Frais de notaire à Tahiti en 2026"><meta name="twitter:description" content="Les postes à prévoir pour calculer le vrai budget d'un achat immobilier en Polynésie.">
   <link rel="icon" href="/favicon.ico"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20260810-mobile-home-fix"><link rel="stylesheet" href="/inner-2026.css?v=1">
+  <link rel="stylesheet" href="/styles.css?v=20260810-mobile-home-fix"><link rel="stylesheet" href="/inner-2026.css?v=5">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Frais de notaire à Tahiti en 2026 : comprendre et préparer son budget","description":"Guide des frais d'acquisition immobilière en Polynésie française.","datePublished":"2026-10-18","dateModified":"2026-10-18","mainEntityOfPage":"https://mathildekw.com/frais-notaire-tahiti.html","author":{"@type":"Person","name":"Mathilde TUDURI","url":"https://mathildekw.com/"},"publisher":{"@id":"https://mathildekw.com/#realestateagent"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://mathildekw.com/"},{"@type":"ListItem","position":2,"name":"Guide immobilier","item":"https://mathildekw.com/guide/"},{"@type":"ListItem","position":3,"name":"Frais de notaire à Tahiti","item":"https://mathildekw.com/frais-notaire-tahiti.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Les frais de notaire sont-ils compris dans le prix affiché ?","acceptedAnswer":{"@type":"Answer","text":"Non, sauf indication particulière. Ils doivent généralement être ajoutés au prix du bien et aux autres coûts du projet."}},{"@type":"Question","name":"Peut-on connaître le montant exact avant de signer ?","acceptedAnswer":{"@type":"Answer","text":"Le notaire peut établir une estimation adaptée au bien, au prix, au montage et à la situation de l'acquéreur."}},{"@type":"Question","name":"Les frais sont-ils identiques pour une maison et un terrain ?","acceptedAnswer":{"@type":"Answer","text":"Pas nécessairement. La nature du bien, l'opération et certains régimes applicables peuvent modifier le calcul."}}]}]}</script>
   <script defer src="/analytics.js?v=1"></script>
 </head>
-<body class="seo-page article-page">
+<body class="seo-page article-page notary-page">
   <header class="topbar"><nav class="nav wrap" aria-label="Navigation principale"><a class="brand text-brand" href="/"><span><strong>Mathilde KW</strong><span>Conseillère immobilière</span></span></a></nav></header>
   <main>
     <section class="hero"><div class="wrap hero-grid"><div><p class="eyebrow">Guide acheteur · Polynésie française</p><h1>Frais de notaire à Tahiti : quel budget prévoir en plus du prix du bien&nbsp;?</h1><p class="lead">Le prix affiché n'est pas le coût total de ton achat. Les frais d'acquisition, le financement, les éventuels travaux et les charges à venir doivent être intégrés avant de faire une offre.</p><div class="lead-proof-list"><span>Budget complet</span><span>Repères locaux</span><span>Sources notariales</span></div><div class="cta-row"><a class="btn primary" href="#comprendre">Comprendre les frais</a><a class="btn ghost" href="/capacite-emprunt-polynesie.html">Calculer ma capacité</a></div></div><aside class="visual-card estimation-card"><div class="visual-top"><span>À retenir</span><strong>Le montant exact dépend de chaque opération</strong></div><div class="visual-body"><p>Un pourcentage trouvé en ligne donne seulement un ordre de grandeur. Le notaire reste l'interlocuteur à consulter pour obtenir un décompte adapté au bien et à ta situation.</p></div></aside></div></section>
+
+    <section class="section notary-calculator-section" id="simulateur">
+      <div class="wrap">
+        <header class="section-head"><p class="eyebrow">Simulateur gratuit</p><h2>Estime tes frais d’acquisition</h2><p>Renseigne les éléments connus. Le calcul reprend les principaux régimes présentés dans le simulateur interne KW Polynésie, avec un résultat volontairement indicatif.</p></header>
+        <form class="notary-calculator" data-notary-calculator>
+          <div class="notary-fields">
+            <p class="notary-field full"><label for="notary-price">Prix de vente FAI — F CFP</label><input id="notary-price" name="price" type="number" inputmode="numeric" min="1000000" step="100000" value="50000000" required></p>
+            <p class="notary-field"><label for="notary-agency">Honoraires d’agence inclus</label><input id="notary-agency" name="agencyFees" type="number" inputmode="numeric" min="0" step="50000" value="0"></p>
+            <p class="notary-field"><label for="notary-furniture">Mobilier valorisé dans l’acte</label><input id="notary-furniture" name="furniture" type="number" inputmode="numeric" min="0" step="50000" value="0"></p>
+            <p class="notary-field"><label for="notary-property">Nature de l’acquisition</label><select id="notary-property" name="propertyType"><option value="existing">Bien ancien ou terrain</option><option value="new">Habitation neuve — droits réduits</option><option value="vefa">VEFA soumise à TVA</option></select></p>
+            <p class="notary-field"><label for="notary-buyer">Situation de l’acquéreur</label><select id="notary-buyer" name="buyerStatus"><option value="standard">Acquisition classique</option><option value="firstBuilt">Primo-accédant — bien construit</option><option value="firstLand">Primo-accédant — terrain</option></select></p>
+            <button class="btn primary full" type="submit" data-event="notary_calculator_completed">Calculer mes frais</button>
+            <p class="notary-help">Les honoraires d’agence et le mobilier doivent uniquement être indiqués lorsqu’ils sont inclus et clairement ventilés dans le prix affiché.</p>
+          </div>
+          <aside class="notary-result" aria-live="polite">
+            <p class="eyebrow">Estimation</p>
+            <span>Frais d’acquisition estimés</span><strong data-notary-total>—</strong>
+            <dl>
+              <div><dt>Base immobilière estimée</dt><dd data-notary-base>—</dd></div>
+              <div><dt>Droits et taxes</dt><dd data-notary-taxes>—</dd></div>
+              <div><dt>Acte, formalités et débours</dt><dd data-notary-act>—</dd></div>
+              <div><dt>Part du prix de vente</dt><dd data-notary-percent>—</dd></div>
+              <div class="notary-grand-total"><dt>Budget total achat + frais</dt><dd data-notary-budget>—</dd></div>
+            </dl>
+            <p class="notary-result-note" data-notary-note>Complète le formulaire pour obtenir une première estimation.</p>
+          </aside>
+        </form>
+        <p class="notary-disclaimer"><strong>Important :</strong> estimation non contractuelle fondée sur les principaux paramètres du barème communiqué par KW Polynésie. Les situations particulières, garanties bancaires, actes annexes et évolutions réglementaires peuvent modifier le montant. Seul le décompte du notaire fait foi.</p>
+      </div>
+    </section>
 
     <section class="section alt" id="comprendre"><div class="wrap"><div class="section-head"><p class="eyebrow">Réponse rapide</p><h2>Que recouvrent les « frais de notaire »&nbsp;?</h2><p>Cette expression regroupe plusieurs éléments. Tout ne correspond pas à la rémunération du notaire : une partie couvre notamment les droits, taxes, formalités et débours nécessaires à la vente.</p></div><div class="conversion-panel"><div><strong>Droits et taxes</strong><span>Sommes collectées dans le cadre de la mutation immobilière.</span></div><div><strong>Débours et formalités</strong><span>Pièces, vérifications, publications et interventions nécessaires au dossier.</span></div><div><strong>Émoluments</strong><span>Rémunération réglementée ou liée aux actes accomplis par l'étude.</span></div></div></div></section>
 
@@ -34,6 +64,6 @@
 
     <section class="section alt"><div class="wrap"><div class="section-head"><p class="eyebrow">Questions fréquentes</p><h2>Frais d'achat immobilier à Tahiti</h2></div><div class="faq-mini"><details open><summary>Les frais de notaire sont-ils compris dans le prix affiché&nbsp;?</summary><p>Non, sauf indication particulière. Ils doivent généralement être ajoutés au prix du bien et aux autres coûts du projet.</p></details><details><summary>Peut-on connaître le montant exact avant de signer&nbsp;?</summary><p>Oui, l'étude notariale peut préparer une estimation adaptée aux informations du dossier. Demande-la suffisamment tôt pour sécuriser ton plan de financement.</p></details><details><summary>Les frais sont-ils identiques pour une maison et un terrain&nbsp;?</summary><p>Pas nécessairement. La nature du bien, le type d'opération et les éventuels régimes applicables doivent être vérifiés.</p></details><details><summary>Mathilde remplace-t-elle le conseil du notaire&nbsp;?</summary><p>Non. Je peux t'aider à construire un budget immobilier cohérent et à coordonner les étapes, mais seul le notaire sécurise le calcul et l'acte pour ton dossier.</p></details></div><div class="cta-row section-cta"><a class="btn primary" href="/acheter-bien-immobilier-tahiti.html">Décrire ma recherche</a><a class="btn ghost" href="/biens-a-vendre-tahiti.html">Voir les biens disponibles</a></div></div></section>
   </main>
-  <footer class="footer"></footer><script src="/site.js" defer></script>
+  <footer class="footer"></footer><script src="/site.js" defer></script><script src="/notary-calculator.js?v=1" defer></script>
 </body>
 </html>

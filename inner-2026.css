@@ -198,6 +198,12 @@ body.seo-page.seller-ads-page .seller-badges span:before{color:var(--kw-lime)!im
 body.seo-page.airy-properties-page .properties-hero-inner>div:first-child{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:#fff!important;padding:0!important}
 body.seo-page.airy-properties-page .properties-hero{background:var(--kw-dark)!important}
 body.seo-page.airy-properties-page .properties-hero-inner h1{color:#fff!important}
+
+/* Reusable contrast guardrail for every present and future dark content surface. */
+body.seo-page :is(.surface-dark,[data-surface="dark"]){color:#fff}
+body.seo-page :is(.surface-dark,[data-surface="dark"]) :is(h1,h2,h3,h4,h5,h6,strong){color:inherit!important}
+body.seo-page :is(.surface-dark,[data-surface="dark"]) :is(p,li,small){color:rgba(255,255,255,.82)!important}
+body.seo-page :is(.surface-dark,[data-surface="dark"]) a{color:#fff!important}
 body.seo-page.airy-properties-page .properties-hero-inner .lead{color:rgba(255,255,255,.74)!important}
 body.seo-page.airy-properties-page .properties-mini-card{background:rgba(255,255,255,.09)!important;border-color:rgba(255,255,255,.16)!important;color:#fff!important}
 body.seo-page.airy-properties-page .properties-mini-card strong{color:#fff!important}
@@ -236,6 +242,28 @@ body.blog-index-page .blog-article-featured p:not(.eyebrow){color:rgba(255,255,2
 body.blog-index-page .blog-read{display:inline-flex;align-items:center;gap:14px;margin-top:28px;color:inherit;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
 body.blog-index-page .blog-read b{font-size:20px;line-height:1;transition:transform .2s ease}
 body.blog-index-page .blog-article:hover .blog-read b{transform:translateX(5px)}
+
+/* Simulateur des frais d'acquisition en Polynésie */
+html:has(body.notary-page),body.notary-page{overflow-x:clip}
+body.notary-page .notary-calculator-section{background:#ebe2d5}
+body.notary-page .notary-calculator{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.78fr);gap:0;border:1px solid #cfc3b3;background:#fff}
+body.notary-page .notary-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;padding:clamp(28px,4vw,50px)}
+body.notary-page .notary-field{display:grid;gap:8px;margin:0}
+body.notary-page .notary-field.full,body.notary-page .notary-fields>.full,body.notary-page .notary-help{grid-column:1/-1}
+body.notary-page .notary-field label{color:var(--kw-ink)}
+body.notary-page .notary-field input,body.notary-page .notary-field select{min-height:54px;font-size:16px}
+body.notary-page .notary-help{margin:0;color:var(--kw-muted);font-size:12px;line-height:1.6}
+body.notary-page .notary-result{padding:clamp(30px,4vw,52px);background:var(--kw-dark);color:#fff}
+body.notary-page .notary-result>.eyebrow{color:var(--kw-lime)!important}
+body.notary-page .notary-result>span{display:block;color:rgba(255,255,255,.68);font-size:13px}
+body.notary-page .notary-result>strong{display:block;margin:10px 0 30px;color:#fff;font:500 clamp(40px,5vw,63px)/.95 "Cormorant Garamond",serif}
+body.notary-page .notary-result dl{margin:0}
+body.notary-page .notary-result dl div{display:flex;justify-content:space-between;gap:24px;padding:14px 0;border-top:1px solid rgba(255,255,255,.14)}
+body.notary-page .notary-result dt{color:rgba(255,255,255,.68);font-size:12px}
+body.notary-page .notary-result dd{margin:0;text-align:right;font-weight:800}
+body.notary-page .notary-result .notary-grand-total{margin-top:8px;border-top-color:var(--kw-lime);color:var(--kw-lime)}
+body.notary-page .notary-result-note{margin:24px 0 0;color:rgba(255,255,255,.62);font-size:11px;line-height:1.6}
+body.notary-page .notary-disclaimer{max-width:980px;margin:22px 0 0;color:var(--kw-muted);font-size:12px;line-height:1.65}
 @media(max-width:900px){
   body.seo-page .topbar{position:relative!important;top:auto!important;right:auto!important}
   body.seo-page .nav{width:calc(100% - 28px)!important;min-height:78px!important;flex-direction:row!important;align-items:center!important}
@@ -245,6 +273,7 @@ body.blog-index-page .blog-article:hover .blog-read b{transform:translateX(5px)}
   body.seo-page .nav .menu.open{display:flex!important}
   body.seo-page .nav .menu a{width:100%!important;text-align:center!important;padding:12px!important;border:1px solid rgba(255,255,255,.12)!important}
   body.blog-index-page .blog-section-head{grid-template-columns:1fr;gap:14px}
+  body.notary-page .notary-calculator{grid-template-columns:1fr}
 }
 @media(max-width:720px){
   body.blog-index-page .blog-topics-inner{grid-template-columns:1fr}
@@ -252,4 +281,8 @@ body.blog-index-page .blog-article:hover .blog-read b{transform:translateX(5px)}
   body.blog-index-page .blog-article-grid{grid-template-columns:1fr}
   body.blog-index-page .blog-article,body.blog-index-page .blog-article-featured{grid-column:auto;grid-template-columns:34px 1fr;min-height:0;padding:26px 20px;gap:14px}
   body.blog-index-page .blog-article h3{font-size:31px}
+  body.notary-page .notary-fields{grid-template-columns:1fr;padding:24px 18px}
+  body.notary-page .notary-field.full,body.notary-page .notary-fields>.full,body.notary-page .notary-help{grid-column:auto}
+  body.notary-page .notary-result dl div{align-items:flex-start;flex-direction:column;gap:6px}
+  body.notary-page .notary-result dd{text-align:left}
 }
