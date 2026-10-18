@@ -14,6 +14,15 @@ html:has(body.rental-page),body.rental-page{overflow-x:clip}
 .rental-page .rental-route-grid>div:first-child{border-left:1px solid #0b27282b}
 .rental-page .rental-route span,.rental-page .rental-points span{font:600 25px "Cormorant Garamond",serif}
 .rental-page .rental-route strong{display:block;margin:10px 0;font-size:15px}.rental-page .rental-route p{margin:0;font-size:12px;line-height:1.6}
+.rental-page .rental-included{background:var(--rental-paper)}
+.rental-page .rental-included-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--rental-line)}
+.rental-page .rental-included-list li{display:grid;grid-template-columns:90px minmax(0,1fr);gap:28px;padding:31px 0;border-bottom:1px solid var(--rental-line)}
+.rental-page .rental-included-list span{color:var(--rental-coral);font:600 25px "Cormorant Garamond",serif}
+.rental-page .rental-included-list h3{margin:0 0 8px;font-size:clamp(24px,2.3vw,34px)}
+.rental-page .rental-included-list p{max-width:850px;margin:0;color:var(--rental-muted);line-height:1.7}
+.rental-page .rental-included-footer{display:flex;align-items:center;justify-content:space-between;gap:36px;padding-top:34px}
+.rental-page .rental-included-footer p{max-width:680px;margin:0;color:var(--rental-muted);font-size:12px;line-height:1.7}
+.rental-page .rental-included-footer .btn{flex:none}
 .rental-page .rental-editorial{display:grid;grid-template-columns:.7fr 1.3fr;gap:80px}
 .rental-page .rental-editorial h2{margin-top:10px}
 .rental-page .rental-points{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rental-line);border-left:1px solid var(--rental-line)}
@@ -27,4 +36,4 @@ html:has(body.rental-page),body.rental-page{overflow-x:clip}
 .rental-page .rental-form{padding:clamp(26px,4vw,46px);background:#fff;border:1px solid var(--rental-line)}.rental-page .rental-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}.rental-page .rental-form-grid p{display:grid;gap:8px;margin:0}.rental-page .rental-form-grid .full{grid-column:1/-1}.rental-page .rental-form textarea{resize:vertical}.rental-page .rental-form button{margin-top:22px}.rental-page .rental-consent{display:flex!important;grid-template-columns:auto 1fr!important;align-items:flex-start;gap:10px!important;font-size:12px;line-height:1.6;text-transform:none!important;letter-spacing:0!important}.rental-page .rental-consent input{width:auto!important;margin-top:3px}.rental-page .rental-honeypot{position:absolute;left:-10000px}.rental-page .rental-status{font-weight:700;line-height:1.6}.rental-page .rental-status.success{color:#19614b}.rental-page .rental-status.error{color:#a5231d}
 .rental-page .rental-faq{background:#eee7dc}
 @media(max-width:900px){.rental-page .rental-hero-grid,.rental-page .rental-editorial,.rental-page .rental-form-layout{grid-template-columns:1fr}.rental-page .rental-hero-grid{min-height:0;gap:35px}.rental-page .rental-section-head{grid-template-columns:1fr;gap:12px}}
-@media(max-width:720px){.rental-page .rental-route-grid,.rental-page .rental-points,.rental-page .rental-fee-grid,.rental-page .rental-form-grid{grid-template-columns:1fr}.rental-page .rental-route-grid>div{border-left:0!important;border-right:0;border-bottom:1px solid #0b27282b}.rental-page .rental-fee-grid .rental-fee-main{grid-column:auto}.rental-page .rental-form-grid .full{grid-column:auto}.rental-page .rental-hero-grid{padding:60px 0}.rental-page .rental-hero h1{font-size:50px}}
+@media(max-width:720px){.rental-page .rental-route-grid,.rental-page .rental-points,.rental-page .rental-fee-grid,.rental-page .rental-form-grid{grid-template-columns:1fr}.rental-page .rental-route-grid>div{border-left:0!important;border-right:0;border-bottom:1px solid #0b27282b}.rental-page .rental-included-list li{grid-template-columns:48px 1fr;gap:14px}.rental-page .rental-included-footer{align-items:flex-start;flex-direction:column}.rental-page .rental-included-footer .btn{width:100%}.rental-page .rental-fee-grid .rental-fee-main{grid-column:auto}.rental-page .rental-form-grid .full{grid-column:auto}.rental-page .rental-hero-grid{padding:60px 0}.rental-page .rental-hero h1{font-size:50px}}
