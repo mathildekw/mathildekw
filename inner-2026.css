@@ -198,6 +198,12 @@ body.seo-page.seller-ads-page .seller-badges span:before{color:var(--kw-lime)!im
 body.seo-page.airy-properties-page .properties-hero-inner>div:first-child{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:#fff!important;padding:0!important}
 body.seo-page.airy-properties-page .properties-hero{background:var(--kw-dark)!important}
 body.seo-page.airy-properties-page .properties-hero-inner h1{color:#fff!important}
+
+/* Reusable contrast guardrail for every present and future dark content surface. */
+body.seo-page :is(.surface-dark,[data-surface="dark"]){color:#fff}
+body.seo-page :is(.surface-dark,[data-surface="dark"]) :is(h1,h2,h3,h4,h5,h6,strong){color:inherit!important}
+body.seo-page :is(.surface-dark,[data-surface="dark"]) :is(p,li,small){color:rgba(255,255,255,.82)!important}
+body.seo-page :is(.surface-dark,[data-surface="dark"]) a{color:#fff!important}
 body.seo-page.airy-properties-page .properties-hero-inner .lead{color:rgba(255,255,255,.74)!important}
 body.seo-page.airy-properties-page .properties-mini-card{background:rgba(255,255,255,.09)!important;border-color:rgba(255,255,255,.16)!important;color:#fff!important}
 body.seo-page.airy-properties-page .properties-mini-card strong{color:#fff!important}

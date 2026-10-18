@@ -38,6 +38,7 @@ html:has(body.rental-page),body.rental-page{overflow-x:clip}
 .rental-page .rental-advice-grid .rental-advice-feature{grid-column:1/-1;background:var(--rental-dark);color:#fff}
 .rental-page .rental-advice-grid span{color:var(--rental-coral);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
 .rental-page .rental-advice-feature span{color:var(--rental-lime)}
+.rental-page .rental-advice-feature h3{color:#fff!important}
 .rental-page .rental-advice-grid h3{margin:18px 0 12px;font-size:clamp(28px,3vw,42px)}
 .rental-page .rental-advice-grid p{max-width:920px;margin:0;color:var(--rental-muted);line-height:1.7}
 .rental-page .rental-advice-feature p{color:#ffffffbd}
