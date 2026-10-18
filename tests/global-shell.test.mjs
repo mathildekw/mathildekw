@@ -8,7 +8,7 @@ const css = await readFile(new URL("global-shell.css", root), "utf8");
 
 for (const label of ["Vendre", "Acheter", "Louer", "Blog", "Nous rejoindre", "Contact"])
   assert.match(shell, new RegExp(`label:\"${label.replace("&", "&")}\"`));
-for (const destination of ["/vendre/nos-accompagnements/", "/blog.html", "/capacite-emprunt-polynesie.html", "/louer-bien-immobilier-tahiti.html"])
+for (const destination of ["/vendre/nos-accompagnements/", "/diviser-terrain-tahiti.html", "/blog.html", "/capacite-emprunt-polynesie.html", "/louer-bien-immobilier-tahiti.html"])
   assert.ok(shell.includes(destination), `Destination commerciale manquante : ${destination}`);
 for (const behavior of ["aria-expanded", "Escape", "popstate", "mk-menu-open", "aria-current"])
   assert.ok(shell.includes(behavior), `Comportement manquant : ${behavior}`);

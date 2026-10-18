@@ -8,6 +8,8 @@ const css = read("division-terrain.css");
 const leadFunction = read("supabase/functions/foncier-leads-v2/index.ts");
 const migration = read("supabase/migrations/20261018130000_land_division_funnel.sql");
 const dashboard = read("admin-foncier-v2.js");
+const sellerPage = read("vendre-bien-immobilier-tahiti.html");
+const globalShell = read("global-shell.js");
 
 assert.equal((page.match(/<h1\b/g) || []).length, 1, "la page doit avoir un seul H1");
 assert.match(page, /Puis-je diviser mon terrain à Tahiti/i);
@@ -45,5 +47,7 @@ assert.match(migration, /add column if not exists division_project/i);
 assert.doesNotMatch(migration, /drop\s+(table|column)|truncate|delete\s+from/i);
 assert.match(dashboard, /dataset\.view = "division"/);
 assert.match(dashboard, /ne constitue jamais une validation de divisibilité/i);
+assert.ok((sellerPage.match(/href="\/diviser-terrain-tahiti\.html"/g) || []).length >= 3, "la page Vendre doit proposer plusieurs accès contextuels au tunnel");
+assert.match(globalShell, /label:"Diviser mon terrain",href:"\/diviser-terrain-tahiti\.html"/);
 
 console.log("✓ tunnel division foncière : structure, prudence, stockage et parcours vérifiés");
