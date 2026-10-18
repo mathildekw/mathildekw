@@ -2,7 +2,7 @@
 function cleanText(v){return(v||'').replace(/\s+/g,' ').trim().slice(0,140)}
 function encodeMessage(t){return encodeURIComponent(t).replace(/%20/g,'+')}
 function trackEvent(n,p){p=p||{};p.page_location=location.href;p.page_path=location.pathname;p.page_title=document.title||'';try{if(typeof gtag==='function')gtag('event',n,p)}catch(e){}try{if(typeof clarity==='function')clarity('event',n)}catch(e){}try{if(typeof fbq==='function'&&(n.includes('whatsapp')||n.includes('call')||n.includes('sms')||n.includes('contact')))fbq('track','Contact',{content_name:document.title||'',page_path:location.pathname})}catch(e){}}
-(function(){if(window.clarity||window.__mathildeClarityLoaded)return;window.__mathildeClarityLoaded=true;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,'clarity','script','whwpwxoeln')})();
+(function(){if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)||window.clarity||window.__mathildeClarityLoaded)return;window.__mathildeClarityLoaded=true;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,'clarity','script','whwpwxoeln')})();
 (function(){
   if(window.__mathildeT2Ux)return;window.__mathildeT2Ux=true;
   var isT2=location.pathname.indexOf('appartement-t2-punaauia-pk11.html')!==-1;
