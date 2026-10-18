@@ -6,7 +6,7 @@ const root = new URL("../", import.meta.url);
 const shell = await readFile(new URL("global-shell.js", root), "utf8");
 const css = await readFile(new URL("global-shell.css", root), "utf8");
 
-for (const label of ["Vendre", "Acheter", "Louer", "Blog", "Nous rejoindre", "Contact"])
+for (const label of ["Vendre", "Acheter", "Louer", "Les outils", "Nous rejoindre", "Contact"])
   assert.match(shell, new RegExp(`label:\"${label.replace("&", "&")}\"`));
 for (const destination of ["/vendre/nos-accompagnements/", "/diviser-terrain-tahiti.html", "/blog.html", "/capacite-emprunt-polynesie.html", "/louer-bien-immobilier-tahiti.html"])
   assert.ok(shell.includes(destination), `Destination commerciale manquante : ${destination}`);
