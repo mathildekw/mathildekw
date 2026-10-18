@@ -9,6 +9,7 @@ const routes = [
   ["diagnostic", "/diagnostic-foncier.html"],
   ["contact", "/contact.html"],
   ["design-system", "/design-system.html"]
+  ,["annonce-immersive-demo", "/annonce-immersive-demo.html"]
 ];
 
 for (const [name, path] of routes) {
