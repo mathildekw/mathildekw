@@ -92,7 +92,7 @@ body.home-26{margin:0;background:var(--cream);color:var(--ink);font-family:var(-
 body.home-26{background:#f8f4ec;color:#123633}
 .home-26 .h26-wrap{width:min(1320px,calc(100% - clamp(32px,7vw,112px)))}
 .home-26 .h26-hero{min-height:760px;align-items:center;background:#f8f4ec;color:#123633;overflow:hidden}
-.home-26 .h26-hero-bg{z-index:-1;left:auto;width:50%;height:calc(100% - 52px);margin:26px 26px 26px 0;border-radius:32px;filter:saturate(.83) contrast(1.04)}
+.home-26 .h26-hero-bg{z-index:-1;left:auto;width:50%;height:calc(100% - 52px);margin:26px 26px 26px 0;border-radius:32px;object-position:center 34%;filter:saturate(.9) contrast(1.02)}
 .home-26 .h26-hero:after{display:none}
 .home-26 .h26-hero-grid{grid-template-columns:minmax(0,.94fr) minmax(360px,.66fr);gap:clamp(56px,8vw,132px);align-items:center;padding:78px 0}
 .home-26 .h26-hero-grid>div:first-child{max-width:710px}
@@ -101,8 +101,8 @@ body.home-26{background:#f8f4ec;color:#123633}
 .home-26 .h26-intro{grid-template-columns:minmax(0,1fr);gap:28px;margin-top:42px;max-width:590px}.home-26 .h26-intro p{color:#425b58;font-size:17px;line-height:1.7}
 .home-26 .h26-round-link{width:max-content;height:auto;min-height:54px;padding:0 28px;border-radius:999px;background:#0c3431;color:#fff;display:inline-flex;justify-content:center;text-align:left;box-shadow:0 16px 36px rgba(12,52,49,.14)}
 .home-26 .h26-round-link br{display:none}.home-26 .h26-round-link:hover{transform:translateY(-2px);background:#df765f}
-.home-26 .h26-proof{align-self:end;margin-bottom:48px;padding:26px;border:1px solid rgba(255,255,255,.58);border-radius:24px;background:rgba(248,244,236,.9);color:#123633;box-shadow:0 24px 64px rgba(5,34,32,.2);backdrop-filter:blur(18px)}
-.home-26 .h26-proof img{margin:0 0 18px;border-color:#f8f4ec}.home-26 .h26-proof strong{font-size:27px}.home-26 .h26-proof p{color:#526865}.home-26 .h26-proof-row{border-color:rgba(18,54,51,.16)}
+.home-26 .h26-proof{position:absolute;right:4.2%;bottom:52px;width:min(500px,38vw);margin:0;padding:26px;border:1px solid rgba(255,255,255,.72);border-radius:24px;background:rgba(248,244,236,.88);color:#123633;box-shadow:0 24px 64px rgba(5,34,32,.2);backdrop-filter:blur(18px)}
+.home-26 .h26-proof img{display:none}.home-26 .h26-proof strong{font-size:27px}.home-26 .h26-proof p{color:#526865}.home-26 .h26-proof-row{border-color:rgba(18,54,51,.16)}
 .home-26 .h26-ticker{padding:18px 0;background:#0c3431;color:#fff}.home-26 .h26-ticker span:after{color:#df765f}
 .home-26 .h26-section{padding:clamp(80px,9vw,132px) 0}.home-26 .h26-section-head{grid-template-columns:210px minmax(0,1fr);gap:clamp(30px,6vw,90px);margin-bottom:58px}.home-26 .h26-section h2{max-width:900px}.home-26 .h26-index{color:#cf624d}
 .home-26 .h26-paths{grid-template-columns:1.1fr .95fr .95fr;gap:18px;border:0}.home-26 .h26-path{min-height:400px;padding:34px;border:1px solid rgba(18,54,51,.14)!important;border-radius:24px;background:#fffdf8;box-shadow:0 18px 50px rgba(18,54,51,.055)}
@@ -118,7 +118,7 @@ body.home-26{background:#f8f4ec;color:#123633}
 
 @media(max-width:960px){
   .home-26 .h26-hero{min-height:auto;padding-bottom:0}
-  .home-26 .h26-hero-bg{position:relative;inset:auto;width:calc(100% - 28px);height:48vw;min-height:320px;margin:14px;border-radius:26px;order:2}
+  .home-26 .h26-hero-bg{position:relative;inset:auto;width:calc(100% - 28px);height:min(105vw,680px);min-height:440px;margin:14px;border-radius:26px;object-position:center 30%;order:2}
   .home-26 .h26-hero{display:flex;flex-direction:column}.home-26 .h26-hero-grid{order:1;grid-template-columns:1fr;padding:72px 0 46px}.home-26 .h26-proof{display:none}
   .home-26 .h26-paths{grid-template-columns:1fr}.home-26 .h26-path{min-height:260px}
   .home-26 .h26-section-head{grid-template-columns:1fr;gap:14px}
@@ -127,7 +127,7 @@ body.home-26{background:#f8f4ec;color:#123633}
 @media(max-width:600px){
   .home-26 .h26-wrap,.home-26 .h26-hero-grid{width:calc(100% - 32px)}
   .home-26 .h26-hero-grid{padding:50px 0 34px}.home-26 .h26-hero h1{font-size:clamp(53px,16vw,72px);line-height:.82}.home-26 .h26-intro{margin-top:28px}.home-26 .h26-round-link{width:100%;min-height:52px}
-  .home-26 .h26-hero-bg{height:62vw;min-height:250px;border-radius:20px}
+  .home-26 .h26-hero-bg{height:112vw;min-height:390px;max-height:560px;border-radius:20px;object-position:center 28%}
   .home-26 .h26-ticker{padding:13px 0}
   .home-26 .h26-section{padding:62px 0}.home-26 .h26-section-head{margin-bottom:30px}
   .home-26 .h26-path{min-height:0;padding:26px 22px;border-radius:18px}.home-26 .h26-path h3{font-size:36px}
