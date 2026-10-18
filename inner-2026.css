@@ -101,6 +101,26 @@ body.seo-page .seller-access-hero .hero-grid>div:first-child{
   box-shadow:none!important;
   color:#fff!important;
 }
+body.seo-page .hero .intro-card{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  color:#fff!important;
+  padding:clamp(64px,8vw,112px) 0!important;
+  max-width:980px;
+}
+body.seo-page .hero .intro-card h1,
+body.seo-page .hero .intro-card h2,
+body.seo-page .hero .intro-card h3{
+  color:#fff!important;
+}
+body.seo-page .hero .intro-card p{
+  color:rgba(255,255,255,.82)!important;
+}
+body.seo-page .hero .intro-card .eyebrow{
+  color:var(--kw-lime)!important;
+}
 body.seo-page .hero .hero-grid>div:first-child h1,
 body.seo-page .hero .hero-grid>div:first-child h2,
 body.seo-page .hero .hero-grid>div:first-child h3,
