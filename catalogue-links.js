@@ -5,5 +5,6 @@
     const image=card.querySelector('.catalogue-card-image');if(image){image.href=href;image.removeAttribute('target');image.removeAttribute('rel')}
     const action=card.querySelector('.property-card-actions a');if(action){action.href=href;action.removeAttribute('target');action.removeAttribute('rel');action.textContent='Découvrir le bien'}
     const title=card.querySelector('h3');if(title&&!title.querySelector('a')){const link=document.createElement('a');link.href=href;link.textContent=title.textContent;title.textContent='';title.appendChild(link)}
+    const body=card.querySelector('.property-card-body');if(body){body.classList.add('property-card-body-link');body.addEventListener('click',event=>{if(!event.target.closest('a'))location.href=href})}
   });
 })();
