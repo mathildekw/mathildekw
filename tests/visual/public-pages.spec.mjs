@@ -10,6 +10,7 @@ const routes = [
   ["contact", "/contact.html"],
   ["design-system", "/design-system.html"]
   ,["annonce-immersive-demo", "/annonce-immersive-demo.html"]
+  ,["assistant-immobilier", "/assistant-immobilier-tahiti.html"]
 ];
 
 for (const [name, path] of routes) {

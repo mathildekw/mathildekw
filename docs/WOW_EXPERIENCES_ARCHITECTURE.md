@@ -28,4 +28,6 @@
 
 - Phase A : audit et architecture commune terminés.
 - Phase B : quiz lifestyle, classement explicable, carte, partage et passerelle acquéreur implémentés ; validation de prévisualisation requise avant fusion.
-- Phases C à F : non commencées sur cette branche afin d’éviter des changements concurrents sur les composants communs.
+- Phase C : modèle cinématique et démonstration entièrement synthétique terminés et testés.
+- Phase D : interface du concierge et routeur vers les parcours vérifiés terminés. Aucun fournisseur d’IA payant n’est activé ; l’interface l’indique honnêtement.
+- Phases E et F : liaison publique, tests globaux et publication en attente de la validation visuelle imposée par le dépôt.
