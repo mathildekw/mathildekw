@@ -119,3 +119,41 @@ var initBuyerFinancingBridge = function () {
 };
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initBuyerFinancingBridge, { once: true });
 else initBuyerFinancingBridge();
+
+// Cross-link the long-form “vendre pour racheter” guide from the existing
+// commercial journeys without duplicating their forms or navigation.
+var initSalePurchaseGuideLinks = function () {
+  var path = location.pathname;
+  if (path === "/acheter-bien-immobilier-tahiti.html") {
+    var buyerShell = document.querySelector(".buyer-funnel-shell .buyer-wrap");
+    if (buyerShell && !document.querySelector("[data-sale-purchase-link]")) {
+      var buyerCard = document.createElement("aside");
+      buyerCard.className = "buyer-form-card";
+      buyerCard.dataset.salePurchaseLink = "";
+      buyerCard.innerHTML = '<p class="buyer-kicker">Vendre + acheter</p><h2>Ton prochain achat dépend de la vente de ton logement&nbsp;?</h2><p>Compare les stratégies et calcule le budget potentiellement disponible après ta vente.</p><a class="buyer-btn" href="/blog-vendre-pour-racheter-tahiti.html">Préparer les deux projets</a>';
+      buyerShell.appendChild(buyerCard);
+    }
+  }
+  if (path === "/capacite-emprunt-polynesie.html") {
+    var financeShell = document.querySelector(".fin-shell .fin-wrap");
+    if (financeShell && !document.querySelector("[data-sale-purchase-link]")) {
+      var financeCard = document.createElement("aside");
+      financeCard.className = "fin-card";
+      financeCard.dataset.salePurchaseLink = "";
+      financeCard.innerHTML = '<p class="fin-kicker">Projet lié à une vente</p><h2>Tu dois vendre ton logement pour constituer ton apport&nbsp;?</h2><p>Calcule le produit net indicatif de ta vente et compare trois stratégies prudentes.</p><a class="fin-btn" href="/blog-vendre-pour-racheter-tahiti.html">Ouvrir le guide vendre pour racheter</a>';
+      financeShell.appendChild(financeCard);
+    }
+  }
+  if (["/vendre-bien-immobilier-tahiti.html", "/estimation-immobiliere-tahiti.html"].includes(path)) {
+    var main = document.querySelector("main");
+    if (main && !document.querySelector("[data-sale-purchase-link]")) {
+      var section = document.createElement("section");
+      section.className = "section";
+      section.dataset.salePurchaseLink = "";
+      section.innerHTML = '<div class="wrap contact-strip"><div><p class="eyebrow">Vendre pour racheter</p><h2>Ton prochain achat dépend de ta vente&nbsp;?</h2><p>Compare les stratégies et pose un budget réaliste avant de coordonner les deux opérations.</p></div><a class="btn primary" href="/blog-vendre-pour-racheter-tahiti.html">Lire le guide complet</a></div>';
+      main.appendChild(section);
+    }
+  }
+};
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initSalePurchaseGuideLinks, { once: true });
+else initSalePurchaseGuideLinks();

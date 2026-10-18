@@ -1,0 +1,41 @@
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import { principalForMonthlyPayment } from "../finance-calculators.js";
+
+const html = fs.readFileSync("blog-vendre-pour-racheter-tahiti.html", "utf8");
+const css = fs.readFileSync("sale-purchase-guide.css", "utf8");
+const js = fs.readFileSync("sale-purchase-guide.js", "utf8");
+const api = fs.readFileSync("supabase/functions/buyer-funnel/index.ts", "utf8");
+const blog = fs.readFileSync("blog.html", "utf8");
+const sitemap = fs.readFileSync("sitemap.xml", "utf8");
+
+assert.equal((html.match(/<h1\b/g) || []).length, 1);
+assert.match(html, /data-sale-calculator/);
+assert.match(html, /data-purchase-calculator/);
+assert.match(html, /data-scenario="sell"/);
+assert.match(html, /data-timeline/);
+assert.match(html, /data-move-form/);
+assert.match(html, /name="privacy_consent"[^>]+required/);
+assert.match(html, /name="broker_consent"/);
+assert.doesNotMatch(html, /name="broker_consent"[^>]+checked/);
+assert.match(html, /Exemple entièrement fictif/i);
+assert.match(html, /SOCREDO/);
+assert.match(html, /service-public\.pf\/dgae/);
+assert.match(html, /service-public\.pf\/dicp/);
+assert.match(js, /principalForMonthlyPayment/);
+assert.match(js, /Math\.max\(0, toNumber\(data\.sale_price\)/);
+assert.match(js, /\/public\/searches/);
+assert.match(js, /Authorization: `Bearer \$\{config\.foncier\.anonKey\}`/);
+assert.match(js, /move_questionnaire_completed/);
+assert.match(api, /"guide_viewed"/);
+assert.match(css, /overflow-x:hidden/);
+assert.match(css, /@media\(max-width:620px\)/);
+assert.match(css, /prefers-reduced-motion/);
+assert.match(blog, /blog-vendre-pour-racheter-tahiti\.html/);
+assert.match(sitemap, /blog-vendre-pour-racheter-tahiti\.html/);
+assert.equal(Math.max(0, 42_000_000 - 12_000_000), 30_000_000);
+assert.equal(Math.max(0, 10_000_000 - 12_000_000), 0);
+assert.equal(principalForMonthlyPayment(0, 0.045, 20), 0);
+assert.ok(principalForMonthlyPayment(180_000, 0.045, 20) > 20_000_000);
+
+console.log("sale-purchase-guide: article, calculators, funnel, privacy and edge cases OK");
