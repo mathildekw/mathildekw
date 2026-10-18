@@ -35,7 +35,7 @@ async function processOutbox() {
   for (const item of items || []) {
     try {
       const url = new URL(sheetsUrl);
-      if (sheetsSecret && !url.searchParams.has("key")) url.searchParams.set("key", sheetsSecret);
+      if (sheetsSecret && !url.searchParams.has("secret")) url.searchParams.set("secret", sheetsSecret);
       const response = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json", "X-PK-Secret": sheetsSecret, "Idempotency-Key": item.idempotency_key },

@@ -82,3 +82,62 @@ document.addEventListener('click',function(e){var t=e.target.closest('[data-even
 document.addEventListener('DOMContentLoaded',function(){trackEvent('page_ready',{event_category:'engagement'});document.querySelectorAll('[data-t2-gallery]').forEach(function(g){var main=g.querySelector('[data-gallery-main]'),idx=g.querySelector('[data-gallery-index]'),cap=g.querySelector('[data-gallery-caption]'),thumbs=[].slice.call(g.querySelectorAll('[data-gallery-thumb]')),cur=0;if(!main||!thumbs.length)return;function show(i,src){cur=(i+thumbs.length)%thumbs.length;var th=thumbs[cur];main.style.opacity='.55';setTimeout(function(){main.src=th.getAttribute('data-full');main.alt=th.getAttribute('data-alt')||'';main.style.opacity='1'},80);if(idx)idx.textContent=String(cur+1);if(cap)cap.textContent=th.getAttribute('data-caption')||'';thumbs.forEach(function(x,n){x.classList.toggle('is-active',n===cur)});if(src)trackEvent('view_t2_gallery_photo',{event_category:'buyer_lead',gallery_index:cur+1,gallery_source:src})}g.querySelectorAll('[data-gallery-next]').forEach(function(b){b.addEventListener('click',function(){show(cur+1,'next')})});g.querySelectorAll('[data-gallery-prev]').forEach(function(b){b.addEventListener('click',function(){show(cur-1,'prev')})});thumbs.forEach(function(b,i){b.addEventListener('click',function(){show(i,'thumb')})})});document.querySelectorAll('.nav-toggle').forEach(function(btn){btn.addEventListener('click',function(){var nav=btn.closest('.nav'),m=nav&&nav.querySelector('.menu');if(!m)return;var o=m.classList.toggle('open');btn.setAttribute('aria-expanded',o?'true':'false');btn.textContent=o?'Fermer le menu':'Menu'})});var t2=document.querySelector('[data-t2-virtual-form]');if(t2)t2.addEventListener('submit',function(e){e.preventDefault();var d=new FormData(t2);var msg=['Ia ora na Mathilde, je souhaite recevoir les informations sur le T2 a Punaauia.','','Prenom : '+(d.get('prenom')||''),'Telephone : '+(d.get('telephone')||''),'Projet : '+(d.get('projet')||''),'Message : '+(d.get('message')||''),'','Je souhaite etre recontacte pour la fiche complete ou les informations utiles ou une visite privee.'].join('\n');trackEvent('submit_form_t2_virtual',{event_category:'buyer_lead'});location.href='https://wa.me/33782475958?text='+encodeMessage(msg)});var est=document.querySelector('[data-estimation-form]');if(est)est.addEventListener('submit',function(e){e.preventDefault();var d=new FormData(est);var msg=['Ia ora na Mathilde, je souhaite une estimation gratuite de mon bien a Tahiti.','','Nom : '+(d.get('nom')||''),'Telephone : '+(d.get('telephone')||''),'Email : '+(d.get('email')||''),'Commune : '+(d.get('commune')||''),'Type de bien : '+(d.get('type')||''),'Objectif : '+(d.get('objectif')||''),'Surface approximative : '+(d.get('surface')||''),'Secteur / repere : '+(d.get('adresse')||''),'Message : '+(d.get('message')||'')].join('\n');trackEvent('submit_form_estimation',{event_category:'seller_lead'});location.href='https://wa.me/33782475958?text='+encodeMessage(msg)})});
 
 (function(){var baseTrack=window.trackEvent||trackEvent;window.trackEvent=function(n,p){p=p||{};p.page_location=location.href;p.page_path=location.pathname;p.page_title=document.title||'';var slug=document.body&&document.body.getAttribute('data-property-slug'),title=document.body&&document.body.getAttribute('data-property-title');if(slug)p.property_slug=slug;if(title)p.property_title=title;try{baseTrack(n,p)}catch(e){try{if(typeof gtag==='function')gtag('event',n,p)}catch(err){}}};try{trackEvent=window.trackEvent}catch(e){}function insertBeforeUseful(menu,a){var before=[].slice.call(menu.querySelectorAll('a')).find(function(x){return /blog|contact|suivi/i.test((x.textContent||'').trim())});menu.insertBefore(a,before||menu.lastElementChild)}function addToolsLink(menu){if(!menu||menu.querySelector('[href="/outils-immobilier-tahiti.html"]'))return;var a=document.createElement('a');a.href='/outils-immobilier-tahiti.html';a.textContent='Outils';a.setAttribute('data-event','calculator_started');insertBeforeUseful(menu,a)}function addSellerLink(menu){if(!menu||menu.querySelector('[href="/suivi-vendeur.html"]'))return;var old=menu.querySelector('[href="/demo-espace-vendeur.html"]');if(old&&/Suivi vendeur|Démo suivi vendeur/.test(old.textContent||'')){old.href='/suivi-vendeur.html';old.textContent='Suivi vendeur';old.setAttribute('data-event','click_nav_seller_access');return}var a=document.createElement('a');a.href='/suivi-vendeur.html';a.textContent='Suivi vendeur';a.setAttribute('data-event','click_nav_seller_access');insertBeforeUseful(menu,a)}document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.menu,.home-menu').forEach(function(menu){addToolsLink(menu);addSellerLink(menu)});if(document.body&&document.body.getAttribute('data-property-slug'))window.trackEvent('property_page_view',{event_category:'property'});document.querySelectorAll('[data-estimation-form]').forEach(function(f){f.addEventListener('submit',function(){window.trackEvent('contact_form_submit',{event_category:'seller_lead'})},{capture:true})});document.querySelectorAll('[data-t2-virtual-form]').forEach(function(f){f.addEventListener('submit',function(){window.trackEvent('visit_request_submit',{event_category:'buyer_lead'})},{capture:true})})});document.addEventListener('click',function(e){var a=e.target.closest('a[href]');if(!a)return;var href=a.getAttribute('href')||'';if(href.indexOf('wa.me')!==-1||href.indexOf('whatsapp')!==-1)window.trackEvent('whatsapp_clicked',{link_text:cleanText(a.textContent),link_url:a.href});if(href.indexOf('tel:')===0)window.trackEvent('phone_click',{link_text:cleanText(a.textContent),link_url:a.href})},true)})();
+
+/* Persist legacy estimation and visit forms before opening WhatsApp. */
+(function () {
+  "use strict";
+  function formDataObject(form) {
+    var result = {};
+    new FormData(form).forEach(function (value, key) { result[key] = value; });
+    return result;
+  }
+  function errorBox(form) {
+    var box = form.querySelector("[data-intake-error]");
+    if (!box) {
+      box = document.createElement("p");
+      box.setAttribute("data-intake-error", "");
+      box.setAttribute("role", "alert");
+      box.style.color = "#a5231d";
+      box.style.fontWeight = "700";
+      form.appendChild(box);
+    }
+    return box;
+  }
+  function whatsappMessage(kind, data) {
+    if (kind === "visit_request") return ["Ia ora na Mathilde, je souhaite recevoir les informations sur le T2 a Punaauia.", "", "Prenom : " + (data.prenom || ""), "Telephone : " + (data.telephone || ""), "Projet : " + (data.projet || ""), "Message : " + (data.message || "")].join("\n");
+    return ["Ia ora na Mathilde, je souhaite une estimation gratuite de mon bien a Tahiti.", "", "Nom : " + (data.nom || ""), "Telephone : " + (data.telephone || ""), "Email : " + (data.email || ""), "Commune : " + (data.commune || ""), "Type de bien : " + (data.type || ""), "Objectif : " + (data.objectif || ""), "Surface approximative : " + (data.surface || ""), "Secteur / repere : " + (data.adresse || ""), "Message : " + (data.message || "")].join("\n");
+  }
+  function install(form, kind) {
+    if (!form || form.dataset.intakeInstalled) return;
+    form.dataset.intakeInstalled = "true";
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      var button = form.querySelector('button[type="submit"]');
+      var original = button ? button.textContent : "";
+      var box = errorBox(form);
+      var data = formDataObject(form);
+      box.textContent = "";
+      if (button) { button.disabled = true; button.textContent = "Enregistrement…"; }
+      try {
+        var endpoint = window.MK_SITE_CONFIG && window.MK_SITE_CONFIG.leads && window.MK_SITE_CONFIG.leads.webhookUrl;
+        var anonKey = window.MK_SITE_CONFIG && window.MK_SITE_CONFIG.foncier && window.MK_SITE_CONFIG.foncier.anonKey;
+        if (!endpoint || !anonKey) throw new Error("Service indisponible");
+        var response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json", apikey: anonKey, Authorization: "Bearer " + anonKey }, body: JSON.stringify({ kind: kind, source: location.href, payload: data }) });
+        var result = await response.json().catch(function () { return {}; });
+        if (!response.ok && response.status !== 202) throw new Error(result.error || "Enregistrement impossible");
+        trackEvent(kind === "visit_request" ? "visit_request_saved" : "estimation_request_saved", { reference: result.reference || "" });
+        location.href = "https://wa.me/33782475958?text=" + encodeMessage(whatsappMessage(kind, data));
+      } catch (error) {
+        box.textContent = "Tes informations n’ont pas été envoyées. Réessaie ou contacte-moi au 88 07 82 47.";
+        if (button) { button.disabled = false; button.textContent = original; }
+      }
+    }, true);
+  }
+  function init() {
+    document.querySelectorAll("[data-estimation-form]").forEach(function (form) { install(form, "estimation_request"); });
+    document.querySelectorAll("[data-t2-virtual-form]").forEach(function (form) { install(form, "visit_request"); });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+})();

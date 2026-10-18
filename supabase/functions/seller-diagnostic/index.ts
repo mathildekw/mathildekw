@@ -65,7 +65,7 @@ async function syncSheets(lead: Record<string, unknown>) {
   if (!sheetsUrl) return { status: "not_connected" };
   try {
     const url = new URL(sheetsUrl);
-    if (sheetsSecret) url.searchParams.set("key", sheetsSecret);
+    if (sheetsSecret) url.searchParams.set("secret", sheetsSecret);
     const response = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json", "X-PK-Secret": sheetsSecret, "Idempotency-Key": `google_sheets:seller_lead:${lead.id}` }, body: JSON.stringify({ kind: "seller_lead", unique_id: lead.id, row: lead }) });
     const body = await response.json().catch(() => ({}));
     if (!response.ok || body.ok !== true) throw new Error(body.error || `HTTP ${response.status}`);

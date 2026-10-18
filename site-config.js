@@ -7,8 +7,8 @@ window.MK_SITE_CONFIG = {
     annualRateUpdatedAt: ""
   },
   leads: {
-    webhookUrl: "",
-    endpointLabel: "LEADS_WEBHOOK_URL"
+    webhookUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/form-intake",
+    endpointLabel: "form-intake"
   },
   contact: {
     whatsapp: "33782475958",

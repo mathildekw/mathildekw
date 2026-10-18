@@ -92,7 +92,7 @@ async function syncSheets(lead: Record<string, unknown>) {
   if (!sheetsUrl) return { status: "not_connected" };
   try {
     const url = new URL(sheetsUrl);
-    if (sheetsSecret && !url.searchParams.has("key")) url.searchParams.set("key", sheetsSecret);
+    if (sheetsSecret && !url.searchParams.has("secret")) url.searchParams.set("secret", sheetsSecret);
     const result = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json", "X-PK-Secret": sheetsSecret, "Idempotency-Key": `google_sheets:land_lead:${lead.id}` },
