@@ -19,6 +19,7 @@ function response(body: unknown, status = 200) {
 function clean(value: unknown, max = 500) { return String(value ?? "").trim().slice(0, max); }
 function normalizePhone(value: unknown) { return clean(value, 50).replace(/\D/g, ""); }
 function normalizeEmail(value: unknown) { return clean(value, 180).toLowerCase(); }
+function object(value: unknown) { return value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {}; }
 
 async function hash(value: string) {
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
@@ -112,7 +113,9 @@ Deno.serve(async (request) => {
   try {
     const data = await request.json();
     if (clean(data.website)) return response({ accepted: true }, 202);
-    if (!data.privacy_consent || !clean(data.first_name) || !clean(data.last_name) || !normalizePhone(data.phone) || !clean(data.commune) || !Number(data.surface)) {
+    const leadType = clean(data.lead_type, 40) === "division_land" ? "division_land" : "general_land";
+    const unknownDivisionSurface = leadType === "division_land" && clean(object(data.division_project).surface_source, 120).includes("connais pas");
+    if (!data.privacy_consent || !clean(data.first_name) || !clean(data.last_name) || !normalizePhone(data.phone) || !clean(data.commune) || (!Number(data.surface) && !unknownDivisionSurface)) {
       return response({ error: "Champs obligatoires manquants" }, 400);
     }
 
@@ -140,11 +143,12 @@ Deno.serve(async (request) => {
       location: clean(data.location, 250), cadastre: clean(data.cadastre, 100), parcel_object_id: Number(data.parcel_object_id) || null,
       parcel_uid: clean(data.parcel_uid, 256) || null, parcel_geometry: geometry(data), cadastral_area: Number(data.cadastral_area) || null,
       geo_sources: data.parcel_object_id ? [{ label: "DAF — Parcelles cadastrales de Polynésie", url: "https://services.arcgis.com/L4H4rU26VyhEF588/arcgis/rest/services/CAD_parcelles_open/FeatureServer/0", license: "Licence Ouverte Etalab 2.0", consultedAt: new Date().toISOString() }] : [],
-      surface: Number(data.surface), access: clean(data.access, 120), visibility: clean(data.visibility, 30), topography: clean(data.topography, 80),
+      lead_type: leadType, division_project: object(data.division_project),
+      surface: Number(data.surface) || 0, access: clean(data.access, 120), visibility: clean(data.visibility, 30), topography: clean(data.topography, 80),
       shape: clean(data.shape, 100), frontage: Number(data.frontage) || null, current_state: clean(data.current_state, 100),
       water: clean(data.water, 30), electricity: clean(data.electricity, 30), sanitation: clean(data.sanitation, 30),
       legal_status: clean(data.legal_status, 100), owner_goal: clean(data.owner_goal, 150), timeline: clean(data.timeline, 80),
-      comment: clean(data.comment, 1500), qualification_score: qualification.score, qualification_reasons: { commercial: qualification.reasons },
+      comment: clean(data.comment, 1500), qualification_score: qualification.score, qualification_reasons: { commercial: qualification.reasons, division: leadType === "division_land" ? object(data.division_project) : null },
       potential_projects: Array.isArray(data.qualification?.projects) ? data.qualification.projects : [], priority: qualification.priority === "P1",
       priority_level: qualification.priority, commercial_motivation: qualification.score, acquisition, ab_variant: clean(data.ab_variant, 5) || null,
       booking_token_hash: await hash(bookingToken), report_token_hash: await hash(reportToken), last_submission_hash: submissionHash,

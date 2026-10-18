@@ -84,7 +84,7 @@
     return '<div class="fp-panel"><table class="fp-table"><thead><tr><th>Prospect</th><th>Terrain & diagnostic</th><th>Priorité</th><th>Statut</th><th>Prochaine action</th><th>Relance</th><th>Suivi</th></tr></thead><tbody>' + rows.map(function (land) {
       return '<tr>' +
         '<td><b>' + esc(land.first_name + " " + land.last_name) + '</b><br><a href="tel:' + esc(land.phone) + '">' + esc(land.phone) + '</a><br>' + esc(land.email || "") + '<br><small>' + esc(land.preferred_channel || "Canal non précisé") + '</small></td>' +
-        '<td><b>' + esc(land.reference) + '</b><br>' + esc(land.commune) + ' · ' + esc(land.surface) + ' m²<br><small>Cadastre : ' + esc(land.cadastre || "non communiqué") + '</small><br><span class="fp-badge">Diagnostic ' + esc(land.qualification_score || 0) + '/100</span></td>' +
+        '<td><b>' + esc(land.reference) + '</b><br>' + esc(land.commune) + ' · ' + (Number(land.surface) > 0 ? esc(land.surface) + ' m²' : 'surface à vérifier') + '<br><small>Cadastre : ' + esc(land.cadastre || "non communiqué") + '</small><br><span class="fp-badge">Diagnostic ' + esc(land.qualification_score || 0) + '/100</span></td>' +
         '<td><select data-priority="' + land.id + '"><option ' + (land.priority_level === "P1" ? "selected" : "") + '>P1</option><option ' + (land.priority_level === "P2" ? "selected" : "") + '>P2</option><option ' + (land.priority_level === "P3" ? "selected" : "") + '>P3</option></select></td>' +
         '<td><select data-pipeline="' + land.id + '">' + pipelineOptions(land.pipeline) + '</select></td>' +
         '<td><input data-action="' + land.id + '" value="' + esc(land.next_action || "") + '" placeholder="Action suivante"></td>' +
@@ -103,6 +103,12 @@
       '<h3>Rendez-vous</h3>' + (appointments.length ? appointments.map(function (item) { return '<p><b>' + date(item.start_at, true) + '</b> · ' + esc(item.mode) + ' · ' + esc(item.status) + '</p>'; }).join("") : '<p>Aucun rendez-vous.</p>') +
       '<h3>Contacts et actions</h3>' + (activities.length ? activities.map(function (item) { return '<p><b>' + date(item.created_at, true) + ' · ' + esc(item.kind) + '</b><br>' + esc(item.body || item.reason || "") + (item.completed_at ? ' · Terminé' : '') + '</p>'; }).join("") : '<p>Aucun contact consigné.</p>') +
       '<form data-activity-form="' + leadId + '"><div class="fp-fields"><div class="fp-field"><label>Canal</label><select name="channel"><option>Téléphone</option><option>WhatsApp</option><option>Email</option><option>Rendez-vous</option><option>Note interne</option></select></div><div class="fp-field"><label>Date de relance éventuelle</label><input name="due_at" type="datetime-local"></div><div class="fp-field full"><label>Compte rendu</label><textarea name="body" required></textarea></div></div><button class="fp-btn primary">Ajouter à l’historique</button></form></div>';
+  }
+
+  function divisionRows() {
+    var rows = state.lands.filter(function (land) { return land.lead_type === "division_land"; });
+    if (!rows.length) return '<div class="fp-empty">Aucune demande de division foncière.</div>';
+    return '<div class="fp-panel"><p class="fp-disclaimer">La priorité affichée est commerciale. Elle ne constitue jamais une validation de divisibilité.</p></div>' + landRows(rows);
   }
 
   function renderPromoters() {
@@ -126,11 +132,12 @@
   }
 
   function render() {
-    var titles = { overview: "Vue d’ensemble", sellers: "Diagnostics vendeurs", lands: "Terrains", promoters: "Promoteurs", matching: "Matching", pipeline: "Pipeline", tasks: "Relances", settings: "Intégrations" };
+    var titles = { overview: "Vue d’ensemble", sellers: "Diagnostics vendeurs", lands: "Terrains", division: "Division foncière", promoters: "Promoteurs", matching: "Matching", pipeline: "Pipeline", tasks: "Relances", settings: "Intégrations" };
     title.textContent = titles[view];
     if (view === "overview") content.innerHTML = metrics() + landRows(state.lands.slice(0, 8));
     else if (view === "sellers") content.innerHTML = sellerRows();
     else if (view === "lands") content.innerHTML = landRows(state.lands);
+    else if (view === "division") content.innerHTML = divisionRows();
     else if (view === "promoters") content.innerHTML = renderPromoters();
     else if (view === "tasks") content.innerHTML = renderTasks();
     else if (view === "settings") content.innerHTML = renderSettings();
@@ -209,6 +216,14 @@
     var result = await client.auth.signInWithOtp({ email: email, options: { emailRedirectTo: location.href, shouldCreateUser: true } });
     document.querySelector("[data-auth-status]").textContent = result.error ? result.error.message : "Lien envoyé. Consulte ta boîte email.";
   };
+  var landsNav = document.querySelector('[data-view="lands"]');
+  if (landsNav && !document.querySelector('[data-view="division"]')) {
+    var divisionNav = document.createElement("button");
+    divisionNav.type = "button";
+    divisionNav.dataset.view = "division";
+    divisionNav.textContent = "Division foncière";
+    landsNav.insertAdjacentElement("afterend", divisionNav);
+  }
   document.querySelectorAll("[data-view]").forEach(function (button) {
     button.onclick = function () {
       document.querySelectorAll("[data-view]").forEach(function (item) { item.classList.remove("active"); });

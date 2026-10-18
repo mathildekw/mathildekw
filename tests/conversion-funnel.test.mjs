@@ -22,7 +22,7 @@ const [landing,funnel,leads,conversion,migration,analytics,analyticsMigration]=a
 assert.match(landing,/Et si ton terrain valait bien plus que tu ne l’imagines/);
 assert.match(landing,/Bilan de potentiel foncier offert/);
 assert.match(landing,/Vente classique[\s\S]*Présentation à des promoteurs[\s\S]*Division éventuelle/);
-assert.equal((landing.match(/data-foncier-cta=/g)||[]).length,11);
+assert.equal((landing.match(/data-foncier-cta=/g)||[]).length,12);
 assert.match(funnel,/Voici les premiers éléments de lecture de ton terrain/);
 assert.match(funnel,/submitted_fingerprint/);
 assert.match(leads,/found\s*\?await db\("foncier_land_leads\?id=eq\."\+found\.id,\{method:"PATCH"/);
