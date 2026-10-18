@@ -89,6 +89,64 @@ body.seo-page .stars{color:var(--kw-lime)}
 body.seo-page hr{border-color:#d8cdbd}
 body.seo-page ::selection{background:var(--kw-lime);color:var(--kw-dark)}
 
+/* Contrastes sûrs : les anciens styles mobiles ajoutaient un fond blanc
+   au premier bloc du hero tout en conservant son texte blanc. */
+body.seo-page .hero .hero-grid>div:first-child,
+body.seo-page .article-hero .hero-grid>div:first-child,
+body.seo-page .secure-hero .hero-grid>div:first-child,
+body.seo-page .seller-access-hero .hero-grid>div:first-child{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  color:#fff!important;
+}
+body.seo-page .hero .hero-grid>div:first-child h1,
+body.seo-page .hero .hero-grid>div:first-child h2,
+body.seo-page .hero .hero-grid>div:first-child h3,
+body.seo-page .article-hero .hero-grid>div:first-child h1,
+body.seo-page .secure-hero .hero-grid>div:first-child h1{
+  color:#fff!important;
+}
+body.seo-page .hero .hero-grid>div:first-child p,
+body.seo-page .article-hero .hero-grid>div:first-child p,
+body.seo-page .secure-hero .hero-grid>div:first-child p{
+  color:rgba(255,255,255,.82)!important;
+}
+body.seo-page .hero .hero-grid>div:first-child .eyebrow,
+body.seo-page .article-hero .hero-grid>div:first-child .eyebrow,
+body.seo-page .secure-hero .hero-grid>div:first-child .eyebrow{
+  color:var(--kw-lime)!important;
+}
+body.seo-page .visual-card h2,
+body.seo-page .visual-card h3,
+body.seo-page .visual-card strong,
+body.seo-page .article-card.hero-aside h2,
+body.seo-page .article-card.hero-aside h3{
+  color:#fff!important;
+}
+body.seo-page .visual-card p,
+body.seo-page .visual-card span,
+body.seo-page .article-card.hero-aside p{
+  color:rgba(255,255,255,.82)!important;
+}
+body.seo-page .section:not(.hero) .card h2,
+body.seo-page .section:not(.hero) .card h3,
+body.seo-page .section:not(.hero) .mini-card h2,
+body.seo-page .section:not(.hero) .mini-card h3,
+body.seo-page .section:not(.hero) .article-card h2,
+body.seo-page .section:not(.hero) .article-card h3{
+  color:var(--kw-ink)!important;
+}
+body.seo-page .section:not(.hero) .eyebrow{color:#b94e3b!important}
+body.seo-page .hero .seller-diagnostic-callout>div{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  padding:0!important;
+}
+
 @media(max-width:820px){
   body.seo-page .nav{min-height:78px}
   body.seo-page .menu{background:var(--kw-dark);border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 50px rgba(0,0,0,.24)}
