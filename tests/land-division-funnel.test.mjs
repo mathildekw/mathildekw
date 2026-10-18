@@ -26,7 +26,10 @@ assert.match(script, /submission_fingerprint/);
 assert.match(script, /conversionApiUrl\+"\/public\/appointments"/);
 assert.match(script, /reportApiUrl/);
 assert.match(script, /division_lead_recorded/);
+assert.match(script, /OK, on a bien pris en compte toutes les informations/);
+assert.match(script, /cfg=currentConfig\(\)/);
 assert.match(script, /prefers-reduced-motion/);
+assert.match(page, /<script src="\/site-config\.js"><\/script>/);
 
 assert.match(css, /min-height:\s*44px/);
 assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
