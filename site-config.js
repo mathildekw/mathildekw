@@ -1,4 +1,5 @@
 (function(){if(document.querySelector('script[data-mk-shell-loader]'))return;var s=document.createElement('script');s.src='/global-shell.js?v=9';s.defer=true;s.dataset.mkShellLoader='';document.head.appendChild(s)})();
+(function(){if(document.querySelector('script[data-mk-content-protection]'))return;var s=document.createElement('script');s.src='/content-protection.js?v=1';s.defer=true;s.dataset.mkContentProtection='';document.head.appendChild(s)})();
 window.MK_SITE_CONFIG = {
   finance: {
     borrowingEffortRate: 0.35,

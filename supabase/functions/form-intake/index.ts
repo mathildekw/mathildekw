@@ -13,6 +13,17 @@ function reply(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { ...cors, "Content-Type": "application/json", "Cache-Control": "no-store" } });
 }
 function clean(value: unknown, max = 500) { return String(value ?? "").replace(/\s+/g, " ").trim().slice(0, max); }
+async function sha256(value: string) {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
+  return Array.from(new Uint8Array(digest)).map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+function requestIdentity(request: Request) {
+  return (request.headers.get("cf-connecting-ip") || request.headers.get("x-forwarded-for") || "unknown").split(",")[0].trim();
+}
+function originAllowed(request: Request) {
+  const origin = request.headers.get("origin");
+  return !origin || origin === allowedOrigin;
+}
 async function database(path: string, init: RequestInit = {}) {
   const response = await fetch(`${supabaseUrl}/rest/v1/${path}`, { ...init, headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}`, "Content-Type": "application/json", Prefer: "return=representation", ...(init.headers || {}) } });
   const text = await response.text();
@@ -30,12 +41,20 @@ async function syncSheet(kind: string, id: string, row: Record<string, unknown>)
     return { status: "synced", error: null };
   } catch (error) { return { status: "failed", error: String(error).slice(0, 500) }; }
 }
+async function withinRateLimit(request: Request) {
+  const response = await database("rpc/consume_public_api_rate_limit", { method: "POST", body: JSON.stringify({ p_scope: "form-intake", p_identifier_hash: await sha256(requestIdentity(request)), p_limit: 12, p_window_seconds: 3600 }) });
+  return response === true;
+}
 
 Deno.serve(async (request) => {
   if (request.method === "OPTIONS") return new Response(null, { headers: cors });
   if (request.method !== "POST") return reply({ error: "Méthode non autorisée" }, 405);
+  if (!originAllowed(request)) return reply({ error: "Origine non autorisée" }, 403);
+  if (Number(request.headers.get("content-length") || 0) > 32768) return reply({ error: "Requête trop volumineuse" }, 413);
   try {
+    if (!await withinRateLimit(request)) return reply({ error: "Trop de demandes. Réessaie plus tard." }, 429);
     const data = await request.json();
+    if (JSON.stringify(data).length > 32768) return reply({ error: "Requête trop volumineuse" }, 413);
     if (clean(data.website)) return reply({ accepted: true }, 202);
     const kind = clean(data.kind, 60);
     const payload = data.payload && typeof data.payload === "object" ? data.payload : {};

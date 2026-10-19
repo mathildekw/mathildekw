@@ -12,6 +12,27 @@ function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { ...cors, "Content-Type": "application/json", "Cache-Control": "no-store" } });
 }
 function clean(value: unknown, max = 600) { return String(value ?? "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, max); }
+async function sha256(value: string) {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
+  return Array.from(new Uint8Array(digest)).map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+function requestIdentity(request: Request) {
+  return (request.headers.get("cf-connecting-ip") || request.headers.get("x-forwarded-for") || "unknown").split(",")[0].trim();
+}
+function originAllowed(request: Request) {
+  const origin = request.headers.get("origin");
+  return !origin || origin === allowedOrigin;
+}
+async function withinRateLimit(request: Request) {
+  const supabaseUrl = Deno.env.get("SUPABASE_URL") || "";
+  const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
+  const response = await fetch(`${supabaseUrl}/rest/v1/rpc/consume_public_api_rate_limit`, {
+    method: "POST",
+    headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ p_scope: "website-assistant", p_identifier_hash: await sha256(requestIdentity(request)), p_limit: 30, p_window_seconds: 3600 })
+  });
+  return response.ok && await response.json() === true;
+}
 function limitAnswer(value: unknown, maxWords = 120) {
   const answer = clean(value, 3000);
   const words = answer.split(/\s+/).filter(Boolean);
@@ -60,9 +81,13 @@ function containsUnverifiedPrice(value: string) {
 Deno.serve(async (request) => {
   if (request.method === "OPTIONS") return new Response(null, { headers: cors });
   if (request.method !== "POST") return json({ error: "Méthode non autorisée" }, 405);
+  if (!originAllowed(request)) return json({ error: "Origine non autorisée" }, 403);
+  if (Number(request.headers.get("content-length") || 0) > 16384) return json({ error: "Requête trop volumineuse" }, 413);
   if (!cloudflareAccountId || !cloudflareToken) return json({ error: "Assistant IA non configuré", fallback: "contact" }, 503);
   try {
+    if (!await withinRateLimit(request)) return json({ error: "Trop de demandes. Réessaie plus tard." }, 429);
     const body = await request.json();
+    if (JSON.stringify(body).length > 16384) return json({ error: "Requête trop volumineuse" }, 413);
     const rawMessages = Array.isArray(body.messages) ? body.messages.slice(-8) : [];
     const messages = rawMessages.map((item: Record<string, unknown>) => ({
       role: item.role === "assistant" ? "assistant" : "user",
