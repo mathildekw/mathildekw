@@ -12,6 +12,14 @@ function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { ...cors, "Content-Type": "application/json", "Cache-Control": "no-store" } });
 }
 function clean(value: unknown, max = 600) { return String(value ?? "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, max); }
+function limitAnswer(value: unknown, maxWords = 120) {
+  const answer = clean(value, 3000);
+  const words = answer.split(/\s+/).filter(Boolean);
+  if (words.length <= maxWords) return answer;
+  const shortened = words.slice(0, maxWords).join(" ");
+  const sentenceEnd = Math.max(shortened.lastIndexOf(". "), shortened.lastIndexOf("! "), shortened.lastIndexOf("? "));
+  return sentenceEnd > shortened.length * .55 ? shortened.slice(0, sentenceEnd + 1) : `${shortened}…`;
+}
 
 Deno.serve(async (request) => {
   if (request.method === "OPTIONS") return new Response(null, { headers: cors });
@@ -25,13 +33,13 @@ Deno.serve(async (request) => {
       content: clean(item.content)
     })).filter((item: { content: string }) => item.content);
     if (!messages.length) return json({ error: "Question obligatoire" }, 400);
-    const systemPrompt = "Tu es l’assistant immobilier de Mathilde TUDURI, conseillère Keller Williams Polynésie à Tahiti. Réponds en français, avec tutoiement, chaleur et concision (120 mots maximum). Oriente uniquement sur acheter, vendre, estimer, louer, financement indicatif, foncier et promotion. Ne prétends jamais connaître une faisabilité, un prix, une règle juridique, fiscale, bancaire ou urbanistique non vérifiée. Ne demande jamais de donnée confidentielle. Lorsque le sujet nécessite une analyse personnelle, propose de contacter Mathilde via /contact.html. Mentionne clairement les incertitudes. N’invente ni bien disponible, ni partenaire, ni statistique.";
+    const systemPrompt = "Tu es l’assistant immobilier de Mathilde TUDURI, conseillère Keller Williams Polynésie à Tahiti. Réponds en français, avec tutoiement, chaleur et concision (120 mots maximum). Oriente uniquement sur acheter, vendre, estimer, louer, financement indicatif, foncier et promotion. Ne prétends jamais connaître une faisabilité, un prix, une règle juridique, fiscale, bancaire ou urbanistique non vérifiée. Ne demande jamais de donnée confidentielle. Lorsque le sujet nécessite une analyse personnelle, propose de contacter Mathilde via /contact.html. Mentionne clairement les incertitudes. N’invente ni bien disponible, ni partenaire, ni statistique. Ne cite aucune agence concurrente ni plateforme immobilière spécifique.";
     const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${encodeURIComponent(cloudflareAccountId)}/ai/run/${model}`, {
       method: "POST",
       headers: { Authorization: `Bearer ${cloudflareToken}`, "Content-Type": "application/json" },
       body: JSON.stringify({
         messages: [{ role: "system", content: systemPrompt }, ...messages],
-        max_tokens: 260,
+        max_tokens: 180,
         temperature: 0.35
       })
     });
@@ -41,7 +49,7 @@ Deno.serve(async (request) => {
       const quotaReached = response.status === 429 || data?.errors?.some((error: Record<string, unknown>) => /quota|limit/i.test(String(error.message || "")));
       return json({ error: quotaReached ? "Le quota gratuit du jour est atteint" : "Assistant momentanément indisponible", fallback: "contact" }, quotaReached ? 429 : 502);
     }
-    const answer = clean(data.result?.response, 1600);
+    const answer = limitAnswer(data.result?.response);
     if (!answer) return json({ error: "Réponse vide" }, 502);
     return json({ answer });
   } catch (error) {
