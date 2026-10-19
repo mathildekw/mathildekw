@@ -1,6 +1,6 @@
 # Bilan IA — Mathildekw.com
 
-Exécution **weekly** du 15 octobre 2026 à 08:56 (Tahiti).
+Exécution **weekly** du 19 octobre 2026 à 11:23 (Tahiti).
 
 - État : **healthy**
 - Contrôles : 16
@@ -30,6 +30,6 @@ Exécution **weekly** du 15 octobre 2026 à 08:56 (Tahiti).
 - ✅ **Disponibilité /laboratoire-horizon.html** — HTTP 200
 - ✅ **SEO essentiel /laboratoire-horizon.html** — title=true, description=true, h1=1
 - ✅ **Service te-fenua-parcels** — HTTP 200, métadonnées exploitables
-- ✅ **Liens et ressources internes** — 63 pages contrôlées
+- ✅ **Liens et ressources internes** — 82 pages contrôlées
 - ✅ **Recherche de secrets versionnés** — Aucun motif de secret exploitable détecté
 - ✅ **Tests de calcul critiques** — Tests exécutés avec succès

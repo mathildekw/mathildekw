@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "runId": "weekly-2026-10-15T18-56-06-530Z",
+  "runId": "weekly-2026-10-19T21-23-47-873Z",
   "cadence": "weekly",
   "timezone": "Pacific/Tahiti",
-  "startedAt": "2026-10-15T18:56:06.530Z",
-  "finishedAt": "2026-10-15T18:56:08.744Z",
-  "source": "local",
-  "productionCommit": null,
+  "startedAt": "2026-10-19T21:23:47.873Z",
+  "finishedAt": "2026-10-19T21:23:49.038Z",
+  "source": "github-actions",
+  "productionCommit": "2f7199d9cd6e68a6efb68875b2eeb61976d856cc",
   "status": "healthy",
   "summary": {
     "checks": 16,
@@ -120,7 +120,7 @@
       "detail": "HTTP 200",
       "url": "https://mathildekw.com/",
       "durationClass": "network",
-      "evidence": "2ffe2397c295357b"
+      "evidence": "a66ca7c06d977d97"
     },
     {
       "agent": "seo",
@@ -138,7 +138,7 @@
       "detail": "HTTP 200",
       "url": "https://mathildekw.com/estimation-immobiliere-tahiti.html",
       "durationClass": "network",
-      "evidence": "63b419b4094aa545"
+      "evidence": "20dce6323895161a"
     },
     {
       "agent": "seo",
@@ -156,7 +156,7 @@
       "detail": "HTTP 200",
       "url": "https://mathildekw.com/foncier-promotion.html",
       "durationClass": "network",
-      "evidence": "6fc6318db4f7a871"
+      "evidence": "4c1b44a80827c0b5"
     },
     {
       "agent": "seo",
@@ -174,7 +174,7 @@
       "detail": "HTTP 200",
       "url": "https://mathildekw.com/diagnostic-foncier.html",
       "durationClass": "network",
-      "evidence": "4dcc0685b7e983d2"
+      "evidence": "0f6bb1d72343968a"
     },
     {
       "agent": "seo",
@@ -192,7 +192,7 @@
       "detail": "HTTP 200",
       "url": "https://mathildekw.com/promoteur-foncier.html",
       "durationClass": "network",
-      "evidence": "8e014b287164bc89"
+      "evidence": "62631e4ae7490aa7"
     },
     {
       "agent": "seo",
@@ -210,7 +210,7 @@
       "detail": "HTTP 200",
       "url": "https://mathildekw.com/laboratoire-horizon.html",
       "durationClass": "network",
-      "evidence": "6270d81f32975078"
+      "evidence": "c136044934a6cb19"
     },
     {
       "agent": "seo",
@@ -233,7 +233,7 @@
       "id": "links:internal",
       "status": "pass",
       "title": "Liens et ressources internes",
-      "detail": "63 pages contrôlées"
+      "detail": "82 pages contrôlées"
     },
     {
       "agent": "security",
