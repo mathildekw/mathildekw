@@ -31,13 +31,17 @@ for (const [name, path] of routes) {
 }
 
 test("le menu mobile est accessible et ferme avec Échap", async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== "mobile", "Scénario réservé au menu mobile");
+  test.skip(!testInfo.project.name.startsWith("mobile-"), "Scénario réservé au menu mobile");
   await page.goto("/foncier-promotion.html", { waitUntil: "domcontentloaded" });
   const toggle = page.locator(".mk-shell-toggle");
   await expect(toggle).toHaveAccessibleName("Ouvrir le menu");
   await toggle.click();
   await expect(toggle).toHaveAttribute("aria-expanded", "true");
   await expect(page.getByRole("navigation", { name: "Navigation principale" })).toBeVisible();
+  const foncierToggle = page.getByRole("button", { name: "Afficher le sous-menu Foncier" });
+  await foncierToggle.click();
+  await expect(foncierToggle).toHaveAttribute("aria-expanded", "true");
+  await expect(page.getByRole("navigation", { name: "Navigation principale" }).getByRole("link", { name: "Puis-je diviser mon terrain ?" })).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
   await expect(toggle).toBeFocused();
