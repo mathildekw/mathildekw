@@ -21,6 +21,16 @@ function limitAnswer(value: unknown, maxWords = 120) {
   return sentenceEnd > 0 ? shortened.slice(0, sentenceEnd + 1) : `${shortened}.`;
 }
 
+const valuationReply = "Je ne peux pas estimer sérieusement un bien ni donner un prix à partir d’une conversation : il faut vérifier ses caractéristiques, son état, son emplacement et les références de marché pertinentes. Tu peux demander une estimation personnalisée à Mathilde depuis la page Estimer ; elle analysera ton bien avant de te communiquer une fourchette argumentée.";
+
+function isValuationRequest(value: string) {
+  return /(?:estim(?:e|er|ation)|combien\s+(?:vaut|coûte)|quel(?:le)?\s+(?:prix|valeur)|valeur\s+(?:de|du|d['’]une?))/i.test(value);
+}
+
+function containsUnverifiedPrice(value: string) {
+  return /(?:\b\d[\d\s.,]*(?:xpf|f\s*cfp|cfp|francs?|millions?|m\b|€)|(?:prix|valeur|estimation|fourchette)[^.!?]{0,50}\b\d[\d\s.,]*)/i.test(value);
+}
+
 Deno.serve(async (request) => {
   if (request.method === "OPTIONS") return new Response(null, { headers: cors });
   if (request.method !== "POST") return json({ error: "Méthode non autorisée" }, 405);
@@ -33,7 +43,9 @@ Deno.serve(async (request) => {
       content: clean(item.content)
     })).filter((item: { content: string }) => item.content);
     if (!messages.length) return json({ error: "Question obligatoire" }, 400);
-    const systemPrompt = "Tu es l’assistant immobilier de Mathilde TUDURI, conseillère Keller Williams Polynésie à Tahiti. Réponds en français, avec tutoiement, chaleur et concision (90 mots maximum), en terminant toujours ta réponse et sans liste trop longue. Oriente uniquement sur acheter, vendre, estimer, louer, financement indicatif, foncier et promotion. Ne prétends jamais connaître une faisabilité, un prix, une règle juridique, fiscale, bancaire ou urbanistique non vérifiée. Ne demande jamais de donnée confidentielle. Lorsque le sujet nécessite une analyse personnelle, propose de contacter Mathilde via /contact.html. Mentionne clairement les incertitudes. N’invente ni bien disponible, ni partenaire, ni statistique. Ne cite aucune agence concurrente ni plateforme immobilière spécifique.";
+    const latestQuestion = messages[messages.length - 1].content;
+    if (isValuationRequest(latestQuestion)) return json({ answer: valuationReply, guarded: "valuation" });
+    const systemPrompt = "Tu es l’assistant immobilier de Mathilde TUDURI, conseillère Keller Williams Polynésie à Tahiti. Réponds en français, avec tutoiement, chaleur et concision (90 mots maximum), en terminant toujours ta réponse et sans liste trop longue. Oriente uniquement sur acheter, vendre, estimer, louer, financement indicatif, foncier et promotion. INTERDICTION ABSOLUE de donner un prix, une valeur, une fourchette ou une estimation chiffrée d’un bien, même si l’utilisateur insiste. Ne prétends jamais connaître une faisabilité, une règle juridique, fiscale, bancaire ou urbanistique non vérifiée. Ne demande jamais de donnée confidentielle. Lorsque le sujet nécessite une analyse personnelle, propose de contacter Mathilde via /contact.html. Mentionne clairement les incertitudes. N’invente ni bien disponible, ni partenaire, ni statistique. Ne cite aucune agence concurrente ni plateforme immobilière spécifique.";
     const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${encodeURIComponent(cloudflareAccountId)}/ai/run/${model}`, {
       method: "POST",
       headers: { Authorization: `Bearer ${cloudflareToken}`, "Content-Type": "application/json" },
@@ -51,6 +63,7 @@ Deno.serve(async (request) => {
     }
     const answer = limitAnswer(data.result?.response);
     if (!answer) return json({ error: "Réponse vide" }, 502);
+    if (containsUnverifiedPrice(answer)) return json({ answer: valuationReply, guarded: "price" });
     return json({ answer });
   } catch (error) {
     console.error(error);
