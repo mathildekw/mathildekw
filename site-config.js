@@ -50,8 +50,22 @@ window.MK_SITE_CONFIG = {
   },
   sellerDiagnostic: {
     apiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/seller-diagnostic"
+  },
+  assistant: {
+    apiUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/website-assistant",
+    emailCaptureUrl: "https://rqjuvutlnpwecjkpkiuw.functions.supabase.co/form-intake"
   }
 };
+
+// Assistant conversationnel et invitation email partagés par toutes les pages
+// publiques. Les secrets et les appels au modèle restent côté Supabase.
+if (!document.querySelector('script[data-mk-concierge]')) {
+  var conciergeScript = document.createElement("script");
+  conciergeScript.src = "/site-concierge.js?v=1";
+  conciergeScript.defer = true;
+  conciergeScript.dataset.mkConcierge = "";
+  document.head.appendChild(conciergeScript);
+}
 
 // Provide an accessible name for legacy controls whose visual label is adjacent
 // but not programmatically associated. This does not alter form behavior.

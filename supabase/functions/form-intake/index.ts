@@ -43,12 +43,18 @@ Deno.serve(async (request) => {
     const email = clean(payload.email, 180).toLowerCase();
     const contactName = clean(payload.contact_name || payload.nom || payload.prenom || payload.fullName, 180);
     if (!kind || !clean(data.source, 300) || (!phone && !email)) return reply({ error: "Coordonnées obligatoires manquantes" }, 400);
-    const stored = (await database("public_form_submissions", { method: "POST", body: JSON.stringify({ kind, source: clean(data.source, 300), contact_name: contactName || null, phone: phone || null, email: email || null, payload }) }))[0];
+    const existing = kind === "kw_offers_email" && email
+      ? (await database(`public_form_submissions?kind=eq.kw_offers_email&email=eq.${encodeURIComponent(email)}&select=*&limit=1`))[0]
+      : null;
+    const submission = { kind, source: clean(data.source, 300), contact_name: contactName || null, phone: phone || null, email: email || null, payload };
+    const stored = existing
+      ? (await database(`public_form_submissions?id=eq.${existing.id}`, { method: "PATCH", body: JSON.stringify(submission) }))[0]
+      : (await database("public_form_submissions", { method: "POST", body: JSON.stringify(submission) }))[0];
     const row = { ...payload, id: stored.id, created_at: stored.created_at, source: data.source, phone, email };
     const sheet = await syncSheet(kind, stored.id, row);
     await database(`public_form_submissions?id=eq.${stored.id}`, { method: "PATCH", body: JSON.stringify({ sheet_status: sheet.status, sheet_error: sheet.error }) });
-    if (sheet.status !== "synced") return reply({ saved: true, reference: stored.id, notification: sheet.status, warning: "Enregistré, notification en attente" }, 202);
-    return reply({ saved: true, reference: stored.id, notification: "sent" }, 201);
+    if (sheet.status !== "synced") return reply({ saved: true, reference: stored.id, deduplicated: !!existing, notification: sheet.status, warning: "Enregistré, notification en attente" }, 202);
+    return reply({ saved: true, reference: stored.id, deduplicated: !!existing, notification: "sent" }, existing ? 200 : 201);
   } catch (error) {
     console.error(error);
     return reply({ error: "Impossible d’enregistrer le formulaire" }, 500);

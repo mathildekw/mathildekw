@@ -1,0 +1,30 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+
+const root = new URL("../", import.meta.url);
+const script = await readFile(new URL("site-concierge.js", root), "utf8");
+const css = await readFile(new URL("global-shell.css", root), "utf8");
+const config = await readFile(new URL("site-config.js", root), "utf8");
+const edge = await readFile(new URL("supabase/functions/website-assistant/index.ts", root), "utf8");
+const intake = await readFile(new URL("supabase/functions/form-intake/index.ts", root), "utf8");
+
+assert.match(config, /website-assistant/);
+assert.match(config, /site-concierge\.js\?v=1/);
+assert.match(script, /180000/, "La collecte email doit attendre trois minutes actives");
+assert.match(script, /30 \* 86400000/, "La popup ne doit pas harceler le visiteur");
+assert.match(script, /type=\"email\"/);
+assert.match(script, /name=\"consent\"[^>]*required/);
+assert.match(script, /politique-confidentialite/);
+assert.match(script, /maxlength=\"600\"/);
+assert.match(script, /role=\"log\" aria-live=\"polite\"/);
+assert.match(script, /Escape/);
+assert.match(css, /\.mk-ai-panel/);
+assert.match(css, /\.mk-offers-dialog/);
+assert.match(css, /@media\(max-width:560px\)/);
+assert.match(edge, /Deno\.env\.get\("OPENAI_API_KEY"\)/, "La clé OpenAI doit rester côté serveur");
+assert.doesNotMatch(config, /sk-[A-Za-z0-9_-]+/, "Aucune clé OpenAI ne doit être publiée");
+assert.match(edge, /api\.openai\.com\/v1\/responses/);
+assert.match(edge, /max_output_tokens: 260/);
+assert.match(edge, /Ne demande jamais de donnée confidentielle/);
+assert.match(intake, /kind === "kw_offers_email"/, "Les emails répétés doivent être dédupliqués");
+console.log("site-concierge: assistant, confidentialité, consentement et déduplication vérifiés");

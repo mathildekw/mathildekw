@@ -53,3 +53,31 @@ test("le menu mobile est accessible et ferme avec Échap", async ({ page }, test
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
   await expect(toggle).toBeFocused();
 });
+
+test("l’assistant IA s’ouvre sans masquer la navigation", async ({ page }) => {
+  await page.route("**/website-assistant", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ answer: "Je peux t’orienter vers le parcours vendeur." }) }));
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  const launcher = page.getByRole("button", { name: "Ouvrir l’assistant immobilier IA" });
+  await expect(launcher).toBeVisible();
+  await launcher.click();
+  await expect(launcher).toHaveAttribute("aria-expanded", "true");
+  await expect(page.getByRole("region", { name: "Assistant immobilier IA" })).toBeVisible();
+  await expect(page.getByLabel("Ta question")).toBeFocused();
+  await page.getByLabel("Ta question").fill("Je veux vendre mon appartement");
+  await page.getByRole("button", { name: "Envoyer la question" }).click();
+  await expect(page.getByRole("log")).toContainText("parcours vendeur");
+  await page.keyboard.press("Escape");
+  await expect(launcher).toHaveAttribute("aria-expanded", "false");
+});
+
+test("la collecte email apparaît après trois minutes actives", async ({ page }, testInfo) => {
+  test.skip(!testInfo.project.name.startsWith("mobile-"), "Contrôle représentatif sur mobile");
+  await page.clock.install();
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  await page.clock.fastForward("03:00");
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole("heading")).toContainText("nouvelles offres Keller Williams");
+  await expect(dialog.getByLabel("Ton adresse email")).toBeVisible();
+  await expect(dialog.getByRole("checkbox")).toBeVisible();
+});
