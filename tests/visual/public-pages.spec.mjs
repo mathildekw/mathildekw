@@ -55,17 +55,20 @@ test("le menu mobile est accessible et ferme avec Échap", async ({ page }, test
 });
 
 test("l’assistant IA s’ouvre sans masquer la navigation", async ({ page }) => {
-  await page.route("**/website-assistant", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ answer: "Je peux t’orienter vers le parcours vendeur." }) }));
+  await page.route("**/website-assistant", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ answer: "Je peux t’orienter vers le parcours vendeur.", category: "SELL", grounded: true, action: { label: "Découvrir le parcours Vendre", href: "/vendre-bien-immobilier-tahiti.html" } }) }));
   await page.goto("/", { waitUntil: "domcontentloaded" });
-  const launcher = page.getByRole("button", { name: "Ouvrir l’assistant immobilier IA" });
+  const launcher = page.getByRole("button", { name: "Discuter avec l’assistant du site" });
   await expect(launcher).toBeVisible();
   await launcher.click();
   await expect(launcher).toHaveAttribute("aria-expanded", "true");
   await expect(page.getByRole("region", { name: "Assistant immobilier IA" })).toBeVisible();
-  await expect(page.getByLabel("Ta question")).toBeFocused();
-  await page.getByLabel("Ta question").fill("Je veux vendre mon appartement");
-  await page.getByRole("button", { name: "Envoyer la question" }).click();
+  await expect(page.getByLabel("Ton message pour l’assistant")).toBeFocused();
+  await page.getByLabel("Ton message pour l’assistant").fill("Je veux vendre mon appartement");
+  await page.getByRole("button", { name: "Envoyer le message à l’assistant" }).click();
   await expect(page.getByRole("log")).toContainText("parcours vendeur");
+  const action = page.getByRole("link", { name: "Découvrir le parcours Vendre" });
+  await expect(action).toBeVisible();
+  await expect(action).toHaveAttribute("href", "/vendre-bien-immobilier-tahiti.html");
   await page.keyboard.press("Escape");
   await expect(launcher).toHaveAttribute("aria-expanded", "false");
 });

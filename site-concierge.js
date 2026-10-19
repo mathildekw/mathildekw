@@ -17,6 +17,10 @@
     });
   }
 
+  function track(name, metadata) {
+    if (window.MKAnalytics && typeof window.MKAnalytics.track === "function") window.MKAnalytics.track(name, metadata || {});
+  }
+
   function init() {
     if (!document.body || document.body.matches("[data-private-page],.admin-page")) return;
     var root = document.createElement("div");
@@ -36,7 +40,7 @@
     var form = root.querySelector(".mk-ai-form");
     var input = form.querySelector("textarea");
     var messages = root.querySelector(".mk-ai-messages");
-    function open() { panel.hidden = false; launcher.setAttribute("aria-expanded", "true"); input.focus(); }
+    function open() { panel.hidden = false; launcher.setAttribute("aria-expanded", "true"); track("assistant_opened"); input.focus(); }
     function close() { panel.hidden = true; launcher.setAttribute("aria-expanded", "false"); launcher.focus(); }
     launcher.addEventListener("click", function () { panel.hidden ? open() : close(); });
     root.querySelector("[data-ai-close]").addEventListener("click", close);
@@ -58,6 +62,7 @@
       if (!question || !config.apiUrl) return;
       input.value = "";
       addMessage("user", question);
+      track("assistant_message_sent");
       history.push({ role: "user", content: question });
       var waiting = addMessage("assistant loading", "Je réfléchis…");
       form.querySelector("button").disabled = true;
@@ -67,6 +72,15 @@
         if (!response.ok) throw new Error(data.error || "Service momentanément indisponible");
         waiting.className = "mk-ai-message assistant";
         waiting.innerHTML = escapeHtml(data.answer).replace(/\n/g, "<br>");
+        if (data.action && /^\/[A-Za-z0-9_./?=&%-]*$/.test(data.action.href || "")) {
+          var action = document.createElement("a");
+          action.className = "mk-ai-action";
+          action.href = data.action.href;
+          action.textContent = data.action.label || "Continuer";
+          action.addEventListener("click", function () { track("assistant_route_clicked", { destination: data.action.href, category: data.category || data.guarded || "unknown" }); });
+          waiting.appendChild(action);
+        }
+        if (data.category === "UNKNOWN") track("assistant_unknown_request");
         history.push({ role: "assistant", content: data.answer });
       } catch (error) {
         waiting.className = "mk-ai-message assistant error";

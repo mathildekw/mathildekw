@@ -36,6 +36,19 @@ const approvedReplies: Record<string, string> = {
   UNKNOWN: "Je n’ai pas d’information vérifiée sur ce point dans le contenu de mathildekw.com. Pour éviter de t’induire en erreur, je préfère ne pas improviser : contacte directement Mathilde depuis la page Contact."
 };
 
+const approvedActions: Record<string, { label: string; href: string }> = {
+  SELL: { label: "Découvrir le parcours Vendre", href: "/vendre-bien-immobilier-tahiti.html" },
+  BUY: { label: "Commencer ma recherche", href: "/acheter-bien-immobilier-tahiti.html" },
+  ESTIMATE: { label: "Demander mon estimation", href: "/estimation-immobiliere-tahiti.html" },
+  LAND: { label: "Découvrir Foncier & Promotion", href: "/foncier-promotion.html" },
+  DIVIDE: { label: "Tester le diagnostic division", href: "/diviser-terrain-tahiti.html" },
+  FINANCE: { label: "Calculer ma capacité", href: "/capacite-emprunt-polynesie.html" },
+  JOIN: { label: "Découvrir Nous rejoindre", href: "/nous-rejoindre/" },
+  LISTINGS: { label: "Voir les biens", href: "/biens-a-vendre-tahiti.html" },
+  CONTACT: { label: "Contacter Mathilde", href: "/contact.html" },
+  UNKNOWN: { label: "Poser ma demande à Mathilde", href: "/contact.html" }
+};
+
 function isValuationRequest(value: string) {
   return /(?:estim(?:e|er|ation)|combien\s+(?:vaut|coûte)|quel(?:le)?\s+(?:prix|valeur)|valeur\s+(?:de|du|d['’]une?))/i.test(value);
 }
@@ -57,7 +70,7 @@ Deno.serve(async (request) => {
     })).filter((item: { content: string }) => item.content);
     if (!messages.length) return json({ error: "Question obligatoire" }, 400);
     const latestQuestion = messages[messages.length - 1].content;
-    if (isValuationRequest(latestQuestion)) return json({ answer: valuationReply, guarded: "valuation" });
+    if (isValuationRequest(latestQuestion)) return json({ answer: valuationReply, action: approvedActions.ESTIMATE, guarded: "valuation", grounded: true });
     const systemPrompt = "Classe le message dans UNE seule catégorie parmi SELL, BUY, ESTIMATE, LAND, DIVIDE, FINANCE, JOIN, LISTINGS, CONTACT, UNKNOWN. Réponds uniquement avec le nom exact de la catégorie, sans phrase ni ponctuation. ESTIMATE couvre toute demande de prix ou valeur d’un bien. UNKNOWN s’applique dès que la demande ne concerne pas clairement une page ou un parcours de mathildekw.com.";
     const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${encodeURIComponent(cloudflareAccountId)}/ai/run/${model}`, {
       method: "POST",
@@ -76,8 +89,8 @@ Deno.serve(async (request) => {
     }
     const category = clean(data.result?.response, 30).toUpperCase().replace(/[^A-Z]/g, "");
     const answer = approvedReplies[category] || approvedReplies.UNKNOWN;
-    if (containsUnverifiedPrice(answer)) return json({ answer: approvedReplies.UNKNOWN, guarded: "price" });
-    return json({ answer, category, grounded: true });
+    if (containsUnverifiedPrice(answer)) return json({ answer: approvedReplies.UNKNOWN, action: approvedActions.UNKNOWN, guarded: "price", grounded: true });
+    return json({ answer, action: approvedActions[category] || approvedActions.UNKNOWN, category, grounded: true });
   } catch (error) {
     console.error(error);
     return json({ error: "Assistant momentanément indisponible" }, 500);
