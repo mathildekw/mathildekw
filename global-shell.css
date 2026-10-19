@@ -10,6 +10,7 @@ html{scroll-padding-top:calc(var(--mk-shell-height) + 20px)}body.mk-shell-ready{
 @media(max-width:560px){.mk-shell-brand strong{font-size:12px}.mk-shell-brand small{font-size:7px}.mk-shell-mark{width:36px;height:36px}.mk-footer-grid{grid-template-columns:1fr;gap:28px}.mk-footer-grid>div:first-child{grid-column:auto}.mk-footer-bottom{display:block}.mk-footer-bottom span{display:block;margin-top:7px}}@media(prefers-reduced-motion:reduce){.mk-shell-nav,.mk-shell-toggle span,.mk-shell-toggle:before,.mk-shell-toggle:after{transition:none}}
 
 /* Expérience publique 2026 — couche commune, chargée après les styles historiques. */
+html{overflow-x:clip}
 body.mk-shell-ready{margin:0;overflow-x:clip;color:var(--mk-ink);font-family:var(--mk-sans);line-height:1.6;text-rendering:optimizeLegibility}
 body.mk-shell-ready *,body.mk-shell-ready *::before,body.mk-shell-ready *::after{box-sizing:border-box}
 body.mk-shell-ready main{min-width:0}
