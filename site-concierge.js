@@ -21,12 +21,12 @@
     if (!document.body || document.body.matches("[data-private-page],.admin-page")) return;
     var root = document.createElement("div");
     root.className = "mk-concierge";
-    root.innerHTML = '<button class="mk-ai-launcher" type="button" aria-label="Ouvrir l’assistant immobilier IA" aria-expanded="false" aria-controls="mk-ai-panel"><span aria-hidden="true">M</span><b>Une question&nbsp;?</b></button>' +
+    root.innerHTML = '<button class="mk-ai-launcher" type="button" aria-label="Discuter avec l’assistant du site" aria-expanded="false" aria-controls="mk-ai-panel"><span aria-hidden="true">M</span><b>Besoin d’aide&nbsp;?</b></button>' +
       '<section class="mk-ai-panel" id="mk-ai-panel" aria-label="Assistant immobilier IA" hidden>' +
         '<header><div><small>Assistant IA</small><strong>Comment puis-je t’aider&nbsp;?</strong></div><button type="button" data-ai-close aria-label="Fermer l’assistant">×</button></header>' +
-        '<div class="mk-ai-messages" role="log" aria-live="polite"><div class="mk-ai-message assistant">Ia ora na ! Je peux t’orienter pour acheter, vendre, estimer ou étudier un terrain. Mes réponses sont indicatives et Mathilde reste disponible pour les vérifier avec toi.</div></div>' +
+        '<div class="mk-ai-messages" role="log" aria-live="polite"><div class="mk-ai-message assistant">Ia ora na ! Je suis le guide de mathildekw.com. Écris-moi ce que tu souhaites faire et je t’orienterai vers le bon service ou la bonne page. Si le site ne contient pas une réponse vérifiée, je te proposerai de contacter Mathilde.</div></div>' +
         '<div class="mk-ai-suggestions"><button type="button">Je veux vendre</button><button type="button">Je cherche un bien</button><button type="button">J’ai un terrain</button></div>' +
-        '<form class="mk-ai-form"><label class="sr-only" for="mk-ai-question">Ta question</label><textarea id="mk-ai-question" name="question" rows="1" maxlength="600" placeholder="Écris ta question…" required></textarea><button type="submit" aria-label="Envoyer la question">→</button></form>' +
+        '<form class="mk-ai-form"><label class="sr-only" for="mk-ai-question">Ton message pour l’assistant</label><textarea id="mk-ai-question" name="message" rows="1" maxlength="600" placeholder="Écris ton message à l’assistant…" required></textarea><button type="submit" aria-label="Envoyer le message à l’assistant">→</button></form>' +
         '<p class="mk-ai-note">Assistant automatisé : ne communique aucune donnée confidentielle. <a href="/politique-confidentialite.html">Confidentialité</a></p>' +
       '</section>';
     document.body.appendChild(root);

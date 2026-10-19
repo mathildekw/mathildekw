@@ -23,6 +23,19 @@ function limitAnswer(value: unknown, maxWords = 120) {
 
 const valuationReply = "Je ne peux pas estimer sérieusement un bien ni donner un prix à partir d’une conversation : il faut vérifier ses caractéristiques, son état, son emplacement et les références de marché pertinentes. Tu peux demander une estimation personnalisée à Mathilde depuis la page Estimer ; elle analysera ton bien avant de te communiquer une fourchette argumentée.";
 
+const approvedReplies: Record<string, string> = {
+  SELL: "Pour préparer une vente, le site te propose le parcours Vendre, une demande d’estimation et le diagnostic « Pourquoi mon bien ne se vend pas ? ». Je peux t’aider à choisir le bon parcours, mais Mathilde devra étudier ton bien pour te donner un conseil personnalisé.",
+  BUY: "Pour un projet d’achat, consulte la rubrique Acheter et les biens présentés sur le site. Tu peux aussi déposer tes critères de recherche afin que Mathilde puisse reprendre personnellement ta demande.",
+  ESTIMATE: valuationReply,
+  LAND: "Pour un terrain, consulte Foncier & Promotion afin de demander un bilan de potentiel foncier. Le site présente aussi un diagnostic dédié, sans conclure automatiquement à une constructibilité, une rentabilité ou une autorisation.",
+  DIVIDE: "Le parcours « Puis-je diviser mon terrain à Tahiti ? » recueille les premières informations utiles. Son résultat reste indicatif : le PGA, les accès, les servitudes, les réseaux, le bornage et les vérifications professionnelles restent nécessaires.",
+  FINANCE: "Le site propose un simulateur indicatif de capacité d’emprunt. Il ne constitue ni un accord bancaire ni une offre de crédit ; un professionnel doit confirmer le financement et les conditions applicables.",
+  JOIN: "La rubrique Nous rejoindre présente les parcours disponibles pour découvrir Keller Williams Polynésie et transmettre une candidature ou une demande de contact.",
+  LISTINGS: "Tu peux consulter les biens actuellement présentés dans la rubrique Acheter. Pour vérifier une disponibilité ou organiser une visite, transmets ta demande à Mathilde depuis la fiche du bien ou la page Contact.",
+  CONTACT: "Tu peux joindre directement Mathilde depuis la page Contact pour une réponse personnalisée, une demande de rendez-vous ou l’étude de ton projet.",
+  UNKNOWN: "Je n’ai pas d’information vérifiée sur ce point dans le contenu de mathildekw.com. Pour éviter de t’induire en erreur, je préfère ne pas improviser : contacte directement Mathilde depuis la page Contact."
+};
+
 function isValuationRequest(value: string) {
   return /(?:estim(?:e|er|ation)|combien\s+(?:vaut|coûte)|quel(?:le)?\s+(?:prix|valeur)|valeur\s+(?:de|du|d['’]une?))/i.test(value);
 }
@@ -45,14 +58,14 @@ Deno.serve(async (request) => {
     if (!messages.length) return json({ error: "Question obligatoire" }, 400);
     const latestQuestion = messages[messages.length - 1].content;
     if (isValuationRequest(latestQuestion)) return json({ answer: valuationReply, guarded: "valuation" });
-    const systemPrompt = "Tu es l’assistant immobilier de Mathilde TUDURI, conseillère Keller Williams Polynésie à Tahiti. Réponds en français, avec tutoiement, chaleur et concision (90 mots maximum), en terminant toujours ta réponse et sans liste trop longue. Oriente uniquement sur acheter, vendre, estimer, louer, financement indicatif, foncier et promotion. INTERDICTION ABSOLUE de donner un prix, une valeur, une fourchette ou une estimation chiffrée d’un bien, même si l’utilisateur insiste. Ne prétends jamais connaître une faisabilité, une règle juridique, fiscale, bancaire ou urbanistique non vérifiée. Ne demande jamais de donnée confidentielle. Lorsque le sujet nécessite une analyse personnelle, propose de contacter Mathilde via /contact.html. Mentionne clairement les incertitudes. N’invente ni bien disponible, ni partenaire, ni statistique. Ne cite aucune agence concurrente ni plateforme immobilière spécifique.";
+    const systemPrompt = "Classe le message dans UNE seule catégorie parmi SELL, BUY, ESTIMATE, LAND, DIVIDE, FINANCE, JOIN, LISTINGS, CONTACT, UNKNOWN. Réponds uniquement avec le nom exact de la catégorie, sans phrase ni ponctuation. ESTIMATE couvre toute demande de prix ou valeur d’un bien. UNKNOWN s’applique dès que la demande ne concerne pas clairement une page ou un parcours de mathildekw.com.";
     const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${encodeURIComponent(cloudflareAccountId)}/ai/run/${model}`, {
       method: "POST",
       headers: { Authorization: `Bearer ${cloudflareToken}`, "Content-Type": "application/json" },
       body: JSON.stringify({
         messages: [{ role: "system", content: systemPrompt }, ...messages],
-        max_tokens: 220,
-        temperature: 0.35
+        max_tokens: 12,
+        temperature: 0
       })
     });
     const data = await response.json();
@@ -61,10 +74,10 @@ Deno.serve(async (request) => {
       const quotaReached = response.status === 429 || data?.errors?.some((error: Record<string, unknown>) => /quota|limit/i.test(String(error.message || "")));
       return json({ error: quotaReached ? "Le quota gratuit du jour est atteint" : "Assistant momentanément indisponible", fallback: "contact" }, quotaReached ? 429 : 502);
     }
-    const answer = limitAnswer(data.result?.response);
-    if (!answer) return json({ error: "Réponse vide" }, 502);
-    if (containsUnverifiedPrice(answer)) return json({ answer: valuationReply, guarded: "price" });
-    return json({ answer });
+    const category = clean(data.result?.response, 30).toUpperCase().replace(/[^A-Z]/g, "");
+    const answer = approvedReplies[category] || approvedReplies.UNKNOWN;
+    if (containsUnverifiedPrice(answer)) return json({ answer: approvedReplies.UNKNOWN, guarded: "price" });
+    return json({ answer, category, grounded: true });
   } catch (error) {
     console.error(error);
     return json({ error: "Assistant momentanément indisponible" }, 500);
