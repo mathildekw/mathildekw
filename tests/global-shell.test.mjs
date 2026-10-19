@@ -8,7 +8,7 @@ const css = await readFile(new URL("global-shell.css", root), "utf8");
 
 for (const label of ["Acheter & louer", "Vendre", "Foncier", "Outils", "Conseils", "Nous rejoindre", "Contact"])
   assert.match(shell, new RegExp(`label:\"${label.replace("&", "&")}\"`));
-for (const destination of ["/biens-a-vendre-tahiti.html", "/ou-vivre-a-tahiti.html", "/vendre/nos-accompagnements/", "/diagnostic-foncier.html", "/diviser-terrain-tahiti.html", "/blog.html", "/capacite-emprunt-polynesie.html", "/louer-bien-immobilier-tahiti.html", "/documents-vendre-bien-tahiti.html", "/preparer-visite-immobiliere-tahiti.html", "/acheter-ou-louer-tahiti.html", "/orienter-projet-immobilier-tahiti.html"])
+for (const destination of ["/biens-a-vendre-tahiti.html", "/ou-vivre-a-tahiti.html", "/vendre/nos-accompagnements/", "/diagnostic-foncier.html", "/diviser-terrain-tahiti.html", "/blog.html", "/capacite-emprunt-polynesie.html", "/louer-bien-immobilier-tahiti.html", "/documents-vendre-bien-tahiti.html", "/preparer-visite-immobiliere-tahiti.html", "/acheter-ou-louer-tahiti.html", "/orienter-projet-immobilier-tahiti.html", "/comparer-biens-immobiliers-tahiti.html"])
   assert.ok(shell.includes(destination), `Destination commerciale manquante : ${destination}`);
 for (const behavior of ["aria-expanded", "aria-controls", "Escape", "popstate", "mk-menu-open", "submenu-open", "aria-current"])
   assert.ok(shell.includes(behavior), `Comportement manquant : ${behavior}`);
