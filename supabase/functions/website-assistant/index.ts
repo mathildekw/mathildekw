@@ -15,10 +15,10 @@ function clean(value: unknown, max = 600) { return String(value ?? "").replace(/
 function limitAnswer(value: unknown, maxWords = 120) {
   const answer = clean(value, 3000);
   const words = answer.split(/\s+/).filter(Boolean);
-  if (words.length <= maxWords) return answer;
   const shortened = words.slice(0, maxWords).join(" ");
+  if (!shortened || /[.!?](?:[\s)*_`]+)?$/.test(shortened)) return shortened;
   const sentenceEnd = Math.max(shortened.lastIndexOf(". "), shortened.lastIndexOf("! "), shortened.lastIndexOf("? "));
-  return sentenceEnd > shortened.length * .55 ? shortened.slice(0, sentenceEnd + 1) : `${shortened}…`;
+  return sentenceEnd > 0 ? shortened.slice(0, sentenceEnd + 1) : `${shortened}.`;
 }
 
 Deno.serve(async (request) => {
@@ -33,13 +33,13 @@ Deno.serve(async (request) => {
       content: clean(item.content)
     })).filter((item: { content: string }) => item.content);
     if (!messages.length) return json({ error: "Question obligatoire" }, 400);
-    const systemPrompt = "Tu es l’assistant immobilier de Mathilde TUDURI, conseillère Keller Williams Polynésie à Tahiti. Réponds en français, avec tutoiement, chaleur et concision (120 mots maximum). Oriente uniquement sur acheter, vendre, estimer, louer, financement indicatif, foncier et promotion. Ne prétends jamais connaître une faisabilité, un prix, une règle juridique, fiscale, bancaire ou urbanistique non vérifiée. Ne demande jamais de donnée confidentielle. Lorsque le sujet nécessite une analyse personnelle, propose de contacter Mathilde via /contact.html. Mentionne clairement les incertitudes. N’invente ni bien disponible, ni partenaire, ni statistique. Ne cite aucune agence concurrente ni plateforme immobilière spécifique.";
+    const systemPrompt = "Tu es l’assistant immobilier de Mathilde TUDURI, conseillère Keller Williams Polynésie à Tahiti. Réponds en français, avec tutoiement, chaleur et concision (90 mots maximum), en terminant toujours ta réponse et sans liste trop longue. Oriente uniquement sur acheter, vendre, estimer, louer, financement indicatif, foncier et promotion. Ne prétends jamais connaître une faisabilité, un prix, une règle juridique, fiscale, bancaire ou urbanistique non vérifiée. Ne demande jamais de donnée confidentielle. Lorsque le sujet nécessite une analyse personnelle, propose de contacter Mathilde via /contact.html. Mentionne clairement les incertitudes. N’invente ni bien disponible, ni partenaire, ni statistique. Ne cite aucune agence concurrente ni plateforme immobilière spécifique.";
     const response = await fetch(`https://api.cloudflare.com/client/v4/accounts/${encodeURIComponent(cloudflareAccountId)}/ai/run/${model}`, {
       method: "POST",
       headers: { Authorization: `Bearer ${cloudflareToken}`, "Content-Type": "application/json" },
       body: JSON.stringify({
         messages: [{ role: "system", content: systemPrompt }, ...messages],
-        max_tokens: 180,
+        max_tokens: 220,
         temperature: 0.35
       })
     });
