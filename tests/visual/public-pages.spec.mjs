@@ -8,6 +8,7 @@ const routes = [
   ["foncier", "/foncier-promotion.html"],
   ["diagnostic", "/diagnostic-foncier.html"],
   ["contact", "/contact.html"],
+  ["honoraires-agence", "/honoraires-agence-immobiliere-tahiti.html"],
   ["design-system", "/design-system.html"]
   ,["annonce-immersive-demo", "/annonce-immersive-demo.html"]
   ,["assistant-immobilier", "/assistant-immobilier-tahiti.html"]
@@ -36,6 +37,18 @@ for (const [name, path] of routes) {
     });
   });
 }
+
+test("le calculateur d’honoraires applique le barème et protège les cas spéciaux", async ({ page }) => {
+  await page.goto("/honoraires-agence-immobiliere-tahiti.html", { waitUntil: "domcontentloaded" });
+  const calculator = page.locator("[data-fees-calculator]");
+  await calculator.getByLabel("Prix de vente envisagé", { exact: true }).fill("50000000");
+  await expect(calculator.locator("[data-fees-ht]")).toHaveText("3 000 000 F CFP");
+  await expect(calculator.locator("[data-fees-vat]")).toHaveText("390 000 F CFP");
+  await expect(calculator.locator("[data-fees-total]")).toHaveText("3 390 000 F CFP");
+  await calculator.getByLabel("Localisation du bien").selectOption("other");
+  await expect(calculator.locator("[data-fees-total]")).toHaveText("Sur confirmation");
+  await expect(calculator.locator("[data-fees-message]")).toContainText("aucun montant n’est supposé");
+});
 
 test("le menu mobile est accessible et ferme avec Échap", async ({ page }, testInfo) => {
   test.skip(!testInfo.project.name.startsWith("mobile-"), "Scénario réservé au menu mobile");

@@ -1,0 +1,18 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+const root=new URL("../",import.meta.url);
+const html=await readFile(new URL("honoraires-agence-immobiliere-tahiti.html",root),"utf8");
+const js=await readFile(new URL("agency-fees.js",root),"utf8");
+assert.match(html,/<h1>Honoraires d’agence immobilière à Tahiti/);
+assert.match(html,/data-fees-calculator/);
+assert.match(html,/700&nbsp;000 F CFP/);
+for(const rate of ["8&nbsp;%","7&nbsp;%","6&nbsp;%","5&nbsp;%","4&nbsp;%"])assert.ok(html.includes(rate));
+assert.match(html,/applicable au 24 mai 2023/i);
+assert.match(html,/media\.kwfrance\.com\/mc\/78\/public\/3564_648cc024abb2a\.pdf/);
+assert.match(html,/service-public\.pf\/dicp/);
+assert.match(html,/FAQPage/);
+assert.match(js,/vatRate=\.13/);
+assert.match(js,/price<=10000000/);
+assert.match(js,/locationInput\.value==="other"/);
+assert.doesNotMatch(js,/eval\(|innerHTML|document\.write/);
+console.log("agency-fees: source, brackets, VAT, calculator and structured data OK");
