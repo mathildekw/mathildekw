@@ -1,71 +1,15 @@
 (function(){
   "use strict";
-
-  var body=document.body;
-  var status=document.querySelector("[data-status]");
-  var favorite=document.querySelector("[data-favorite]");
-  var share=document.querySelector("[data-share]");
-  var favoriteKey="mk_demo_aora_favorite";
-
-  function track(name,properties){
-    if(window.MKAnalytics)window.MKAnalytics.track(name,Object.assign({demo:true},properties||{}));
-  }
-
-  function announce(message){
-    if(status)status.textContent=message;
-  }
-
-  function favoriteIsSaved(){
-    try{return localStorage.getItem(favoriteKey)==="yes"}catch(error){return false}
-  }
-
-  function renderFavorite(){
-    if(!favorite)return;
-    var saved=favoriteIsSaved();
-    favorite.textContent=saved?"Retirer des favoris":"Ajouter aux favoris";
-    favorite.setAttribute("aria-pressed",String(saved));
-  }
-
-  document.querySelectorAll("[data-mode-button]").forEach(function(button){
-    button.onclick=function(){
-      body.dataset.mode=button.dataset.modeButton;
-      document.querySelectorAll("[data-mode-button]").forEach(function(item){item.setAttribute("aria-pressed",String(item===button))});
-      track("immersive_mode_changed",{mode:button.dataset.modeButton});
-    };
-  });
-
-  if(favorite)favorite.onclick=function(){
-    var saved=favoriteIsSaved();
-    try{localStorage.setItem(favoriteKey,saved?"no":"yes")}catch(error){announce("Le favori ne peut pas être enregistré sur cet appareil.");return}
-    renderFavorite();
-    announce(saved?"Démonstration retirée des favoris de cet appareil.":"Démonstration ajoutée aux favoris de cet appareil.");
-    track(saved?"immersive_favorite_removed":"immersive_favorite_added");
-  };
-
-  if(share)share.onclick=async function(){
-    var data={title:"Démonstration immobilière immersive",text:"Découvre cette démonstration fictive de Mathilde KW.",url:location.href};
-    try{
-      if(navigator.share){
-        await navigator.share(data);
-        track("immersive_shared",{method:"native"});
-        return;
-      }
-      if(navigator.clipboard&&navigator.clipboard.writeText){
-        await navigator.clipboard.writeText(data.url);
-        announce("Lien copié.");
-        track("immersive_shared",{method:"clipboard"});
-        return;
-      }
-      throw new Error("share_unavailable");
-    }catch(error){
-      if(error&&error.name==="AbortError")return;
-      var whatsapp="https://wa.me/?text="+encodeURIComponent(data.text+" "+data.url);
-      window.open(whatsapp,"_blank","noopener,noreferrer");
-      announce("WhatsApp est prêt : tu gardes la main sur l’envoi.");
-      track("immersive_shared",{method:"whatsapp_fallback"});
-    }
-  };
-
-  renderFavorite();
-  track("immersive_property_viewed");
+  var body=document.body,status=document.querySelector("[data-status]"),favoriteKey="mk_demo_aora_favorite";
+  function track(name,properties){if(window.MKAnalytics)window.MKAnalytics.track(name,Object.assign({demo:true},properties||{}))}
+  function announce(message){if(status)status.textContent=message}
+  function isSaved(){try{return localStorage.getItem(favoriteKey)==="yes"}catch(error){return false}}
+  function renderFavorite(){var saved=isSaved();document.querySelectorAll("[data-favorite]").forEach(function(button){button.setAttribute("aria-pressed",String(saved));if(button.closest(".ip-classic-card"))button.textContent=saved?"Retirer des favoris":"Ajouter aux favoris";else button.textContent=saved?"♥":"♡"})}
+  document.querySelectorAll("[data-mode-button]").forEach(function(button){button.onclick=function(){body.dataset.mode=button.dataset.modeButton;document.querySelectorAll("[data-mode-button]").forEach(function(item){item.setAttribute("aria-pressed",String(item===button))});track("immersive_mode_changed",{mode:button.dataset.modeButton})}});
+  document.querySelectorAll("[data-favorite]").forEach(function(button){button.onclick=function(){var saved=isSaved();try{localStorage.setItem(favoriteKey,saved?"no":"yes")}catch(error){announce("Le favori ne peut pas être enregistré sur cet appareil.");return}renderFavorite();announce(saved?"Démonstration retirée des favoris.":"Démonstration ajoutée aux favoris.");track(saved?"immersive_favorite_removed":"immersive_favorite_added")}});
+  document.querySelectorAll("[data-share]").forEach(function(button){button.onclick=async function(){var data={title:"Résidence AORA — démonstration cinématique",text:"Découvre comment Mathilde KW peut valoriser un bien avec une présentation cinématique.",url:location.href};try{if(navigator.share){await navigator.share(data);track("immersive_shared",{method:"native"});return}if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(data.url);announce("Lien copié.");track("immersive_shared",{method:"clipboard"});return}throw new Error("share_unavailable")}catch(error){if(error&&error.name==="AbortError")return;window.open("https://wa.me/?text="+encodeURIComponent(data.text+" "+data.url),"_blank","noopener,noreferrer");announce("WhatsApp est prêt : tu gardes la main sur l’envoi.");track("immersive_shared",{method:"whatsapp_fallback"})}}});
+  var progress=document.querySelector("[data-ip-progress]");function updateProgress(){var max=document.documentElement.scrollHeight-innerHeight;if(progress)progress.style.transform="scaleX("+(max>0?Math.min(1,scrollY/max):0)+")"}addEventListener("scroll",updateProgress,{passive:true});updateProgress();
+  if(!matchMedia("(prefers-reduced-motion: reduce)").matches){body.classList.add("ip-motion");if("IntersectionObserver" in window){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add("is-visible");var chapter=entry.target.closest("[data-ip-chapter]");if(chapter)track("immersive_section_viewed",{section:chapter.dataset.ipChapter});observer.unobserve(entry.target)}})},{threshold:.22});document.querySelectorAll(".ip-reveal").forEach(function(item){observer.observe(item)})}else document.querySelectorAll(".ip-reveal").forEach(function(item){item.classList.add("is-visible")})}
+  var dialog=document.querySelector("[data-lightbox]"),lastFocus;document.querySelectorAll("[data-gallery-open]").forEach(function(button){button.onclick=function(){lastFocus=button;if(dialog.showModal)dialog.showModal();else dialog.setAttribute("open","");track("immersive_gallery_opened")}});var close=document.querySelector("[data-gallery-close]");if(close)close.onclick=function(){dialog.close?dialog.close():dialog.removeAttribute("open");if(lastFocus)lastFocus.focus()};if(dialog)dialog.addEventListener("click",function(event){if(event.target===dialog&&close)close.click()});
+  renderFavorite();track("immersive_property_viewed");
 })();
