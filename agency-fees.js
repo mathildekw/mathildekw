@@ -5,7 +5,17 @@
   var priceInput=form.elements.price,locationInput=form.elements.location,range=form.querySelector("#fees-range");
   var format=new Intl.NumberFormat("fr-FR",{maximumFractionDigits:0});
   var money=function(value){return format.format(Math.round(value))+" F CFP"};
+  var parsePrice=function(value){return Number(String(value).replace(/\D/g,""))||0};
+  var displayPrice=function(value){return format.format(Math.round(value)).replace(/\u202f/g," ")};
   var vatRate=.13;
+
+  /* A number input cannot display grouping spaces, so keep the numeric mobile
+     keyboard while presenting a human-readable CFP amount. */
+  priceInput.type="text";
+  priceInput.inputMode="numeric";
+  priceInput.autocomplete="off";
+  priceInput.pattern="[0-9 ]*";
+  priceInput.value=displayPrice(parsePrice(priceInput.value));
 
   function bracket(price){
     if(price<=10000000)return {ht:700000,rate:"Forfait de 700 000 F CFP HT",label:"Jusqu’à 10 M F CFP"};
@@ -17,7 +27,7 @@
   }
 
   function render(){
-    var result=form.querySelector(".fees-result"),price=Math.max(0,Number(priceInput.value)||0),outside=locationInput.value==="other";
+    var result=form.querySelector(".fees-result"),price=Math.max(0,parsePrice(priceInput.value)),outside=locationInput.value==="other";
     if(outside){
       result.classList.add("is-special");
       form.querySelector("[data-fees-bracket]").textContent="Tarification spéciale";
@@ -38,8 +48,8 @@
     form.querySelector("[data-fees-message]").textContent="Simulation au taux de TVA indicatif de 13 %, à confirmer dans le mandat.";
   }
 
-  range.addEventListener("input",function(){priceInput.value=range.value;render()});
-  priceInput.addEventListener("input",function(){var value=Number(priceInput.value)||0;if(value<=Number(range.max))range.value=String(Math.max(Number(range.min),value));render()});
+  range.addEventListener("input",function(){priceInput.value=displayPrice(Number(range.value));render()});
+  priceInput.addEventListener("input",function(){var value=parsePrice(priceInput.value);priceInput.value=value?displayPrice(value):"";if(value<=Number(range.max))range.value=String(Math.max(Number(range.min),value));render()});
   locationInput.addEventListener("change",render);
   form.addEventListener("submit",function(event){event.preventDefault();render()});
   render();

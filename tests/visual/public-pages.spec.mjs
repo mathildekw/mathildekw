@@ -41,7 +41,11 @@ for (const [name, path] of routes) {
 test("le calculateur d’honoraires applique le barème et protège les cas spéciaux", async ({ page }) => {
   await page.goto("/honoraires-agence-immobiliere-tahiti.html", { waitUntil: "domcontentloaded" });
   const calculator = page.locator("[data-fees-calculator]");
-  await calculator.getByLabel("Prix de vente envisagé", { exact: true }).fill("50000000");
+  const price = calculator.getByLabel("Prix de vente envisagé", { exact: true });
+  await price.fill("60000000");
+  await expect(price).toHaveValue("60 000 000");
+  await price.fill("50000000");
+  await expect(price).toHaveValue("50 000 000");
   await expect(calculator.locator("[data-fees-ht]")).toHaveText("3 000 000 F CFP");
   await expect(calculator.locator("[data-fees-vat]")).toHaveText("390 000 F CFP");
   await expect(calculator.locator("[data-fees-total]")).toHaveText("3 390 000 F CFP");

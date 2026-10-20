@@ -14,5 +14,7 @@ assert.match(html,/FAQPage/);
 assert.match(js,/vatRate=\.13/);
 assert.match(js,/price<=10000000/);
 assert.match(js,/locationInput\.value==="other"/);
+assert.match(js,/priceInput\.type="text"/);
+assert.match(js,/replace\(\/\\D\/g,""\)/);
 assert.doesNotMatch(js,/eval\(|innerHTML|document\.write/);
 console.log("agency-fees: source, brackets, VAT, calculator and structured data OK");

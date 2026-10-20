@@ -7,9 +7,10 @@ var NAV=[
     {label:"Calculer ma capacité d’emprunt",href:"/capacite-emprunt-polynesie.html"},
     {label:"Louer un bien",href:"/louer-bien-immobilier-tahiti.html"}
   ]},
-  {label:"Vendre",href:"/vendre-bien-immobilier-tahiti.html",match:function(p){return !/^\/blog/.test(p)&&/vendre-bien|estimation-(immobiliere|maison|appartement)|accompagnements|checklist-|pourquoi-mon-bien|vendre-discretement|vendre-pour-racheter/.test(p)},children:[
+  {label:"Vendre",href:"/vendre-bien-immobilier-tahiti.html",match:function(p){return !/^\/blog/.test(p)&&/vendre-bien|estimation-(immobiliere|maison|appartement)|honoraires-agence|accompagnements|checklist-|pourquoi-mon-bien|vendre-discretement|vendre-pour-racheter/.test(p)},children:[
     {label:"Vendre mon bien",href:"/vendre-bien-immobilier-tahiti.html"},
     {label:"Estimer mon bien",href:"/estimation-immobiliere-tahiti.html"},
+    {label:"Comprendre les honoraires",href:"/honoraires-agence-immobiliere-tahiti.html"},
     {label:"Choisir mon accompagnement",href:"/vendre/nos-accompagnements/"},
     {label:"Pourquoi mon bien ne se vend pas ?",href:"/pourquoi-mon-bien-ne-se-vend-pas.html"},
     {label:"Vendre pour racheter",href:"/blog-vendre-pour-racheter-tahiti.html"}
