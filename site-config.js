@@ -62,7 +62,7 @@ window.MK_SITE_CONFIG = {
 // publiques. Les secrets et les appels au modèle restent côté Supabase.
 if (!document.querySelector('script[data-mk-concierge]')) {
   var conciergeScript = document.createElement("script");
-  conciergeScript.src = "/site-concierge.js?v=2";
+  conciergeScript.src = "/site-concierge.js?v=3";
   conciergeScript.defer = true;
   conciergeScript.dataset.mkConcierge = "";
   document.head.appendChild(conciergeScript);

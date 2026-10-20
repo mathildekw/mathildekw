@@ -9,7 +9,7 @@ const edge = await readFile(new URL("supabase/functions/website-assistant/index.
 const intake = await readFile(new URL("supabase/functions/form-intake/index.ts", root), "utf8");
 
 assert.match(config, /website-assistant/);
-assert.match(config, /site-concierge\.js\?v=2/);
+assert.match(config, /site-concierge\.js\?v=3/);
 assert.match(script, /180000/, "La collecte email doit attendre trois minutes actives");
 assert.match(script, /30 \* 86400000/, "La popup ne doit pas harceler le visiteur");
 assert.match(script, /type=\"email\"/);
@@ -20,6 +20,11 @@ assert.match(script, /role=\"log\" aria-live=\"polite\"/);
 assert.match(script, /Besoin d’aide/);
 assert.match(script, /Écris ton message à l’assistant/);
 assert.match(script, /assistant_route_clicked/);
+assert.match(script, /maxMessages = 12/);
+assert.match(script, /history = history\.slice\(-6\)/);
+assert.match(script, /messages: history\.slice\(-6\)/);
+assert.match(script, /assistant_answered/);
+assert.match(script, /mk-ai-followups/);
 assert.match(script, /className = "mk-ai-action"/);
 assert.match(script, /Escape/);
 assert.match(css, /\.mk-ai-panel/);
@@ -31,6 +36,13 @@ assert.doesNotMatch(config, /CLOUDFLARE_AI_API_TOKEN|Bearer\s+[A-Za-z0-9_-]+/, "
 assert.match(edge, /api\.cloudflare\.com\/client\/v4\/accounts/);
 assert.match(edge, /@cf\/meta\/llama-3\.1-8b-instruct-fp8/);
 assert.match(edge, /max_tokens: 12/);
+assert.match(edge, /deterministicCategory/);
+for (const category of ["SELL_BUY", "STUCK", "RENT", "INVEST", "QUIZ", "BROKER", "APPOINTMENT", "REFERRAL"]) assert.match(edge, new RegExp(category));
+assert.match(edge, /mode: "deterministic"/);
+assert.match(edge, /mode: "cache"/);
+assert.match(edge, /mode: "deterministic-guard"/);
+assert.match(edge, /categoryCache\.size >= 200/);
+assert.ok(edge.indexOf("deterministicCategory(latestQuestion)") < edge.indexOf("api.cloudflare.com/client/v4/accounts"), "Les parcours simples doivent éviter l’appel IA");
 assert.match(edge, /approvedReplies/);
 assert.match(edge, /approvedActions/);
 assert.match(edge, /grounded: true/);

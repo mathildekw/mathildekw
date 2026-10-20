@@ -10,6 +10,8 @@
   var sessionId = sessionStorage.getItem("mk_ai_session") || (crypto.randomUUID ? crypto.randomUUID() : "session-" + Date.now());
   sessionStorage.setItem("mk_ai_session", sessionId);
   var history = [];
+  var messageCount = 0;
+  var maxMessages = 12;
 
   function escapeHtml(value) {
     return String(value || "").replace(/[&<>\"]/g, function (character) {
@@ -56,10 +58,28 @@
       return bubble;
     }
 
+    function addSuggestions(items) {
+      if (!Array.isArray(items) || !items.length) return;
+      var group = document.createElement("div");
+      group.className = "mk-ai-suggestions mk-ai-followups";
+      group.setAttribute("aria-label", "Réponses suggérées");
+      items.slice(0, 3).forEach(function (copy) {
+        var button = document.createElement("button");
+        button.type = "button";
+        button.textContent = copy;
+        button.addEventListener("click", function () { input.value = copy; form.requestSubmit(); });
+        group.appendChild(button);
+      });
+      messages.appendChild(group);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
     form.addEventListener("submit", async function (event) {
       event.preventDefault();
       var question = input.value.trim();
       if (!question || !config.apiUrl) return;
+      if (messageCount >= maxMessages) { addMessage("assistant", "Pour préserver le service gratuit, cette conversation est arrivée à sa limite. Tu peux poursuivre directement avec Mathilde depuis la page Contact."); return; }
+      messageCount += 1;
       input.value = "";
       addMessage("user", question);
       track("assistant_message_sent");
@@ -67,7 +87,7 @@
       var waiting = addMessage("assistant loading", "Je réfléchis…");
       form.querySelector("button").disabled = true;
       try {
-        var response = await fetch(config.apiUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ session_id: sessionId, page_path: location.pathname, messages: history.slice(-8) }) });
+        var response = await fetch(config.apiUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ session_id: sessionId, page_path: location.pathname, messages: history.slice(-6) }) });
         var data = await response.json();
         if (!response.ok) throw new Error(data.error || "Service momentanément indisponible");
         waiting.className = "mk-ai-message assistant";
@@ -80,8 +100,11 @@
           action.addEventListener("click", function () { track("assistant_route_clicked", { destination: data.action.href, category: data.category || data.guarded || "unknown" }); });
           waiting.appendChild(action);
         }
+        addSuggestions(data.suggestions);
         if (data.category === "UNKNOWN") track("assistant_unknown_request");
+        track("assistant_answered", { category: data.category || "unknown", mode: data.mode || "unknown" });
         history.push({ role: "assistant", content: data.answer });
+        history = history.slice(-6);
       } catch (error) {
         waiting.className = "mk-ai-message assistant error";
         waiting.innerHTML = 'Je ne peux pas répondre pour le moment. <a href="/contact.html">Contacte directement Mathilde</a>.';
