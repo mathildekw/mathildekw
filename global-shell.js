@@ -1,11 +1,40 @@
 (function(){"use strict";if(window.__mathildeGlobalShell)return;window.__mathildeGlobalShell=true;var path=location.pathname.replace(/\/+$/,"")||"/";if(/^\/(admin-|admin\/|portail-foncier|espace-vendeur|demo-espace-vendeur|suivi-vendeur|etude-fonciere-privee|dossier-promoteur)/.test(path))return;
 var NAV=[
-  {label:"Acheter",href:"/acheter-bien-immobilier-tahiti.html",match:function(p){return !/^\/blog/.test(p)&&!/acheter-ou-louer/.test(p)&&/acheter-|biens-a-vendre|appartement-|maison-a-vendre|ou-vivre|credit-immobilier|premier-achat|investissement-locatif/.test(p)}},
-  {label:"Louer",href:"/louer-bien-immobilier-tahiti.html",match:function(p){return /louer-|location/.test(p)}},
-  {label:"Vendre",href:"/vendre-bien-immobilier-tahiti.html",match:function(p){return !/^\/blog/.test(p)&&!/pourquoi-mon-bien|vendre-pour-racheter/.test(p)&&/vendre-bien|estimation-(immobiliere|maison|appartement)|accompagnements|checklist-|vendre-discretement/.test(p)}},
-  {label:"Foncier",href:"/foncier-promotion.html",match:function(p){return !/acheter-terrain/.test(p)&&/foncier|terrain|horizon|promoteur|diviser-terrain/.test(p)}},
-  {label:"Outils",href:"/outils-immobilier-tahiti.html",match:function(p){return /outils-immobilier|orienter-projet|comparer-biens|capacite-emprunt|documents-vendre|preparer-visite|acheter-ou-louer|assistant-immobilier/.test(p)}},
-  {label:"Blog",href:"/blog.html",match:function(p){return /^\/blog|\/guide|prix-|frais-notaire|prix-construction|succession|indivision|pourquoi-mon-bien|vendre-pour-racheter/.test(p)}},
+  {label:"Acheter & louer",href:"/biens-a-vendre-tahiti.html",match:function(p){return !/^\/blog/.test(p)&&/acheter-|biens-a-vendre|appartement-|maison-a-vendre|capacite-emprunt|louer-|location|ou-vivre|credit-immobilier|premier-achat|investissement-locatif/.test(p)},children:[
+    {label:"Voir les biens à vendre",href:"/biens-a-vendre-tahiti.html"},
+    {label:"Trouver le bien qui me correspond",href:"/acheter-bien-immobilier-tahiti.html"},
+    {label:"Découvrir mon Tahiti idéal",href:"/ou-vivre-a-tahiti.html"},
+    {label:"Calculer ma capacité d’emprunt",href:"/capacite-emprunt-polynesie.html"},
+    {label:"Louer un bien",href:"/louer-bien-immobilier-tahiti.html"}
+  ]},
+  {label:"Vendre",href:"/vendre-bien-immobilier-tahiti.html",match:function(p){return !/^\/blog/.test(p)&&/vendre-bien|estimation-(immobiliere|maison|appartement)|accompagnements|checklist-|pourquoi-mon-bien|vendre-discretement|vendre-pour-racheter/.test(p)},children:[
+    {label:"Vendre mon bien",href:"/vendre-bien-immobilier-tahiti.html"},
+    {label:"Estimer mon bien",href:"/estimation-immobiliere-tahiti.html"},
+    {label:"Choisir mon accompagnement",href:"/vendre/nos-accompagnements/"},
+    {label:"Pourquoi mon bien ne se vend pas ?",href:"/pourquoi-mon-bien-ne-se-vend-pas.html"},
+    {label:"Vendre pour racheter",href:"/blog-vendre-pour-racheter-tahiti.html"}
+  ]},
+  {label:"Foncier",href:"/foncier-promotion.html",match:function(p){return !/acheter-terrain/.test(p)&&/foncier|terrain|horizon|promoteur/.test(p)},children:[
+    {label:"Foncier & Promotion",href:"/foncier-promotion.html"},
+    {label:"Découvrir le potentiel de mon terrain",href:"/diagnostic-foncier.html"},
+    {label:"Puis-je diviser mon terrain ?",href:"/diviser-terrain-tahiti.html"},
+    {label:"Vendre un terrain",href:"/vendre-terrain-tahiti.html"},
+    {label:"Je suis promoteur",href:"/promoteur-foncier.html"}
+  ]},
+  {label:"Outils",href:"/outils-immobilier-tahiti.html",match:function(p){return /outils-immobilier|orienter-projet|comparer-biens|capacite-emprunt|documents-vendre|preparer-visite|acheter-ou-louer/.test(p)},children:[{label:"Par où commencer ?",href:"/orienter-projet-immobilier-tahiti.html"},{label:"Comparer des biens",href:"/comparer-biens-immobiliers-tahiti.html"},{label:"Tous les outils",href:"/outils-immobilier-tahiti.html"},{label:"Calculer ma capacité",href:"/capacite-emprunt-polynesie.html"},{label:"Préparer mes documents vendeur",href:"/documents-vendre-bien-tahiti.html"},{label:"Préparer une visite",href:"/preparer-visite-immobiliere-tahiti.html"},{label:"Acheter ou louer ?",href:"/acheter-ou-louer-tahiti.html"}]},
+  {label:"Conseils",href:"/guide/",match:function(p){return /^\/blog|guide|prix-|frais-notaire|prix-construction|succession|indivision|assistant-immobilier/.test(p)},children:[
+    {label:"Tous les guides",href:"/guide/"},
+    {label:"Articles & conseils",href:"/blog.html"},
+    {label:"Prix de l’immobilier à Tahiti",href:"/blog-prix-immobilier-tahiti-2025.html"},
+    {label:"Succession & indivision",href:"/blog/estimation-succession-indivision-terrain-familial-tahiti/"},
+    {label:"Assistant d’orientation",href:"/assistant-immobilier-tahiti.html"}
+  ]},
+  {label:"Nous rejoindre",href:"/nous-rejoindre/",match:function(p){return /nous-rejoindre/.test(p)},children:[
+    {label:"Découvrir le pôle",href:"/nous-rejoindre/"},
+    {label:"Candidater",href:"/nous-rejoindre/candidater/"},
+    {label:"Faire un stage",href:"/nous-rejoindre/stage/"},
+    {label:"Devenir apporteur d’affaires",href:"/nous-rejoindre/apporteur-affaires/"}
+  ]},
   {label:"Contact",href:"/contact.html",cta:true,match:function(p){return /contact/.test(p)}}
 ];
 function slug(value){return value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"")}
