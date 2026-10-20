@@ -63,6 +63,9 @@ test("le menu mobile est accessible et ferme avec Échap", async ({ page }, test
   await toggle.click();
   await expect(toggle).toHaveAttribute("aria-expanded", "true");
   await expect(page.getByRole("navigation", { name: "Navigation principale" })).toBeVisible();
+  const vendreLink = page.getByRole("link", { name: "Vendre", exact: true });
+  await vendreLink.click();
+  await expect(page.getByRole("link", { name: "Vendre un immeuble", exact: true })).toBeVisible();
   const foncierToggle = page.getByRole("button", { name: "Afficher le sous-menu Foncier" });
   await foncierToggle.click();
   await expect(foncierToggle).toHaveAttribute("aria-expanded", "true");
