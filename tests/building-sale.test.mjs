@@ -1,0 +1,13 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+const root=new URL("../",import.meta.url);
+const html=await readFile(new URL("vendre-immeuble-tahiti.html",root),"utf8");
+assert.match(html,/<h1>Vendre un immeuble à Tahiti/);
+assert.equal((html.match(/<h1\b/g)||[]).length,1);
+for(const term of ["état locatif","baux","charges","travaux","vente en bloc","vente par lots"])assert.ok(html.toLowerCase().includes(term));
+assert.match(html,/service-public\.pf\/daf\/vos-formalites/);
+assert.match(html,/simuler-vos-droits-denregistrement-et-impot-sur-les-plus-values-immobilieres/);
+assert.match(html,/FAQPage/);
+assert.match(html,/BreadcrumbList/);
+assert.doesNotMatch(html,/garantit? (un )?(rendement|délai)|est constructible/i);
+console.log("building-sale: content, sources, prudence and structured data OK");

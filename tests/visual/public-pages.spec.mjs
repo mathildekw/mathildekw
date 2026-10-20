@@ -9,6 +9,7 @@ const routes = [
   ["diagnostic", "/diagnostic-foncier.html"],
   ["contact", "/contact.html"],
   ["honoraires-agence", "/honoraires-agence-immobiliere-tahiti.html"],
+  ["vendre-immeuble", "/vendre-immeuble-tahiti.html"],
   ["design-system", "/design-system.html"]
   ,["annonce-immersive-demo", "/annonce-immersive-demo.html"]
   ,["assistant-immobilier", "/assistant-immobilier-tahiti.html"]

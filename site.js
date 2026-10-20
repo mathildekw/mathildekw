@@ -1,4 +1,4 @@
-(function(){if(document.querySelector('script[data-mk-shell-loader]'))return;var s=document.createElement('script');s.src='/global-shell.js?v=7';s.defer=true;s.dataset.mkShellLoader='';document.head.appendChild(s)})();
+(function(){if(document.querySelector('script[data-mk-shell-loader]'))return;var s=document.createElement('script');s.src='/global-shell.js?v=8';s.defer=true;s.dataset.mkShellLoader='';document.head.appendChild(s)})();
 (function(){if(document.querySelector('script[data-mk-content-protection]'))return;var s=document.createElement('script');s.src='/content-protection.js?v=1';s.defer=true;s.dataset.mkContentProtection='';document.head.appendChild(s)})();
 function cleanText(v){return(v||'').replace(/\s+/g,' ').trim().slice(0,140)}
 function encodeMessage(t){return encodeURIComponent(t).replace(/%20/g,'+')}
