@@ -58,6 +58,16 @@ window.MK_SITE_CONFIG = {
   }
 };
 
+// Load the shared GA4 bootstrap on newer pages that only include site-config.
+// Older pages already containing the Google tag or analytics.js are left alone.
+if (!document.querySelector('script[src*="analytics.js"],script[src*="googletagmanager.com/gtag/js"]')) {
+  var ga4Script = document.createElement("script");
+  ga4Script.src = "/analytics.js?v=2";
+  ga4Script.defer = true;
+  ga4Script.dataset.mkGa4Loader = "";
+  document.head.appendChild(ga4Script);
+}
+
 // Assistant conversationnel et invitation email partagés par toutes les pages
 // publiques. Les secrets et les appels au modèle restent côté Supabase.
 if (!document.querySelector('script[data-mk-concierge]')) {
