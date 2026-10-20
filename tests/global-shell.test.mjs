@@ -6,10 +6,11 @@ const root = new URL("../", import.meta.url);
 const shell = await readFile(new URL("global-shell.js", root), "utf8");
 const css = await readFile(new URL("global-shell.css", root), "utf8");
 
-for (const label of ["Acheter & louer", "Vendre", "Foncier", "Outils", "Conseils", "Nous rejoindre", "Contact"])
+for (const label of ["Acheter", "Louer", "Vendre", "Foncier", "Outils", "Blog", "Contact"])
   assert.match(shell, new RegExp(`label:\"${label.replace("&", "&")}\"`));
-for (const destination of ["/biens-a-vendre-tahiti.html", "/ou-vivre-a-tahiti.html", "/vendre/nos-accompagnements/", "/diagnostic-foncier.html", "/diviser-terrain-tahiti.html", "/blog.html", "/capacite-emprunt-polynesie.html", "/louer-bien-immobilier-tahiti.html", "/documents-vendre-bien-tahiti.html", "/preparer-visite-immobiliere-tahiti.html", "/acheter-ou-louer-tahiti.html", "/orienter-projet-immobilier-tahiti.html", "/comparer-biens-immobiliers-tahiti.html"])
+for (const destination of ["/acheter-bien-immobilier-tahiti.html", "/louer-bien-immobilier-tahiti.html", "/vendre-bien-immobilier-tahiti.html", "/foncier-promotion.html", "/outils-immobilier-tahiti.html", "/blog.html", "/contact.html"])
   assert.ok(shell.includes(destination), `Destination commerciale manquante : ${destination}`);
+assert.doesNotMatch(shell.slice(shell.indexOf("var NAV=["), shell.indexOf("];\nfunction slug")), /children:/, "La navigation principale doit rester plate et sans sous-menu");
 for (const behavior of ["aria-expanded", "aria-controls", "Escape", "popstate", "mk-menu-open", "submenu-open", "aria-current"])
   assert.ok(shell.includes(behavior), `Comportement manquant : ${behavior}`);
 assert.ok(css.includes("--mk-shell-z:10000"), "Le menu doit rester au-dessus des scènes 3D");

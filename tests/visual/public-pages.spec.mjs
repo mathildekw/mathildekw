@@ -45,10 +45,13 @@ test("le menu mobile est accessible et ferme avec Échap", async ({ page }, test
   await toggle.click();
   await expect(toggle).toHaveAttribute("aria-expanded", "true");
   await expect(page.getByRole("navigation", { name: "Navigation principale" })).toBeVisible();
-  const foncierToggle = page.getByRole("button", { name: "Afficher le sous-menu Foncier" });
-  await foncierToggle.click();
-  await expect(foncierToggle).toHaveAttribute("aria-expanded", "true");
-  await expect(page.getByRole("navigation", { name: "Navigation principale" }).getByRole("link", { name: "Puis-je diviser mon terrain ?" })).toBeVisible();
+  const navigation = page.getByRole("navigation", { name: "Navigation principale" });
+  await expect(navigation.getByRole("link", { name: "Acheter", exact: true })).toBeVisible();
+  await expect(navigation.getByRole("link", { name: "Louer", exact: true })).toBeVisible();
+  await expect(navigation.getByRole("link", { name: "Foncier", exact: true })).toBeVisible();
+  await expect(navigation.getByRole("link", { name: "Outils", exact: true })).toBeVisible();
+  await expect(navigation.getByRole("link", { name: "Blog", exact: true })).toBeVisible();
+  await expect(navigation.locator(".mk-shell-submenu-toggle")).toHaveCount(0);
   await page.keyboard.press("Escape");
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
   await expect(toggle).toBeFocused();
