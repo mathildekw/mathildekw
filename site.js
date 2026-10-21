@@ -142,3 +142,21 @@ document.addEventListener('DOMContentLoaded',function(){trackEvent('page_ready',
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();
+
+/* Prefill the estimation form from local SEO pages without storing data in the browser. */
+(function () {
+  "use strict";
+  function prefillLocalEstimation() {
+    var form = document.querySelector("[data-estimation-form]");
+    if (!form) return;
+    var params = new URLSearchParams(location.search);
+    var commune = params.get("commune");
+    var quartier = params.get("quartier");
+    var communeField = form.elements.commune;
+    var addressField = form.elements.adresse;
+    if (commune && communeField && !communeField.value) communeField.value = commune;
+    if (quartier && addressField && !addressField.value) addressField.value = quartier;
+    if (commune || quartier) trackEvent("local_estimation_prefilled", { commune: commune || "", quartier: quartier || "" });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", prefillLocalEstimation); else prefillLocalEstimation();
+})();
