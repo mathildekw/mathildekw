@@ -26,6 +26,7 @@ var NAV=[
   {label:"Outils",href:"/outils-immobilier-tahiti.html",match:function(p){return /outils-immobilier|orienter-projet|comparer-biens|capacite-emprunt|documents-vendre|preparer-visite|acheter-ou-louer/.test(p)},children:[{label:"Par où commencer ?",href:"/orienter-projet-immobilier-tahiti.html"},{label:"Comparer des biens",href:"/comparer-biens-immobiliers-tahiti.html"},{label:"Tous les outils",href:"/outils-immobilier-tahiti.html"},{label:"Calculer ma capacité",href:"/capacite-emprunt-polynesie.html"},{label:"Préparer mes documents vendeur",href:"/documents-vendre-bien-tahiti.html"},{label:"Préparer une visite",href:"/preparer-visite-immobiliere-tahiti.html"},{label:"Acheter ou louer ?",href:"/acheter-ou-louer-tahiti.html"}]},
   {label:"Conseils",href:"/guide/",match:function(p){return /^\/blog|guide|prix-|frais-notaire|prix-construction|succession|indivision|assistant-immobilier/.test(p)},children:[
     {label:"Tous les guides",href:"/guide/"},
+    {label:"Questions fréquentes",href:"/questions-immobilier-tahiti.html"},
     {label:"Articles & conseils",href:"/blog.html"},
     {label:"Prix de l’immobilier à Tahiti",href:"/blog-prix-immobilier-tahiti-2025.html"},
     {label:"Succession & indivision",href:"/blog/estimation-succession-indivision-terrain-familial-tahiti/"},
