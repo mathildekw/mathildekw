@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var measurementId = "G-C7YJNCBMD9";
+  var measurementId = "G-SJHRFHZHER";
 
   if (window.__mkGa4Initialized) return;
   window.__mkGa4Initialized = true;
