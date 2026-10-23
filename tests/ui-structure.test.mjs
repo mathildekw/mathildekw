@@ -20,4 +20,9 @@ const shellCss = await readFile(new URL("global-shell.css", root), "utf8");
 for (const requirement of ["44px", "prefers-reduced-motion", ":focus-visible", "overflow-x:clip", "text-wrap:balance"])
   assert.ok(shellCss.includes(requirement), `Règle UI globale manquante : ${requirement}`);
 
+const siteScript = await readFile(new URL("site.js", root), "utf8");
+assert.match(siteScript, /conditions-reutilisation/, "Le Baromètre doit exposer ses conditions de réutilisation");
+assert.match(siteScript, /license:\s*\{/, "Le Dataset du Baromètre doit déclarer sa licence");
+assert.match(siteScript, /1 147 annonces actives analysées/, "L’accueil doit contextualiser les données du Baromètre");
+
 console.log(`ui-structure: ${files.length} pages contrôlées`);

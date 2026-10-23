@@ -113,6 +113,7 @@ body.home-26{background:#f8f4ec;color:#123633}
 .home-26 .h26-values{gap:14px}.home-26 .h26-value{padding:20px;border:1px solid rgba(18,54,51,.15);border-top:3px solid #0c3431;border-radius:0 0 16px 16px;background:#fffdf8}
 .home-26 .h26-btn{min-height:50px;padding:0 24px;box-shadow:0 12px 30px rgba(12,52,49,.12)}
 .home-26 .h26-tools{background:#dce7e1}.home-26 .h26-tool-grid{grid-template-columns:repeat(2,1fr);gap:16px}.home-26 .h26-tool{min-height:240px;padding:32px;border-radius:22px;background:rgba(255,253,248,.76);border:1px solid rgba(18,54,51,.12)}.home-26 .h26-tool:hover{background:#fffdf8}.home-26 .h26-tool-icon{width:38px;height:38px;color:#cf624d}.home-26 .h26-tool h3{font-size:36px}
+.home-26 .h26-tool p{max-width:34ch;margin:12px 0 0;color:#425d59;font-size:14px;line-height:1.55}
 .home-26 .h26-review{background:#df765f;color:#fff}.home-26 .h26-review blockquote{max-width:920px}.home-26 .h26-review .h26-btn{background:#fff;color:#123633}
 .home-26 .h26-cta{padding:28px;background:#f8f4ec}.home-26 .h26-cta-inner{border-radius:30px;background:#082d2a;box-shadow:0 28px 80px rgba(8,45,42,.16)}
 

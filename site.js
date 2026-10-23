@@ -142,3 +142,55 @@ document.addEventListener('DOMContentLoaded',function(){trackEvent('page_ready',
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();
+
+/* Keep the public market barometer explicit for visitors and search engines. */
+(function () {
+  "use strict";
+  function initMarketBarometer() {
+    var barometerLink = document.querySelector('a.h26-tool[href="/barometre-immobilier-tahiti.html"]');
+    if (barometerLink) {
+      var title = barometerLink.querySelector("h3");
+      var action = barometerLink.querySelector("span");
+      if (title) title.textContent = "Baromètre immobilier";
+      if (title && !barometerLink.querySelector("p")) {
+        var detail = document.createElement("p");
+        detail.textContent = "1 147 annonces actives analysées · relevé du 18 octobre 2026";
+        title.insertAdjacentElement("afterend", detail);
+      }
+      if (action) action.textContent = "Voir les prix à Tahiti →";
+      barometerLink.setAttribute("aria-label", "Consulter le Baromètre immobilier Tahiti, fondé sur 1 147 annonces actives");
+    }
+
+    if (location.pathname !== "/barometre-immobilier-tahiti.html") return;
+    var citationHeading = Array.prototype.find.call(document.querySelectorAll("h2"), function (heading) {
+      return /Citer le baromètre/i.test(heading.textContent || "");
+    });
+    var reuseSection = citationHeading && citationHeading.closest("section");
+    if (reuseSection) {
+      reuseSection.id = "conditions-reutilisation";
+      citationHeading.textContent = "Citer et réutiliser le baromètre";
+      var intro = citationHeading.parentElement && citationHeading.parentElement.querySelector("p");
+      if (intro) intro.textContent = "Journalistes, éditeurs et professionnels peuvent reprendre ponctuellement un chiffre, sans modifier son sens, en indiquant la date du relevé et en ajoutant un lien visible vers cette page. Toute autre réutilisation ou extraction substantielle nécessite un accord préalable.";
+    }
+    var schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "@id": "https://mathildekw.com/barometre-immobilier-tahiti.html#dataset",
+      license: {
+        "@type": "CreativeWork",
+        name: "Conditions de réutilisation du Baromètre immobilier Tahiti",
+        url: "https://mathildekw.com/barometre-immobilier-tahiti.html#conditions-reutilisation"
+      },
+      isAccessibleForFree: true,
+      publisher: {
+        "@type": "Organization",
+        name: "Mathilde KW — Keller Williams Polynésie",
+        url: "https://mathildekw.com/"
+      }
+    });
+    document.head.appendChild(schema);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initMarketBarometer); else initMarketBarometer();
+})();

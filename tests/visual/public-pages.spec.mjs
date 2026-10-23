@@ -57,6 +57,15 @@ test("le calculateur d’honoraires applique le barème et protège les cas spé
   await expect(calculator.locator("[data-fees-message]")).toContainText("aucun montant n’est supposé");
 });
 
+test("le Baromètre expose ses conditions de réutilisation et sa licence Dataset", async ({ page }) => {
+  await page.goto("/barometre-immobilier-tahiti.html", { waitUntil: "domcontentloaded" });
+  await expect(page.locator("#conditions-reutilisation")).toBeVisible();
+  const datasetSchemas = await page.locator('script[type="application/ld+json"]').evaluateAll(nodes => nodes
+    .map(node => { try { return JSON.parse(node.textContent || "{}"); } catch { return {}; } })
+    .filter(value => value["@type"] === "Dataset"));
+  expect(datasetSchemas.some(dataset => dataset.license && dataset.license.url && dataset.isAccessibleForFree === true)).toBeTruthy();
+});
+
 test("le menu mobile est accessible et ferme avec Échap", async ({ page }, testInfo) => {
   test.skip(!testInfo.project.name.startsWith("mobile-"), "Scénario réservé au menu mobile");
   await page.goto("/foncier-promotion.html", { waitUntil: "domcontentloaded" });
