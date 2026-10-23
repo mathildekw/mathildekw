@@ -39,6 +39,19 @@ for (const page of config.publicPages) {
   }
 }
 
+try {
+  const analyticsSource = await readFile(path.join(root, "analytics.js"), "utf8");
+  const measurementId = analyticsSource.match(/G-[A-Z0-9]{8,}/)?.[0];
+  if (!measurementId) {
+    record("conversion", "analytics:ga4", "fail", "Balise Google Analytics", "Aucun identifiant GA4 trouvé dans analytics.js");
+  } else {
+    const tag = await request(`https://www.googletagmanager.com/gtag/js?id=${measurementId}`);
+    record("conversion", "analytics:ga4", tag.ok ? "pass" : "fail", "Balise Google Analytics", `${measurementId} — HTTP ${tag.status}`, { url: tag.ok ? config.siteUrl : tag.headers?.location || tag.status });
+  }
+} catch (error) {
+  record("conversion", "analytics:ga4", "fail", "Balise Google Analytics", error.message);
+}
+
 for (const external of config.externalChecks) {
   try {
     const result = await request(external.url, { method: external.method });
