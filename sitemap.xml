@@ -38,6 +38,16 @@
     <priority>0.90</priority>
   </url>
   <url>
+    <loc>https://mathildekw.com/terrain-professionnel-punaauia.html</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://mathildekw.com/images/terrain-professionnel-punaauia/terrain-commercial-punaauia.jpg</image:loc>
+      <image:title>Terrain à vocation professionnelle à Punaauia</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://mathildekw.com/appartement-t2-punaauia.html</loc>
     <lastmod>2026-08-10</lastmod>
     <changefreq>weekly</changefreq>

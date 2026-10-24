@@ -1,0 +1,50 @@
+:root{--pro-deep:#0b2728;--pro-ink:#123633;--pro-muted:#5b6866;--pro-paper:#f4f1eb;--pro-coral:#d97861;--pro-line:rgba(18,54,51,.16)}
+.pro-land-page{background:#fff;color:var(--pro-ink)}
+.pro-land-page main{overflow:hidden}
+.pro-hero{padding:clamp(72px,8vw,120px) 0 clamp(68px,8vw,112px);background:var(--pro-paper)}
+.pro-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.82fr);align-items:center;gap:clamp(48px,8vw,118px)}
+.pro-back-link{display:inline-flex;margin-bottom:clamp(34px,5vw,64px);color:var(--pro-muted);font-size:.82rem;font-weight:700;text-decoration:none}
+.pro-back-link::before{content:"←";margin-right:10px}
+.pro-back-link:hover{color:var(--pro-coral)}
+.pro-hero h1{max-width:760px;margin:.15em 0 .28em;font-size:clamp(3.35rem,6.6vw,6.8rem);line-height:.88;letter-spacing:-.045em}
+.pro-price{margin:0 0 22px;color:var(--pro-coral);font:500 clamp(1.9rem,3vw,2.8rem)/1 'Cormorant Garamond',serif}
+.pro-hero .lead{max-width:680px;color:#384442;font-size:clamp(1.04rem,1.35vw,1.22rem);line-height:1.7}
+.pro-actions{display:flex;align-items:center;flex-wrap:wrap;gap:22px;margin-top:34px}
+.pro-actions .btn{min-height:50px}
+.pro-phone{color:var(--pro-ink);font-size:.88rem;font-weight:800;text-underline-offset:5px}
+.pro-hero-visual{margin:0}
+.pro-hero-visual img{display:block;width:100%;height:auto;border-radius:24px;box-shadow:0 30px 74px rgba(11,39,40,.16)}
+.pro-hero-visual figcaption{margin-top:13px;color:var(--pro-muted);font-size:.72rem;line-height:1.45}
+.pro-facts{border-bottom:1px solid var(--pro-line);background:#fff}
+.pro-facts-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.pro-facts-grid div{min-height:134px;padding:34px 28px;border-right:1px solid var(--pro-line)}
+.pro-facts-grid div:first-child{padding-left:0}.pro-facts-grid div:last-child{border-right:0}
+.pro-facts-grid span,.pro-facts-grid strong{display:block}
+.pro-facts-grid span{margin-bottom:10px;color:var(--pro-muted);font-size:.68rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.pro-facts-grid strong{font-size:clamp(.95rem,1.2vw,1.1rem);line-height:1.4}
+.pro-section{padding:clamp(78px,10vw,150px) 0}
+.pro-editorial-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(380px,.75fr);justify-content:space-between;gap:clamp(54px,10vw,150px)}
+.pro-section-title h2,.pro-confidential-card h2,.pro-form-intro h2{max-width:680px;margin:.18em 0 .4em;font-size:clamp(2.7rem,5vw,5.1rem);line-height:.95;letter-spacing:-.035em}
+.pro-copy>p{margin-top:0;color:#384442;font-size:clamp(1.06rem,1.35vw,1.22rem);line-height:1.75}
+.pro-feature-list{margin:34px 0;padding:0;border-top:1px solid var(--pro-line);list-style:none}
+.pro-feature-list li{padding:18px 0;border-bottom:1px solid var(--pro-line);font-weight:700;line-height:1.45}
+.pro-feature-list li::before{content:"";display:inline-block;width:7px;height:7px;margin:0 14px 2px 0;border-radius:50%;background:var(--pro-coral)}
+.pro-legal-note{color:var(--pro-muted)!important;font-size:.86rem!important}
+.pro-confidential-section{padding:0 0 clamp(78px,10vw,150px)}
+.pro-confidential-card{padding:clamp(40px,7vw,92px);border-radius:30px;background:var(--pro-deep);color:#fff}
+.pro-confidential-card .eyebrow{color:#d7ff6b}
+.pro-confidential-card>p:not(.eyebrow){max-width:800px;color:rgba(255,255,255,.74);font-size:clamp(1rem,1.25vw,1.16rem);line-height:1.75}
+.pro-process{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin-top:46px;background:rgba(255,255,255,.16)}
+.pro-process div{padding:26px;background:var(--pro-deep)}
+.pro-process span,.pro-process strong{display:block}.pro-process span{margin-bottom:16px;color:#d7ff6b;font-size:.7rem;font-weight:900;letter-spacing:.12em}.pro-process strong{font-size:.95rem;line-height:1.4}
+.pro-form-section{padding:clamp(78px,10vw,148px) 0;background:var(--pro-paper)}
+.pro-form-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(420px,.8fr);align-items:start;gap:clamp(50px,9vw,130px)}
+.pro-form-intro>p:not(.eyebrow):not(.pro-direct-contact){max-width:620px;color:#384442;font-size:1.03rem;line-height:1.72}
+.pro-form-trust{display:grid;gap:11px;margin:32px 0;padding:0;list-style:none}.pro-form-trust li{font-weight:700}.pro-form-trust li::before{content:"✓";margin-right:11px;color:var(--pro-coral);font-weight:900}
+.pro-direct-contact{padding-top:28px;border-top:1px solid var(--pro-line);color:var(--pro-muted);font-size:.88rem;line-height:1.85}.pro-direct-contact a{color:var(--pro-ink);font-weight:800}
+.pro-form-card{min-height:720px;padding:clamp(20px,3vw,34px);border:1px solid var(--pro-line);border-radius:24px;background:#fff;box-shadow:0 26px 66px rgba(11,39,40,.08)}
+.pro-form-card iframe{display:block;min-height:720px}
+.pro-land-page a:focus-visible,.pro-land-page button:focus-visible{outline:3px solid var(--pro-coral);outline-offset:4px}
+@media(max-width:900px){.pro-hero-grid,.pro-editorial-grid,.pro-form-grid{grid-template-columns:1fr}.pro-hero-grid{gap:48px}.pro-hero-copy{max-width:760px}.pro-hero-visual{max-width:700px}.pro-facts-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pro-facts-grid div:nth-child(2){border-right:0}.pro-facts-grid div:nth-child(-n+2){border-bottom:1px solid var(--pro-line)}.pro-facts-grid div:first-child,.pro-facts-grid div:nth-child(3){padding-left:0}.pro-process{grid-template-columns:1fr}.pro-form-card{min-height:680px}.pro-form-card iframe{min-height:680px}}
+@media(max-width:560px){.pro-hero{padding-top:56px}.pro-hero h1{font-size:clamp(3rem,15vw,4.7rem)}.pro-back-link{margin-bottom:34px}.pro-actions{align-items:stretch;flex-direction:column}.pro-actions .btn{text-align:center}.pro-phone{text-align:center}.pro-hero-visual img{border-radius:16px}.pro-facts-grid{grid-template-columns:1fr}.pro-facts-grid div,.pro-facts-grid div:first-child,.pro-facts-grid div:nth-child(3){min-height:0;padding:24px 0;border-right:0;border-bottom:1px solid var(--pro-line)}.pro-facts-grid div:last-child{border-bottom:0}.pro-confidential-card{border-radius:22px}.pro-form-card{margin-inline:-8px;padding:10px;border-radius:18px}.pro-form-card iframe{min-height:760px}}
+@media(prefers-reduced-motion:reduce){.pro-land-page *{scroll-behavior:auto!important}}
