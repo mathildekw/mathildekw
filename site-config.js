@@ -68,16 +68,6 @@ if (!document.querySelector('script[src*="analytics.js"],script[src*="googletagm
   document.head.appendChild(ga4Script);
 }
 
-// Assistant conversationnel et invitation email partagés par toutes les pages
-// publiques. Les secrets et les appels au modèle restent côté Supabase.
-if (!document.querySelector('script[data-mk-concierge]')) {
-  var conciergeScript = document.createElement("script");
-  conciergeScript.src = "/site-concierge.js?v=3";
-  conciergeScript.defer = true;
-  conciergeScript.dataset.mkConcierge = "";
-  document.head.appendChild(conciergeScript);
-}
-
 // Provide an accessible name for legacy controls whose visual label is adjacent
 // but not programmatically associated. This does not alter form behavior.
 document.addEventListener("DOMContentLoaded", function () {

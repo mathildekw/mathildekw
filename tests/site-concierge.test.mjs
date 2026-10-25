@@ -9,7 +9,7 @@ const edge = await readFile(new URL("supabase/functions/website-assistant/index.
 const intake = await readFile(new URL("supabase/functions/form-intake/index.ts", root), "utf8");
 
 assert.match(config, /website-assistant/);
-assert.match(config, /site-concierge\.js\?v=3/);
+assert.doesNotMatch(config, /site-concierge\.js/, "L’assistant flottant ne doit plus être chargé automatiquement");
 assert.match(script, /180000/, "La collecte email doit attendre trois minutes actives");
 assert.match(script, /30 \* 86400000/, "La popup ne doit pas harceler le visiteur");
 assert.match(script, /type=\"email\"/);
