@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "runId": "weekly-2026-10-15T18-56-06-530Z",
+  "runId": "weekly-2026-10-26T21-31-25-582Z",
   "cadence": "weekly",
   "timezone": "Pacific/Tahiti",
-  "startedAt": "2026-10-15T18:56:06.530Z",
-  "finishedAt": "2026-10-15T18:56:08.744Z",
-  "source": "local",
-  "productionCommit": null,
-  "status": "healthy",
+  "startedAt": "2026-10-26T21:31:25.582Z",
+  "finishedAt": "2026-10-26T21:31:26.646Z",
+  "source": "github-actions",
+  "productionCommit": "e708e612c79bbc4a7ded767e22aee44030d3aed4",
+  "status": "attention",
   "summary": {
-    "checks": 16,
-    "passed": 16,
+    "checks": 11,
+    "passed": 5,
     "warnings": 0,
-    "failures": 0,
-    "proposals": 0
+    "failures": 6,
+    "proposals": 6
   },
   "agents": [
     {
@@ -115,110 +115,70 @@
     {
       "agent": "security",
       "id": "uptime:/",
-      "status": "pass",
+      "status": "fail",
       "title": "Disponibilité /",
-      "detail": "HTTP 200",
+      "detail": "HTTP 403",
       "url": "https://mathildekw.com/",
       "durationClass": "network",
-      "evidence": "2ffe2397c295357b"
-    },
-    {
-      "agent": "seo",
-      "id": "seo:/",
-      "status": "pass",
-      "title": "SEO essentiel /",
-      "detail": "title=true, description=true, h1=1",
-      "url": "https://mathildekw.com/"
+      "evidence": "77d33938b4932201"
     },
     {
       "agent": "security",
       "id": "uptime:/estimation-immobiliere-tahiti.html",
-      "status": "pass",
+      "status": "fail",
       "title": "Disponibilité /estimation-immobiliere-tahiti.html",
-      "detail": "HTTP 200",
+      "detail": "HTTP 403",
       "url": "https://mathildekw.com/estimation-immobiliere-tahiti.html",
       "durationClass": "network",
-      "evidence": "63b419b4094aa545"
-    },
-    {
-      "agent": "seo",
-      "id": "seo:/estimation-immobiliere-tahiti.html",
-      "status": "pass",
-      "title": "SEO essentiel /estimation-immobiliere-tahiti.html",
-      "detail": "title=true, description=true, h1=1",
-      "url": "https://mathildekw.com/estimation-immobiliere-tahiti.html"
+      "evidence": "1ebf9f2a864fddd1"
     },
     {
       "agent": "security",
       "id": "uptime:/foncier-promotion.html",
-      "status": "pass",
+      "status": "fail",
       "title": "Disponibilité /foncier-promotion.html",
-      "detail": "HTTP 200",
+      "detail": "HTTP 403",
       "url": "https://mathildekw.com/foncier-promotion.html",
       "durationClass": "network",
-      "evidence": "6fc6318db4f7a871"
-    },
-    {
-      "agent": "seo",
-      "id": "seo:/foncier-promotion.html",
-      "status": "pass",
-      "title": "SEO essentiel /foncier-promotion.html",
-      "detail": "title=true, description=true, h1=1",
-      "url": "https://mathildekw.com/foncier-promotion.html"
+      "evidence": "15c68649b5a903eb"
     },
     {
       "agent": "security",
       "id": "uptime:/diagnostic-foncier.html",
-      "status": "pass",
+      "status": "fail",
       "title": "Disponibilité /diagnostic-foncier.html",
-      "detail": "HTTP 200",
+      "detail": "HTTP 403",
       "url": "https://mathildekw.com/diagnostic-foncier.html",
       "durationClass": "network",
-      "evidence": "4dcc0685b7e983d2"
-    },
-    {
-      "agent": "seo",
-      "id": "seo:/diagnostic-foncier.html",
-      "status": "pass",
-      "title": "SEO essentiel /diagnostic-foncier.html",
-      "detail": "title=true, description=true, h1=1",
-      "url": "https://mathildekw.com/diagnostic-foncier.html"
+      "evidence": "eb7bc44897ae9ef3"
     },
     {
       "agent": "security",
       "id": "uptime:/promoteur-foncier.html",
-      "status": "pass",
+      "status": "fail",
       "title": "Disponibilité /promoteur-foncier.html",
-      "detail": "HTTP 200",
+      "detail": "HTTP 403",
       "url": "https://mathildekw.com/promoteur-foncier.html",
       "durationClass": "network",
-      "evidence": "8e014b287164bc89"
-    },
-    {
-      "agent": "seo",
-      "id": "seo:/promoteur-foncier.html",
-      "status": "pass",
-      "title": "SEO essentiel /promoteur-foncier.html",
-      "detail": "title=true, description=true, h1=1",
-      "url": "https://mathildekw.com/promoteur-foncier.html"
+      "evidence": "c5658aeb7958bc1b"
     },
     {
       "agent": "security",
       "id": "uptime:/laboratoire-horizon.html",
-      "status": "pass",
+      "status": "fail",
       "title": "Disponibilité /laboratoire-horizon.html",
-      "detail": "HTTP 200",
+      "detail": "HTTP 403",
       "url": "https://mathildekw.com/laboratoire-horizon.html",
       "durationClass": "network",
-      "evidence": "6270d81f32975078"
+      "evidence": "420f3d8bf55949c8"
     },
     {
-      "agent": "seo",
-      "id": "seo:/laboratoire-horizon.html",
+      "agent": "conversion",
+      "id": "analytics:ga4",
       "status": "pass",
-      "title": "SEO essentiel /laboratoire-horizon.html",
-      "detail": "title=true, description=true, h1=1",
-      "url": "https://mathildekw.com/laboratoire-horizon.html"
+      "title": "Balise Google Analytics",
+      "detail": "G-C7YJNCBMD9 — HTTP 200",
+      "url": "https://mathildekw.com"
     },
     {
       "agent": "land",
@@ -233,7 +193,7 @@
       "id": "links:internal",
       "status": "pass",
       "title": "Liens et ressources internes",
-      "detail": "63 pages contrôlées"
+      "detail": "92 pages contrôlées"
     },
     {
       "agent": "security",
@@ -250,5 +210,114 @@
       "detail": "Tests exécutés avec succès"
     }
   ],
-  "proposals": []
+  "proposals": [
+    {
+      "id": "proposal-uptime-",
+      "title": "Disponibilité /",
+      "agent": "security",
+      "problem": "HTTP 403",
+      "evidence": "https://mathildekw.com/",
+      "expectedImpact": "Rétablir une fonction ou réduire un risque vérifié",
+      "priority": "P1",
+      "risk": "À analyser avant toute modification",
+      "complexity": "À estimer",
+      "files": [],
+      "tests": [
+        "uptime:/"
+      ],
+      "preview": null,
+      "estimatedCostUsd": 0,
+      "status": "detected"
+    },
+    {
+      "id": "proposal-uptime-estimation-immobiliere-tahiti-html",
+      "title": "Disponibilité /estimation-immobiliere-tahiti.html",
+      "agent": "security",
+      "problem": "HTTP 403",
+      "evidence": "https://mathildekw.com/estimation-immobiliere-tahiti.html",
+      "expectedImpact": "Rétablir une fonction ou réduire un risque vérifié",
+      "priority": "P1",
+      "risk": "À analyser avant toute modification",
+      "complexity": "À estimer",
+      "files": [],
+      "tests": [
+        "uptime:/estimation-immobiliere-tahiti.html"
+      ],
+      "preview": null,
+      "estimatedCostUsd": 0,
+      "status": "detected"
+    },
+    {
+      "id": "proposal-uptime-foncier-promotion-html",
+      "title": "Disponibilité /foncier-promotion.html",
+      "agent": "security",
+      "problem": "HTTP 403",
+      "evidence": "https://mathildekw.com/foncier-promotion.html",
+      "expectedImpact": "Rétablir une fonction ou réduire un risque vérifié",
+      "priority": "P1",
+      "risk": "À analyser avant toute modification",
+      "complexity": "À estimer",
+      "files": [],
+      "tests": [
+        "uptime:/foncier-promotion.html"
+      ],
+      "preview": null,
+      "estimatedCostUsd": 0,
+      "status": "detected"
+    },
+    {
+      "id": "proposal-uptime-diagnostic-foncier-html",
+      "title": "Disponibilité /diagnostic-foncier.html",
+      "agent": "security",
+      "problem": "HTTP 403",
+      "evidence": "https://mathildekw.com/diagnostic-foncier.html",
+      "expectedImpact": "Rétablir une fonction ou réduire un risque vérifié",
+      "priority": "P1",
+      "risk": "À analyser avant toute modification",
+      "complexity": "À estimer",
+      "files": [],
+      "tests": [
+        "uptime:/diagnostic-foncier.html"
+      ],
+      "preview": null,
+      "estimatedCostUsd": 0,
+      "status": "detected"
+    },
+    {
+      "id": "proposal-uptime-promoteur-foncier-html",
+      "title": "Disponibilité /promoteur-foncier.html",
+      "agent": "security",
+      "problem": "HTTP 403",
+      "evidence": "https://mathildekw.com/promoteur-foncier.html",
+      "expectedImpact": "Rétablir une fonction ou réduire un risque vérifié",
+      "priority": "P1",
+      "risk": "À analyser avant toute modification",
+      "complexity": "À estimer",
+      "files": [],
+      "tests": [
+        "uptime:/promoteur-foncier.html"
+      ],
+      "preview": null,
+      "estimatedCostUsd": 0,
+      "status": "detected"
+    },
+    {
+      "id": "proposal-uptime-laboratoire-horizon-html",
+      "title": "Disponibilité /laboratoire-horizon.html",
+      "agent": "security",
+      "problem": "HTTP 403",
+      "evidence": "https://mathildekw.com/laboratoire-horizon.html",
+      "expectedImpact": "Rétablir une fonction ou réduire un risque vérifié",
+      "priority": "P1",
+      "risk": "À analyser avant toute modification",
+      "complexity": "À estimer",
+      "files": [],
+      "tests": [
+        "uptime:/laboratoire-horizon.html"
+      ],
+      "preview": null,
+      "estimatedCostUsd": 0,
+      "status": "detected"
+    }
+  ]
 }
