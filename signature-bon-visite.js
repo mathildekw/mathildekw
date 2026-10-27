@@ -3,6 +3,11 @@
   var status = document.querySelector("[data-signature-status]");
   var content = document.querySelector("[data-signature-content]");
   var form = document.querySelector("[data-signature-form]");
+  var feedback = document.querySelector("[data-signature-feedback]");
+  var signerError = document.querySelector("[data-signer-error]");
+  var signerHelp = document.querySelector("[data-signer-help]");
+  var submitButton = document.querySelector("[data-signature-submit]");
+  var expectedSignerName = "";
   var requestId = new URLSearchParams(location.search).get("request") || "";
   var hash = new URLSearchParams(location.hash.slice(1));
   var accessToken = hash.get("access_token") || sessionStorage.getItem("mk_visit_access_token") || "";
@@ -13,6 +18,28 @@
   function setStatus(message, isError) {
     status.textContent = message;
     status.classList.toggle("error", Boolean(isError));
+  }
+
+  function normalizeName(value) {
+    return String(value || "").trim().replace(/\s+/g, " ").toLocaleLowerCase("fr");
+  }
+
+  function clearInlineFeedback() {
+    feedback.hidden = true;
+    feedback.textContent = "";
+    feedback.classList.remove("error", "success");
+    signerError.hidden = true;
+    signerError.textContent = "";
+    form.elements.signerName.removeAttribute("aria-invalid");
+  }
+
+  function showFeedback(message, kind) {
+    feedback.textContent = message;
+    feedback.classList.toggle("error", kind === "error");
+    feedback.classList.toggle("success", kind === "success");
+    feedback.hidden = false;
+    feedback.focus({ preventScroll: true });
+    feedback.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
   async function call(action, body) {
@@ -49,7 +76,9 @@
     var list = document.createElement("ul");
     documentData.clauses.forEach(function (clause) { var item = document.createElement("li"); item.textContent = clause; list.appendChild(item); });
     clauses.appendChild(list);
-    form.elements.signerName.value = documentData.prospect.fullName;
+    expectedSignerName = documentData.prospect.fullName;
+    form.elements.signerName.value = expectedSignerName;
+    signerHelp.textContent = "Pour valider, conserve exactement ce nom : « " + expectedSignerName + " »";
     content.hidden = false;
     if (data.signedAt) {
       form.hidden = true;
@@ -59,17 +88,42 @@
 
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
-    var button = form.querySelector("button[type=submit]");
-    button.disabled = true;
+    clearInlineFeedback();
+    var signerName = form.elements.signerName.value;
+    if (!signerName.trim()) {
+      signerError.textContent = "Renseigne ton nom complet.";
+      signerError.hidden = false;
+      form.elements.signerName.setAttribute("aria-invalid", "true");
+      form.elements.signerName.focus();
+      return;
+    }
+    if (normalizeName(signerName) !== normalizeName(expectedSignerName)) {
+      signerError.textContent = "Ce nom ne correspond pas à ta demande. Utilise exactement : « " + expectedSignerName + " ».";
+      signerError.hidden = false;
+      form.elements.signerName.setAttribute("aria-invalid", "true");
+      form.elements.signerName.focus();
+      return;
+    }
+    if (!form.elements.consent.checked) {
+      showFeedback("Coche la confirmation avant de signer le bon de visite.", "error");
+      form.elements.consent.focus();
+      return;
+    }
+    submitButton.disabled = true;
+    submitButton.textContent = "Signature en cours…";
     setStatus("Enregistrement de ta validation…");
+    showFeedback("Enregistrement sécurisé de ta signature…", "loading");
     try {
-      var data = await call("sign", { signerName: form.elements.signerName.value, consent: form.elements.consent.checked });
-      form.hidden = true;
-      setStatus(data.delivery === "sent" ? "C’est signé. Une copie vient de t’être envoyée par email." : "C’est signé. Ton certificat de preuve est enregistré et va être téléchargé.");
+      var data = await call("sign", { signerName: signerName, consent: true });
+      setStatus("Le bon de visite est signé.");
+      showFeedback(data.delivery === "sent" ? "C’est signé. Une copie vient de t’être envoyée par email." : "C’est signé. Ton certificat de preuve est enregistré et va être téléchargé.", "success");
+      submitButton.hidden = true;
       downloadCertificate(data);
     } catch (error) {
       setStatus(error.message, true);
-      button.disabled = false;
+      showFeedback(error.message, "error");
+      submitButton.disabled = false;
+      submitButton.textContent = "Signer et confirmer le bon de visite";
     }
   });
 
