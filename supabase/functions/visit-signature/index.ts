@@ -12,6 +12,7 @@ const tallyFormId = Deno.env.get("TALLY_TERRAIN_FORM_ID") || "RWGO0j";
 const ipPepper = Deno.env.get("VISIT_EVIDENCE_PEPPER") || "";
 const emailWebhookUrl = Deno.env.get("VISIT_EMAIL_WEBHOOK_URL") || "";
 const emailWebhookSecret = Deno.env.get("VISIT_EMAIL_WEBHOOK_SECRET") || "";
+const cronSecret = Deno.env.get("FONCIER_CRON_SECRET") || "";
 const certificateBucket = "visit-certificates";
 
 const cors = {
@@ -163,6 +164,47 @@ async function sendMagicLink(row: JsonRecord) {
   if (!response.ok) throw new Error(`Auth email ${response.status}: ${text.slice(0, 300)}`);
 }
 
+async function markEmailAttempt(row: JsonRecord) {
+  const attempts = Number(row.email_attempts || 0) + 1;
+  try {
+    await sendMagicLink(row);
+    await database(`visit_signature_requests?id=eq.${row.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        status: "email_sent",
+        email_sent_at: new Date().toISOString(),
+        email_attempts: attempts,
+        next_email_attempt_at: null,
+        delivery_error: null,
+        updated_at: new Date().toISOString()
+      })
+    });
+    return true;
+  } catch (error) {
+    const retryAt = new Date(Date.now() + 35 * 60 * 1000).toISOString();
+    await database(`visit_signature_requests?id=eq.${row.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        status: "email_error",
+        email_attempts: attempts,
+        next_email_attempt_at: attempts < 8 ? retryAt : null,
+        delivery_error: clean(error, 500),
+        updated_at: new Date().toISOString()
+      })
+    });
+    return false;
+  }
+}
+
+async function retryPendingEmails(request: Request) {
+  if (!cronSecret || request.headers.get("x-cron-secret") !== cronSecret) return reply({ error: "Non autorisé." }, 401);
+  const now = encodeURIComponent(new Date().toISOString());
+  const rows = await database(`visit_signature_requests?status=in.(email_pending,email_error)&email_attempts=lt.8&or=(next_email_attempt_at.is.null,next_email_attempt_at.lte.${now})&select=*&order=created_at.asc&limit=1`, { method: "GET" });
+  if (!rows.length) return reply({ ok: true, processed: 0 });
+  const sent = await markEmailAttempt(rows[0]);
+  return reply({ ok: true, processed: 1, sent });
+}
+
 async function tallyWebhook(request: Request) {
   const rawBody = await request.text();
   if (!await verifyTallySignature(rawBody, request.headers.get("tally-signature") || "")) return reply({ error: "Signature Tally invalide" }, 401);
@@ -206,14 +248,10 @@ async function tallyWebhook(request: Request) {
     row = (await database("visit_signature_requests", { method: "POST", body: JSON.stringify(draft) }))[0];
   }
 
-  try {
-    await sendMagicLink(row);
-    await database(`visit_signature_requests?id=eq.${row.id}`, { method: "PATCH", body: JSON.stringify({ status: "email_sent", email_sent_at: new Date().toISOString(), updated_at: new Date().toISOString() }) });
-  } catch (error) {
-    await database(`visit_signature_requests?id=eq.${row.id}`, { method: "PATCH", body: JSON.stringify({ status: "email_error", delivery_error: clean(error, 500), updated_at: new Date().toISOString() }) });
-    throw error;
-  }
-  return reply({ ok: true });
+  const sent = await markEmailAttempt(row);
+  // Tally must receive a success even when Supabase's bundled SMTP is throttled;
+  // the request is durably queued and the cron worker retries it later.
+  return reply({ ok: true, email: sent ? "sent" : "queued" }, sent ? 200 : 202);
 }
 
 async function authenticatedUser(request: Request) {
@@ -364,6 +402,7 @@ Deno.serve(async (request) => {
   try {
     const action = new URL(request.url).pathname.split("/").filter(Boolean).pop();
     if (request.method === "POST" && action === "tally-webhook") return await tallyWebhook(request);
+    if (request.method === "POST" && action === "retry-email") return await retryPendingEmails(request);
     if (request.method !== "POST") return reply({ error: "Méthode non autorisée." }, 405);
     const body = await request.json().catch(() => ({})) as JsonRecord;
     if ((body.action || action) === "document") return await readDocument(body, request);
