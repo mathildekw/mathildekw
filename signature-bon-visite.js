@@ -65,7 +65,7 @@
     try {
       var data = await call("sign", { signerName: form.elements.signerName.value, consent: form.elements.consent.checked });
       form.hidden = true;
-      setStatus(data.delivery === "sent" ? "C’est signé. Une copie vient de t’être envoyée par email." : "C’est signé. Ton certificat de preuve va être téléchargé et Mathilde a bien reçu ta demande.");
+      setStatus(data.delivery === "sent" ? "C’est signé. Une copie vient de t’être envoyée par email." : "C’est signé. Ton certificat de preuve est enregistré et va être téléchargé.");
       downloadCertificate(data);
     } catch (error) {
       setStatus(error.message, true);
