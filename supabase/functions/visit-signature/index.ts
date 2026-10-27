@@ -150,14 +150,19 @@ function canonicalDocument(row: JsonRecord) {
 }
 
 async function sendMagicLink(row: JsonRecord) {
-  const response = await fetch(`${supabaseUrl}/auth/v1/otp`, {
+  // GoTrue reads the post-auth destination from the `redirect_to` query
+  // parameter. Putting `email_redirect_to` in the JSON body is ignored by
+  // the REST endpoint, which makes the email fall back to the project's Site
+  // URL (the home page).
+  const signatureUrl = `${frontendBaseUrl}/signature-bon-visite.html?request=${encodeURIComponent(String(row.id))}`;
+  const otpUrl = `${supabaseUrl}/auth/v1/otp?redirect_to=${encodeURIComponent(signatureUrl)}`;
+  const response = await fetch(otpUrl, {
     method: "POST",
     headers: { apikey: anonKey, Authorization: `Bearer ${anonKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       email: row.email,
       create_user: true,
-      data: { visit_signature_request_id: row.id },
-      email_redirect_to: `${frontendBaseUrl}/signature-bon-visite.html?request=${row.id}`
+      data: { visit_signature_request_id: row.id }
     })
   });
   const text = await response.text();
