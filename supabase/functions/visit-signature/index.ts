@@ -170,27 +170,14 @@ async function markEmailAttempt(row: JsonRecord) {
     await sendMagicLink(row);
     await database(`visit_signature_requests?id=eq.${row.id}`, {
       method: "PATCH",
-      body: JSON.stringify({
-        status: "email_sent",
-        email_sent_at: new Date().toISOString(),
-        email_attempts: attempts,
-        next_email_attempt_at: null,
-        delivery_error: null,
-        updated_at: new Date().toISOString()
-      })
+      body: JSON.stringify({ status: "email_sent", email_sent_at: new Date().toISOString(), email_attempts: attempts, next_email_attempt_at: null, delivery_error: null, updated_at: new Date().toISOString() })
     });
     return true;
   } catch (error) {
     const retryAt = new Date(Date.now() + 35 * 60 * 1000).toISOString();
     await database(`visit_signature_requests?id=eq.${row.id}`, {
       method: "PATCH",
-      body: JSON.stringify({
-        status: "email_error",
-        email_attempts: attempts,
-        next_email_attempt_at: attempts < 8 ? retryAt : null,
-        delivery_error: clean(error, 500),
-        updated_at: new Date().toISOString()
-      })
+      body: JSON.stringify({ status: "email_error", email_attempts: attempts, next_email_attempt_at: attempts < 8 ? retryAt : null, delivery_error: clean(error, 500), updated_at: new Date().toISOString() })
     });
     return false;
   }
@@ -249,8 +236,6 @@ async function tallyWebhook(request: Request) {
   }
 
   const sent = await markEmailAttempt(row);
-  // Tally must receive a success even when Supabase's bundled SMTP is throttled;
-  // the request is durably queued and the cron worker retries it later.
   return reply({ ok: true, email: sent ? "sent" : "queued" }, sent ? 200 : 202);
 }
 
