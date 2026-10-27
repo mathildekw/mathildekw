@@ -70,8 +70,20 @@
             <li><span>2</span><strong>Bon de visite</strong></li>
             <li><span>3</span><strong>Dossier complet</strong></li>
           </ol>
-          <p class="pro-form-note">Après le formulaire, tu reçois par email un lien personnel pour lire et signer le bon de visite. Aucun SMS ni service payant n’est nécessaire.</p>
-          <iframe data-tally-src="https://tally.so/embed/RWGO0j?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" loading="eager" width="100%" height="720" frameborder="0" marginheight="0" marginwidth="0" title="Demande de dossier – Terrain professionnel à Punaauia"></iframe>
+          <p class="pro-form-note">Après l’envoi, surveille bien ta boîte mail&nbsp;: un deuxième email sécurisé te permettra de lire et signer le bon de visite. Aucun SMS ni service payant n’est nécessaire.</p>
+          <iframe id="terrain-tally-form" data-tally-src="https://tally.so/embed/RWGO0j?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" loading="eager" width="100%" height="720" frameborder="0" marginheight="0" marginwidth="0" title="Demande de dossier – Terrain professionnel à Punaauia"></iframe>
+          <section class="pro-form-confirmation" data-visit-confirmation hidden aria-live="polite" aria-labelledby="visit-confirmation-title">
+            <span class="pro-form-confirmation-icon" aria-hidden="true">✓</span>
+            <p class="eyebrow">Demande bien reçue</p>
+            <h2 id="visit-confirmation-title">Une dernière étape par email.</h2>
+            <p>Tu vas recevoir un <strong>deuxième email distinct</strong> contenant ton lien personnel pour lire et signer le bon de visite.</p>
+            <ol>
+              <li>Ouvre l’email envoyé pour le bon de visite.</li>
+              <li>Suis le lien sécurisé et vérifie les informations.</li>
+              <li>Signe le document en suivant les instructions affichées.</li>
+            </ol>
+            <p class="pro-form-confirmation-help">L’envoi peut prendre quelques minutes. Pense à vérifier les dossiers Promotions et Indésirables.</p>
+          </section>
           <noscript><p><a class="btn primary" href="https://tally.so/r/RWGO0j">Ouvrir le formulaire sécurisé</a></p></noscript>
         </div>
         <figure class="pro-hero-visual">
@@ -117,7 +129,7 @@
 
   <script src="/site.js?v=20260523-contact-widget" defer></script>
   <script src="/site-config.js?v=9" defer></script>
-  <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')){d.querySelector('script[src="'+w+'"]').addEventListener("load",v)}else{var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}</script>
+  <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')){d.querySelector('script[src="'+w+'"]').addEventListener("load",v)}else{var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}window.addEventListener("Tally.FormSubmitted",function(e){var detail=e&&e.detail||{},formId=detail.formId||detail.form_id||detail.form&&detail.form.id;if(formId&&formId!=="RWGO0j")return;var frame=d.getElementById("terrain-tally-form"),confirmation=d.querySelector("[data-visit-confirmation]");if(!frame||!confirmation)return;frame.hidden=true;confirmation.hidden=false;confirmation.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});if(typeof gtag==="function")gtag("event","visit_signature_instructions_shown",{property_reference:"ET1605"})})</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateListing","name":"Terrain à vocation professionnelle à Punaauia","url":"https://mathildekw.com/terrain-professionnel-punaauia.html","description":"Terrain destiné à un projet professionnel, artisanal ou d’investissement. Superficie exacte, références cadastrales et localisation précise communiquées après remplissage du formulaire et signature électronique d’un bon de visite.","datePosted":"2026-10-24","about":{"@type":"Landform","name":"Terrain à vocation professionnelle à Punaauia","address":{"@type":"PostalAddress","addressLocality":"Punaauia","addressRegion":"Tahiti","addressCountry":"PF"}},"provider":{"@type":"RealEstateAgent","name":"Mathilde KW","telephone":"+68988078247","url":"https://mathildekw.com","areaServed":{"@type":"Place","name":"Polynésie française"},"brand":{"@type":"Brand","name":"Keller Williams Polynésie"}}}</script>
 </body>
 </html>
