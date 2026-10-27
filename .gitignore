@@ -8,4 +8,5 @@ node_modules/
 .playwright-browsers/
 playwright-report/
 test-results/
+supabase/.temp/
 *-darwin.png
