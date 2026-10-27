@@ -30,6 +30,10 @@ assert.match(retryMigration, /visit-signature\/retry-email/);
 assert.match(retryMigration, /next_email_attempt_at/);
 assert.match(page, /noindex,nofollow,noarchive/);
 assert.match(page, /Signer et confirmer le bon de visite/);
+const listing = await readFile(new URL("terrain-professionnel-punaauia.html", root), "utf8");
+assert.match(listing, /Tally\.FormSubmitted/);
+assert.match(listing, /deuxième email distinct/);
+assert.match(listing, /Signe le document en suivant les instructions affichées/);
 assert.match(client, /Authorization: "Bearer "/);
 assert.match(client, /certificateBase64/);
 
