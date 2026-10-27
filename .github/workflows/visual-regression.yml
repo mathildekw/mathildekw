@@ -16,7 +16,9 @@ permissions:
 
 jobs:
   visual:
-    runs-on: ubuntu-latest
+    # Playwright 1.56 does not support the Ubuntu 26.04 image currently
+    # behind ubuntu-latest. Pin the supported runner so Chromium can install.
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
