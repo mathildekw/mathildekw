@@ -77,33 +77,19 @@ test("le menu mobile est accessible et ferme avec Échap", async ({ page }, test
   await expect(toggle).toBeFocused();
 });
 
-test("l’assistant IA s’ouvre sans masquer la navigation", async ({ page }) => {
-  await page.route("**/website-assistant", route => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ answer: "Je peux t’orienter vers le parcours vendeur.", category: "SELL", grounded: true, action: { label: "Découvrir le parcours Vendre", href: "/vendre-bien-immobilier-tahiti.html" } }) }));
-  await page.goto("/", { waitUntil: "domcontentloaded" });
-  const launcher = page.getByRole("button", { name: "Discuter avec l’assistant du site" });
-  await expect(launcher).toBeVisible();
-  await launcher.click();
-  await expect(launcher).toHaveAttribute("aria-expanded", "true");
-  await expect(page.getByRole("region", { name: "Assistant immobilier IA" })).toBeVisible();
-  await expect(page.getByLabel("Ton message pour l’assistant")).toBeFocused();
-  await page.getByLabel("Ton message pour l’assistant").fill("Je veux vendre mon appartement");
-  await page.getByRole("button", { name: "Envoyer le message à l’assistant" }).click();
-  await expect(page.getByRole("log")).toContainText("parcours vendeur");
-  const action = page.getByRole("link", { name: "Découvrir le parcours Vendre" });
-  await expect(action).toBeVisible();
-  await expect(action).toHaveAttribute("href", "/vendre-bien-immobilier-tahiti.html");
-  await page.keyboard.press("Escape");
-  await expect(launcher).toHaveAttribute("aria-expanded", "false");
+test("l’assistant d’orientation répond depuis sa page dédiée", async ({ page }) => {
+  await page.goto("/assistant-immobilier-tahiti.html", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("region", { name: "Assistant d’orientation immobilier" })).toBeVisible();
+  await page.getByLabel("Ton projet ou ta question").fill("Je veux vendre mon appartement");
+  await page.getByRole("button", { name: "Envoyer la question" }).click();
+  await expect(page.getByText("Je peux t’aider à choisir entre estimation")).toBeVisible();
+  await expect(page.getByRole("link", { name: /Préparer ma vente/ })).toHaveAttribute("href", "/vendre-bien-immobilier-tahiti.html");
 });
 
-test("la collecte email apparaît après trois minutes actives", async ({ page }, testInfo) => {
+test("aucune collecte email intrusive n’interrompt la navigation", async ({ page }, testInfo) => {
   test.skip(!testInfo.project.name.startsWith("mobile-"), "Contrôle représentatif sur mobile");
   await page.clock.install();
   await page.goto("/", { waitUntil: "domcontentloaded" });
   await page.clock.fastForward("03:00");
-  const dialog = page.getByRole("dialog");
-  await expect(dialog).toBeVisible();
-  await expect(dialog.getByRole("heading")).toContainText("nouvelles offres Keller Williams");
-  await expect(dialog.getByLabel("Ton adresse email")).toBeVisible();
-  await expect(dialog.getByRole("checkbox")).toBeVisible();
+  await expect(page.getByRole("dialog")).toHaveCount(0);
 });
